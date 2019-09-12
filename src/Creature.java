@@ -20,7 +20,7 @@ public class Creature {
         this.name = Name;
         this.creatureStats = creatureStats;
 
-        creaturesWeaponRanks.put("Weapons.Swords", "E");
+        creaturesWeaponRanks.put("Weapons.Weapons.Swords", "E");
         creaturesWeaponRanks.put("Weapons.Axes", "E");
         creaturesWeaponRanks.put("Weapons.Lances", "E");
         creaturesWeaponRanks.put("Daggers", "E");
@@ -40,7 +40,7 @@ public class Creature {
 
             String current = list.get(x);
 
-            if (item.getType().getWeaponTypeName().equals(current)) {
+            if (item.getWeaponType().equals(current)) {
                 weapon = item;
                 break;
             }
@@ -70,7 +70,7 @@ public class Creature {
 
         if (weapon == null) {return 0;}
 
-        else if (weapon.getType().getType() == 1) {return weapon.getMight() + creatureStats.getMagic();}
+        else if (weapon.isWeaponIsMagic()) {return weapon.getMight() + creatureStats.getMagic();}
 
         else {return weapon.getMight() + creatureStats.getAttack();}
     }

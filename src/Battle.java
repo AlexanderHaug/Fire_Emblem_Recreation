@@ -1,11 +1,29 @@
-public class Battle {
+class Battle {
 
-    private String winner = "No Winner";
-    private String message = "";
+    private static String winner = "No Winner";
+    private static String message = "";
 
-    public Battle() {}
+    static void fightInColosseum(Creature combatant1, Creature combatant2) {
 
-    public void fightRound(Creature fighter1, Creature fighter2) {
+        int turnCount = 1;
+
+        while (((combatant1.getCreatureStats().getHealth() != 0) || (combatant2.getCreatureStats().getHealth() != 0)) || turnCount <= 20) {
+
+            System.out.println("Round: " + turnCount);
+
+            if (turnCount % 2 == 0) {fightRound(combatant1, combatant2);}
+
+            else {fightRound(combatant2, combatant1);}
+
+            if (isDead(combatant1) || isDead(combatant2)) {break;}
+
+            turnCount += 1;
+        }
+
+        System.out.println("The winner is " + winner);
+    }
+
+    private static void fightRound(Creature fighter1, Creature fighter2) {
 
         String fighter1Name = fighter1.getCreatureName();
         String fighter2Name = fighter2.getCreatureName();
@@ -23,7 +41,7 @@ public class Battle {
             else {System.out.println(fighter1Name + " missed.");}
         }
 
-        if (!isAlive(fighter2)) {}
+        if (isDead(fighter2)) {}
 
         else {
 
@@ -42,34 +60,34 @@ public class Battle {
         }
     }
 
-    private void displayActionTaken(String fighter1Name, int fighter1DamageDealt, Creature fighter2) {
+    private static void displayActionTaken(String fighter1Name, int fighter1DamageDealt, Creature fighter2) {
 
 
         System.out.println(fighter1Name + message + fighter1DamageDealt +
-                           " damage, " + fighter2.getCreatureName() + " Health:" + fighter2.getCreatureStats().getHealth());
+                           " damage, " + fighter2.getCreatureName() + " Health: " + fighter2.getCreatureStats().getHealth());
 
         fighter2.damageToHealth(fighter1DamageDealt);
 
-        if (!isAlive(fighter2)) {
+        if (isDead(fighter2)) {
             System.out.println(fighter2.getCreatureName() + " died!");
             winner = fighter1Name;
         }
     }
 
-    private boolean doesHit(Creature attacker, Creature defender){
+    private static boolean doesHit(Creature attacker, Creature defender){
 
         int hits = attacker.getHitRate() - defender.getAvoidRate();
         return hits >= ((int)(Math.random() * 100));
     }
 
-    private int damageCalculator(Creature attacker, Creature defender) {
+    private static int damageCalculator(Creature attacker, Creature defender) {
 
         if (attacker.getWeapon() == null) {return 0;}
 
-        int type = attacker.getWeapon().getType().getType();
+        boolean type = attacker.getWeapon().isWeaponIsMagic();
         int damage;
 
-        if (type == 1) {
+        if (type) {
             damage = attacker.getDamage() - defender.getCreatureStats().getResistance();
             damage = criticalCalculator(attacker, defender, damage);
             if (damage <= 0){damage = 0;}
@@ -84,7 +102,7 @@ public class Battle {
         return damage;
     }
 
-    private int criticalCalculator(Creature attacker, Creature defender, int damageDone) {
+    private static int criticalCalculator(Creature attacker, Creature defender, int damageDone) {
 
         int attackerCritical = attacker.getCritRate() - defender.getCreatureStats().getLuck();
         int chance = (int)(Math.random() * 100);
@@ -97,39 +115,10 @@ public class Battle {
         }
 
         else {
-            message = " hits enemy for ";
+            message = " hits " + defender.getCreatureName() + " for ";
             return damageDone;
         }
     }
 
-    private boolean isAlive(Creature creature) {
-        return (creature.getCreatureStats().getHealth() != 0);
-    }
-
-
-    public void fightInColosseum(Creature fighter1, Creature fighter2) {
-
-        int turns = 0;
-
-        while (((fighter1.getCreatureStats().getHealth() != 0) && (fighter2.getCreatureStats().getHealth() != 0)) || turns <= 20) {
-
-            System.out.println("Round: " + turns);
-
-            if (turns % 2 == 0) {fightRound(fighter1, fighter2);}
-
-            else {fightRound(fighter2, fighter1);}
-
-            if (!isAlive(fighter1) || !isAlive(fighter2)) {break;}
-
-            turns += 1;
-        }
-
-        System.out.println("The winner is " + winner);
-    }
-
-    public void fightSingleRound(Creature creature1, Creature creature2) {
-
-        if (creature1.getWeapon().getType().getType() == 1) {
-        }
-    }
+    private static boolean isDead(Creature creature) {return (creature.getCreatureStats().getHealth() == 0);}
 }
