@@ -21,7 +21,7 @@ public class Creature {
         this.creatureStats = creatureStats;
 
         creaturesWeaponRanks.put("Weapons.Weapons.Swords", "E");
-        creaturesWeaponRanks.put("Weapons.Axes", "E");
+        creaturesWeaponRanks.put("Weapons.Weapons.Axes", "E");
         creaturesWeaponRanks.put("Weapons.Lances", "E");
         creaturesWeaponRanks.put("Daggers", "E");
         creaturesWeaponRanks.put("Bows", "E");
