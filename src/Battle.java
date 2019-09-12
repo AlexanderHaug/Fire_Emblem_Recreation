@@ -11,7 +11,7 @@ class Battle {
 
             System.out.println("Round: " + turnCount);
 
-            if (turnCount % 2 == 0) {fightRound(combatant1, combatant2);}
+            if (turnCount % 2 == 1) {fightRound(combatant1, combatant2);}
 
             else {fightRound(combatant2, combatant1);}
 
