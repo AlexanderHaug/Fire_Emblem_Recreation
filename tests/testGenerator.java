@@ -10,13 +10,13 @@ public class testGenerator {
     private static Path filePath = Paths.get(currentPath.toString(), "src");
 
     @Test
-    public void testNormalCollosium() {
+    public void testNormalCollosseum() {
         System.out.println(filePath);
         Creature robin = new Creature("Robin", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Lord.csv"), 1, 21, 80, 45, 45, 40, 40, 40, 40));
         Creature risen = new Creature("Risen", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Lord.csv"), 1, 21, 80, 45, 0, 40, 40, 40, 40));
 
         Weapon killingEdge = new Weapons.Weapon(filePath.toString()+"/Weapons/Swords/Killing_Edge.csv");
-        Weapon claws = new Weapons.Weapon(filePath.toString()+"/Weapons/Swords/Runesword.csv");
+        Weapon claws = new Weapons.Weapon(filePath.toString()+"/Weapons/Swords/Armorslayer.csv");
 
         robin.equipWeapon(killingEdge);
         risen.equipWeapon(claws);

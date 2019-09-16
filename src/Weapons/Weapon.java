@@ -7,13 +7,16 @@ import java.io.IOException;
 
 public class Weapon {
 
-    private String name = null;
+    private String name = "";
     private int might = 0;
     private int accuracy = 0;
     private int critical = 0;
     private String weaponType;
     private String weaponRank;
     private boolean weaponIsMagic;
+    private int[] attackRange = new int[2];
+    private String[] effectiveAgainst = new String[7];
+    private String flavorText = "";
 
     public Weapon(String file) {
         try {
@@ -28,6 +31,11 @@ public class Weapon {
                 this.weaponType = data[4];
                 this.weaponRank = data[5];
                 this.weaponIsMagic = Boolean.parseBoolean(data[6]);
+                setAttackRange(data[7]);
+                setEffectiveAgainst(data[8]);
+                this.flavorText = data[9];
+
+
             }
             reader.close();
         }
@@ -41,41 +49,34 @@ public class Weapon {
 
     public String getName() {return name;}
 
-    public void setName(String Name) {name = Name;}
-
     public int getMight() {return might;}
-
-    public void setMight(int Might) {might = Might;}
 
     public int getAccuracy() {return accuracy;}
 
-    public void setAccuracy(int Accuracy) {accuracy = Accuracy;}
-
     public int getCritical() {return critical;}
-
-    public void setCritical(int Critical) {critical = Critical;}
 
     public String getWeaponRank() {return weaponRank;}
 
     public boolean isWeaponIsMagic() {return weaponIsMagic;}
 
-    public void setWeaponIsMagic(boolean weaponIsMagic) {this.weaponIsMagic = weaponIsMagic;}
-
     public String getWeaponType() {return weaponType;}
 
-    public void setWeaponType(String weaponType) {this.weaponType = weaponType;}
+    private void setAttackRange(String data) {
+        String[] splt = data.split(":");
+        System.arraycopy(splt, 0, this.effectiveAgainst, 0, splt.length);
+    }
 
-    public void setWeaponRank(String WeaponRank) {
+    public int[] getAttackRange() {return attackRange;}
 
-        if (    WeaponRank.equals("S") || WeaponRank.equals("A") ||
-                WeaponRank.equals("B") || WeaponRank.equals("C") ||
-                WeaponRank.equals("D") || WeaponRank.equals("E")) {
+    private void setEffectiveAgainst(String data) {
+        String[] splt = data.split(":");
+        System.arraycopy(splt, 0, this.effectiveAgainst, 0, splt.length);
+    }
 
+    public String[] getEffectiveAgainst() {return effectiveAgainst;}
 
-            weaponRank = WeaponRank;
-        }
-
-        else {weaponRank = "E";}
+    public String getFlavorText() {
+        return flavorText;
     }
 
     public String toString() {return name + ": Mt " + might + ", Accuracy " + accuracy + ", Critical " + critical;}
