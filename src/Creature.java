@@ -35,18 +35,9 @@ public class Creature {
 
     public void equipWeapon(Weapon item) {
         ArrayList<String> list = creatureStats.getUnitclass().getEquipable();
-
-        for (int x = 0; x < creatureStats.getUnitclass().getEquipable().size(); x++) {
-
-            String current = list.get(x);
-
-            if (item.getWeaponType().equals(current)) {
-                weapon = item;
-                break;
-            }
-        }
+        if (list.contains(item.getWeaponType()))
+            weapon = item;
     }
-
 
     public void damageToHealth(int damage) {
         creatureStats.setHealth(creatureStats.getHealth() - damage);
@@ -72,7 +63,7 @@ public class Creature {
 
         else if (weapon.isWeaponIsMagic()) {return weapon.getMight() + creatureStats.getMagic();}
 
-        else {return weapon.getMight() + creatureStats.getAttack();}
+        else {return weapon.getMight() + creatureStats.getStrength();}
     }
 
     public int getAvoidRate() {return (int)(creatureStats.getSpeed() * 1.5 * creatureStats.getLuck() * .5);}
@@ -94,7 +85,7 @@ public class Creature {
     }
 
     public String toString() {return name + " Class: " + creatureStats.getUnitclass().getName() + " Level: " + creatureStats.getLevel() + "\n" +
-            "HP " + creatureStats.getHealth() + ", Attack " + creatureStats.getAttack() +
+            "HP " + creatureStats.getHealth() + ", Attack " + creatureStats.getStrength() +
             ", Magic "+ creatureStats.getMagic() + "\n" + "Skill " + creatureStats.getSkill() +
             ", Luck " + creatureStats.getLuck() + ", Speed " + creatureStats.getSpeed() + "\n" +
             "Defense " + creatureStats.getDefense() + ", Resistance " + creatureStats.getResistance() +

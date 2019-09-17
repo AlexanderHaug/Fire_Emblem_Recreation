@@ -6,7 +6,7 @@ public class CreatureStats {
     private UnitClass unitclass;
     private int level = 0;
     private int health = 0;
-    private int attack = 0;
+    private int strength = 0;
     private int magic = 0;
     private int skill = 0;
     private int luck = 0;
@@ -54,8 +54,10 @@ public class CreatureStats {
         if (Health > unit.getHealthCap()) {health = unit.getHealthCap();}
         else {health = Health;}
 
-        if (Attack > unit.getAttackCap()) {attack = unit.getAttackCap();}
-        else {attack = Attack;}
+        if (Attack > unit.getAttackCap()) {
+            strength = unit.getAttackCap();}
+        else {
+            strength = Attack;}
 
         if (Magic > unit.getMagicCap()) {magic = unit.getMagicCap();}
         else {magic = Magic;}
@@ -82,7 +84,7 @@ public class CreatureStats {
 
     public int getHealth() {return health;}
 
-    public int getAttack() {return attack;}
+    public int getStrength() {return strength;}
 
     public int getMagic() {return magic;}
 
@@ -101,7 +103,7 @@ public class CreatureStats {
     public void setLevel(int level) {this.level = level;}
     public void setHealth(int health) {this.health = health;}
 
-    public void setAttack(int attack) {this.attack = attack;}
+    public void setStrength(int strength) {this.strength = strength;}
 
     public void setMagic(int magic) {this.magic = magic;}
 }

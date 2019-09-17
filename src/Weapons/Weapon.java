@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Weapon {
 
@@ -14,8 +16,8 @@ public class Weapon {
     private String weaponType;
     private String weaponRank;
     private boolean weaponIsMagic;
-    private int[] attackRange = new int[2];
-    private String[] effectiveAgainst = new String[7];
+    private ArrayList<Integer> attackRange = new ArrayList<>();
+    private ArrayList<String> effectiveAgainst = new ArrayList<>();
     private String flavorText = "";
 
     public Weapon(String file) {
@@ -61,17 +63,19 @@ public class Weapon {
 
     private void setAttackRange(String data) {
         String[] splt = data.split(":");
-        System.arraycopy(splt, 0, this.effectiveAgainst, 0, splt.length);
+        for (String s : splt) {
+            this.attackRange.add(Integer.parseInt(s));
+        }
     }
 
-    public int[] getAttackRange() {return attackRange;}
+    public ArrayList<Integer> getAttackRange() {return attackRange;}
 
     private void setEffectiveAgainst(String data) {
         String[] splt = data.split(":");
-        System.arraycopy(splt, 0, this.effectiveAgainst, 0, splt.length);
+        Collections.addAll(this.effectiveAgainst, splt);
     }
 
-    public String[] getEffectiveAgainst() {return effectiveAgainst;}
+    public ArrayList<String> getEffectiveAgainst() {return effectiveAgainst;}
 
     public String getFlavorText() {
         return flavorText;

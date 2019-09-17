@@ -1,19 +1,36 @@
-class Battle {
+import java.util.ArrayList;
 
+class Battle {
     private static String winner = "No Winner";
     private static String message = "";
 
-    static void fightInColosseum(Creature combatant1, Creature combatant2) {
+    public static void fightRound(Creature fighter1, Creature fighter2, int distance) {
 
+        String fighter1Name = fighter1.getCreatureName();
+        String fighter2Name = fighter2.getCreatureName();
+
+        if (fighter1.getWeapon() == null || isEnemyNotInRange(fighter1.getWeapon().getAttackRange(), distance)) {System.out.println(fighter1Name + " cannot attack.");}
+
+        else {
+            unitAttacks(fighter1, fighter2);}
+
+        if (!isDead(fighter2)) {
+            if (fighter2.getWeapon() == null|| isEnemyNotInRange(fighter2.getWeapon().getAttackRange(), distance)) {System.out.println(fighter2Name + " cannot attack.");}
+            else {
+                unitAttacks(fighter2, fighter1);}
+        }
+    }
+
+    public static void fightInColosseum(Creature combatant1, Creature combatant2, int distance) {
         int turnCount = 1;
 
         while (((combatant1.getCreatureStats().getHealth() != 0) || (combatant2.getCreatureStats().getHealth() != 0)) || turnCount <= 20) {
 
             System.out.println("Round: " + turnCount);
 
-            if (turnCount % 2 == 1) {fightRound(combatant1, combatant2);}
+            if (turnCount % 2 == 1) {fightRound(combatant1, combatant2, distance);}
 
-            else {fightRound(combatant2, combatant1);}
+            else {fightRound(combatant2, combatant1, distance);}
 
             if (isDead(combatant1) || isDead(combatant2)) {break;}
 
@@ -23,50 +40,27 @@ class Battle {
         System.out.println("The winner is " + winner);
     }
 
-    private static void fightRound(Creature fighter1, Creature fighter2) {
-
-        String fighter1Name = fighter1.getCreatureName();
-        String fighter2Name = fighter2.getCreatureName();
-
-        if (fighter1.getWeapon() == null) {System.out.println(fighter1Name + " cannot attack.");}
-
-        else {
-
-            boolean fighter1hit = doesHit(fighter1, fighter2);
-            if (fighter1hit) {
-                int fighter1DamageDealt = damageCalculator(fighter1, fighter2);
-                displayActionTaken(fighter1Name, fighter1DamageDealt, fighter2);
-            }
-
-            else {System.out.println(fighter1Name + " missed.");}
+    private static void unitAttacks(Creature creature1, Creature creature2) {
+        boolean fighter1hit = doesHit(creature1, creature2);
+        if (fighter1hit) {
+            int fighter1DamageDealt = damageCalculator(creature1, creature2);
+            displayActionTaken(creature1.getCreatureName(), fighter1DamageDealt, creature2);
         }
+        else {System.out.println(creature1.getCreatureName() + " missed.");}
+    }
 
-        if (isDead(fighter2)) {}
+    private static boolean isEnemyNotInRange(ArrayList<Integer> weaponRange, int distance) {
+        int shortDistance = weaponRange.get(0);
+        int longDistance = weaponRange.get(1);
 
-        else {
-
-            if (fighter2.getWeapon() == null) {System.out.println(fighter2Name + " cannot attack.");}
-
-
-            else {
-                boolean fighter2hit = doesHit(fighter2, fighter1);
-                if (fighter2hit) {
-                    int fighter2DamageDealt = damageCalculator(fighter2, fighter1);
-                    displayActionTaken(fighter2Name, fighter2DamageDealt, fighter1);
-                }
-
-                else {System.out.println(fighter2Name + " missed.");}
-            }
-        }
+        return (shortDistance > distance) || (distance > longDistance);
     }
 
     private static void displayActionTaken(String fighter1Name, int fighter1DamageDealt, Creature fighter2) {
 
-
-        System.out.println(fighter1Name + message + fighter1DamageDealt +
-                           " damage, " + fighter2.getCreatureName() + " Health: " + fighter2.getCreatureStats().getHealth());
-
+        System.out.println(fighter1Name + message + fighter1DamageDealt + " damage.");
         fighter2.damageToHealth(fighter1DamageDealt);
+        System.out.println( fighter2.getCreatureName() + " Health: " + fighter2.getCreatureStats().getHealth());
 
         if (isDead(fighter2)) {
             System.out.println(fighter2.getCreatureName() + " died!");
@@ -75,13 +69,11 @@ class Battle {
     }
 
     private static boolean doesHit(Creature attacker, Creature defender){
-
         int hits = attacker.getHitRate() - defender.getAvoidRate();
         return hits >= ((int)(Math.random() * 100));
     }
 
     private static int damageCalculator(Creature attacker, Creature defender) {
-
         if (attacker.getWeapon() == null) {return 0;}
 
         boolean type = attacker.getWeapon().isWeaponIsMagic();

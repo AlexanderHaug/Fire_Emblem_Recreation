@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class UnitClass {
 
@@ -34,18 +35,17 @@ public class UnitClass {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String row;
-            while ((row = reader.readLine()) != null) {
-                String[] data = row.split(",");
-                this.name = data[0];
-                setClassStatCap(Integer.parseInt(data[1]),Integer.parseInt(data[2]),Integer.parseInt(data[3]),
-                                Integer.parseInt(data[4]), Integer.parseInt(data[5]),Integer.parseInt(data[6]),
-                                Integer.parseInt(data[7]), Integer.parseInt(data[8]),Integer.parseInt(data[9]));
+            row = reader.readLine();
+            String[] data = row.split(",");
+            this.name = data[0];
+            setClassStatCap(Integer.parseInt(data[1]),Integer.parseInt(data[2]),Integer.parseInt(data[3]),
+                            Integer.parseInt(data[4]), Integer.parseInt(data[5]),Integer.parseInt(data[6]),
+                            Integer.parseInt(data[7]), Integer.parseInt(data[8]),Integer.parseInt(data[9]));
 
-                setClassGrowthRate(Integer.parseInt(data[10]),Integer.parseInt(data[11]),Integer.parseInt(data[12]),
-                                   Integer.parseInt(data[13]),Integer.parseInt(data[14]),Integer.parseInt(data[15]),
-                                   Integer.parseInt(data[16]),Integer.parseInt(data[17]));
-                setEquipableWeapons(data[18]);
-            }
+            setClassGrowthRate(Integer.parseInt(data[10]),Integer.parseInt(data[11]),Integer.parseInt(data[12]),
+                               Integer.parseInt(data[13]),Integer.parseInt(data[14]),Integer.parseInt(data[15]),
+                               Integer.parseInt(data[16]),Integer.parseInt(data[17]));
+            setEquipableWeapons(data[18]);
             reader.close();
         }
         catch (FileNotFoundException e) {
@@ -56,7 +56,7 @@ public class UnitClass {
         }
     }
 
-    public void setClassStatCap(int LvlCap, int HpCap, int AttackCap,
+    private void setClassStatCap(int LvlCap, int HpCap, int AttackCap,
                                 int MagicCap, int SkillCap, int LuckCap,
                                 int SpeedCap, int DefenseCap, int ResistenceCap) {
 
@@ -71,7 +71,7 @@ public class UnitClass {
         resCap = ResistenceCap;
     }
 
-    public void setClassGrowthRate(int HpGrowth, int AttackGrowth,
+    private void setClassGrowthRate(int HpGrowth, int AttackGrowth,
                               int MagicGrowth, int SkillGrowth, int LuckGrowth,
                               int SpeedGrowth, int DefenseGrowth, int ResistanceGrowth) {
 
@@ -85,11 +85,9 @@ public class UnitClass {
         resGrowth = ResistanceGrowth;
     }
 
-    public void setEquipableWeapons(String weapons) {
+    private void setEquipableWeapons(String weapons) {
         String[] all_weapons = weapons.split(":");
-        for (int x = 0; x < all_weapons.length; x++) {
-            this.equipable.add(all_weapons[x]);
-        }
+        Collections.addAll(this.equipable, all_weapons);
     }
 
     public ArrayList<String> getEquipable() {return equipable;}
