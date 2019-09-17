@@ -1,11 +1,12 @@
 # Things to Do
 List of things to be implemented.
-## Units/Creatures  
+## Units/Creatures 
+* Add Constitution Stat
+* Add Skill experience 
 ## Weapons
-* Attack Range
-* Effective Against
+* Add Weapon uses
+* Add Weapon Skill Increase 
 * Other Effects
-* Flavor Text
 ## Battle
 * Improve organization of battle class
     * Add new weapon requirements to battle

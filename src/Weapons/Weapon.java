@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class Weapon {
 
-    private String name = "";
+    private String name = null;
     private int might = 0;
     private int accuracy = 0;
     private int critical = 0;
@@ -34,8 +34,6 @@ public class Weapon {
                 setAttackRange(data[7]);
                 setEffectiveAgainst(data[8]);
                 this.flavorText = data[9];
-
-
             }
             reader.close();
         }
