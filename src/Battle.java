@@ -4,49 +4,47 @@ class Battle {
     private static String winner = "No Winner";
     private static String message = "";
 
-    public static void fightRound(Creature fighter1, Creature fighter2, int distance) {
+    public static void doBattle(Creature attacker, Creature defender, int distance) {
 
-        String fighter1Name = fighter1.getCreatureName();
-        String fighter2Name = fighter2.getCreatureName();
+        String fighter1Name = attacker.getCreatureName();
+        String fighter2Name = defender.getCreatureName();
 
-        if (fighter1.getWeapon() == null || isEnemyNotInRange(fighter1.getWeapon().getAttackRange(), distance)) {System.out.println(fighter1Name + " cannot attack.");}
+        if (attacker.getWeapon() == null || isEnemyNotInRange(attacker.getWeapon().getAttackRange(), distance)) {
+            System.out.println(fighter1Name + " cannot attack.");
+        }
 
-        else {
-            unitAttacks(fighter1, fighter2);}
+        else {unitAttacks(attacker, defender);}
 
-        if (!isDead(fighter2)) {
-            if (fighter2.getWeapon() == null|| isEnemyNotInRange(fighter2.getWeapon().getAttackRange(), distance)) {System.out.println(fighter2Name + " cannot attack.");}
-            else {
-                unitAttacks(fighter2, fighter1);}
+        if (!isDead(defender)) {
+            if (defender.getWeapon() == null|| isEnemyNotInRange(defender.getWeapon().getAttackRange(), distance)) {
+                System.out.println(fighter2Name + " cannot attack.");
+            }
+            else {unitAttacks(defender, attacker);}
         }
     }
 
     public static void fightInColosseum(Creature combatant1, Creature combatant2, int distance) {
         int turnCount = 1;
 
-        while (((combatant1.getCreatureStats().getHealth() != 0) || (combatant2.getCreatureStats().getHealth() != 0)) || turnCount <= 20) {
+        while (((combatant1.getCreatureStats().getHealth() != 0) || (combatant2.getCreatureStats().getHealth() != 0))
+                || turnCount <= 20) {
 
             System.out.println("Round: " + turnCount);
-
-            if (turnCount % 2 == 1) {fightRound(combatant1, combatant2, distance);}
-
-            else {fightRound(combatant2, combatant1, distance);}
-
+            doBattle(combatant1, combatant2, distance);
             if (isDead(combatant1) || isDead(combatant2)) {break;}
-
             turnCount += 1;
         }
 
         System.out.println("The winner is " + winner);
     }
 
-    private static void unitAttacks(Creature creature1, Creature creature2) {
-        boolean fighter1hit = doesHit(creature1, creature2);
-        if (fighter1hit) {
-            int fighter1DamageDealt = damageCalculator(creature1, creature2);
-            displayActionTaken(creature1.getCreatureName(), fighter1DamageDealt, creature2);
+    private static void unitAttacks(Creature attacker, Creature defender) {
+        boolean attackerHits = doesHit(attacker, defender);
+        if (attackerHits) {
+            int attackerDamageDealt = damageCalculator(attacker, defender);
+            displayActionTaken(attacker.getCreatureName(), attackerDamageDealt, defender);
         }
-        else {System.out.println(creature1.getCreatureName() + " missed.");}
+        else {System.out.println(attacker.getCreatureName() + " missed.");}
     }
 
     private static boolean isEnemyNotInRange(ArrayList<Integer> weaponRange, int distance) {
@@ -56,15 +54,15 @@ class Battle {
         return (shortDistance > distance) || (distance > longDistance);
     }
 
-    private static void displayActionTaken(String fighter1Name, int fighter1DamageDealt, Creature fighter2) {
+    private static void displayActionTaken(String attackerName, int attackerDamageDealt, Creature defender) {
 
-        System.out.println(fighter1Name + message + fighter1DamageDealt + " damage.");
-        fighter2.damageToHealth(fighter1DamageDealt);
-        System.out.println( fighter2.getCreatureName() + " Health: " + fighter2.getCreatureStats().getHealth());
+        System.out.println(attackerName + message + attackerDamageDealt + " damage.");
+        defender.damageToHealth(attackerDamageDealt);
+        System.out.println(defender.getCreatureName() + " Health: " + defender.getCreatureStats().getHealth());
 
-        if (isDead(fighter2)) {
-            System.out.println(fighter2.getCreatureName() + " died!");
-            winner = fighter1Name;
+        if (isDead(defender)) {
+            System.out.println(defender.getCreatureName() + " died!");
+            winner = attackerName;
         }
     }
 
@@ -74,24 +72,16 @@ class Battle {
     }
 
     private static int damageCalculator(Creature attacker, Creature defender) {
-        if (attacker.getWeapon() == null) {return 0;}
-
-        boolean type = attacker.getWeapon().isWeaponIsMagic();
+        boolean weaponIsMagic = attacker.getWeapon().isWeaponIsMagic();
         int damage;
 
-        if (type) {
-            damage = attacker.getDamage() - defender.getCreatureStats().getResistance();
-            damage = criticalCalculator(attacker, defender, damage);
-            if (damage <= 0){damage = 0;}
-        }
+        if (weaponIsMagic) {damage = attacker.getDamage() - defender.getCreatureStats().getResistance();}
+        else {damage = attacker.getDamage() - defender.getCreatureStats().getDefense();}
 
-        else {
-            damage = attacker.getDamage() - defender.getCreatureStats().getDefense();
-            damage = criticalCalculator(attacker, defender, damage);
-            if (damage <= 0){damage = 0;}
-        }
+        damage = criticalCalculator(attacker, defender, damage);
 
-        return damage;
+        return Math.max(damage, 0);
+
     }
 
     private static int criticalCalculator(Creature attacker, Creature defender, int damageDone) {
@@ -99,9 +89,9 @@ class Battle {
         int attackerCritical = attacker.getCritRate() - defender.getCreatureStats().getLuck();
         int chance = (int)(Math.random() * 100);
 
-        boolean success = attackerCritical >= chance;
+        boolean isCritical = attackerCritical >= chance;
 
-        if (success) {
+        if (isCritical) {
             message = " hits for a critical of ";
             return damageDone*3;
         }

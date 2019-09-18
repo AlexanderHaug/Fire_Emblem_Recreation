@@ -53,7 +53,7 @@ public class testGenerator {
         robin.equipWeapon(flux);
         risen.equipWeapon(claws);
 
-        Battle.fightRound(robin,risen, 2);
+        Battle.doBattle(robin,risen, 2);
         assert robin.getCreatureStats().getHealth() == 21;
         assert risen.getCreatureStats().getHealth() >= 0;
     }
