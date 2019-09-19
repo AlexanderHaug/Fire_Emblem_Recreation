@@ -4,9 +4,7 @@ List of things to be implemented.
 * Add Constitution Stat
 * Add Skill experience 
 ## Weapons
-* Add Weapon uses
-* Add Weapon Skill Increase 
-* Other Effects
+* Staves
 ## Battle
 * Improve organization of battle class
     * Add new weapon requirements to battle
