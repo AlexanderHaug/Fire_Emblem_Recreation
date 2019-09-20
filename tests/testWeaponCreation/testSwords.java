@@ -23,7 +23,7 @@ public class testSwords {
         assert weapon.getWeaponWeight() == 4;
         assert weapon.getWeaponRank().equals("E");
         assert weapon.getWeaponUses() == 50;
-        assert weapon.getWeaponCost() == 230;
+        assert weapon.getWeaponCost() == 260;
         assert !weapon.getWeaponIsMagic();
         assert !weapon.getIsWeaponIsBrave();
         assert !weapon.getIsWeaponIsDevil();
@@ -54,5 +54,28 @@ public class testSwords {
         assert weapon.getWeaponStatModifiers().isEmpty();
         assert weapon.getEffectiveAgainst().isEmpty();
         assert weapon.getDescription().equals("A standard sword made of iron simple but effective.");
+    }
+
+    @Test
+    public void testCreateSteelSword() {
+        Weapon weapon = new Weapons.Weapon(filePath.toString()+"/Weapons/Swords/Steel_Sword.csv");
+        assert weapon.getName().equals("Steel Sword");
+        assert weapon.getWeaponType().equals("Sword");
+        assert weapon.getMight() == 8;
+        assert weapon.getAccuracy() == 85;
+        assert weapon.getCritical() == 0;
+        assert weapon.getAttackRange().get(0) == 1;
+        assert weapon.getAttackRange().get(1) == 1;
+        assert weapon.getWeaponWeight() == 10;
+        assert weapon.getWeaponRank().equals("D");
+        assert weapon.getWeaponUses() == 50;
+        assert weapon.getWeaponCost() == 910;
+        assert !weapon.getWeaponIsMagic();
+        assert !weapon.getIsWeaponIsBrave();
+        assert !weapon.getIsWeaponIsDevil();
+        assert !weapon.getIsWeaponIsPoison();
+        assert weapon.getWeaponStatModifiers().isEmpty();
+        assert weapon.getEffectiveAgainst().isEmpty();
+        assert weapon.getDescription().equals("A weighty steel sword that deals significant blows.");
     }
 }
