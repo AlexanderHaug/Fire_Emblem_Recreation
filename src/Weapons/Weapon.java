@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -28,9 +30,11 @@ public class Weapon {
     private ArrayList<String> effectiveAgainst = new ArrayList<>();
     private String description = "";
 
-    public Weapon(String file) {
+    public Weapon(String fileName) {
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        String srcPath = Paths.get(currentPath.toString(), "src").toString() + "/Weapons/";
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedReader reader = new BufferedReader(new FileReader(srcPath + fileName));
             String row;
             while ((row = reader.readLine()) != null) {
                 String[] data = row.split(",");
@@ -65,7 +69,7 @@ public class Weapon {
 
     public String getWeaponRank() {return weaponRank;}
 
-    public boolean getWeaponIsMagic() {return weaponIsMagic;}
+    public boolean isWeaponMagic() {return weaponIsMagic;}
 
     public String getWeaponType() {return weaponType;}
 
@@ -112,11 +116,11 @@ public class Weapon {
 
     public int getWeaponCost() {return weaponCost;}
 
-    public boolean getIsWeaponIsBrave() {return weaponIsBrave;}
+    public boolean isWeaponBrave() {return weaponIsBrave;}
 
-    public boolean getIsWeaponIsDevil() {return weaponIsDevil;}
+    public boolean isWeaponDevil() {return weaponIsDevil;}
 
-    public boolean getIsWeaponIsPoison() {return weaponIsPoison;}
+    public boolean isWeaponPoison() {return weaponIsPoison;}
 
     public HashMap<String, Integer> getWeaponStatModifiers() {
         return this.weaponStatModifiers;

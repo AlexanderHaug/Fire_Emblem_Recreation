@@ -61,7 +61,7 @@ public class Creature {
 
         if (weapon == null) {return 0;}
 
-        else if (weapon.isWeaponIsMagic()) {return weapon.getMight() + creatureStats.getMagic();}
+        else if (weapon.isWeaponMagic()) {return weapon.getMight() + creatureStats.getMagic();}
 
         else {return weapon.getMight() + creatureStats.getStrength();}
     }

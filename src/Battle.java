@@ -72,7 +72,7 @@ class Battle {
     }
 
     private static int damageCalculator(Creature attacker, Creature defender) {
-        boolean weaponIsMagic = attacker.getWeapon().isWeaponIsMagic();
+        boolean weaponIsMagic = attacker.getWeapon().isWeaponMagic();
         int damage;
 
         if (weaponIsMagic) {damage = attacker.getDamage() - defender.getCreatureStats().getResistance();}
