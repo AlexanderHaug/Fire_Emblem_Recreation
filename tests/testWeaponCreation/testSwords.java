@@ -124,4 +124,27 @@ public class testSwords {
         assert weapon.getEffectiveAgainst().isEmpty();
         assert weapon.getDescription().equals("The wielder of this blade is emboldened and will attack twice when initiating combat.");
     }
+
+    @Test
+    public void testCreateKillingEdge() {
+        Weapon weapon = new Weapons.Weapon(filePath.toString()+"/Weapons/Swords/Killing_Edge.csv");
+        assert weapon.getName().equals("Killing Edge");
+        assert weapon.getWeaponType().equals("Sword");
+        assert weapon.getMight() == 8;
+        assert weapon.getAccuracy() == 85;
+        assert weapon.getCritical() == 25;
+        assert weapon.getAttackRange().get(0) == 1;
+        assert weapon.getAttackRange().get(1) == 1;
+        assert weapon.getWeaponWeight() == 10;
+        assert weapon.getWeaponRank().equals("C");
+        assert weapon.getWeaponUses() == 20;
+        assert weapon.getWeaponCost() == 1470;
+        assert !weapon.getWeaponIsMagic();
+        assert !weapon.getIsWeaponIsBrave();
+        assert !weapon.getIsWeaponIsDevil();
+        assert !weapon.getIsWeaponIsPoison();
+        assert weapon.getWeaponStatModifiers().isEmpty();
+        assert weapon.getEffectiveAgainst().isEmpty();
+        assert weapon.getDescription().equals("Deadly sharp this sword boasts a high critical-hit rate.");
+    }
 }
