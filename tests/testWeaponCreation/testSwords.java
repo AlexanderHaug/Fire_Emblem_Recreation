@@ -1,10 +1,14 @@
 package testWeaponCreation;
 
-import Weapons.Weapon;
 import org.testng.annotations.Test;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashSet;
+
+import static testWeaponCreation.WeaponCreationTestMethod.createAndTestWeapon;
+
 
 public class testSwords {
     private static Path currentPath = Paths.get(System.getProperty("user.dir"));
@@ -12,139 +16,58 @@ public class testSwords {
 
     @Test
     public void testCreateTrainingSword() {
-        Weapon weapon = new Weapons.Weapon(filePath.toString()+"/Weapons/Swords/Training_Sword.csv");
-        assert weapon.getName().equals("Training Sword");
-        assert weapon.getWeaponType().equals("Sword");
-        assert weapon.getMight() == 3;
-        assert weapon.getAccuracy() == 100;
-        assert weapon.getCritical() == 0;
-        assert weapon.getAttackRange().get(0) == 1;
-        assert weapon.getAttackRange().get(1) == 1;
-        assert weapon.getWeaponWeight() == 4;
-        assert weapon.getWeaponRank().equals("E");
-        assert weapon.getWeaponUses() == 50;
-        assert weapon.getWeaponCost() == 260;
-        assert !weapon.getWeaponIsMagic();
-        assert !weapon.getIsWeaponIsBrave();
-        assert !weapon.getIsWeaponIsDevil();
-        assert !weapon.getIsWeaponIsPoison();
-        assert weapon.getWeaponStatModifiers().isEmpty();
-        assert weapon.getEffectiveAgainst().isEmpty();
-        assert weapon.getDescription().equals("This simple sword is perfect for training purposes. But cannot inflict critical hits.");
+        createAndTestWeapon("Training_Sword", "Training Sword", "Sword",
+                3, 100,0,1,1,
+                4,"E", 50,260,false,
+                false,false, false, new HashSet<String>(),
+                new ArrayList<String>(), "This simple sword is perfect for training purposes. " +
+                        "But cannot inflict critical hits." );
     }
 
     @Test
     public void testCreateIronSword() {
-        Weapon weapon = new Weapons.Weapon(filePath.toString()+"/Weapons/Swords/Iron_Sword.csv");
-        assert weapon.getName().equals("Iron Sword");
-        assert weapon.getWeaponType().equals("Sword");
-        assert weapon.getMight() == 5;
-        assert weapon.getAccuracy() == 90;
-        assert weapon.getCritical() == 0;
-        assert weapon.getAttackRange().get(0) == 1;
-        assert weapon.getAttackRange().get(1) == 1;
-        assert weapon.getWeaponWeight() == 5;
-        assert weapon.getWeaponRank().equals("E");
-        assert weapon.getWeaponUses() == 40;
-        assert weapon.getWeaponCost() == 520;
-        assert !weapon.getWeaponIsMagic();
-        assert !weapon.getIsWeaponIsBrave();
-        assert !weapon.getIsWeaponIsDevil();
-        assert !weapon.getIsWeaponIsPoison();
-        assert weapon.getWeaponStatModifiers().isEmpty();
-        assert weapon.getEffectiveAgainst().isEmpty();
-        assert weapon.getDescription().equals("A standard sword made of iron simple but effective.");
+        createAndTestWeapon("Iron_Sword", "Iron Sword", "Sword", 5,
+                90,0,1,1,5,"E",
+                40,520,false,false,false,
+                false, new HashSet<String>(), new ArrayList<String>(),
+                "A standard sword made of iron simple but effective." );
     }
 
     @Test
     public void testCreateSteelSword() {
-        Weapon weapon = new Weapons.Weapon(filePath.toString()+"/Weapons/Swords/Steel_Sword.csv");
-        assert weapon.getName().equals("Steel Sword");
-        assert weapon.getWeaponType().equals("Sword");
-        assert weapon.getMight() == 8;
-        assert weapon.getAccuracy() == 85;
-        assert weapon.getCritical() == 0;
-        assert weapon.getAttackRange().get(0) == 1;
-        assert weapon.getAttackRange().get(1) == 1;
-        assert weapon.getWeaponWeight() == 10;
-        assert weapon.getWeaponRank().equals("D");
-        assert weapon.getWeaponUses() == 50;
-        assert weapon.getWeaponCost() == 910;
-        assert !weapon.getWeaponIsMagic();
-        assert !weapon.getIsWeaponIsBrave();
-        assert !weapon.getIsWeaponIsDevil();
-        assert !weapon.getIsWeaponIsPoison();
-        assert weapon.getWeaponStatModifiers().isEmpty();
-        assert weapon.getEffectiveAgainst().isEmpty();
-        assert weapon.getDescription().equals("A weighty steel sword that deals significant blows.");
+        createAndTestWeapon("Steel_Sword", "Steel Sword", "Sword", 8,
+                85,0,1,1,10,"D",
+                50,910,false,false,false,
+                false, new HashSet<String>(), new ArrayList<String>(),
+                "A weighty steel sword that deals significant blows." );
     }
 
     @Test
     public void testCreateSilverSword() {
-        Weapon weapon = new Weapons.Weapon(filePath.toString()+"/Weapons/Swords/Silver_Sword.csv");
-        assert weapon.getName().equals("Silver Sword");
-        assert weapon.getWeaponType().equals("Sword");
-        assert weapon.getMight() == 12;
-        assert weapon.getAccuracy() == 90;
-        assert weapon.getCritical() == 0;
-        assert weapon.getAttackRange().get(0) == 1;
-        assert weapon.getAttackRange().get(1) == 1;
-        assert weapon.getWeaponWeight() == 8;
-        assert weapon.getWeaponRank().equals("B");
-        assert weapon.getWeaponUses() == 30;
-        assert weapon.getWeaponCost() == 1410;
-        assert !weapon.getWeaponIsMagic();
-        assert !weapon.getIsWeaponIsBrave();
-        assert !weapon.getIsWeaponIsDevil();
-        assert !weapon.getIsWeaponIsPoison();
-        assert weapon.getWeaponStatModifiers().isEmpty();
-        assert weapon.getEffectiveAgainst().isEmpty();
-        assert weapon.getDescription().equals("A sword crafted from shining silver.");
+        createAndTestWeapon("Silver_Sword", "Silver Sword", "Sword",
+                12, 90,0,1,1,
+                8,"B", 30,1410,false,
+                false,false, false, new HashSet<String>(),
+                new ArrayList<String>(), "A sword crafted from shining silver." );
     }
 
     @Test
     public void testCreateBraveSword() {
-        Weapon weapon = new Weapons.Weapon(filePath.toString()+"/Weapons/Swords/Brave_Sword.csv");
-        assert weapon.getName().equals("Brave Sword");
-        assert weapon.getWeaponType().equals("Sword");
-        assert weapon.getMight() == 9;
-        assert weapon.getAccuracy() == 75;
-        assert weapon.getCritical() == 0;
-        assert weapon.getAttackRange().get(0) == 1;
-        assert weapon.getAttackRange().get(1) == 1;
-        assert weapon.getWeaponWeight() == 12;
-        assert weapon.getWeaponRank().equals("B");
-        assert weapon.getWeaponUses() == 30;
-        assert weapon.getWeaponCost() == 2100;
-        assert !weapon.getWeaponIsMagic();
-        assert weapon.getIsWeaponIsBrave();
-        assert !weapon.getIsWeaponIsDevil();
-        assert !weapon.getIsWeaponIsPoison();
-        assert weapon.getWeaponStatModifiers().isEmpty();
-        assert weapon.getEffectiveAgainst().isEmpty();
-        assert weapon.getDescription().equals("The wielder of this blade is emboldened and will attack twice when initiating combat.");
+        createAndTestWeapon("Brave_Sword", "Brave Sword", "Sword", 9,
+                75,0,1,1,12,"B",
+                30,2100,false,true,false,
+                false, new HashSet<String>(), new ArrayList<String>(),
+                "The wielder of this blade is emboldened and " +
+                        "will attack twice when initiating combat." );
+
     }
 
     @Test
     public void testCreateKillingEdge() {
-        Weapon weapon = new Weapons.Weapon(filePath.toString()+"/Weapons/Swords/Killing_Edge.csv");
-        assert weapon.getName().equals("Killing Edge");
-        assert weapon.getWeaponType().equals("Sword");
-        assert weapon.getMight() == 8;
-        assert weapon.getAccuracy() == 85;
-        assert weapon.getCritical() == 25;
-        assert weapon.getAttackRange().get(0) == 1;
-        assert weapon.getAttackRange().get(1) == 1;
-        assert weapon.getWeaponWeight() == 10;
-        assert weapon.getWeaponRank().equals("C");
-        assert weapon.getWeaponUses() == 20;
-        assert weapon.getWeaponCost() == 1470;
-        assert !weapon.getWeaponIsMagic();
-        assert !weapon.getIsWeaponIsBrave();
-        assert !weapon.getIsWeaponIsDevil();
-        assert !weapon.getIsWeaponIsPoison();
-        assert weapon.getWeaponStatModifiers().isEmpty();
-        assert weapon.getEffectiveAgainst().isEmpty();
-        assert weapon.getDescription().equals("Deadly sharp this sword boasts a high critical-hit rate.");
+        createAndTestWeapon("Killing_Edge", "Killing Edge", "Sword", 8,
+                85,25,1,1,10,
+                "C", 20,1470,false,false,
+                false, false, new HashSet<String>(), new ArrayList<String>(),
+                "Deadly sharp this sword boasts a high critical-hit rate." );
     }
 }
