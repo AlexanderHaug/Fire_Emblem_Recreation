@@ -101,4 +101,27 @@ public class testSwords {
         assert weapon.getEffectiveAgainst().isEmpty();
         assert weapon.getDescription().equals("A sword crafted from shining silver.");
     }
+
+    @Test
+    public void testCreateBraveSword() {
+        Weapon weapon = new Weapons.Weapon(filePath.toString()+"/Weapons/Swords/Brave_Sword.csv");
+        assert weapon.getName().equals("Brave Sword");
+        assert weapon.getWeaponType().equals("Sword");
+        assert weapon.getMight() == 9;
+        assert weapon.getAccuracy() == 75;
+        assert weapon.getCritical() == 0;
+        assert weapon.getAttackRange().get(0) == 1;
+        assert weapon.getAttackRange().get(1) == 1;
+        assert weapon.getWeaponWeight() == 12;
+        assert weapon.getWeaponRank().equals("B");
+        assert weapon.getWeaponUses() == 30;
+        assert weapon.getWeaponCost() == 2100;
+        assert !weapon.getWeaponIsMagic();
+        assert weapon.getIsWeaponIsBrave();
+        assert !weapon.getIsWeaponIsDevil();
+        assert !weapon.getIsWeaponIsPoison();
+        assert weapon.getWeaponStatModifiers().isEmpty();
+        assert weapon.getEffectiveAgainst().isEmpty();
+        assert weapon.getDescription().equals("The wielder of this blade is emboldened and will attack twice when initiating combat.");
+    }
 }
