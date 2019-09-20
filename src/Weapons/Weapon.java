@@ -51,12 +51,8 @@ public class Weapon {
             }
             reader.close();
         }
-        catch (FileNotFoundException e) {
-            System.out.println("The file was not found.");
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        catch (FileNotFoundException e) {System.out.println("The file was not found.");}
+        catch (IOException e) {e.printStackTrace();}
     }
 
     public String getName() {return name;}
