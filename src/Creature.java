@@ -9,17 +9,18 @@ public class Creature {
     private CreatureStats creatureStats;
 
     private Weapon weapon = null;
+    private String armyAffiliation = "";
     private int weaponRankDamageBonus = 0;
     private int weaponRankHitRateBonus = 0;
 
     private HashMap<String, String> creaturesWeaponRanks = new HashMap<>();
 
 
-    public Creature(String Name, CreatureStats creatureStats) {
+    public Creature(String Name, CreatureStats creatureStats, String army_affiliation) {
 
         this.name = Name;
         this.creatureStats = creatureStats;
-
+        this.armyAffiliation = army_affiliation;
         creaturesWeaponRanks.put("Weapons.Weapons.Swords", "E");
         creaturesWeaponRanks.put("Weapons.Weapons.Axes", "E");
         creaturesWeaponRanks.put("Weapons.Lances", "E");
@@ -90,4 +91,8 @@ public class Creature {
             ", Luck " + creatureStats.getLuck() + ", Speed " + creatureStats.getSpeed() + "\n" +
             "Defense " + creatureStats.getDefense() + ", Resistance " + creatureStats.getResistance() +
             ", Exp " + creatureStats.getExperience() + "\n" + getWeaponName();}
+
+    public String getArmyAffiliation() {
+        return armyAffiliation;
+    }
 }

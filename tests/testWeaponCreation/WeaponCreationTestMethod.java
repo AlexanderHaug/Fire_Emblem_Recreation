@@ -1,5 +1,6 @@
 package testWeaponCreation;
 
+import Weapons.Staff;
 import Weapons.Weapon;
 
 import java.util.ArrayList;
@@ -35,9 +36,40 @@ class WeaponCreationTestMethod {
         assert weapon.getDescription().equals(weaponDescription);
     }
 
+    public static void createAndTestStaves(String weaponFile, String weaponName, String weaponType, int healAmount,
+                                           int weaponAccuracy, int weaponShortRange,
+                                           int weaponLongRange, int weaponWeight, String weaponRank, int weaponUses,
+                                           boolean weaponIsMagic,boolean weaponCausesSilence,
+                                           boolean weaponCausesSleep, boolean weaponCausesBerserk,
+                                           String weaponDescription) {
+        Staff staff = new Weapons.Staff(determineWeaponFileLocation(weaponType)+ "/" +
+                weaponFile + ".csv");
+        assert staff.getName().equals(weaponName);
+        assert staff.getHealAmount() == healAmount;
+        assert staff.getWeaponType().equals(weaponType);
+        assert staff.getAccuracy() == weaponAccuracy;
+        assert staff.getStaffRange().get(0) == weaponShortRange;
+        assert staff.getStaffRange().get(1) == weaponLongRange;
+        assert staff.getWeaponWeight() == weaponWeight;
+        assert staff.getWeaponRank().equals(weaponRank);
+        assert staff.getWeaponUses() == weaponUses;
+        assert staff.isWeaponMagic() == weaponIsMagic;
+        assert staff.doesStaffCauseSilence() == weaponCausesSilence;
+        assert staff.doesStaffCauseSleep() == weaponCausesSleep;
+        assert staff.doesStaffCauseBerserk() == weaponCausesBerserk;
+        assert staff.getDescription().equals(weaponDescription);
+    }
+
     private static String determineWeaponFileLocation(String weaponType) {
-        if (weaponType.equals("Sword")) {return "Swords";}
-        else if (weaponType.equals("Dark Magic")) {return "Dark_Magics";}
-        else {return "Axes";}
+        switch (weaponType) {
+            case "Sword":
+                return "Swords";
+            case "Staff":
+                return "Staves";
+            case "Dark Magic":
+                return "Dark_Magics";
+            default:
+                return "Axes";
+        }
     }
 }

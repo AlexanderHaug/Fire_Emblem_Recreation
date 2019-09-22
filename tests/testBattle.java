@@ -11,8 +11,8 @@ public class testBattle {
 
     @Test
     public void testBattleWithRangeCannotCounterAttack() {
-        Creature robin = new Creature("Robin", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Shaman.csv"), 1, 21, 80, 80, 45, 40, 40, 40, 40));
-        Creature risen = new Creature("Risen", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Lord.csv"), 1, 21, 80, 45, 0, 40, 0, 40, 20));
+        Creature robin = new Creature("Robin", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Shaman.csv"), 1, 21, 80, 80, 45, 40, 40, 40, 40), "Ylisse");
+        Creature risen = new Creature("Risen", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Lord.csv"), 1, 21, 80, 45, 0, 40, 0, 40, 20), "Monsters");
 
         Weapon flux = new Weapons.Weapon("Dark_Magics/Flux.csv");
         Weapon claws = new Weapons.Weapon("Swords/Armorslayer.csv");
@@ -27,8 +27,8 @@ public class testBattle {
 
     @Test
     public void testNormalCollosseum() {
-        Creature robin = new Creature("Robin", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Lord.csv"), 1, 21, 80, 45, 45, 40, 40, 40, 40));
-        Creature risen = new Creature("Risen", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Lord.csv"), 1, 21, 80, 45, 0, 40, 40, 40, 40));
+        Creature robin = new Creature("Robin", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Lord.csv"), 1, 21, 80, 45, 45, 40, 40, 40, 40), "Ylisse");
+        Creature risen = new Creature("Risen", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Lord.csv"), 1, 21, 80, 45, 0, 40, 40, 40, 40), "Monsters");
 
         Weapon killingEdge = new Weapons.Weapon("Swords/Killing_Edge.csv");
         Weapon claws = new Weapons.Weapon("Swords/Armorslayer.csv");
