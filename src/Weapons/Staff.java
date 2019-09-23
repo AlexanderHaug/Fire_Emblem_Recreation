@@ -12,6 +12,7 @@ public class Staff {
 
     private String name = "";
     private String weaponType = "";
+    private String assistType = "";
     private int healAmount = 0;
     private int accuracy = 0;
     private ArrayList<Integer> staffRange = new ArrayList<>();
@@ -34,15 +35,16 @@ public class Staff {
                 String[] data = row.split(",");
                 this.name = data[0];
                 this.weaponType = "Staff";
-                this.healAmount = Integer.parseInt(data[1]);
-                this.accuracy = Integer.parseInt(data[2]);
-                setAttackRange(data[3]);
-                this.weaponWeight = Integer.parseInt(data[4]);
-                this.weaponRank = data[5];
-                this.weaponUses = Integer.parseInt(data[6]);
+                setAssistType(data[1]);
+                this.healAmount = Integer.parseInt(data[2]);
+                this.accuracy = Integer.parseInt(data[3]);
+                setAttackRange(data[4]);
+                this.weaponWeight = Integer.parseInt(data[5]);
+                this.weaponRank = data[6];
+                this.weaponUses = Integer.parseInt(data[7]);
                 this.staffIsMagic = true;
-                setWeaponIs(data[7]);
-                this.description = data[8];
+                setWeaponIs(data[8]);
+                this.description = data[9];
             }
             reader.close();
         }
@@ -59,6 +61,13 @@ public class Staff {
     public boolean isWeaponMagic() {return staffIsMagic;}
 
     public String getWeaponType() {return weaponType;}
+
+    private void setAssistType(String data) {
+        if (data.contains("Healing")) {this.assistType = "Healing";}
+        else if (data.contains("Cleansing")) {this.assistType = "Cleansing";}
+        else if (data.contains("Attacking")) {this.assistType = "Attacking";}
+
+    }
 
     private void setAttackRange(String data) {
         String[] splt = data.split(":");
@@ -90,6 +99,10 @@ public class Staff {
     public boolean doesStaffCauseBerserk() {return staffCausesBerserk;}
 
     public String toString() {return name +  ", Accuracy " + accuracy;}
+
+    public String getAssistType() {
+        return assistType;
+    }
 }
 
 
