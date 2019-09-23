@@ -1,3 +1,4 @@
+import Weapons.Staff;
 import Weapons.Weapon;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ public class Creature {
     private CreatureStats creatureStats;
 
     private Weapon weapon = null;
+    private Staff staff = null;
     private String armyAffiliation = "";
     private int weaponRankDamageBonus = 0;
     private int weaponRankHitRateBonus = 0;
@@ -34,10 +36,25 @@ public class Creature {
     public CreatureStats getCreatureStats() {return creatureStats;}
 
 
-    public void equipWeapon(Weapon item) {
+    public void equipItem(Weapon item) {
         ArrayList<String> list = creatureStats.getUnitclass().getEquipable();
         if (list.contains(item.getWeaponType()))
             weapon = item;
+        if (staff != null) {staff = null;}
+    }
+
+    public void equipItem(Staff item) {
+        ArrayList<String> list = creatureStats.getUnitclass().getEquipable();
+        if (list.contains(item.getWeaponType()))
+            staff = item;
+        if (weapon != null) {weapon = null;}
+    }
+
+    public void healHealth(int healing) {
+        creatureStats.setHealth(creatureStats.getHealth() + healing);
+        if (creatureStats.getHealth() > creatureStats.getUnitclass().getHealthCap()) {
+            creatureStats.setHealth(creatureStats.getUnitclass().getHealthCap());
+        }
     }
 
     public void damageToHealth(int damage) {
@@ -56,6 +73,15 @@ public class Creature {
         if (weapon == null) {return "No Weapon Equipped.";}
 
         else {return weapon.getName();}
+    }
+
+    public Staff getStaff() {return staff;}
+
+    public String getStaffName() {
+
+        if (staff == null) {return "No Staff Equipped.";}
+
+        else {return staff.getName();}
     }
 
     public int getDamage() {
@@ -90,7 +116,7 @@ public class Creature {
             ", Magic "+ creatureStats.getMagic() + "\n" + "Skill " + creatureStats.getSkill() +
             ", Luck " + creatureStats.getLuck() + ", Speed " + creatureStats.getSpeed() + "\n" +
             "Defense " + creatureStats.getDefense() + ", Resistance " + creatureStats.getResistance() +
-            ", Exp " + creatureStats.getExperience() + "\n" + getWeaponName();}
+            ", Exp " + creatureStats.getExperience() + "\n" + getWeaponName() + "\n" + getStaffName();}
 
     public String getArmyAffiliation() {
         return armyAffiliation;

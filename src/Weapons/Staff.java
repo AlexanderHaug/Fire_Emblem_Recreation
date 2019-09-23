@@ -8,7 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-public class Staff {
+public class Staff{
 
     private String name = "";
     private String weaponType = "";

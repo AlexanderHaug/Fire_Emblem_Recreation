@@ -9,14 +9,14 @@ class Battle {
         String fighter1Name = attacker.getCreatureName();
         String fighter2Name = defender.getCreatureName();
 
-        if (attacker.getWeapon() == null || isEnemyNotInRange(attacker.getWeapon().getAttackRange(), distance)) {
+        if (attacker.getWeapon() == null || isTargetNotInRangeAttack(attacker.getWeapon().getAttackRange(), distance)) {
             System.out.println(fighter1Name + " cannot attack.");
         }
 
         else {unitAttacks(attacker, defender);}
 
         if (!isDead(defender)) {
-            if (defender.getWeapon() == null|| isEnemyNotInRange(defender.getWeapon().getAttackRange(), distance)) {
+            if (defender.getWeapon() == null|| isTargetNotInRangeAttack(defender.getWeapon().getAttackRange(), distance)) {
                 System.out.println(fighter2Name + " cannot attack.");
             }
             else {unitAttacks(defender, attacker);}
@@ -38,6 +38,15 @@ class Battle {
         System.out.println("The winner is " + winner);
     }
 
+    public static void assist(Creature supporter, Creature target, int distance) {
+        if (!isTargetNotInRangeAssist(supporter, supporter.getStaff().getStaffRange(), distance)) {
+            if (supporter.getStaff().getAssistType().equals("Healing")) {
+                target.healHealth(supporter.getCreatureStats().getMagic() +
+                        supporter.getStaff().getHealAmount());
+            }
+        }
+    }
+
     private static void unitAttacks(Creature attacker, Creature defender) {
         boolean attackerHits = doesHit(attacker, defender);
         if (attackerHits) {
@@ -47,9 +56,17 @@ class Battle {
         else {System.out.println(attacker.getCreatureName() + " missed.");}
     }
 
-    private static boolean isEnemyNotInRange(ArrayList<Integer> weaponRange, int distance) {
+    private static boolean isTargetNotInRangeAttack(ArrayList<Integer> weaponRange, int distance) {
         int shortDistance = weaponRange.get(0);
         int longDistance = weaponRange.get(1);
+
+        return (shortDistance > distance) || (distance > longDistance);
+    }
+
+    private static boolean isTargetNotInRangeAssist(Creature creature, ArrayList<Integer> weaponRange, int distance) {
+        int shortDistance = weaponRange.get(0);
+        int longDistance = weaponRange.get(1);
+        if (longDistance > 1) {longDistance = creature.getCreatureStats().getMagic()/longDistance;}
 
         return (shortDistance > distance) || (distance > longDistance);
     }
