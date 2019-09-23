@@ -20,9 +20,7 @@ public class Staff {
     private String weaponRank = "";
     private int weaponUses = 0;
     private boolean staffIsMagic = false;
-    private boolean staffCausesSilence = false;
-    private boolean staffCausesSleep = false;
-    private boolean staffCausesBerserk = false;
+    private String staffStatusEffect = "";
     private String description = "";
 
     public Staff(String fileName) {
@@ -43,7 +41,7 @@ public class Staff {
                 this.weaponRank = data[6];
                 this.weaponUses = Integer.parseInt(data[7]);
                 this.staffIsMagic = true;
-                setWeaponIs(data[8]);
+                setWeaponEffect(data[8]);
                 this.description = data[9];
             }
             reader.close();
@@ -76,10 +74,13 @@ public class Staff {
         }
     }
 
-    private void setWeaponIs(String data) {
-        if (data.contains("Silence")) {this.staffCausesSilence = true;}
-        else if (data.contains("Sleep")) {this.staffCausesSleep = true;}
-        else if (data.contains("Berserk")) {this.staffCausesBerserk = true;}
+    private void setWeaponEffect(String data) {
+        if (data.contains("Silence")) {this.staffStatusEffect = "Silence";}
+        else if (data.contains("Sleep")) {this.staffStatusEffect= "Sleep";}
+        else if (data.contains("Berserk")) {this.staffStatusEffect = "Berserk";}
+        else if (data.contains("Freeze")) {this.staffStatusEffect = "Freeze";}
+        else if (data.contains("Enfeeble")) {this.staffStatusEffect = "Enfeeble";}
+
     }
 
     public ArrayList<Integer> getStaffRange() {return staffRange;}
@@ -92,17 +93,11 @@ public class Staff {
 
     public int getHealAmount() {return healAmount;}
 
-    public boolean doesStaffCauseSilence() {return staffCausesSilence;}
-
-    public boolean doesStaffCauseSleep() {return staffCausesSleep;}
-
-    public boolean doesStaffCauseBerserk() {return staffCausesBerserk;}
+    public String getStaffStatusEffect() {return staffStatusEffect;}
 
     public String toString() {return name +  ", Accuracy " + accuracy;}
 
-    public String getAssistType() {
-        return assistType;
-    }
+    public String getAssistType() {return assistType;}
 }
 
 

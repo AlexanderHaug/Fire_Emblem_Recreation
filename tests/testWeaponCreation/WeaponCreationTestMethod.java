@@ -36,15 +36,15 @@ class WeaponCreationTestMethod {
         assert weapon.getDescription().equals(weaponDescription);
     }
 
-    public static void createAndTestStaves(String weaponFile, String weaponName, String weaponType, int healAmount,
+    public static void createAndTestStaves(String weaponFile, String assistType, String weaponName, String weaponType, int healAmount,
                                            int weaponAccuracy, int weaponShortRange,
                                            int weaponLongRange, int weaponWeight, String weaponRank, int weaponUses,
-                                           boolean weaponIsMagic,boolean weaponCausesSilence,
-                                           boolean weaponCausesSleep, boolean weaponCausesBerserk,
+                                           boolean weaponIsMagic, String staffStatusEffect,
                                            String weaponDescription) {
         Staff staff = new Weapons.Staff(determineWeaponFileLocation(weaponType)+ "/" +
                 weaponFile + ".csv");
         assert staff.getName().equals(weaponName);
+        assert staff.getAssistType().equals(assistType);
         assert staff.getHealAmount() == healAmount;
         assert staff.getWeaponType().equals(weaponType);
         assert staff.getAccuracy() == weaponAccuracy;
@@ -54,9 +54,7 @@ class WeaponCreationTestMethod {
         assert staff.getWeaponRank().equals(weaponRank);
         assert staff.getWeaponUses() == weaponUses;
         assert staff.isWeaponMagic() == weaponIsMagic;
-        assert staff.doesStaffCauseSilence() == weaponCausesSilence;
-        assert staff.doesStaffCauseSleep() == weaponCausesSleep;
-        assert staff.doesStaffCauseBerserk() == weaponCausesBerserk;
+        assert staff.getStaffStatusEffect().equals(staffStatusEffect);
         assert staff.getDescription().equals(weaponDescription);
     }
 
