@@ -4,106 +4,64 @@ import Weapons.Weapon;
 public class CreatureStats {
 
     private UnitClass unitclass;
-    private int level = 0;
-    private int health = 0;
-    private int strength = 0;
-    private int magic = 0;
-    private int skill = 0;
-    private int luck = 0;
-    private int speed = 0;
-    private int defense = 0;
-    private int resistance = 0;
+    private int[] stats = new int[10];
     private int experience = 0;
-
-    private int maxHpMod = 0;
-    private int maxAttMod = 0;
-    private int maxMagMod = 0;
-    private int maxSklMod = 0;
-    private int maxLuckMod = 0;
-    private int maxSpdMod = 0;
-    private int maxDefMod = 0;
-    private int maxResMod = 0;
-
-    private int hpGrowth = 0;
-    private int attGrowth = 0;
-    private int magGrowth = 0;
-    private int sklGrowth = 0;
-    private int luckGrowth = 0;
-    private int spdGrowth = 0;
-    private int defGrowth = 0;
-    private int resGrowth = 0;
+    private int[] statGrowthRates;
+    private int[] statCaps = new int[10];
 
     private Weapon weapon = null;
 
-    public CreatureStats(UnitClass unit ,int Level,
-                    int Health, int Attack, int Magic, int Skill,
-                    int Luck, int Speed, int Defense, int Resistance) {
-
-        setAllStats(unit , Level, Health, Attack, Magic, Skill, Luck, Speed, Defense, Resistance);
+    public CreatureStats(UnitClass unit, int[] stats, int[] statGrowthRates, int[] statCaps) {
+        this.unitclass = unit;
+        setAllStats(stats, statCaps);
+        this.statGrowthRates = statGrowthRates;
     }
 
-    private void setAllStats(UnitClass unit , int Level,
-                             int Health, int Attack, int Magic, int Skill,
-                             int Luck, int Speed, int Defense, int Resistance) {
+    private void setAllStats(int[] stats, int[] statCaps) {
 
-        this.unitclass = unit;
+        if (stats[0] > statCaps[0]) {stats[0] = statCaps[0];}
+        if (stats[1] > statCaps[1]) {stats[1] = statCaps[1];}
+        if (stats[2] > statCaps[2]) {stats[2] = statCaps[2];}
+        if (stats[3] > statCaps[3]) {stats[3] = statCaps[3];}
+        if (stats[4] > statCaps[4]) {stats[4] = statCaps[4];}
+        if (stats[5] > statCaps[5]) {stats[5] = statCaps[5];}
+        if (stats[6] > statCaps[6]) {stats[6] = statCaps[6];}
+        if (stats[7] > statCaps[7]) {stats[7] = statCaps[7];}
+        if (stats[8] > statCaps[8]) {stats[8] = statCaps[8];}
+        if (stats[9] > statCaps[9]) {stats[9] = statCaps[9];}
 
-        if (Level > unit.getLevelCap()) {level = unit.getLevelCap();}
-        else {level = Level;}
-
-        if (Health > unit.getHealthCap()) {health = unit.getHealthCap();}
-        else {health = Health;}
-
-        if (Attack > unit.getAttackCap()) {
-            strength = unit.getAttackCap();}
-        else {
-            strength = Attack;}
-
-        if (Magic > unit.getMagicCap()) {magic = unit.getMagicCap();}
-        else {magic = Magic;}
-
-        if (Skill > unit.getSkillCap()) {skill = unit.getSkillCap();}
-        else {skill = Skill;}
-
-        if (Luck > unit.getLuckCap()) {luck = unit.getLuckCap();}
-        else {luck = Luck;}
-
-        if (Speed > unit.getSpeedCap()) {speed = unit.getSpeedCap();}
-        else {speed = Speed;}
-
-        if (Defense > unit.getDefenseCap()) {defense = unit.getDefenseCap();}
-        else {defense = Defense;}
-
-        if (Resistance > unit.getResistanceCap()) {resistance = unit.getResistanceCap();}
-        else {resistance = Resistance;}
+        this.stats = stats;
+        this.statCaps = statCaps;
     }
 
     public UnitClass getUnitclass() {return unitclass;}
 
-    public int getLevel() {return level;}
+    public int getLevel() {return this.stats[0];}
 
-    public int getHealth() {return health;}
+    public int getHealth() {return this.stats[1];}
 
-    public int getStrength() {return strength;}
+    public int getStrength() {return this.stats[2];}
 
-    public int getMagic() {return magic;}
+    public int getMagic() {return this.stats[3];}
 
-    public int getSkill() {return skill;}
+    public int getSkill() {return this.stats[4];}
 
-    public int getLuck() {return luck;}
+    public int getLuck() {return this.stats[5];}
 
-    public int getSpeed() {return speed;}
+    public int getSpeed() {return this.stats[6];}
 
-    public int getDefense() {return defense;}
+    public int getDefense() {return this.stats[7];}
 
-    public int getResistance() {return resistance;}
+    public int getResistance() {return this.stats[8];}
+
+    public int getCharisma() {return this.stats[9];}
 
     public int getExperience() {return experience;}
 
-    public void setLevel(int level) {this.level = level;}
-    public void setHealth(int health) {this.health = health;}
+    public int getHealthCap() {return this.statCaps[1];}
 
-    public void setStrength(int strength) {this.strength = strength;}
-
-    public void setMagic(int magic) {this.magic = magic;}
+    public void setLevel(int level) {this.stats[0] = level;}
+    public void setHealth(int health) {this.stats[1] = health;}
+    public void setStrength(int strength) {this.stats[2] = strength;}
+    public void setMagic(int magic) {this.stats[3] = magic;}
 }

@@ -52,8 +52,8 @@ public class Creature {
 
     public void healHealth(int healing) {
         creatureStats.setHealth(creatureStats.getHealth() + healing);
-        if (creatureStats.getHealth() > creatureStats.getUnitclass().getHealthCap()) {
-            creatureStats.setHealth(creatureStats.getUnitclass().getHealthCap());
+        if (creatureStats.getHealth() > creatureStats.getHealthCap()) {
+            creatureStats.setHealth(creatureStats.getHealthCap());
         }
     }
 
