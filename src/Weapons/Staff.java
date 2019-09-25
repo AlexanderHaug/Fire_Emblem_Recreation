@@ -17,7 +17,7 @@ public class Staff{
     private int accuracy = 0;
     private ArrayList<Integer> staffRange = new ArrayList<>();
     private int weaponWeight = 0;
-    private String weaponRank = "";
+    private Character weaponRank;
     private int weaponUses = 0;
     private boolean staffIsMagic = false;
     private String staffStatusEffect = "";
@@ -38,7 +38,7 @@ public class Staff{
                 this.accuracy = Integer.parseInt(data[3]);
                 setAttackRange(data[4]);
                 this.weaponWeight = Integer.parseInt(data[5]);
-                this.weaponRank = data[6];
+                this.weaponRank = data[6].charAt(0);
                 this.weaponUses = Integer.parseInt(data[7]);
                 this.staffIsMagic = true;
                 setWeaponEffect(data[8]);
@@ -54,7 +54,7 @@ public class Staff{
 
     public int getAccuracy() {return accuracy;}
 
-    public String getWeaponRank() {return weaponRank;}
+    public Character getWeaponRank() {return weaponRank;}
 
     public boolean isWeaponMagic() {return staffIsMagic;}
 

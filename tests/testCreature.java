@@ -13,12 +13,13 @@ public class testCreature {
         int[] robinStats = new int[]{1,21,80,9,45,40,40,40,40,40};
         int[] robinGrowthRates = new int[]{100,60,50,70,80,20,30,10,5};
         int[] robinStatCaps = new int[]{99,80,80,80,80,80,80,80,80,80};
+        Character[] robinSkillRanks = new Character[]{'E','E','E','E','E','E','E','E','E','E','E','E'};
 
         Creature robin = new Creature("Robin", new CreatureStats(
                 new UnitClass(filePath.toString()+"/Classes/Cleric.csv"),
-                robinStats, robinGrowthRates, robinStatCaps), "Ylisse");
+                robinStats, robinGrowthRates, robinStatCaps, robinSkillRanks), "Ylisse");
 
-        robin.equipItem(new Weapons.Staff("Staves/Heal.csv"));
+        robin.equipItem(new Weapons.MainItem("Staves/Heal.csv"));
 
     }
 }

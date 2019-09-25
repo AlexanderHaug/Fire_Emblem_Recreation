@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-public class Weapon {
+public class MainItem {
 
     private String name = "";
     private String weaponType;
@@ -19,7 +19,7 @@ public class Weapon {
     private int critical = 0;
     private ArrayList<Integer> attackRange = new ArrayList<>();
     private int weaponWeight = 0;
-    private String weaponRank = "";
+    private Character weaponRank;
     private int weaponUses = 0;
     private int weaponCost = 0;
     private boolean weaponIsMagic = false;
@@ -30,7 +30,14 @@ public class Weapon {
     private ArrayList<String> effectiveAgainst = new ArrayList<>();
     private String description = "";
 
-    public Weapon(String fileName) {
+    private String assistType = "";
+    private int healAmount = 0;
+    private ArrayList<Integer> staffRange = new ArrayList<>();
+    private boolean staffIsMagic = false;
+    private String staffStatusEffect = "";
+
+
+    public MainItem(String fileName) {
         Path currentPath = Paths.get(System.getProperty("user.dir"));
         String srcPath = Paths.get(currentPath.toString(), "src").toString() + "/Weapons/";
         try {
@@ -40,23 +47,42 @@ public class Weapon {
                 String[] data = row.split(",");
                 this.name = data[0];
                 this.weaponType = data[1];
-                this.might = Integer.parseInt(data[2]);
-                this.accuracy = Integer.parseInt(data[3]);
-                this.critical = Integer.parseInt(data[4]);
-                setAttackRange(data[5]);
-                this.weaponWeight = Integer.parseInt(data[6]);
-                this.weaponRank = data[7];
-                this.weaponUses = Integer.parseInt(data[8]);
-                this.weaponCost = Integer.parseInt(data[9]);
-                setWeaponIs(data[10]);
-                setWeaponStatModifiers(data[11]);
-                setEffectiveAgainst(data[12]);
-                this.description = data[13];
+
+                if (!this.weaponType.equals("Staff")) {WeaponSetUp(data);}
+                else {StaffSetUp(data);}
             }
             reader.close();
         }
         catch (FileNotFoundException e) {System.out.println("The file was not found.");}
         catch (IOException e) {e.printStackTrace();}
+    }
+
+    private void WeaponSetUp(String[] data) {
+        this.might = Integer.parseInt(data[2]);
+        this.accuracy = Integer.parseInt(data[3]);
+        this.critical = Integer.parseInt(data[4]);
+        setAttackRange(data[5]);
+        this.weaponWeight = Integer.parseInt(data[6]);
+        this.weaponRank = data[7].charAt(0);
+        this.weaponUses = Integer.parseInt(data[8]);
+        this.weaponCost = Integer.parseInt(data[9]);
+        setWeaponIs(data[10]);
+        setWeaponStatModifiers(data[11]);
+        setEffectiveAgainst(data[12]);
+        this.description = data[13];
+    }
+
+    private void StaffSetUp(String[] data) {
+        setAssistType(data[2]);
+        this.healAmount = Integer.parseInt(data[3]);
+        this.accuracy = Integer.parseInt(data[4]);
+        setAttackRange(data[5]);
+        this.weaponWeight = Integer.parseInt(data[6]);
+        this.weaponRank = data[7].charAt(0);
+        this.weaponUses = Integer.parseInt(data[8]);
+        this.staffIsMagic = true;
+        setWeaponEffect(data[9]);
+        this.description = data[10];
     }
 
     public String getName() {return name;}
@@ -67,7 +93,7 @@ public class Weapon {
 
     public int getCritical() {return critical;}
 
-    public String getWeaponRank() {return weaponRank;}
+    public Character getWeaponRank() {return weaponRank;}
 
     public boolean isWeaponMagic() {return weaponIsMagic;}
 
@@ -127,6 +153,29 @@ public class Weapon {
     }
 
     public String toString() {return name + ": Mt " + might + ", Accuracy " + accuracy + ", Critical " + critical;}
+
+
+
+    private void setAssistType(String data) {
+        if (data.contains("Healing")) {this.assistType = "Healing";}
+        else if (data.contains("Cleansing")) {this.assistType = "Cleansing";}
+        else if (data.contains("Attacking")) {this.assistType = "Attacking";}
+
+    }
+
+    private void setWeaponEffect(String data) {
+        if (data.contains("Silence")) {this.staffStatusEffect = "Silence";}
+        else if (data.contains("Sleep")) {this.staffStatusEffect= "Sleep";}
+        else if (data.contains("Berserk")) {this.staffStatusEffect = "Berserk";}
+        else if (data.contains("Freeze")) {this.staffStatusEffect = "Freeze";}
+        else if (data.contains("Enfeeble")) {this.staffStatusEffect = "Enfeeble";}
+
+    }
+
+    public boolean getStaffIsMagic() {return staffIsMagic;}
+    public int getHealAmount() {return healAmount;}
+
+    public String getStaffStatusEffect() {return staffStatusEffect;}
+
+    public String getAssistType() {return assistType;}
 }
-
-

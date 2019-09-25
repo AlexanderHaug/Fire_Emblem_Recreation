@@ -1,5 +1,5 @@
 import Classes.UnitClass;
-import Weapons.Weapon;
+import Weapons.MainItem;
 import org.testng.annotations.Test;
 
 import java.nio.file.Path;
@@ -14,15 +14,18 @@ public class testBattle {
         int[] robinStats = new int[]{1,21,80,9,45,40,40,40,40,0};
         int[] robinGrowthRates = new int[]{100,60,50,70,80,20,30,10,0};
         int[] robinStatCaps = new int[]{99,80,80,80,80,80,80,80,80,80};
+        Character[] robinSkillRanks = new Character[]{'E','E','E','E','E','E','E','E','E','E','E','E'};
 
         int[] chromStats = new int[]{1,1,80,9,45,40,40,40,40,0};
         int[] chromGrowthRates = new int[]{100,60,50,70,80,20,30,10,0};
         int[] chromStatCaps = new int[]{99,80,80,80,80,80,80,80,80,80};
+        Character[] chromSkillRanks = new Character[]{'E','E','E','E','E','E','E','E','E','E','E','E'};
 
-        Creature robin = new Creature("Robin", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Cleric.csv"), robinStats, robinGrowthRates, robinStatCaps), "Ylisse");
-        Creature chrom = new Creature("Robin", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Lord.csv"), chromStats, chromGrowthRates, chromStatCaps), "Ylisse");
+        Creature robin = new Creature("Robin", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Cleric.csv"), robinStats, robinGrowthRates, robinStatCaps, robinSkillRanks), "Ylisse");
+        Creature chrom = new Creature("Chrom", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Lord.csv"), chromStats, chromGrowthRates, chromStatCaps, chromSkillRanks), "Ylisse");
 
-        robin.equipItem(new Weapons.Staff("Staves/Heal.csv"));
+        MainItem heal = new Weapons.MainItem("Staves/Heal.csv");
+        robin.equipItem(heal);
 
         Battle.assist(robin, chrom, 1);
         assert chrom.getCreatureStats().getHealth() == 20;
@@ -33,16 +36,18 @@ public class testBattle {
         int[] robinStats = new int[]{1,21,80,9,45,40,40,40,40,0};
         int[] robinGrowthRates = new int[]{100,60,50,70,80,20,30,10,0};
         int[] robinStatCaps = new int[]{99,80,80,80,80,80,80,80,80,0};
+        Character[] robinSkillRanks = new Character[]{'E','E','E','E','E','E','E','E','E','E','E','E'};
 
         int[] risenStats = new int[]{1,21,80,9,45,40,40,40,40,0};
         int[] risenGrowthRates = new int[]{100,60,50,70,80,20,30,10,0};
-        int[] risenCaps = new int[]{99,80,80,80,80,80,80,80,80,0};
+        int[] risenStatCaps = new int[]{99,80,80,80,80,80,80,80,80,0};
+        Character[] risenSkillRanks = new Character[]{'D','E','E','E','E','E','E','E','E','E','E','E'};
 
-        Creature robin = new Creature("Robin", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Shaman.csv"), robinStats, robinGrowthRates, robinStatCaps), "Ylisse");
-        Creature risen = new Creature("Risen", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Lord.csv"), risenStats, risenGrowthRates, robinStatCaps), "Monsters");
+        Creature robin = new Creature("Robin", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Shaman.csv"), robinStats, robinGrowthRates, robinStatCaps, robinSkillRanks), "Ylisse");
+        Creature risen = new Creature("Risen", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Lord.csv"), risenStats, risenGrowthRates, risenStatCaps, risenSkillRanks), "Monsters");
 
-        Weapon flux = new Weapons.Weapon("Dark_Magics/Flux.csv");
-        Weapon claws = new Weapons.Weapon("Swords/Armorslayer.csv");
+        MainItem flux = new Weapons.MainItem("Dark_Magics/Flux.csv");
+        MainItem claws = new Weapons.MainItem("Swords/Armorslayer.csv");
 
         robin.equipItem(flux);
         risen.equipItem(claws);
@@ -57,16 +62,18 @@ public class testBattle {
         int[] robinStats = new int[]{1,21,80,9,45,40,40,40,40,0};
         int[] robinGrowthRates = new int[]{100,60,50,70,80,20,30,10,0};
         int[] robinStatCaps = new int[]{99,80,80,80,80,80,80,80,80,0};
+        Character[] robinSkillRanks = new Character[]{'C','E','E','E','E','E','E','E','E','E','E','E'};
 
         int[] risenStats = new int[]{1,1,80,80,45,0,40,40,40,0};
         int[] risenGrowthRates = new int[]{100,60,50,70,80,20,30,10,0};
         int[] risenCaps = new int[]{99,80,80,80,80,80,80,80,80,0};
+        Character[] risenSkillRanks = new Character[]{'D','E','E','E','E','E','E','E','E','E','E','E'};
 
-        Creature robin = new Creature("Robin", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Lord.csv"), robinStats, robinGrowthRates, robinStatCaps), "Ylisse");
-        Creature risen = new Creature("Risen", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Lord.csv"), risenStats, risenGrowthRates, risenCaps), "Monsters");
+        Creature robin = new Creature("Robin", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Lord.csv"), robinStats, robinGrowthRates, robinStatCaps, robinSkillRanks), "Ylisse");
+        Creature risen = new Creature("Risen", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Lord.csv"), risenStats, risenGrowthRates, risenCaps, risenSkillRanks), "Monsters");
 
-        Weapon killingEdge = new Weapons.Weapon("Swords/Killing_Edge.csv");
-        Weapon claws = new Weapons.Weapon("Swords/Armorslayer.csv");
+        MainItem killingEdge = new Weapons.MainItem("Swords/Killing_Edge.csv");
+        MainItem claws = new Weapons.MainItem("Swords/Armorslayer.csv");
 
         robin.equipItem(killingEdge);
         risen.equipItem(claws);

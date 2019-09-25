@@ -34,7 +34,6 @@ public class UnitClass {
     }
 
     private void setClassGrowthRate(String growths) {
-
         String[] all_growths = growths.split(":");
         for (int x = 0; x < 9; x++) {this.unitClassGrowth[x] = Integer.parseInt(all_growths[x]);}
     }
@@ -60,6 +59,7 @@ public class UnitClass {
     public int getSpdGrowth() {return this.unitClassGrowth[5];}
     public int getDefGrowth() {return this.unitClassGrowth[6];}
     public int getResGrowth() {return this.unitClassGrowth[7];}
+    public int getChrmGrowth() {return this.unitClassGrowth[8];}
 
     public int getMove() {return move;}
 

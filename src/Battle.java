@@ -9,14 +9,14 @@ class Battle {
         String fighter1Name = attacker.getCreatureName();
         String fighter2Name = defender.getCreatureName();
 
-        if (attacker.getWeapon() == null || isTargetNotInRangeAttack(attacker.getWeapon().getAttackRange(), distance)) {
+        if (attacker.getMainItem() == null || isTargetNotInRangeAttack(attacker.getMainItem().getAttackRange(), distance)) {
             System.out.println(fighter1Name + " cannot attack.");
         }
 
         else {unitAttacks(attacker, defender);}
 
         if (!isDead(defender)) {
-            if (defender.getWeapon() == null|| isTargetNotInRangeAttack(defender.getWeapon().getAttackRange(), distance)) {
+            if (defender.getMainItem() == null|| isTargetNotInRangeAttack(defender.getMainItem().getAttackRange(), distance)) {
                 System.out.println(fighter2Name + " cannot attack.");
             }
             else {unitAttacks(defender, attacker);}
@@ -39,10 +39,10 @@ class Battle {
     }
 
     public static void assist(Creature supporter, Creature target, int distance) {
-        if (!isTargetNotInRangeAssist(supporter, supporter.getStaff().getStaffRange(), distance)) {
-            if (supporter.getStaff().getAssistType().equals("Healing")) {
+        if (!isTargetNotInRangeAssist(supporter, supporter.getMainItem().getAttackRange(), distance)) {
+            if (supporter.getMainItem().getAssistType().equals("Healing")) {
                 target.healHealth(supporter.getCreatureStats().getMagic() +
-                        supporter.getStaff().getHealAmount());
+                        supporter.getMainItem().getHealAmount());
             }
         }
     }
@@ -89,7 +89,7 @@ class Battle {
     }
 
     private static int damageCalculator(Creature attacker, Creature defender) {
-        boolean weaponIsMagic = attacker.getWeapon().isWeaponMagic();
+        boolean weaponIsMagic = attacker.getMainItem().isWeaponMagic();
         int damage;
 
         if (weaponIsMagic) {damage = attacker.getDamage() - defender.getCreatureStats().getResistance();}

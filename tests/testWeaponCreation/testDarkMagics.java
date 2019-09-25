@@ -12,7 +12,7 @@ public class testDarkMagics {
     public void testFlux() {
         createAndTestWeapon("Flux", "Flux", "Dark Magic",
                 5, 70,0,1,2,
-                5,"E", 45,540,true,
+                5,'E', 45,540,true,
                 false,false, false, new HashSet<String>(),
                 new ArrayList<String>(), "A basic dark magic attack.");
     }

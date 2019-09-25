@@ -1,7 +1,6 @@
 package testWeaponCreation;
 
-import Weapons.Staff;
-import Weapons.Weapon;
+import Weapons.MainItem;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -9,12 +8,12 @@ import java.util.Set;
 class WeaponCreationTestMethod {
     public static void createAndTestWeapon(String weaponFile, String weaponName, String weaponType, int weaponMight,
                                            int weaponAccuracy, int weaponCritical, int weaponShortRange,
-                                           int weaponLongRange, int weaponWeight, String weaponRank, int weaponUses,
+                                           int weaponLongRange, int weaponWeight, Character weaponRank, int weaponUses,
                                            int weaponCost, boolean weaponIsMagic,boolean weaponIsBrave,
                                            boolean weaponIsDevil, boolean weaponIsPoison,
                                            Set weaponStatModifiersKeySet, ArrayList<String> weaponEffectiveAgainst,
                                            String weaponDescription) {
-        Weapon weapon = new Weapons.Weapon(determineWeaponFileLocation(weaponType)+ "/" +
+        MainItem weapon = new Weapons.MainItem(determineWeaponFileLocation(weaponType)+ "/" +
                                             weaponFile + ".csv");
         assert weapon.getName().equals(weaponName);
         assert weapon.getWeaponType().equals(weaponType);
@@ -38,22 +37,22 @@ class WeaponCreationTestMethod {
 
     public static void createAndTestStaves(String weaponFile, String assistType, String weaponName, String weaponType, int healAmount,
                                            int weaponAccuracy, int weaponShortRange,
-                                           int weaponLongRange, int weaponWeight, String weaponRank, int weaponUses,
+                                           int weaponLongRange, int weaponWeight, Character weaponRank, int weaponUses,
                                            boolean weaponIsMagic, String staffStatusEffect,
                                            String weaponDescription) {
-        Staff staff = new Weapons.Staff(determineWeaponFileLocation(weaponType)+ "/" +
+        MainItem staff = new Weapons.MainItem(determineWeaponFileLocation(weaponType)+ "/" +
                 weaponFile + ".csv");
         assert staff.getName().equals(weaponName);
         assert staff.getAssistType().equals(assistType);
         assert staff.getHealAmount() == healAmount;
         assert staff.getWeaponType().equals(weaponType);
         assert staff.getAccuracy() == weaponAccuracy;
-        assert staff.getStaffRange().get(0) == weaponShortRange;
-        assert staff.getStaffRange().get(1) == weaponLongRange;
+        assert staff.getAttackRange().get(0) == weaponShortRange;
+        assert staff.getAttackRange().get(1) == weaponLongRange;
         assert staff.getWeaponWeight() == weaponWeight;
         assert staff.getWeaponRank().equals(weaponRank);
         assert staff.getWeaponUses() == weaponUses;
-        assert staff.isWeaponMagic() == weaponIsMagic;
+        assert staff.getStaffIsMagic() == weaponIsMagic;
         assert staff.getStaffStatusEffect().equals(staffStatusEffect);
         assert staff.getDescription().equals(weaponDescription);
     }
