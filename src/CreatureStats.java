@@ -68,6 +68,26 @@ public class CreatureStats {
     }
 
     public void gainExperience(int exp) {
+        this.experience += exp;
+        if (this.experience >= 100) {
+            this.experience -= 100;
+            levelUp();
+        }
+    }
 
+    private void levelUp() {
+        int[] levelUps = new int[10];
+        levelUps[0] = 1;
+        for (int x = 1; x < 9; x++) {
+            int statUpChance = (int)(Math.random() * 100);
+            boolean doesStatIncrease = (statGrowthRates[x] + unitclass.getUnitClassGrowth()[x]) >= statUpChance;
+            if (doesStatIncrease) {levelUps[x] = 1;}
+        }
+        increaseStats(levelUps);
+    }
+
+    private void increaseStats(int[] statsThatIncrease) {
+        for (int x = 0; x < statsThatIncrease.length; x++) {this.stats[x] += statsThatIncrease[0];}
+        setAllStats(this.stats, this.statCaps);
     }
 }
