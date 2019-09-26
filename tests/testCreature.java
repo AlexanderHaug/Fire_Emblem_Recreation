@@ -48,4 +48,29 @@ public class testCreature {
         assert robin.getCreatureStats().getResistance() == 11;
         assert robin.getCreatureStats().getCharisma() == 11;
     }
+
+    @Test
+    public void testLevelUpMaxStats() {
+        int[] robinStats = new int[]{1,80,10,10,10,10,10,10,10,10};
+        int[] robinGrowthRates = new int[]{200,200,200,200,200,200,200,200,200};
+        int[] robinStatCaps = new int[]{99,80,80,80,80,80,80,80,80,80};
+        Character[] robinSkillRanks = new Character[]{'E','E','E','E','E','E','E','E','E','E','E','E'};
+
+        Creature robin = new Creature("Robin", new CreatureStats(
+                new UnitClass(filePath.toString()+"/Classes/Cleric.csv"),
+                robinStats, robinGrowthRates, robinStatCaps, robinSkillRanks), "Ylisse");
+
+        robin.getCreatureStats().gainExperience(100);
+
+        assert robin.getCreatureStats().getLevel() == 2;
+        assert robin.getCreatureStats().getHealth() == 80;
+        assert robin.getCreatureStats().getStrength() == 11;
+        assert robin.getCreatureStats().getMagic() == 11;
+        assert robin.getCreatureStats().getSkill() == 11;
+        assert robin.getCreatureStats().getLuck() == 11;
+        assert robin.getCreatureStats().getSpeed() == 11;
+        assert robin.getCreatureStats().getDefense() == 11;
+        assert robin.getCreatureStats().getResistance() == 11;
+        assert robin.getCreatureStats().getCharisma() == 11;
+    }
 }

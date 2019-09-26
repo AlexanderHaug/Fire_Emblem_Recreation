@@ -51,15 +51,6 @@ public class UnitClass {
 
     public String getName() {return name;}
 
-//    public int getHpGrowth() {return this.unitClassGrowth[0];}
-//    public int getAttGrowth() {return this.unitClassGrowth[1];}
-//    public int getMagGrowth() {return this.unitClassGrowth[2];}
-//    public int getSklGrowth() {return this.unitClassGrowth[3];}
-//    public int getLuckGrowth() {return this.unitClassGrowth[4];}
-//    public int getSpdGrowth() {return this.unitClassGrowth[5];}
-//    public int getDefGrowth() {return this.unitClassGrowth[6];}
-//    public int getResGrowth() {return this.unitClassGrowth[7];}
-//    public int getChrmGrowth() {return this.unitClassGrowth[8];}
     public int[] getUnitClassGrowth() {return this.unitClassGrowth;}
 
     public int getMove() {return move;}
