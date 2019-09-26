@@ -1,4 +1,5 @@
 import Classes.UnitClass;
+import Weapons.PrimaryItem;
 import org.testng.annotations.Test;
 
 import java.nio.file.Path;
@@ -19,7 +20,7 @@ public class testCreature {
                 new UnitClass(filePath.toString()+"/Classes/Cleric.csv"),
                 robinStats, robinGrowthRates, robinStatCaps, robinSkillRanks), "Ylisse");
 
-        robin.equipItem(new Weapons.MainItem("Staves/Heal.csv"));
+        robin.equipItem(new PrimaryItem("Staves/Heal.csv", true));
 
     }
 }

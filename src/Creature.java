@@ -1,4 +1,4 @@
-import Weapons.MainItem;
+import Weapons.PrimaryItem;
 
 import java.util.ArrayList;
 
@@ -6,8 +6,7 @@ public class Creature {
 
     private String name;
     private CreatureStats creatureStats;
-
-    private MainItem mainItem = null;
+    private PrimaryItem mainItem = null;
     private String armyAffiliation;
 
     public Creature(String Name, CreatureStats creatureStats, String army_affiliation) {
@@ -18,11 +17,13 @@ public class Creature {
 
     public CreatureStats getCreatureStats() {return creatureStats;}
 
-    public void equipItem(MainItem item) {
+    public void equipItem(PrimaryItem item) {
         ArrayList<String> list = creatureStats.getUnitclass().getEquipable();
-        if (list.contains(item.getWeaponType())) {
-            int creatureRank = creatureStats.getSkillRanks().get(item.getWeaponType());
-            int weaponRank = item.getWeaponRank();
+        if (list.contains(item.getItemType())) {
+
+            int creatureRank = creatureStats.getSkillRanks().get(item.getItemType());
+            int weaponRank = item.getItemRank();
+
             if (creatureRank <= weaponRank) {
                 this.mainItem = item;
             }
@@ -45,7 +46,7 @@ public class Creature {
 
     public String getCreatureName() {return name;}
 
-    public MainItem getMainItem() {return mainItem;}
+    public PrimaryItem getMainItem() {return mainItem;}
 
     public String getMainItemName() {
         if (mainItem != null) {return mainItem.getName();}
@@ -53,7 +54,6 @@ public class Creature {
     }
 
     public int getDamage() {
-
         if (mainItem != null) {
             if (mainItem.isWeaponMagic()) {return mainItem.getMight() + creatureStats.getMagic();}
             else {return mainItem.getMight() + creatureStats.getStrength();}

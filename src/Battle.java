@@ -9,14 +9,14 @@ class Battle {
         String fighter1Name = attacker.getCreatureName();
         String fighter2Name = defender.getCreatureName();
 
-        if (attacker.getMainItem() == null || isTargetNotInRangeAttack(attacker.getMainItem().getAttackRange(), distance)) {
+        if (attacker.getMainItem() == null || isTargetNotInRangeAttack(attacker.getMainItem().getItemRange(), distance)) {
             System.out.println(fighter1Name + " cannot attack.");
         }
 
         else {unitAttacks(attacker, defender);}
 
         if (!isDead(defender)) {
-            if (defender.getMainItem() == null|| isTargetNotInRangeAttack(defender.getMainItem().getAttackRange(), distance)) {
+            if (defender.getMainItem() == null|| isTargetNotInRangeAttack(defender.getMainItem().getItemRange(), distance)) {
                 System.out.println(fighter2Name + " cannot attack.");
             }
             else {unitAttacks(defender, attacker);}
@@ -39,7 +39,7 @@ class Battle {
     }
 
     public static void assist(Creature supporter, Creature target, int distance) {
-        if (!isTargetNotInRangeAssist(supporter, supporter.getMainItem().getAttackRange(), distance)) {
+        if (!isTargetNotInRangeAssist(supporter, supporter.getMainItem().getItemRange(), distance)) {
             if (supporter.getMainItem().getAssistType().equals("Healing")) {
                 target.healHealth(supporter.getCreatureStats().getMagic() +
                         supporter.getMainItem().getHealAmount());
