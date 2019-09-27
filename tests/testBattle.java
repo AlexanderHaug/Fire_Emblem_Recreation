@@ -33,6 +33,28 @@ public class testBattle {
     }
 
     @Test
+    public void testCleansing() {
+        int[] robinStats = new int[]{1,21,80,9,45,40,40,40,40,0};
+        int[] robinGrowthRates = new int[]{100,60,50,70,80,20,30,10,0};
+        int[] robinStatCaps = new int[]{99,80,80,80,80,80,80,80,80,80};
+        Character[] robinSkillRanks = new Character[]{'E','E','E','E','E','E','E','E','C','E','E','E'};
+
+        int[] chromStats = new int[]{1,1,80,9,45,40,40,40,40,0};
+        int[] chromGrowthRates = new int[]{100,60,50,70,80,20,30,10,0};
+        int[] chromStatCaps = new int[]{99,80,80,80,80,80,80,80,80,80};
+        Character[] chromSkillRanks = new Character[]{'E','E','E','E','E','E','E','E','E','E','E','E'};
+
+        Creature robin = new Creature("Robin", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Cleric.csv"), robinStats, robinGrowthRates, robinStatCaps, robinSkillRanks), "Ylisse");
+        Creature chrom = new Creature("Chrom", new CreatureStats(new UnitClass(filePath.toString()+"/Classes/Lord.csv"), chromStats, chromGrowthRates, chromStatCaps, chromSkillRanks), "Ylisse");
+
+        PrimaryItem restore = new PrimaryItem("Staves/Restore.csv", true);
+        robin.equipItem(restore);
+        chrom.getCreatureStats().setStatus("Poison");
+        Battle.assist(robin, chrom, 1);
+        assert chrom.getCreatureStats().getStatus().equals("Normal");
+    }
+
+    @Test
     public void testBattleWithRangeCannotCounterAttack() {
         int[] robinStats = new int[]{1,21,80,9,45,40,40,40,40,0};
         int[] robinGrowthRates = new int[]{100,60,50,70,80,20,30,10,0};

@@ -24,9 +24,7 @@ public class Creature {
             int creatureRank = creatureStats.getSkillRanks().get(item.getItemType());
             int weaponRank = item.getItemRank();
 
-            if (creatureRank <= weaponRank) {
-                this.mainItem = item;
-            }
+            if (creatureRank <= weaponRank) {this.mainItem = item;}
         }
     }
 
@@ -39,9 +37,7 @@ public class Creature {
 
     public void damageToHealth(int damage) {
         creatureStats.setHealth(creatureStats.getHealth() - damage);
-        if (creatureStats.getHealth() < 0) {
-             creatureStats.setHealth(0);
-        }
+        if (creatureStats.getHealth() < 0) {creatureStats.setHealth(0);}
     }
 
     public String getCreatureName() {return name;}

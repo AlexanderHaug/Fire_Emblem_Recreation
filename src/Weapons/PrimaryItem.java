@@ -56,13 +56,10 @@ public class PrimaryItem {
                 this.setItemWeight(Integer.parseInt(data[6]));
                 this.setItemRank(data[7].charAt(0));
                 this.setItemUses(Integer.parseInt(data[8]));
-
                 this.itemCost = Integer.parseInt(data[9]);
-
                 setWeaponIs(data[10]);
                 setWeaponStatModifiers(data[11]);
                 setEffectiveAgainst(data[12]);
-
                 this.setItemDescription(data[13]);
             }
             reader.close();
@@ -88,7 +85,7 @@ public class PrimaryItem {
                 this.setItemWeight(Integer.parseInt(data[6]));
                 this.setItemRank(data[7].charAt(0));
                 this.setItemUses(Integer.parseInt(data[8]));
-
+                setItemEffect(data[9]);
                 this.setItemDescription(data[10]);
             }
             reader.close();
@@ -163,7 +160,7 @@ public class PrimaryItem {
         else if (data.contains("Attacking")) {this.assistType = "Attacking";}
     }
 
-    private void setWeaponEffect(String data) {
+    private void setItemEffect(String data) {
         if (data.contains("Silence")) {this.staffStatusEffect = "Silence";}
         else if (data.contains("Sleep")) {this.staffStatusEffect= "Sleep";}
         else if (data.contains("Berserk")) {this.staffStatusEffect = "Berserk";}

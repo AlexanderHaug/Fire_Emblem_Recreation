@@ -44,6 +44,9 @@ class Battle {
                 target.healHealth(supporter.getCreatureStats().getMagic() +
                         supporter.getMainItem().getHealAmount());
             }
+            else if (supporter.getMainItem().getAssistType().equals("Cleansing")) {
+                target.getCreatureStats().setStatus("Normal");
+            }
         }
     }
 
