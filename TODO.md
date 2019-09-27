@@ -2,8 +2,7 @@
 List of things to be implemented.
 ## Units/Creatures
 * Creature Stats
-    * Add Skill experience
-    * Add Skill Ranks 
+    * Add Skill experience 
 ## Weapons
 ## Battle
 * Add more conditions to "assist"
@@ -12,5 +11,4 @@ List of things to be implemented.
     * Other (Increasing stats)
 * Improve organization of battle class
     * Add new weapon requirements to battle
-    * Create individual Colosseum class
      
