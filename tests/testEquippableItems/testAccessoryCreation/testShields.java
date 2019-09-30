@@ -20,4 +20,11 @@ public class testShields {
                 2,2, new int[9], new int[5], new ArrayList<String>(),
                 "A wrought-iron shield. The standard for defense.");
     }
+
+    @Test
+    public void testSteelShield() {
+        createAndTestAccessory("Steel_Shield", "Steel Shield", "Shield",
+                3,3, new int[9], new int[5], new ArrayList<String>(),
+                "A weighty shield offering strong protection.");
+    }
 }
