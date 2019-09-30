@@ -1,4 +1,3 @@
-import Classes.UnitClass;
 import EquippableItems.OffItem;
 import EquippableItems.PrimaryItem;
 import org.testng.annotations.Test;
@@ -12,14 +11,9 @@ public class testCreature {
 
     @Test
     public void testCreatureCreation() {
-        int[] robinStats = new int[]{1,21,80,9,45,40,40,40,40,40};
-        int[] robinGrowthRates = new int[]{100,60,50,70,80,20,30,10,5};
-        int[] robinStatCaps = new int[]{99,80,80,80,80,80,80,80,80,80};
-        Character[] robinSkillRanks = new Character[]{'E','E','E','E','E','E','E','E','E','E','E','E'};
-
-        Creature robin = new Creature("Robin", new CreatureStats(
-                new UnitClass(filePath.toString()+"/Classes/Cleric.csv"),
-                robinStats, robinGrowthRates, robinStatCaps, robinSkillRanks), "Ylisse");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric.csv","Ylisee");
+        robin.setAllStats(new int[]{1,21,80,9,45,40,40,40,40,40}, new int[]{99,80,80,80,80,80,80,80,80,80});
+        robin.setGrowthRates(new int[]{100,60,50,70,80,20,30,10,5});
 
         robin.equipItem(new PrimaryItem("Staves/Heal.csv", true));
 
@@ -39,14 +33,9 @@ public class testCreature {
 
     @Test
     public void testLevelUp() {
-        int[] robinStats = new int[]{1,10,10,10,10,10,10,10,10,10};
-        int[] robinGrowthRates = new int[]{200,200,200,200,200,200,200,200,200};
-        int[] robinStatCaps = new int[]{99,80,80,80,80,80,80,80,80,80};
-        Character[] robinSkillRanks = new Character[]{'E','E','E','E','E','E','E','E','E','E','E','E'};
-
-        Creature robin = new Creature("Robin", new CreatureStats(
-                new UnitClass(filePath.toString()+"/Classes/Cleric.csv"),
-                robinStats, robinGrowthRates, robinStatCaps, robinSkillRanks), "Ylisse");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric.csv","Ylisee");
+        robin.setAllStats(new int[]{1,10,10,10,10,10,10,10,10,10}, new int[]{99,80,80,80,80,80,80,80,80,80});
+        robin.setGrowthRates(new int[]{200,200,200,200,200,200,200,200,200});
 
         robin.getCreatureStats().gainExperience(100);
 
@@ -64,14 +53,9 @@ public class testCreature {
 
     @Test
     public void testLevelUpMaxStats() {
-        int[] robinStats = new int[]{1,80,10,10,10,10,10,10,10,10};
-        int[] robinGrowthRates = new int[]{200,200,200,200,200,200,200,200,200};
-        int[] robinStatCaps = new int[]{99,80,80,80,80,80,80,80,80,80};
-        Character[] robinSkillRanks = new Character[]{'E','E','E','E','E','E','E','E','E','E','E','E'};
-
-        Creature robin = new Creature("Robin", new CreatureStats(
-                new UnitClass(filePath.toString()+"/Classes/Cleric.csv"),
-                robinStats, robinGrowthRates, robinStatCaps, robinSkillRanks), "Ylisse");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric.csv","Ylisee");
+        robin.setAllStats(new int[]{1,80,10,10,10,10,10,10,10,10}, new int[]{99,80,80,80,80,80,80,80,80,80});
+        robin.setGrowthRates(new int[]{200,200,200,200,200,200,200,200,200});
 
         robin.getCreatureStats().gainExperience(100);
 
@@ -89,14 +73,9 @@ public class testCreature {
 
     @Test
     public void testRaisingAndRevertStatsFromOffItem() {
-        int[] robinStats = new int[]{1,80,10,10,10,10,10,10,10,10};
-        int[] robinGrowthRates = new int[]{200,200,200,200,200,200,200,200,200};
-        int[] robinStatCaps = new int[]{99,80,80,80,80,80,80,80,80,80};
-        Character[] robinSkillRanks = new Character[]{'E','E','E','E','E','E','E','E','E','E','E','E'};
-
-        Creature robin = new Creature("Robin", new CreatureStats(
-                new UnitClass(filePath.toString()+"/Classes/Cleric.csv"),
-                robinStats, robinGrowthRates, robinStatCaps, robinSkillRanks), "Ylisse");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric.csv","Ylisee");
+        robin.setAllStats(new int[]{1,80,10,10,10,10,10,10,10,10}, new int[]{99,80,80,80,80,80,80,80,80,80});
+        robin.setGrowthRates(new int[]{200,200,200,200,200,200,200,200,200});
 
         assert robin.getCreatureStats().getResistance() == 10;
         robin.equipItem(new OffItem("/Shields/Hexlock_Shield.csv"));

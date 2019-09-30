@@ -103,4 +103,7 @@ public class Creature {
         this.creatureStats.decreaseStats(this.secondaryItem.getOtherStatIncreases());
         this.secondaryItem = null;
     }
+
+    public void setAllStats(int[] stats, int[] statCaps) {this.creatureStats.setAllStats(stats, statCaps);}
+    public void setGrowthRates(int[] growthRates) {this.creatureStats.setStatGrowthRates(growthRates);}
 }

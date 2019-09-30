@@ -20,7 +20,7 @@ public class CreatureStats {
         setAllSkillRanks(ranks);
     }
 
-    private void setAllStats(int[] stats, int[] statCaps) {
+    public void setAllStats(int[] stats, int[] statCaps) {
 
         for (int x = 0; x < stats.length; x++) {
             if (stats[x] > statCaps[x]) {stats[x] = statCaps[x];}
@@ -100,4 +100,6 @@ public class CreatureStats {
         for (int x = 0; x < statsThatIncrease.length; x++) {this.stats[x] += statsThatIncrease[x];}
         setAllStats(this.stats, this.statCaps);
     }
+
+    public void setStatGrowthRates(int[] growthRates) {this.statGrowthRates = growthRates;}
 }
