@@ -1,4 +1,5 @@
 import Classes.UnitClass;
+import EquippableItems.OffItem;
 import EquippableItems.PrimaryItem;
 import org.testng.annotations.Test;
 
@@ -21,6 +22,18 @@ public class testCreature {
                 robinStats, robinGrowthRates, robinStatCaps, robinSkillRanks), "Ylisse");
 
         robin.equipItem(new PrimaryItem("Staves/Heal.csv", true));
+
+        assert robin.getCreatureStats().getLevel() == 1;
+        assert robin.getCreatureStats().getHealth() == 21;
+        assert robin.getCreatureStats().getStrength() == 80;
+        assert robin.getCreatureStats().getMagic() == 9;
+        assert robin.getCreatureStats().getSkill() == 45;
+        assert robin.getCreatureStats().getLuck() == 40;
+        assert robin.getCreatureStats().getSpeed() == 40;
+        assert robin.getCreatureStats().getDefense() == 40;
+        assert robin.getCreatureStats().getResistance() == 40;
+        assert robin.getCreatureStats().getCharisma() == 40;
+        assert robin.getMainItem().getName().equals("Heal");
 
     }
 
@@ -72,5 +85,23 @@ public class testCreature {
         assert robin.getCreatureStats().getDefense() == 11;
         assert robin.getCreatureStats().getResistance() == 11;
         assert robin.getCreatureStats().getCharisma() == 11;
+    }
+
+    @Test
+    public void testRaisingAndRevertStatsFromOffItem() {
+        int[] robinStats = new int[]{1,80,10,10,10,10,10,10,10,10};
+        int[] robinGrowthRates = new int[]{200,200,200,200,200,200,200,200,200};
+        int[] robinStatCaps = new int[]{99,80,80,80,80,80,80,80,80,80};
+        Character[] robinSkillRanks = new Character[]{'E','E','E','E','E','E','E','E','E','E','E','E'};
+
+        Creature robin = new Creature("Robin", new CreatureStats(
+                new UnitClass(filePath.toString()+"/Classes/Cleric.csv"),
+                robinStats, robinGrowthRates, robinStatCaps, robinSkillRanks), "Ylisse");
+
+        assert robin.getCreatureStats().getResistance() == 10;
+        robin.equipItem(new OffItem("/Shields/Hexlock_Shield.csv"));
+        assert robin.getCreatureStats().getResistance() == 14;
+        robin.unequipOffItem();
+        assert robin.getCreatureStats().getResistance() == 10;
     }
 }

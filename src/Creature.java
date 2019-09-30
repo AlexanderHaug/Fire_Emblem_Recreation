@@ -1,3 +1,4 @@
+import EquippableItems.OffItem;
 import EquippableItems.PrimaryItem;
 
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ public class Creature {
     private String name;
     private CreatureStats creatureStats;
     private PrimaryItem mainItem = null;
+    private OffItem secondaryItem = null;
     private String armyAffiliation;
 
     public Creature(String Name, CreatureStats creatureStats, String army_affiliation) {
@@ -26,6 +28,11 @@ public class Creature {
 
             if (creatureRank <= weaponRank) {this.mainItem = item;}
         }
+    }
+
+    public void equipItem(OffItem item) {
+        this.secondaryItem = item;
+        this.creatureStats.increaseStats(item.getOtherStatIncreases());
     }
 
     public void healHealth(int healing) {
@@ -88,5 +95,12 @@ public class Creature {
 
     public String getArmyAffiliation() {
         return armyAffiliation;
+    }
+
+    public OffItem getSecondaryItem() {return secondaryItem;}
+
+    public void unequipOffItem() {
+        this.creatureStats.decreaseStats(this.secondaryItem.getOtherStatIncreases());
+        this.secondaryItem = null;
     }
 }

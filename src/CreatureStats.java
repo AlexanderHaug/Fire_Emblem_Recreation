@@ -29,6 +29,14 @@ public class CreatureStats {
         this.statCaps = statCaps;
     }
 
+    public void increaseStats(int[] increases) {
+        for (int x = 0; x < increases.length; x++) {this.stats[x+1] += increases[x];}
+    }
+
+    public void decreaseStats(int[] decreases) {
+        for (int x = 0; x < decreases.length; x++) {this.stats[x+1] -= decreases[x];}
+    }
+
     private void setAllSkillRanks(Character[] ranks) {
         String[] skillNames = new String[]{"Sword","Axe","Lance","Dagger","Bow","Anima Magic",
                                            "Dark Magic","Light Magic","Staff","Riding","Armor","Flying"};
@@ -79,16 +87,17 @@ public class CreatureStats {
     private void levelUp() {
         int[] levelUps = new int[10];
         levelUps[0] = 1;
-        for (int x = 1; x < 9; x++) {
+        for (int x = 1; x < levelUps.length; x++) {
             int statUpChance = (int)(Math.random() * 100);
-            boolean doesStatIncrease = (statGrowthRates[x] + unitclass.getUnitClassGrowth()[x]) >= statUpChance;
-            if (doesStatIncrease) {levelUps[x] = 1;}
+            boolean statDoesIncrease =
+                    (this.statGrowthRates[x-1] + this.unitclass.getUnitClassGrowth()[x-1]) >= statUpChance;
+            if (statDoesIncrease) {levelUps[x] = 1;}
         }
-        increaseStats(levelUps);
+        LevelUpStats(levelUps);
     }
 
-    private void increaseStats(int[] statsThatIncrease) {
-        for (int x = 0; x < statsThatIncrease.length; x++) {this.stats[x] += statsThatIncrease[0];}
+    private void LevelUpStats(int[] statsThatIncrease) {
+        for (int x = 0; x < statsThatIncrease.length; x++) {this.stats[x] += statsThatIncrease[x];}
         setAllStats(this.stats, this.statCaps);
     }
 }
