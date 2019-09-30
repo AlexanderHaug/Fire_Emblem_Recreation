@@ -1,4 +1,4 @@
-import Weapons.PrimaryItem;
+import EquippableItems.PrimaryItem;
 import org.testng.annotations.Test;
 
 public class testBattle {

@@ -1,11 +1,11 @@
-package testWeaponCreation;
+package testEquippableItems;
 
-import Weapons.PrimaryItem;
+import EquippableItems.PrimaryItem;
 
 import java.util.ArrayList;
 import java.util.Set;
 
-class WeaponCreationTestMethod {
+public class WeaponCreationTestMethod {
     public static void createAndTestWeapon(String weaponFile, String weaponName, String weaponType, int weaponMight,
                                            int weaponAccuracy, int weaponCritical, int weaponShortRange,
                                            int weaponLongRange, int weaponWeight, Character weaponRank, int weaponUses,

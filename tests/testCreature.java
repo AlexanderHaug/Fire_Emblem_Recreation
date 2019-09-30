@@ -1,5 +1,5 @@
 import Classes.UnitClass;
-import Weapons.PrimaryItem;
+import EquippableItems.PrimaryItem;
 import org.testng.annotations.Test;
 
 import java.nio.file.Path;

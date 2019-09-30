@@ -1,4 +1,4 @@
-package Weapons;
+package EquippableItems;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -41,7 +41,7 @@ public class PrimaryItem {
 
     private void createWeapon(String fileName) {
         Path currentPath = Paths.get(System.getProperty("user.dir"));
-        String srcPath = Paths.get(currentPath.toString(), "src").toString() + "/Weapons/";
+        String srcPath = Paths.get(currentPath.toString(), "src").toString() + "/EquippableItems/Weapons/";
         try {
             BufferedReader reader = new BufferedReader(new FileReader(srcPath + fileName));
             String row;
@@ -70,7 +70,7 @@ public class PrimaryItem {
 
     private void createStaff(String fileName) {
         Path currentPath = Paths.get(System.getProperty("user.dir"));
-        String srcPath = Paths.get(currentPath.toString(), "src").toString() + "/Weapons/";
+        String srcPath = Paths.get(currentPath.toString(), "src").toString() + "/EquippableItems/Weapons/";
         try {
             BufferedReader reader = new BufferedReader(new FileReader(srcPath + fileName));
             String row;

@@ -1,9 +1,9 @@
-package testWeaponCreation;
+package testEquippableItems.testWeaponCreation;
 
 import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.HashSet;
-import static testWeaponCreation.WeaponCreationTestMethod.createAndTestWeapon;
+import static testEquippableItems.WeaponCreationTestMethod.createAndTestWeapon;
 
 public class testSwords {
 
