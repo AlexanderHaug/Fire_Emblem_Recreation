@@ -27,4 +27,11 @@ public class testShields {
                 3,3, new int[9], new int[5], new ArrayList<String>(),
                 "A weighty shield offering strong protection.");
     }
+
+    @Test
+    public void testSilverShield() {
+        createAndTestAccessory("Silver_Shield", "Silver Shield", "Shield",
+                4,4, new int[9], new int[5], new ArrayList<String>(),
+                "A Shield made of shining silver.");
+    }
 }
