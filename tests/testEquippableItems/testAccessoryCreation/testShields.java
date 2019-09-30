@@ -34,4 +34,11 @@ public class testShields {
                 4,4, new int[9], new int[5], new ArrayList<String>(),
                 "A Shield made of shining silver.");
     }
+
+    @Test
+    public void testHexlockShield() {
+        createAndTestAccessory("Hexlock_Shield", "Hexlock Shield", "Shield",
+                2,5, new int[]{0,0,0,0,0,0,0,4,0}, new int[5], new ArrayList<String>(),
+                "A Shield offering strong protection and resilience.");
+    }
 }
