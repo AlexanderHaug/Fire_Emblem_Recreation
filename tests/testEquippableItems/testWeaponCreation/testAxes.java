@@ -17,4 +17,13 @@ public class testAxes {
                 new ArrayList<String>(), "This simple axe is perfect for training purposes. " +
                         "But cannot inflict critical hits." );
     }
+
+    @Test
+    public void testIronAxe() {
+        createAndTestWeapon("Iron_Axe", "Iron Axe", "Axe",
+                8, 70,0,1,1,
+                7,'E', 45,270,false,
+                false,false, false, new HashSet<String>(),
+                new ArrayList<String>(), "A standard axe made of iron--simple but effective." );
+    }
 }
