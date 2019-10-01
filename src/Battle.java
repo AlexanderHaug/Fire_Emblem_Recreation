@@ -1,3 +1,5 @@
+import EquippableItems.PrimaryItem;
+
 import java.util.ArrayList;
 
 class Battle {
@@ -9,17 +11,24 @@ class Battle {
         String fighter1Name = attacker.getCreatureName();
         String fighter2Name = defender.getCreatureName();
 
-        if (attacker.getMainItem() == null || isTargetNotInRangeAttack(attacker.getMainItem().getItemRange(), distance)) {
+        int[] weaponTriangleBonus = new int[4];
+        if (attacker.getMainItem() != null && defender.getMainItem() != null) {
+            weaponTriangleBonus = weaponTriangleCalculator(attacker.getMainItem(), defender.getMainItem());
+        }
+
+        if (attacker.getMainItem() == null ||
+                isTargetNotInRangeAttack(attacker.getMainItem().getItemRange(), distance)) {
             System.out.println(fighter1Name + " cannot attack.");
         }
 
-        else {unitAttacks(attacker, defender);}
+        else {unitAttacks(attacker, defender, weaponTriangleBonus[0], weaponTriangleBonus[1]);}
 
-        if (!isDead(defender)) {
-            if (defender.getMainItem() == null|| isTargetNotInRangeAttack(defender.getMainItem().getItemRange(), distance)) {
+        if (!isDead(defender) || !isDead(attacker)) {
+            if (defender.getMainItem() == null||
+                    isTargetNotInRangeAttack(defender.getMainItem().getItemRange(), distance)) {
                 System.out.println(fighter2Name + " cannot attack.");
             }
-            else {unitAttacks(defender, attacker);}
+            else {unitAttacks(defender, attacker, weaponTriangleBonus[2], weaponTriangleBonus[3]);}
         }
     }
 
@@ -50,10 +59,10 @@ class Battle {
         }
     }
 
-    private static void unitAttacks(Creature attacker, Creature defender) {
-        boolean attackerHits = doesHit(attacker, defender);
+    private static void unitAttacks(Creature attacker, Creature defender, int hitBonus, int damageBonus) {
+        boolean attackerHits = doesHit(attacker, defender, hitBonus);
         if (attackerHits) {
-            int attackerDamageDealt = damageCalculator(attacker, defender);
+            int attackerDamageDealt = damageCalculator(attacker, defender, damageBonus);
             displayActionTaken(attacker.getCreatureName(), attackerDamageDealt, defender);
         }
         else {System.out.println(attacker.getCreatureName() + " missed.");}
@@ -86,17 +95,21 @@ class Battle {
         }
     }
 
-    private static boolean doesHit(Creature attacker, Creature defender){
-        int hits = attacker.getHitRate() - defender.getAvoidRate();
+    private static boolean doesHit(Creature attacker, Creature defender, int hitBonus){
+        int hits = attacker.getHitRate() + hitBonus - defender.getAvoidRate();
         return hits >= ((int)(Math.random() * 100));
     }
 
-    private static int damageCalculator(Creature attacker, Creature defender) {
+    private static int damageCalculator(Creature attacker, Creature defender, int damageBonus) {
         boolean weaponIsMagic = attacker.getMainItem().isWeaponMagic();
-        int damage;
+        int damage = attacker.getDamage() + damageBonus;
 
-        if (weaponIsMagic) {damage = attacker.getDamage() - defender.getCreatureStats().getResistance();}
-        else {damage = attacker.getDamage() - defender.getCreatureStats().getDefense();}
+        if (weaponIsMagic) {
+            damage =  damage - defender.getCreatureStats().getResistance();
+        }
+        else {
+            damage = damage - defender.getCreatureStats().getDefense();
+        }
 
         damage = criticalCalculator(attacker, defender, damage);
 
@@ -120,6 +133,17 @@ class Battle {
             message = " hits " + defender.getCreatureName() + " for ";
             return damageDone;
         }
+    }
+
+    public static int[] weaponTriangleCalculator(PrimaryItem attacker, PrimaryItem defender) {
+        if (attacker.getItemType().equals("Sword") && defender.getItemType().equals("Axe"))
+            return new int[] {1,15,-1,-15};
+        else if (attacker.getItemType().equals("Axe") && defender.getItemType().equals("Lance"))
+            return new int[] {1,15,-1,-15};
+        else if (attacker.getItemType().equals("Lance") && defender.getItemType().equals("Sword"))
+            return new int[] {1,15,-1,-15};
+        else
+            return new int[] {0,0,0,0};
     }
 
     private static boolean isDead(Creature creature) {return (creature.getCreatureStats().getHealth() == 0);}

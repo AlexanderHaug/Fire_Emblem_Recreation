@@ -51,6 +51,18 @@ public class testBattle {
     }
 
     @Test
+    public void testWeaponTriangle() {
+        PrimaryItem trainingSword = new PrimaryItem("Swords/Training_Sword.csv", false);
+        PrimaryItem trainingAxe = new PrimaryItem("Axes/Training_Axe.csv", false);
+
+        int[] results = Battle.weaponTriangleCalculator(trainingSword, trainingAxe);
+        assert results[0] == 1;
+        assert results[1] == 15;
+        assert results[2] == -1;
+        assert results[3] == -15;
+    }
+
+    @Test
     public void testNormalCollosseum() {
         Creature robin = createCreatureSetUp.setUpCreature("Robin", "Lord.csv","Ylisee");
         Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord.csv", "Monster");
