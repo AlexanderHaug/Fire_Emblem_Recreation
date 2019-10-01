@@ -4,6 +4,14 @@ List of things to be implemented.
 * Creature Stats
     * Add Skill experience 
 ## EquippableItems
+* Add:
+    * Axes
+    * Lances
+    * Anima Magic
+    * Light Magic
+    * Dark Magic
+    * Staves
+    * Monster/Claws
 ## Battle
 * Add more conditions to "assist"
     * Attacking (Silence, Sleep, Berserk)
