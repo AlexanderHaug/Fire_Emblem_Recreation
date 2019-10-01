@@ -8,6 +8,7 @@ import java.util.HashSet;
 import static testEquippableItems.WeaponCreationTestMethod.createAndTestWeapon;
 
 public class testAxes {
+
     @Test
     public void testTrainingAxe() {
         createAndTestWeapon("Training_Axe", "Training Axe", "Axe",
@@ -25,5 +26,14 @@ public class testAxes {
                 7,'E', 45,270,false,
                 false,false, false, new HashSet<String>(),
                 new ArrayList<String>(), "A standard axe made of iron--simple but effective." );
+    }
+
+    @Test
+    public void testSteelAxe() {
+        createAndTestWeapon("Steel_Axe", "Steel Axe", "Axe",
+                11, 65,0,1,1,
+                12,'D', 55,920,false,
+                false,false, false, new HashSet<String>(),
+                new ArrayList<String>(), "A weighty steel axe that deals significant blows." );
     }
 }
