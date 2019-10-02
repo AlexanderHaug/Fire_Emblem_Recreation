@@ -55,4 +55,13 @@ public class testAxes {
                 new ArrayList<String>(), "The wielder of this axe is emboldened and will attack " +
                         "twice when initiating combat." );
     }
+
+    @Test
+    public void testKillerAxe() {
+        createAndTestWeapon("Killer_Axe", "Killer Axe", "Axe",
+                11, 70,25,1,1,
+                12,'C', 20,1530,false,
+                false,false, false, new HashSet<String>(),
+                new ArrayList<String>(), "Deadly sharp. This axe boasts a high critical-hit rate.");
+    }
 }
