@@ -64,4 +64,16 @@ public class testAxes {
                 false,false, false, new HashSet<String>(),
                 new ArrayList<String>(), "Deadly sharp. This axe boasts a high critical-hit rate.");
     }
+
+    @Test
+    public void testHammer() {
+        ArrayList<String> a = new ArrayList<>();
+        a.add("Armored");
+        createAndTestWeapon("Hammer", "Hammer", "Axe",
+                10, 60,0,1,1,
+                15,'D', 20,1550,false,
+                false,false, false, new HashSet<String>(),
+                a, "This hammer can pummel metal with astonishing force. " +
+                        "Making it effective against armored units.");
+    }
 }
