@@ -1,4 +1,5 @@
-import EquippableItems.PrimaryItem;
+import Items.Equippable.MainHand.Staff;
+import Items.Equippable.MainHand.Weapon;
 import org.testng.annotations.Test;
 
 public class testBattle {
@@ -10,7 +11,7 @@ public class testBattle {
         robin.getCreatureStats().setMagic(9);
         chrom.damageToHealth(49);
 
-        PrimaryItem heal = new PrimaryItem("Staves/Heal.csv", true);
+        Staff heal = new Staff("Staves/Heal.csv");
         robin.equipItem(heal);
 
         Battle.assist(robin, chrom, 1);
@@ -24,7 +25,7 @@ public class testBattle {
 
         robin.getCreatureStats().getSkillRanks().put("Staff", 'C');
 
-        PrimaryItem restore = new PrimaryItem("Staves/Restore.csv", true);
+        Staff restore = new Staff("Staves/Restore.csv");
         robin.equipItem(restore);
 
         chrom.getCreatureStats().setStatus("Poison");
@@ -39,8 +40,8 @@ public class testBattle {
 
         risen.getCreatureStats().getSkillRanks().put("Sword", 'C');
 
-        PrimaryItem flux = new PrimaryItem("Dark_Magics/Flux.csv", false);
-        PrimaryItem claws = new PrimaryItem("Swords/Armorslayer.csv", false);
+        Weapon flux = new Weapon("Dark_Magics/Flux.csv");
+        Weapon claws = new Weapon("Swords/Armorslayer.csv");
 
         robin.equipItem(flux);
         risen.equipItem(claws);
@@ -52,8 +53,8 @@ public class testBattle {
 
     @Test
     public void testWeaponTriangle() {
-        PrimaryItem trainingSword = new PrimaryItem("Swords/Training_Sword.csv", false);
-        PrimaryItem trainingAxe = new PrimaryItem("Axes/Training_Axe.csv", false);
+        Weapon trainingSword = new Weapon("Swords/Training_Sword.csv");
+        Weapon trainingAxe = new Weapon("Axes/Training_Axe.csv");
 
         int[] results = Battle.weaponTriangleCalculator(trainingSword, trainingAxe);
         assert results[0] == 1;
@@ -83,8 +84,8 @@ public class testBattle {
         risen.getCreatureStats().getSkillRanks().put("Sword", 'C');
         risen.getCreatureStats().setSkill(1);
 
-        PrimaryItem killingEdge = new PrimaryItem("Swords/Killing_Edge.csv", false);
-        PrimaryItem claws = new PrimaryItem("Swords/Armorslayer.csv", false);
+        Weapon killingEdge = new Weapon("Swords/Killing_Edge.csv");
+        Weapon claws = new Weapon("Swords/Armorslayer.csv");
 
         robin.equipItem(killingEdge);
         risen.equipItem(claws);

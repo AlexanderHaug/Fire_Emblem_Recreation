@@ -3,7 +3,7 @@ List of things to be implemented.
 ## Units/Creatures
 * Creature Stats
     * Add Skill experience 
-## EquippableItems
+## Items
 * Add:
     * Anima Magic
     * Light Magic

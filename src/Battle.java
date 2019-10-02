@@ -1,4 +1,6 @@
-import EquippableItems.PrimaryItem;
+import Items.Equippable.MainHand.PrimaryItem;
+import Items.Equippable.MainHand.Staff;
+import Items.Equippable.MainHand.Weapon;
 
 import java.util.ArrayList;
 
@@ -49,11 +51,11 @@ class Battle {
 
     public static void assist(Creature supporter, Creature target, int distance) {
         if (!isTargetNotInRangeAssist(supporter, supporter.getMainItem().getItemRange(), distance)) {
-            if (supporter.getMainItem().getAssistType().equals("Healing")) {
+            if (((Staff)supporter.getMainItem()).getAssistType().equals("Healing")) {
                 target.healHealth(supporter.getCreatureStats().getMagic() +
-                        supporter.getMainItem().getHealAmount());
+                        ((Staff)supporter.getMainItem()).getHealAmount());
             }
-            else if (supporter.getMainItem().getAssistType().equals("Cleansing")) {
+            else if (((Staff)supporter.getMainItem()).getAssistType().equals("Cleansing")) {
                 target.getCreatureStats().setStatus("Normal");
             }
         }
@@ -101,7 +103,7 @@ class Battle {
     }
 
     private static int damageCalculator(Creature attacker, Creature defender, int damageBonus) {
-        boolean weaponIsMagic = attacker.getMainItem().isWeaponMagic();
+        boolean weaponIsMagic = ((Weapon) attacker.getMainItem()).isWeaponMagic();
         int damage = attacker.getDamage() + damageBonus;
 
         if (weaponIsMagic) {

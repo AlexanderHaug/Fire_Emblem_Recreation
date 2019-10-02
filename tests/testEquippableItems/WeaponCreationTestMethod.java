@@ -1,9 +1,10 @@
 package testEquippableItems;
 
-import EquippableItems.PrimaryItem;
+import Items.Equippable.MainHand.Staff;
+import Items.Equippable.MainHand.Weapon;
 
 import java.util.ArrayList;
-import java.util.Set;
+import java.util.Arrays;
 
 public class WeaponCreationTestMethod {
     public static void createAndTestWeapon(String weaponFile, String weaponName, String weaponType, int weaponMight,
@@ -11,10 +12,9 @@ public class WeaponCreationTestMethod {
                                            int weaponLongRange, int weaponWeight, Character weaponRank, int weaponUses,
                                            int weaponCost, boolean weaponIsMagic,boolean weaponIsBrave,
                                            boolean weaponIsDevil, boolean weaponIsPoison,
-                                           Set weaponStatModifiersKeySet, ArrayList<String> weaponEffectiveAgainst,
+                                           int[] otherStatIncreases, ArrayList<String> weaponEffectiveAgainst,
                                            String weaponDescription) {
-        PrimaryItem weapon = new PrimaryItem(determineWeaponFileLocation(weaponType) + "/" +
-                weaponFile + ".csv", false);
+        Weapon weapon = new Weapon(determineWeaponFileLocation(weaponType) + "/" + weaponFile + ".csv");
         assert weapon.getName().equals(weaponName);
         assert weapon.getItemType().equals(weaponType);
         assert weapon.getMight() == weaponMight;
@@ -30,7 +30,7 @@ public class WeaponCreationTestMethod {
         assert weapon.isWeaponBrave() == weaponIsBrave;
         assert weapon.isWeaponDevil() == weaponIsDevil;
         assert weapon.isWeaponPoison() == weaponIsPoison;
-        assert weapon.getWeaponStatModifiers().keySet().equals(weaponStatModifiersKeySet);
+        assert Arrays.equals(weapon.getOtherStatIncreases(),otherStatIncreases);
         assert weapon.getEffectiveAgainst().equals(weaponEffectiveAgainst);
         assert weapon.getItemDescription().equals(weaponDescription);
     }
@@ -40,8 +40,7 @@ public class WeaponCreationTestMethod {
                                            int weaponLongRange, int weaponWeight, Character weaponRank, int weaponUses,
                                            boolean weaponIsMagic, String staffStatusEffect,
                                            String weaponDescription) {
-        PrimaryItem staff = new PrimaryItem(determineWeaponFileLocation(weaponType)+ "/" +
-                weaponFile + ".csv", true);
+        Staff staff = new Staff(determineWeaponFileLocation(weaponType)+ "/" + weaponFile + ".csv");
         assert staff.getName().equals(weaponName);
         assert staff.getAssistType().equals(assistType);
         assert staff.getHealAmount() == healAmount;

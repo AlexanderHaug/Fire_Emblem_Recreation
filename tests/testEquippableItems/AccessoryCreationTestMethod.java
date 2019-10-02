@@ -1,6 +1,6 @@
 package testEquippableItems;
 
-import EquippableItems.OffItem;
+import Items.Equippable.OffHand.Accessory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,7 +9,7 @@ public class AccessoryCreationTestMethod {
     public static void createAndTestAccessory(String accessoryFile, String accessoryName, String accessoryType,
                                            int accessoryProtection, int accessoryWeight, int[] otherStat,
                                            int[] otherBattle, ArrayList<String> otherNull, String weaponDescription) {
-        OffItem accessory = new OffItem(determineAccessoryFileLocation(accessoryType) +
+        Accessory accessory = new Accessory(determineAccessoryFileLocation(accessoryType) +
                 "/" + accessoryFile + ".csv");
         assert accessory.getName().equals(accessoryName);
         assert accessory.getItemProtection() == accessoryProtection;

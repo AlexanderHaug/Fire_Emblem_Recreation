@@ -1,5 +1,6 @@
-import EquippableItems.OffItem;
-import EquippableItems.PrimaryItem;
+import Items.Equippable.OffHand.Accessory;
+import Items.Equippable.MainHand.PrimaryItem;
+import Items.Equippable.MainHand.Weapon;
 
 import java.util.ArrayList;
 
@@ -8,7 +9,7 @@ public class Creature {
     private String name;
     private CreatureStats creatureStats;
     private PrimaryItem mainItem = null;
-    private OffItem secondaryItem = null;
+    private Accessory secondaryItem = null;
     private String armyAffiliation;
 
     public Creature(String Name, CreatureStats creatureStats, String army_affiliation) {
@@ -30,7 +31,7 @@ public class Creature {
         }
     }
 
-    public void equipItem(OffItem item) {
+    public void equipItem(Accessory item) {
         this.secondaryItem = item;
         this.creatureStats.increaseStats(item.getOtherStatIncreases());
     }
@@ -58,8 +59,8 @@ public class Creature {
 
     public int getDamage() {
         if (mainItem != null) {
-            if (mainItem.isWeaponMagic()) {return mainItem.getMight() + creatureStats.getMagic();}
-            else {return mainItem.getMight() + creatureStats.getStrength();}
+            if (((Weapon)mainItem).isWeaponMagic()) {return ((Weapon)mainItem).getMight() + creatureStats.getMagic();}
+            else {return ((Weapon)mainItem).getMight() + creatureStats.getStrength();}
         }
 
         else {return 0;}
@@ -80,7 +81,9 @@ public class Creature {
 
         int criticalRate = creatureStats.getSkill()/3;
 
-        if (mainItem != null) {return criticalRate + mainItem.getCritical();}
+        if (mainItem != null) {
+            return criticalRate + ((Weapon)mainItem).getCritical();
+        }
 
         else {return criticalRate;}
     }
@@ -97,7 +100,7 @@ public class Creature {
         return armyAffiliation;
     }
 
-    public OffItem getSecondaryItem() {return secondaryItem;}
+    public Accessory getSecondaryItem() {return secondaryItem;}
 
     public void unequipOffItem() {
         this.creatureStats.decreaseStats(this.secondaryItem.getOtherStatIncreases());

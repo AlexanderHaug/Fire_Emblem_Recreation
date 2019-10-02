@@ -1,9 +1,11 @@
-import EquippableItems.OffItem;
-import EquippableItems.PrimaryItem;
+import Items.*;
+import Items.Equippable.OffHand.Accessory;
+import Items.Equippable.MainHand.Staff;
 import org.testng.annotations.Test;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class testCreature {
     private static Path currentPath = Paths.get(System.getProperty("user.dir"));
@@ -15,7 +17,7 @@ public class testCreature {
         robin.setAllStats(new int[]{1,21,80,9,45,40,40,40,40,40}, new int[]{99,80,80,80,80,80,80,80,80,80});
         robin.setGrowthRates(new int[]{100,60,50,70,80,20,30,10,5});
 
-        robin.equipItem(new PrimaryItem("Staves/Heal.csv", true));
+        robin.equipItem(new Staff("Staves/Heal.csv"));
 
         assert robin.getCreatureStats().getLevel() == 1;
         assert robin.getCreatureStats().getHealth() == 21;
@@ -78,9 +80,28 @@ public class testCreature {
         robin.setGrowthRates(new int[]{200,200,200,200,200,200,200,200,200});
 
         assert robin.getCreatureStats().getResistance() == 10;
-        robin.equipItem(new OffItem("/Shields/Hexlock_Shield.csv"));
+        robin.equipItem(new Accessory("Shields/Hexlock_Shield.csv"));
         assert robin.getCreatureStats().getResistance() == 14;
         robin.unequipOffItem();
         assert robin.getCreatureStats().getResistance() == 10;
     }
+
+    @Test
+    public void testMakingInventory() {
+
+        ArrayList<Item> inventory = new ArrayList<>();
+
+        Staff heal = new Staff("Staves/Heal.csv");
+        Accessory hexlockShield = new Accessory("Shields/Hexlock_Shield.csv");
+
+        inventory.add(heal);
+        inventory.add(hexlockShield);
+
+        Staff hal = (Staff)inventory.get(0);
+        Accessory hex = (Accessory) inventory.get(1);
+
+        assert hal.getName().equals("Heal");
+        assert hex.getName().equals("Hexlock Shield");
+    }
+
 }

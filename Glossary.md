@@ -6,7 +6,7 @@
     * Sleep - The creature is immobile, cannot counterattack, and will always be hit when attacked.
     * Silence - The creature cannot use magic or staves.
     * Berserk - The creature will attack whatever is closest in it's movement range. 
-## EquippableItems
+## Items
 * Special Effects:
     * Brave - Creature attacks twice if they initiated combat.
     * Devil - Creature has a chance of hurting themselves instead their target (31% - Creature's Luck).
