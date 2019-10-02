@@ -136,20 +136,24 @@ class Battle {
     }
 
     public static int[] weaponTriangleCalculator(PrimaryItem attacker, PrimaryItem defender) {
-        if (attacker.getItemType().equals("Sword") && defender.getItemType().equals("Axe"))
+        if (attackingAtAdvantage(attacker, defender))
             return new int[] {1,15,-1,-15};
-        else if (attacker.getItemType().equals("Axe") && defender.getItemType().equals("Lance"))
-            return new int[] {1,15,-1,-15};
-        else if (attacker.getItemType().equals("Lance") && defender.getItemType().equals("Sword"))
-            return new int[] {1,15,-1,-15};
-        else if (attacker.getItemType().equals("Axe") && defender.getItemType().equals("Sword"))
-            return new int[] {-1,-15,1,15};
-        else if (attacker.getItemType().equals("Lance") && defender.getItemType().equals("Axe"))
-            return new int[] {-1,-15,1,15};
-        else if (attacker.getItemType().equals("Sword") && defender.getItemType().equals("Lance"))
+        else if (attackingAtDisadvantage(attacker, defender))
             return new int[] {-1,-15,1,15};
         else
             return new int[] {0,0,0,0};
+    }
+
+    private static boolean attackingAtAdvantage(PrimaryItem attacker, PrimaryItem defender) {
+        return attacker.getItemType().equals("Sword") && defender.getItemType().equals("Axe") ||
+                attacker.getItemType().equals("Axe") && defender.getItemType().equals("Lance") ||
+                attacker.getItemType().equals("Lance") && defender.getItemType().equals("Sword");
+    }
+
+    private static boolean attackingAtDisadvantage(PrimaryItem attacker, PrimaryItem defender) {
+        return attacker.getItemType().equals("Axe") && defender.getItemType().equals("Sword") ||
+                attacker.getItemType().equals("Lance") && defender.getItemType().equals("Axe") ||
+                attacker.getItemType().equals("Sword") && defender.getItemType().equals("Lance");
     }
 
     private static boolean isDead(Creature creature) {return (creature.getCreatureStats().getHealth() == 0);}
