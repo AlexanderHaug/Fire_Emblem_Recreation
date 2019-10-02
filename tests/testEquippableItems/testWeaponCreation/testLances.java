@@ -55,4 +55,14 @@ public class testLances {
                 new ArrayList<String>(), "The wielded of this lance is emboldened and " +
                         "will attack twice when initiating combat." );
     }
+
+    @Test
+    public void testKillerLance() {
+        createAndTestWeapon("Killer_Lance", "Killer Lance", "Lance",
+                9, 80,25,1,1,
+                11,'C', 20,260,false,
+                false,false, false, new HashSet<String>(),
+                new ArrayList<String>(), "Deadly sharp. This lance boasts a " +
+                        "high critical-hit rate." );
+    }
 }
