@@ -74,6 +74,6 @@ public class testAxes {
                 15,'D', 20,1550,false,
                 false,false, false, new HashSet<String>(),
                 a, "This hammer can pummel metal with astonishing force. " +
-                        "Making it effective against armored units.");
+                        "This axe is effective against armored units.");
     }
 }

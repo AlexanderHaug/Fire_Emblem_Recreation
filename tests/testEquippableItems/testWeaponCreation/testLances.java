@@ -65,4 +65,16 @@ public class testLances {
                 new ArrayList<String>(), "Deadly sharp. This lance boasts a " +
                         "high critical-hit rate." );
     }
+
+    @Test
+    public void testHeavySpear() {
+        ArrayList<String> a = new ArrayList<>();
+        a.add("Armored");
+        createAndTestWeapon("Heavy_Spear", "Heavy Spear", "Lance",
+                9, 75,0,1,1,
+                12,'C', 20,260,false,
+                false,false, false, new HashSet<String>(),
+                a, "Sharp enough to pierce even the thickest plate. " +
+                        "This lance is effective against armored units." );
+    }
 }
