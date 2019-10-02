@@ -27,4 +27,13 @@ public class testLances {
                 false,false, false, new HashSet<String>(),
                 new ArrayList<String>(), "A standard lance made of iron--simple but effective." );
     }
+
+    @Test
+    public void testSteelLance() {
+        createAndTestWeapon("Steel_Lance", "Steel Lance", "Lance",
+                9, 75,0,1,1,
+                11,'D', 40,260,false,
+                false,false, false, new HashSet<String>(),
+                new ArrayList<String>(), "A weighty steel lance that deals significant blows." );
+    }
 }
