@@ -5,7 +5,6 @@ List of things to be implemented.
     * Add Skill experience 
 ## EquippableItems
 * Add:
-    * Lances
     * Anima Magic
     * Light Magic
     * Dark Magic
