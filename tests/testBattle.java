@@ -60,6 +60,12 @@ public class testBattle {
         assert results[1] == 15;
         assert results[2] == -1;
         assert results[3] == -15;
+
+        results = Battle.weaponTriangleCalculator(trainingAxe, trainingSword);
+        assert results[0] == -1;
+        assert results[1] == -15;
+        assert results[2] == 1;
+        assert results[3] == 15;
     }
 
     @Test

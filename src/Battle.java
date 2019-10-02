@@ -142,6 +142,12 @@ class Battle {
             return new int[] {1,15,-1,-15};
         else if (attacker.getItemType().equals("Lance") && defender.getItemType().equals("Sword"))
             return new int[] {1,15,-1,-15};
+        else if (attacker.getItemType().equals("Axe") && defender.getItemType().equals("Sword"))
+            return new int[] {-1,-15,1,15};
+        else if (attacker.getItemType().equals("Lance") && defender.getItemType().equals("Axe"))
+            return new int[] {-1,-15,1,15};
+        else if (attacker.getItemType().equals("Sword") && defender.getItemType().equals("Lance"))
+            return new int[] {-1,-15,1,15};
         else
             return new int[] {0,0,0,0};
     }
