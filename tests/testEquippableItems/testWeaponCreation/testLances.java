@@ -45,4 +45,14 @@ public class testLances {
                 false,false, false, new HashSet<String>(),
                 new ArrayList<String>(), "A lance crafted from shining silver." );
     }
+
+    @Test
+    public void testBraveLance() {
+        createAndTestWeapon("Brave_Lance", "Brave Lance", "Lance",
+                10, 70,0,1,1,
+                13,'B', 25,260,false,
+                true,false, false, new HashSet<String>(),
+                new ArrayList<String>(), "The wielded of this lance is emboldened and " +
+                        "will attack twice when initiating combat." );
+    }
 }
