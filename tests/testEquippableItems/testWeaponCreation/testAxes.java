@@ -36,4 +36,13 @@ public class testAxes {
                 false,false, false, new HashSet<String>(),
                 new ArrayList<String>(), "A weighty steel axe that deals significant blows." );
     }
+
+    @Test
+    public void testSilverAxe() {
+        createAndTestWeapon("Silver_Axe", "Silver Axe", "Axe",
+                16, 70,0,1,1,
+                10,'B', 30,1500,false,
+                false,false, false, new HashSet<String>(),
+                new ArrayList<String>(), "An axe crafted from shining silver." );
+    }
 }
