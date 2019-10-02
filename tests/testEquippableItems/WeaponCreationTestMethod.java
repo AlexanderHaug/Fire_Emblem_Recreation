@@ -61,6 +61,8 @@ public class WeaponCreationTestMethod {
         switch (weaponType) {
             case "Sword":
                 return "Swords";
+            case "Lance":
+                return "Lances";
             case "Staff":
                 return "Staves";
             case "Dark Magic":

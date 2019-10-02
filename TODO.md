@@ -5,13 +5,13 @@ List of things to be implemented.
     * Add Skill experience 
 ## EquippableItems
 * Add:
-    * Axes
     * Lances
     * Anima Magic
     * Light Magic
     * Dark Magic
     * Staves
     * Monster/Claws
+* Determine Costs for everything
 ## Battle
 * Add more conditions to "assist"
     * Attacking (Silence, Sleep, Berserk)
