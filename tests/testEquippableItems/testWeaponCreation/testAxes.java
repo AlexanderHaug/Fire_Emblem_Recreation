@@ -45,4 +45,14 @@ public class testAxes {
                 false,false, false, new HashSet<String>(),
                 new ArrayList<String>(), "An axe crafted from shining silver." );
     }
+
+    @Test
+    public void testBraveAxe() {
+        createAndTestWeapon("Brave_Axe", "Brave Axe", "Axe",
+                12, 60,0,1,1,
+                14,'B', 30,2300,false,
+                true,false, false, new HashSet<String>(),
+                new ArrayList<String>(), "The wielder of this axe is emboldened and will attack " +
+                        "twice when initiating combat." );
+    }
 }
