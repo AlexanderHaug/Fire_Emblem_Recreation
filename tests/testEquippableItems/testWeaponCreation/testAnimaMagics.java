@@ -71,4 +71,15 @@ public class testAnimaMagics {
                 false,false, false, new int[9],
                 new ArrayList<String>(), "Advanced wind magic.");
     }
+
+    @Test
+    public void testExcalibur() {
+        ArrayList<String> effectiveAgainst = new ArrayList<>();
+        effectiveAgainst.add("Flying");
+        createAndTestWeapon("Excalibur", "Excalibur", "Anima Magic: Wind",
+                11, 100,15,1,2,
+                8, 'B', 4,540,false,
+                false, false, false, new int[9],
+                effectiveAgainst, "Superior wind magic.");
+    }
 }
