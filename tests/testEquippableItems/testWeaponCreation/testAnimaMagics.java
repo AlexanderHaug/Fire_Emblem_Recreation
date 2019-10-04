@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import static testEquippableItems.WeaponCreationTestMethod.createAndTestWeapon;
 
 public class testAnimaMagics {
-
+    // Fire Magic
     @Test
     public void testFire() {
         createAndTestWeapon("Fire", "Fire", "Anima Magic: Fire",
@@ -44,6 +44,7 @@ public class testAnimaMagics {
                 new ArrayList<String>(), "Superior fire magic.");
     }
 
+    // Wind Magic
     @Test
     public void testWind() {
         createAndTestWeapon("Wind", "Wind", "Anima Magic: Wind",
@@ -51,6 +52,15 @@ public class testAnimaMagics {
                 2,'E', 6,540,true,
                 false,false, false, new int[9],
                 new ArrayList<String>(), "Basic wind magic.");
+    }
+
+    @Test
+    public void testElwind() {
+        createAndTestWeapon("Elwind", "Elwind", "Anima Magic: Wind",
+                4, 95,10,1,2,
+                3,'D', 6,540,true,
+                false,false, false, new int[9],
+                new ArrayList<String>(), "Intermediate wind magic.");
     }
 
     @Test
