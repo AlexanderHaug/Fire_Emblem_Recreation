@@ -44,4 +44,12 @@ public class testAnimaMagics {
                 new ArrayList<String>(), "Superior fire magic.");
     }
 
+    @Test
+    public void testWind() {
+        createAndTestWeapon("Wind", "Wind", "Anima Magic: Wind",
+                2, 100,10,1,2,
+                2,'E', 6,540,true,
+                false,false, false, new int[9],
+                new ArrayList<String>(), "Basic wind magic.");
+    }
 }
