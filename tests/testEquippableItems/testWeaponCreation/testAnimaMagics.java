@@ -18,12 +18,21 @@ public class testAnimaMagics {
     }
 
     @Test
+    public void testElfire() {
+        createAndTestWeapon("Elfire", "Elfire", "Anima Magic: Fire",
+                5, 85,0,1,2,
+                4,'D', 7,540,true,
+                false,false, false, new int[9],
+                new ArrayList<String>(), "Intermediate fire magic.");
+    }
+
+    @Test
     public void testBolganone() {
         createAndTestWeapon("Bolganone", "Bolganone", "Anima Magic: Fire",
                 8, 80,0,1,2,
                 6,'C', 5,540,true,
                 false,false, false, new int[9],
-                new ArrayList<String>(), "Superior fire magic.");
+                new ArrayList<String>(), "Advanced fire magic.");
     }
 
 }
