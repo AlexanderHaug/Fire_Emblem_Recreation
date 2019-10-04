@@ -60,6 +60,8 @@ public class WeaponCreationTestMethod {
         switch (weaponType) {
             case "Sword":
                 return "Swords";
+            case "Axe":
+                return "Axes";
             case "Lance":
                 return "Lances";
             case "Staff":
@@ -67,7 +69,7 @@ public class WeaponCreationTestMethod {
             case "Dark Magic":
                 return "Dark_Magics";
             default:
-                return "Axes";
+                return "Anima_Magics";
         }
     }
 }
