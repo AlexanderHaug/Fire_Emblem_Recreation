@@ -82,4 +82,14 @@ public class testAnimaMagics {
                 false, false, false, new int[9],
                 effectiveAgainst, "Superior wind magic.");
     }
+
+    // Thunder Magic
+    @Test
+    public void testThunder() {
+        createAndTestWeapon("Thunder", "Thunder", "Anima Magic: Lightning",
+                4, 80,5,1,2,
+                4,'E', 8,540,true,
+                false,false, false, new int[9],
+                new ArrayList<String>(), "Basic lightning magic.");
+    }
 }
