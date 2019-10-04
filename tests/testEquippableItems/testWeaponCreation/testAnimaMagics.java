@@ -52,4 +52,13 @@ public class testAnimaMagics {
                 false,false, false, new int[9],
                 new ArrayList<String>(), "Basic wind magic.");
     }
+
+    @Test
+    public void testCuttingGale() {
+        createAndTestWeapon("Cutting_Gale", "Cutting Gale", "Anima Magic: Wind",
+                7, 90,10,1,2,
+                5,'C', 6,540,true,
+                false,false, false, new int[9],
+                new ArrayList<String>(), "Advanced wind magic.");
+    }
 }
