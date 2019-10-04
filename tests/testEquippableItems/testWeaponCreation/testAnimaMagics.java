@@ -35,4 +35,13 @@ public class testAnimaMagics {
                 new ArrayList<String>(), "Advanced fire magic.");
     }
 
+    @Test
+    public void testRagnarok() {
+        createAndTestWeapon("Ragnarok", "Ragnarok", "Anima Magic: Fire",
+                15, 75,5,1,2,
+                9,'B', 3,540,true,
+                false,false, false, new int[9],
+                new ArrayList<String>(), "Superior fire magic.");
+    }
+
 }
