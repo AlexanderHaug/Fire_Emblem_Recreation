@@ -1,6 +1,6 @@
 package Creatures;
 
-import Classes.UnitClass;
+import Creatures.Classes.UnitClass;
 
 import java.util.HashMap;
 

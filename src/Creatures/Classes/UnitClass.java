@@ -1,4 +1,4 @@
-package Classes;
+package Creatures.Classes;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
