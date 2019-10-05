@@ -37,6 +37,13 @@ public class testLightMagics {
                 new ArrayList<String>(), "Advanced light magic.");
     }
 
-    // Lvl	Range	Use	Wt	Mt	Hit	Crit
-    // B	1-2	    3	12	12	70	20
+    @Test
+    public void testAura() {
+        createAndTestWeapon("Aura", "Aura", "Light Magic",
+                10, 85,20,1,2,
+                7,'B', 3,540,true,
+                false,false, false, new int[9],
+                new ArrayList<String>(), "Superior light attack magic. " +
+                        "Assails foes with rings of light.");
+    }
 }
