@@ -94,6 +94,15 @@ public class testAnimaMagics {
     }
 
     @Test
+    public void testElthunder() {
+        createAndTestWeapon("Elthunder", "Elthunder", "Anima Magic: Lightning",
+                6, 75,5,1,2,
+                5,'D', 6,540,true,
+                false,false, false, new int[9],
+                new ArrayList<String>(), "Intermediate lightning magic.");
+    }
+
+    @Test
     public void testThoron() {
         createAndTestWeapon("Thoron", "Thoron", "Anima Magic: Lightning",
                 9, 70,10,1,3,
