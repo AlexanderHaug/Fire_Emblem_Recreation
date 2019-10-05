@@ -34,7 +34,7 @@ public class testLightMagics {
                 7, 90,10,1,2,
                 4,'C', 6,540,true,
                 false,false, false, new int[9],
-                new ArrayList<String>(), "Intermediate light magic.");
+                new ArrayList<String>(), "Advanced light magic.");
     }
 
     // Lvl	Range	Use	Wt	Mt	Hit	Crit
