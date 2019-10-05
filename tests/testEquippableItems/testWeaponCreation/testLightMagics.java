@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import static testEquippableItems.WeaponCreationTestMethod.createAndTestWeapon;
 
 public class testLightMagics {
+
     @Test
     public void testShine() {
         createAndTestWeapon("Shine", "Shine", "Light Magic",
@@ -16,6 +17,17 @@ public class testLightMagics {
                 new ArrayList<String>(), "Basic light magic." );
     }
 
+    @Test
+    public void testSeraphim() {
+        ArrayList<String> effectiveAgainst = new ArrayList<>();
+        effectiveAgainst.add("Monster");
+        createAndTestWeapon("Seraphim", "Seraphim", "Light Magic",
+                5, 95,5,1,2,
+                2,'D', 12,540,true,
+                false,false, false, new int[9],
+                effectiveAgainst, "Intermediate light magic that is effective against Monster foes.");
+    }
+
     // Lvl	Range	Use	Wt	Mt	Hit	Crit
-    // E	1-2	    8	8	1	80	0
+    // 
 }
