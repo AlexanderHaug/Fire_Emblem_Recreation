@@ -66,6 +66,8 @@ public class WeaponCreationTestMethod {
                 return "Lances";
             case "Staff":
                 return "Staves";
+            case "Light Magic":
+                return "Light_Magics";
             case "Dark Magic":
                 return "Dark_Magics";
             default:

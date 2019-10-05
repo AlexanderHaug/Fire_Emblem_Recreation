@@ -5,7 +5,6 @@ List of things to be implemented.
     * Add Skill experience 
 ## Items
 * Add:
-    * Anima Magic
     * Light Magic
     * Dark Magic
     * Staves
