@@ -92,4 +92,13 @@ public class testAnimaMagics {
                 false,false, false, new int[9],
                 new ArrayList<String>(), "Basic lightning magic.");
     }
+
+    @Test
+    public void testThoron() {
+        createAndTestWeapon("Thoron", "Thoron", "Anima Magic: Lightning",
+                9, 70,10,1,3,
+                7,'C', 4,540,true,
+                false,false, false, new int[9],
+                new ArrayList<String>(), "Advanced lightning magic.");
+    }
 }
