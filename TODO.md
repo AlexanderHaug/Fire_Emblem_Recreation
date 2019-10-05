@@ -1,7 +1,7 @@
 # Things to Do
 List of things to be implemented.
 ## Units/Creatures
-* Creature Stats
+* Creatures.Creature Stats
     * Add Skill experience 
 ## Items
 * Add:

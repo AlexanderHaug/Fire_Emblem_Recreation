@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 
-import static testEquippableItems.WeaponCreationTestMethod.createAndTestWeapon;
+import static testSetUpMethods.WeaponCreationTestMethod.createAndTestWeapon;
 
 public class testLances {
 

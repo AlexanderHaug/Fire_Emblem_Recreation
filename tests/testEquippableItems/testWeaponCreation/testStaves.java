@@ -2,7 +2,7 @@ package testEquippableItems.testWeaponCreation;
 
 import org.testng.annotations.Test;
 
-import static testEquippableItems.WeaponCreationTestMethod.createAndTestStaves;
+import static testSetUpMethods.WeaponCreationTestMethod.createAndTestStaves;
 
 public class testStaves {
     @Test

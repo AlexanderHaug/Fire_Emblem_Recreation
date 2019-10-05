@@ -1,3 +1,4 @@
+import Creatures.Creature;
 import Items.Equippable.MainHand.PrimaryItem;
 import Items.Equippable.MainHand.Staff;
 import Items.Equippable.MainHand.Weapon;

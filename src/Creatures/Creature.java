@@ -1,3 +1,5 @@
+package Creatures;
+
 import Items.Equippable.OffHand.Accessory;
 import Items.Equippable.MainHand.PrimaryItem;
 import Items.Equippable.MainHand.Weapon;

@@ -1,4 +1,8 @@
+package testSetUpMethods;
+
 import Classes.UnitClass;
+import Creatures.Creature;
+import Creatures.CreatureStats;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

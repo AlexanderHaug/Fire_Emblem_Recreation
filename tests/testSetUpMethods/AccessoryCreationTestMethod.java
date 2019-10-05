@@ -1,4 +1,4 @@
-package testEquippableItems;
+package testSetUpMethods;
 
 import Items.Equippable.OffHand.Accessory;
 

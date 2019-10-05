@@ -1,3 +1,5 @@
+package Creatures;
+
 import Classes.UnitClass;
 
 import java.util.HashMap;

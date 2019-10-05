@@ -1,5 +1,5 @@
 # Glossary of Terms
-## Creature
+## Creatures
 * Status:
     * Normal - the default state of all creatures.
     * Poison - At the start of the creature's team turn, unit takes 1-5 damage at random and status will revert to "Normal" after 5 turns.
@@ -8,6 +8,6 @@
     * Berserk - The creature will attack whatever is closest in it's movement range. 
 ## Items
 * Special Effects:
-    * Brave - Creature attacks twice if they initiated combat.
-    * Devil - Creature has a chance of hurting themselves instead their target (31% - Creature's Luck).
+    * Brave - Creatures.Creature attacks twice if they initiated combat.
+    * Devil - Creatures.Creature has a chance of hurting themselves instead their target (31% - Creatures.Creature's Luck).
     * Poison - If the target is hit, the target is inflicted with "Poison".  

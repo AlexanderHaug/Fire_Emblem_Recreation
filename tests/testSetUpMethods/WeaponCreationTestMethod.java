@@ -1,4 +1,4 @@
-package testEquippableItems;
+package testSetUpMethods;
 
 import Items.Equippable.MainHand.Staff;
 import Items.Equippable.MainHand.Weapon;

@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 
-import static testEquippableItems.AccessoryCreationTestMethod.createAndTestAccessory;
+import static testSetUpMethods.AccessoryCreationTestMethod.createAndTestAccessory;
 
 public class testShields {
     @Test
