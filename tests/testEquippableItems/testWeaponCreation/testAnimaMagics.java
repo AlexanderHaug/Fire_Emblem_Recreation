@@ -110,4 +110,14 @@ public class testAnimaMagics {
                 false,false, false, new int[9],
                 new ArrayList<String>(), "Advanced lightning magic.");
     }
+
+    @Test
+    public void testBolting() {
+        createAndTestWeapon("Bolting", "Bolting", "Anima Magic: Lightning",
+                12, 65,15,3,10,
+                18,'B', 2,540,true,
+                false,false, false, new int[9],
+                new ArrayList<String>(), "Superior lightning magic. " +
+                        "Cannot trigger follow-up attacks.");
+    }
 }
