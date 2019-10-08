@@ -104,6 +104,30 @@ public class testBattle {
     }
 
     @Test
+    public void testAnimaTriangle() {
+        Weapon fire = new Weapon("Anima_Magics/Fire.csv");
+        Weapon wind = new Weapon("Anima_Magics/Wind.csv");
+
+        int[] results = WeaponTriangle.weaponTriangleCalculator(fire, wind);
+        assert results[0] == 1;
+        assert results[1] == 15;
+        assert results[2] == -1;
+        assert results[3] == -15;
+
+        results = WeaponTriangle.weaponTriangleCalculator(wind, fire);
+        assert results[0] == -1;
+        assert results[1] == -15;
+        assert results[2] == 1;
+        assert results[3] == 15;
+
+        results = WeaponTriangle.weaponTriangleCalculator(fire, fire);
+        assert results[0] == 0;
+        assert results[1] == 0;
+        assert results[2] == 0;
+        assert results[3] == 0;
+    }
+
+    @Test
     public void testNormalCollosseum() {
         Creature robin = createCreatureSetUp.setUpCreature("Robin", "Lord.csv","Ylisee");
         Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord.csv", "Monster");
