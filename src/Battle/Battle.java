@@ -1,11 +1,14 @@
+package Battle;
+
 import Creatures.Creature;
-import Items.Equippable.MainHand.PrimaryItem;
 import Items.Equippable.MainHand.Staff;
 import Items.Equippable.MainHand.Weapon;
 
 import java.util.ArrayList;
 
-class Battle {
+import static Battle.WeaponTriangle.weaponTriangleCalculator;
+
+public class Battle {
     private static String winner = "No Winner";
     private static String message = "";
 
@@ -104,7 +107,7 @@ class Battle {
     }
 
     private static int damageCalculator(Creature attacker, Creature defender, int damageBonus) {
-        boolean weaponIsMagic = ((Weapon) attacker.getMainItem()).isWeaponMagic();
+        boolean weaponIsMagic = ((Weapon) attacker.getMainItem()).isItemMagic();
         int damage = attacker.getDamage() + damageBonus;
 
         if (weaponIsMagic) {
@@ -136,27 +139,6 @@ class Battle {
             message = " hits " + defender.getCreatureName() + " for ";
             return damageDone;
         }
-    }
-
-    public static int[] weaponTriangleCalculator(PrimaryItem attacker, PrimaryItem defender) {
-        if (attackingAtAdvantage(attacker, defender))
-            return new int[] {1,15,-1,-15};
-        else if (attackingAtDisadvantage(attacker, defender))
-            return new int[] {-1,-15,1,15};
-        else
-            return new int[] {0,0,0,0};
-    }
-
-    private static boolean attackingAtAdvantage(PrimaryItem attacker, PrimaryItem defender) {
-        return attacker.getItemType().equals("Sword") && defender.getItemType().equals("Axe") ||
-                attacker.getItemType().equals("Axe") && defender.getItemType().equals("Lance") ||
-                attacker.getItemType().equals("Lance") && defender.getItemType().equals("Sword");
-    }
-
-    private static boolean attackingAtDisadvantage(PrimaryItem attacker, PrimaryItem defender) {
-        return attacker.getItemType().equals("Axe") && defender.getItemType().equals("Sword") ||
-                attacker.getItemType().equals("Lance") && defender.getItemType().equals("Axe") ||
-                attacker.getItemType().equals("Sword") && defender.getItemType().equals("Lance");
     }
 
     private static boolean isDead(Creature creature) {return (creature.getCreatureStats().getHealth() == 0);}

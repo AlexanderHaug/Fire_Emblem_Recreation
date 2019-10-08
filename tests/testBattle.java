@@ -1,3 +1,5 @@
+import Battle.Battle;
+import Battle.WeaponTriangle;
 import Creatures.Creature;
 import Items.Equippable.MainHand.Staff;
 import Items.Equippable.MainHand.Weapon;
@@ -58,19 +60,43 @@ public class testBattle {
         Weapon trainingSword = new Weapon("Swords/Training_Sword.csv");
         Weapon trainingAxe = new Weapon("Axes/Training_Axe.csv");
 
-        int[] results = Battle.weaponTriangleCalculator(trainingSword, trainingAxe);
+        int[] results = WeaponTriangle.weaponTriangleCalculator(trainingSword, trainingAxe);
         assert results[0] == 1;
         assert results[1] == 15;
         assert results[2] == -1;
         assert results[3] == -15;
 
-        results = Battle.weaponTriangleCalculator(trainingAxe, trainingSword);
+        results = WeaponTriangle.weaponTriangleCalculator(trainingAxe, trainingSword);
         assert results[0] == -1;
         assert results[1] == -15;
         assert results[2] == 1;
         assert results[3] == 15;
 
-        results = Battle.weaponTriangleCalculator(trainingAxe, trainingAxe);
+        results = WeaponTriangle.weaponTriangleCalculator(trainingAxe, trainingAxe);
+        assert results[0] == 0;
+        assert results[1] == 0;
+        assert results[2] == 0;
+        assert results[3] == 0;
+    }
+
+    @Test
+    public void testTrinityOfMagic() {
+        Weapon fire = new Weapon("Anima_Magics/Fire.csv");
+        Weapon shine = new Weapon("Light_Magics/Shine.csv");
+
+        int[] results = WeaponTriangle.weaponTriangleCalculator(fire, shine);
+        assert results[0] == 1;
+        assert results[1] == 15;
+        assert results[2] == -1;
+        assert results[3] == -15;
+
+        results = WeaponTriangle.weaponTriangleCalculator(shine, fire);
+        assert results[0] == -1;
+        assert results[1] == -15;
+        assert results[2] == 1;
+        assert results[3] == 15;
+
+        results = WeaponTriangle.weaponTriangleCalculator(fire, fire);
         assert results[0] == 0;
         assert results[1] == 0;
         assert results[2] == 0;

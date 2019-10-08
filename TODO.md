@@ -12,7 +12,4 @@ List of things to be implemented.
 ## Battle
 * Add more conditions to "assist"
     * Attacking (Silence, Sleep, Berserk)
-    * Other (Increasing stats)
-* Improve organization of battle class
-    * Add new weapon requirements to battle
-     
+    * Other (Increasing stats)     

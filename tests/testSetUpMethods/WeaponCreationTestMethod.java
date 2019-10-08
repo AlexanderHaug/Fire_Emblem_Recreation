@@ -26,10 +26,10 @@ public class WeaponCreationTestMethod {
         assert weapon.getItemRank().equals(weaponRank);
         assert weapon.getItemUses() == weaponUses;
         assert weapon.getItemCost() == weaponCost;
-        assert weapon.isWeaponMagic() == weaponIsMagic;
-        assert weapon.isWeaponBrave() == weaponIsBrave;
-        assert weapon.isWeaponDevil() == weaponIsDevil;
-        assert weapon.isWeaponPoison() == weaponIsPoison;
+        assert weapon.isItemMagic() == weaponIsMagic;
+        assert weapon.isItemBrave() == weaponIsBrave;
+        assert weapon.isItemDevil() == weaponIsDevil;
+        assert weapon.isItemPoison() == weaponIsPoison;
         assert Arrays.equals(weapon.getOtherStatIncreases(),otherStatIncreases);
         assert weapon.getEffectiveAgainst().equals(weaponEffectiveAgainst);
         assert weapon.getItemDescription().equals(weaponDescription);

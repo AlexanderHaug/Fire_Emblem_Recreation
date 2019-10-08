@@ -61,7 +61,7 @@ public class Creature {
 
     public int getDamage() {
         if (mainItem != null) {
-            if (((Weapon)mainItem).isWeaponMagic()) {return ((Weapon)mainItem).getMight() + creatureStats.getMagic();}
+            if (((Weapon)mainItem).isItemMagic()) {return ((Weapon)mainItem).getMight() + creatureStats.getMagic();}
             else {return ((Weapon)mainItem).getMight() + creatureStats.getStrength();}
         }
 

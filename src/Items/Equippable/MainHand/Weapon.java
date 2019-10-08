@@ -12,7 +12,6 @@ import java.util.Collections;
 public class Weapon extends PrimaryItem {
     private int might = 0;
     private int critical = 0;
-    private ArrayList<String> weaponIs = new ArrayList<>();
     private ArrayList<String> effectiveAgainst = new ArrayList<>();
 
     public Weapon(String fileName) {
@@ -36,7 +35,7 @@ public class Weapon extends PrimaryItem {
 
                 setItemUses(Integer.parseInt(data[8]));
                 setItemCost(Integer.parseInt(data[9]));
-                setWeaponIs(data[10]);
+                setItemIs(data[10]);
 
                 setOtherStats(data[11]);
                 setEffectiveAgainst(data[12]);
@@ -51,18 +50,6 @@ public class Weapon extends PrimaryItem {
     public int getMight() {return might;}
 
     public int getCritical() {return critical;}
-
-    public boolean isWeaponMagic() {return weaponIs.contains("Magic");}
-    public boolean isWeaponBrave() {return weaponIs.contains("Brave");}
-    public boolean isWeaponDevil() {return weaponIs.contains("Devil");}
-    public boolean isWeaponPoison() {return weaponIs.contains("Poison");}
-
-    private void setWeaponIs(String data) {
-        if (data.contains("Magic")) {this.weaponIs.add("Magic");}
-        if (data.contains("Brave")) {this.weaponIs.add("Brave");}
-        if (data.contains("Devil")) {this.weaponIs.add("Devil");}
-        if (data.contains("Poison")) {this.weaponIs.add("Poison");}
-    }
 
     private void setEffectiveAgainst(String data) {
         if (!data.equals("")) {
