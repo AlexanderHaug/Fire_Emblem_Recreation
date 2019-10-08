@@ -23,4 +23,8 @@ public class createCreatureSetUp {
         return new Creature(name, new CreatureStats(new UnitClass(filePath+unitClass),
                 generateStats(), generateGrowthRates(), generateMaxStatCaps(), generateSkillRanks()), army);
     }
+
+    public static int[] getClassGrowthRates(Creature creature) {
+        return creature.getCreatureStats().getUnitclass().getUnitClassGrowth();
+    }
 }
