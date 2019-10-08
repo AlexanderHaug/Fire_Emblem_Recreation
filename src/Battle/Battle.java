@@ -6,7 +6,7 @@ import Items.Equippable.MainHand.Weapon;
 
 import java.util.ArrayList;
 
-import static Battle.WeaponTriangle.weaponTriangleCalculator;
+import static Battle.WeaponTriangle.triangleCalculator;
 
 public class Battle {
     private static String winner = "No Winner";
@@ -19,7 +19,7 @@ public class Battle {
 
         int[] weaponTriangleBonus = new int[4];
         if (attacker.getMainItem() != null && defender.getMainItem() != null) {
-            weaponTriangleBonus = weaponTriangleCalculator(attacker.getMainItem(), defender.getMainItem());
+            weaponTriangleBonus = triangleCalculator(attacker.getMainItem(), defender.getMainItem());
         }
 
         if (attacker.getMainItem() == null ||

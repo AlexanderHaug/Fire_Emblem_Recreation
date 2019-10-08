@@ -60,19 +60,19 @@ public class testBattle {
         Weapon trainingSword = new Weapon("Swords/Training_Sword.csv");
         Weapon trainingAxe = new Weapon("Axes/Training_Axe.csv");
 
-        int[] results = WeaponTriangle.weaponTriangleCalculator(trainingSword, trainingAxe);
+        int[] results = WeaponTriangle.triangleCalculator(trainingSword, trainingAxe);
         assert results[0] == 1;
         assert results[1] == 15;
         assert results[2] == -1;
         assert results[3] == -15;
 
-        results = WeaponTriangle.weaponTriangleCalculator(trainingAxe, trainingSword);
+        results = WeaponTriangle.triangleCalculator(trainingAxe, trainingSword);
         assert results[0] == -1;
         assert results[1] == -15;
         assert results[2] == 1;
         assert results[3] == 15;
 
-        results = WeaponTriangle.weaponTriangleCalculator(trainingAxe, trainingAxe);
+        results = WeaponTriangle.triangleCalculator(trainingAxe, trainingAxe);
         assert results[0] == 0;
         assert results[1] == 0;
         assert results[2] == 0;
@@ -84,19 +84,19 @@ public class testBattle {
         Weapon fire = new Weapon("Anima_Magics/Fire.csv");
         Weapon shine = new Weapon("Light_Magics/Shine.csv");
 
-        int[] results = WeaponTriangle.weaponTriangleCalculator(fire, shine);
+        int[] results = WeaponTriangle.triangleCalculator(fire, shine);
         assert results[0] == 1;
         assert results[1] == 15;
         assert results[2] == -1;
         assert results[3] == -15;
 
-        results = WeaponTriangle.weaponTriangleCalculator(shine, fire);
+        results = WeaponTriangle.triangleCalculator(shine, fire);
         assert results[0] == -1;
         assert results[1] == -15;
         assert results[2] == 1;
         assert results[3] == 15;
 
-        results = WeaponTriangle.weaponTriangleCalculator(fire, fire);
+        results = WeaponTriangle.triangleCalculator(fire, fire);
         assert results[0] == 0;
         assert results[1] == 0;
         assert results[2] == 0;
@@ -108,19 +108,19 @@ public class testBattle {
         Weapon fire = new Weapon("Anima_Magics/Fire.csv");
         Weapon wind = new Weapon("Anima_Magics/Wind.csv");
 
-        int[] results = WeaponTriangle.weaponTriangleCalculator(fire, wind);
+        int[] results = WeaponTriangle.triangleCalculator(fire, wind);
         assert results[0] == 1;
         assert results[1] == 15;
         assert results[2] == -1;
         assert results[3] == -15;
 
-        results = WeaponTriangle.weaponTriangleCalculator(wind, fire);
+        results = WeaponTriangle.triangleCalculator(wind, fire);
         assert results[0] == -1;
         assert results[1] == -15;
         assert results[2] == 1;
         assert results[3] == 15;
 
-        results = WeaponTriangle.weaponTriangleCalculator(fire, fire);
+        results = WeaponTriangle.triangleCalculator(fire, fire);
         assert results[0] == 0;
         assert results[1] == 0;
         assert results[2] == 0;
