@@ -25,8 +25,8 @@ public class CreatureStats {
     public void setAllStats(int[] stats, int[] statCaps) {
 
         for (int x = 0; x < stats.length; x++) {
-            if (stats[x] > statCaps[x]) {stats[x] = statCaps[x];}
-        }
+            if (stats[x] > statCaps[x]) {stats[x] = statCaps[x];}}
+
         this.stats = stats;
         this.statCaps = statCaps;
     }

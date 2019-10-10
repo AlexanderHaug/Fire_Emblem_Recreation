@@ -1,15 +1,18 @@
 # Things to Do
 List of things to be implemented.
 ## Units/Creatures
-* Creatures.Creature Stats
+* Creature Stats
     * Add Skill experience 
+* Unit Class:
+    * Add minimum stats to classes
 ## Items
 * Add:
     * Dark Magic
     * Staves
+    * Gauntlets
     * Monster/Claws
 * Determine Costs for everything
 ## Battle
 * Add more conditions to "assist"
     * Attacking (Silence, Sleep, Berserk)
-    * Other (Increasing stats)     
+    * Other (Increasing stats)      

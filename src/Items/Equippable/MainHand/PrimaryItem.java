@@ -10,16 +10,26 @@ public abstract class PrimaryItem extends EquippableItem {
     private ArrayList<Integer> itemRange = new ArrayList<>();
     private Character itemRank;
     private ArrayList<String> itemIs = new ArrayList<>();
+    private int[] tempDebuffOpponentStats = new int[8];
 
     public void setAccuracy(int accuracy) {this.accuracy = accuracy;}
-    public void setItemRange(ArrayList<Integer> range) {this.itemRange = range;}
     public void setItemRank(Character rank) {this.itemRank = rank;}
     public void setItemType(String itemType) {this.itemType = itemType;}
+
+    public void setTempDebuffOpponentStats(String debuffs) {
+        String[] splt = debuffs.split(":");
+        for (int x = 0; x < splt.length; x++) {
+            if (x == 0) {}
+            else
+                this.tempDebuffOpponentStats[x-1] = (Integer.parseInt(splt[x]));
+        }
+    }
 
     public int getAccuracy() {return accuracy;}
     public Character getItemRank() {return itemRank;}
     public String getItemType() {return itemType;}
     public ArrayList<Integer> getItemRange() {return itemRange;}
+    public int[] getTempDebuffOpponentStats() {return tempDebuffOpponentStats;}
 
     public void setItemsRange(String data) {
         String[] splt = data.split(":");
@@ -33,6 +43,7 @@ public abstract class PrimaryItem extends EquippableItem {
         if (data.contains("Brave")) {this.itemIs.add("Brave");}
         if (data.contains("Devil")) {this.itemIs.add("Devil");}
         if (data.contains("Poison")) {this.itemIs.add("Poison");}
+        if (data.contains("Debuff")) {setTempDebuffOpponentStats(data);}
     }
 
     public boolean isItemBrave() {return itemIs.contains("Brave");}

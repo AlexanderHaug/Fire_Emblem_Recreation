@@ -8,6 +8,7 @@
     * Berserk - The creature will attack whatever is closest in it's movement range. 
 ## Items
 * Special Effects:
-    * Brave - Creatures.Creature attacks twice if they initiated combat.
-    * Devil - Creatures.Creature has a chance of hurting themselves instead their target (31% - Creatures.Creature's Luck).
-    * Poison - If the target is hit, the target is inflicted with "Poison".  
+    * Brave - Creature attacks twice if they initiated combat.
+    * Devil - Creature has a chance of hurting themselves instead their target (31% - Creature's Luck).
+    * Poison - If the target is hit, the target is inflicted with "Poison".
+    * Debuff - Lower opponents stats for one turn.  
