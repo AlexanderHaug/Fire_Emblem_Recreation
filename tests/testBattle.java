@@ -32,7 +32,7 @@ public class testBattle {
         Staff restore = new Staff("Staves/Restore.csv");
         robin.equipItem(restore);
 
-        chrom.getCreatureStats().setStatus("Poison");
+        chrom.getCreatureStats().setStatus("Poisoned");
         Battle.assist(robin, chrom, 1);
         assert chrom.getCreatureStats().getStatus().equals("Normal");
     }
@@ -53,6 +53,23 @@ public class testBattle {
         Battle.doBattle(robin,risen, 2);
         assert robin.getCreatureStats().getHealth() == 50;
         assert risen.getCreatureStats().getHealth() >= 0;
+    }
+
+    @Test
+    public void testDebuffOpponentsStats() {
+        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Shaman.csv", "Ylisee");
+        Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord.csv", "Monster");
+
+        robin.getCreatureStats().getSkillRanks().put("Dark Magic", 'C');
+
+        Weapon mire = new Weapon("Dark_Magics/Mire.csv");
+
+        robin.equipItem(mire);
+
+        Battle.runBattle(robin,risen, 2);
+        assert robin.getCreatureStats().getHealth() == 50;
+        assert risen.getCreatureStats().getHealth() >= 0;
+        assert risen.getCreatureStats().getDefense() == 45;
     }
 
     @Test

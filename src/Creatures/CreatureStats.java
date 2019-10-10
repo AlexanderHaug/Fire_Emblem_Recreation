@@ -36,7 +36,7 @@ public class CreatureStats {
     }
 
     public void decreaseStats(int[] decreases) {
-        for (int x = 0; x < decreases.length; x++) {this.stats[x+1] -= decreases[x];}
+        for (int x = 0; x < decreases.length; x++) {this.stats[x+2] -= decreases[x];}
     }
 
     private void setAllSkillRanks(Character[] ranks) {

@@ -43,12 +43,15 @@ public abstract class PrimaryItem extends EquippableItem {
         if (data.contains("Brave")) {this.itemIs.add("Brave");}
         if (data.contains("Devil")) {this.itemIs.add("Devil");}
         if (data.contains("Poison")) {this.itemIs.add("Poison");}
-        if (data.contains("Debuff")) {setTempDebuffOpponentStats(data);}
+        if (data.contains("Debuff")) {
+            this.itemIs.add("Debuff");
+            setTempDebuffOpponentStats(data);
+        }
     }
 
     public boolean isItemBrave() {return itemIs.contains("Brave");}
     public boolean isItemDevil() {return itemIs.contains("Devil");}
     public boolean isItemPoison() {return itemIs.contains("Poison");}
-
+    public boolean isItemDebuff() {return itemIs.contains("Debuff");}
     public boolean isItemMagic() {return itemIs.contains("Magic");}
 }

@@ -11,6 +11,12 @@ import static Battle.WeaponTriangle.triangleCalculator;
 public class Battle {
     private static String winner = "No Winner";
     private static String message = "";
+    private static ArrayList<Boolean> targetsHits = new ArrayList<>();
+
+    public static void runBattle(Creature attacker, Creature defender, int distance) {
+        doBattle(attacker, defender, distance);
+        resolveConflict(attacker, defender);
+    }
 
     public static void doBattle(Creature attacker, Creature defender, int distance) {
 
@@ -25,6 +31,7 @@ public class Battle {
         if (attacker.getMainItem() == null ||
                 isTargetNotInRangeAttack(attacker.getMainItem().getItemRange(), distance)) {
             System.out.println(fighter1Name + " cannot attack.");
+            targetsHits.add(false);
         }
 
         else {unitAttacks(attacker, defender, weaponTriangleBonus[0], weaponTriangleBonus[1]);}
@@ -33,6 +40,7 @@ public class Battle {
             if (defender.getMainItem() == null||
                     isTargetNotInRangeAttack(defender.getMainItem().getItemRange(), distance)) {
                 System.out.println(fighter2Name + " cannot attack.");
+                targetsHits.add(false);
             }
             else {unitAttacks(defender, attacker, weaponTriangleBonus[2], weaponTriangleBonus[3]);}
         }
@@ -70,8 +78,12 @@ public class Battle {
         if (attackerHits) {
             int attackerDamageDealt = damageCalculator(attacker, defender, damageBonus);
             displayActionTaken(attacker.getCreatureName(), attackerDamageDealt, defender);
+            targetsHits.add(true);
         }
-        else {System.out.println(attacker.getCreatureName() + " missed.");}
+        else {
+            System.out.println(attacker.getCreatureName() + " missed.");
+            targetsHits.add(false);
+        }
     }
 
     private static boolean isTargetNotInRangeAttack(ArrayList<Integer> weaponRange, int distance) {
@@ -106,7 +118,7 @@ public class Battle {
         return hits >= ((int)(Math.random() * 100));
     }
 
-    private static int damageCalculator(Creature attacker, Creature defender, int damageBonus) {
+    public static int damageCalculator(Creature attacker, Creature defender, int damageBonus) {
         boolean weaponIsMagic = ((Weapon) attacker.getMainItem()).isItemMagic();
         int damage = attacker.getDamage() + damageBonus;
 
@@ -123,7 +135,7 @@ public class Battle {
 
     }
 
-    private static int criticalCalculator(Creature attacker, Creature defender, int damageDone) {
+    public static int criticalCalculator(Creature attacker, Creature defender, int damageDone) {
 
         int attackerCritical = attacker.getCritRate() - defender.getCreatureStats().getLuck();
         int chance = (int)(Math.random() * 100);
@@ -139,6 +151,21 @@ public class Battle {
             message = " hits " + defender.getCreatureName() + " for ";
             return damageDone;
         }
+    }
+
+    private static void resolveConflict(Creature attacker, Creature defender) {
+        if (targetsHits.get(0)) {
+            if (attacker.getMainItem().isItemDebuff()) {
+                defender.getCreatureStats().decreaseStats(attacker.getMainItem().getTempDebuffOpponentStats());
+            }
+        }
+
+        if (targetsHits.get(1)) {
+            if (defender.getMainItem().isItemDebuff()) {
+                attacker.getCreatureStats().decreaseStats(defender.getMainItem().getTempDebuffOpponentStats());
+            }
+        }
+        targetsHits.clear();
     }
 
     private static boolean isDead(Creature creature) {return (creature.getCreatureStats().getHealth() == 0);}
