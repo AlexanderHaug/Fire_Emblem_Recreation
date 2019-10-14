@@ -1,25 +1,38 @@
-<project>
+<project name="Fire_Emblem_Recreation" default="dist" basedir=".">
+    <description>
+        simple example build file
+    </description>
+    <!-- set global properties for this build -->
+    <property name="test" location="test"/>
+    <property name="build" location="build"/>
+    <property name="dist" location="dist"/>
 
-    <target name="clean">
-        <delete dir="build"/>
+    <target name="init">
+        <!-- Create the time stamp -->
+        <tstamp/>
+        <!-- Create the build directory structure used by compile -->
+        <mkdir dir="${build}"/>
     </target>
 
-    <target name="compile">
-        <mkdir dir="build/classes"/>
-        <javac srcdir="test" destdir="build/classes"/>
+    <target name="compile" depends="init"
+            description="compile the source">
+        <!-- Compile the Java code from ${src} into ${build} -->
+        <javac srcdir="${test}" destdir="${build}"/>
     </target>
 
-    <target name="jar">
-        <mkdir dir="build/jar"/>
-        <jar destfile="build/jar/testAllCreatureClasses/testArcherClasses.java" basedir="build/classes">
-            <manifest>
-                <attribute name="Main-Class" value="oata.testAllCreatureClassesTestArcherClasses"/>
-            </manifest>
-        </jar>
+    <target name="dist" depends="compile"
+            description="generate the distribution">
+        <!-- Create the distribution directory -->
+        <mkdir dir="${dist}/lib"/>
+
+        <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+        <jar jarfile="${dist}/lib/Fire_Emblem_Recreation-${DSTAMP}.java" basedir="${build}"/>
     </target>
 
-    <target name="run">
-        <java jar="build/jar/testAllCreatureClasses/testArcherClasses.java" fork="true"/>
+    <target name="clean"
+            description="clean up">
+        <!-- Delete the ${build} and ${dist} directory trees -->
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
     </target>
-
 </project>
