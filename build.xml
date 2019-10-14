@@ -3,7 +3,7 @@
         simple example build file
     </description>
     <!-- set global properties for this build -->
-    <property name="test" location="test"/>
+    <property name="src" location="tests"/>
     <property name="build" location="build"/>
     <property name="dist" location="dist"/>
 
@@ -17,7 +17,7 @@
     <target name="compile" depends="init"
             description="compile the source">
         <!-- Compile the Java code from ${src} into ${build} -->
-        <javac srcdir="${test}" destdir="${build}"/>
+        <javac srcdir="${src}" destdir="${build}"/>
     </target>
 
     <target name="dist" depends="compile"
