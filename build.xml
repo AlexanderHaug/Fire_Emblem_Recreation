@@ -6,20 +6,20 @@
 
     <target name="compile">
         <mkdir dir="build/classes"/>
-        <javac srcdir="src" destdir="build/classes"/>
+        <javac srcdir="tests" destdir="build/classes"/>
     </target>
 
     <target name="jar">
         <mkdir dir="build/jar"/>
-        <jar destfile="build/jar/testArcherClasses.java" basedir="build/classes">
+        <jar destfile="build/jar/testAllCreatureClasses/testArcherClasses.java" basedir="build/classes">
             <manifest>
-                <attribute name="Main-Class" value="oata.testArcherClasses"/>
+                <attribute name="Main-Class" value="oata.testAllCreatureClassesTestArcherClasses"/>
             </manifest>
         </jar>
     </target>
 
     <target name="run">
-        <java jar="build/jar/testArcherClasses.java" fork="true"/>
+        <java jar="build/jar/testAllCreatureClasses/testArcherClasses.java" fork="true"/>
     </target>
 
 </project>
