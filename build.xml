@@ -6,7 +6,7 @@
 
     <target name="compile">
         <mkdir dir="build/classes"/>
-        <javac srcdir="tests" destdir="build/classes"/>
+        <javac srcdir="test" destdir="build/classes"/>
     </target>
 
     <target name="jar">
