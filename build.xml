@@ -3,7 +3,7 @@
         simple example build file
     </description>
     <!-- set global properties for this build -->
-    <property name="src" location="tests"/>
+    <property name="src" location="src"/>
     <property name="build" location="build"/>
     <property name="dist" location="dist"/>
 
@@ -26,7 +26,7 @@
         <mkdir dir="${dist}/lib"/>
 
         <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-        <jar jarfile="${dist}/lib/Fire_Emblem_Recreation-${DSTAMP}.java" basedir="${build}"/>
+        <jar jarfile="${dist}/lib/Fire_Emblem_Recreation-${DSTAMP}.jar" basedir="${build}"/>
     </target>
 
     <target name="clean"
