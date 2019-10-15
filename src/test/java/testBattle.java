@@ -3,7 +3,7 @@ import Battle.WeaponTriangle;
 import Creatures.Creature;
 import Items.Equippable.MainHand.Staff;
 import Items.Equippable.MainHand.Weapon;
-import org.testng.annotations.Test;
+import org.junit.Test;
 import testSetUpMethods.createCreatureSetUp;
 
 public class testBattle {

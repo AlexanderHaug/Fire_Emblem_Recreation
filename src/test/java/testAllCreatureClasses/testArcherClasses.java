@@ -1,7 +1,7 @@
 package testAllCreatureClasses;
 
 import Creatures.Creature;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import java.util.Arrays;
 

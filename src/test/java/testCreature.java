@@ -2,7 +2,7 @@ import Creatures.Creature;
 import Items.Equippable.MainHand.Staff;
 import Items.Equippable.OffHand.Accessory;
 import Items.Item;
-import org.testng.annotations.Test;
+import org.junit.Test;
 import testSetUpMethods.createCreatureSetUp;
 
 import java.util.ArrayList;
@@ -69,19 +69,6 @@ public class testCreature {
         assert robin.getCreatureStats().getDefense() == 11;
         assert robin.getCreatureStats().getResistance() == 11;
         assert robin.getCreatureStats().getCharisma() == 11;
-    }
-
-    @Test
-    public void testRaisingAndRevertStatsFromOffItem() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric.csv","Ylisee");
-        robin.setAllStats(new int[]{1,80,10,10,10,10,10,10,10,10}, new int[]{99,80,80,80,80,80,80,80,80,80});
-        robin.setGrowthRates(new int[]{200,200,200,200,200,200,200,200,200});
-
-        assert robin.getCreatureStats().getResistance() == 10;
-        robin.equipItem(new Accessory("Shields/Hexlock_Shield.csv"));
-        assert robin.getCreatureStats().getResistance() == 14;
-        robin.unequipOffItem();
-        assert robin.getCreatureStats().getResistance() == 10;
     }
 
     @Test

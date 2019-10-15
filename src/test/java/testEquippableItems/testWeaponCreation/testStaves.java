@@ -1,6 +1,6 @@
 package testEquippableItems.testWeaponCreation;
 
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import static testSetUpMethods.WeaponCreationTestMethod.createAndTestStaves;
 
