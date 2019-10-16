@@ -16,7 +16,7 @@ public class Weapon extends PrimaryItem {
 
     public Weapon(String fileName) {
         Path currentPath = Paths.get(System.getProperty("user.dir"));
-        String srcPath = Paths.get(currentPath.toString(), "src").toString() + "/main/java/Items/Equippable/MainHand/Weapons/";
+        String srcPath = Paths.get(currentPath.toString(), "src").toString() + "/main/resources/Weapons/";
         try {
             BufferedReader reader = new BufferedReader(new FileReader(srcPath + fileName));
             String row;

@@ -18,7 +18,7 @@ public class Accessory extends EquippableItem {
 
     public Accessory(String file) {
         Path currentPath = Paths.get(System.getProperty("user.dir"));
-        String srcPath = Paths.get(currentPath.toString(), "src").toString() + "/main/java/Items/Equippable/OffHand/Accessories/";
+        String srcPath = Paths.get(currentPath.toString(), "src").toString() + "/main/resources/Accessories/";
         try {
             BufferedReader reader = new BufferedReader(new FileReader(srcPath + file));
             String row;
