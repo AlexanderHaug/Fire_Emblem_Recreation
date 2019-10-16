@@ -37,4 +37,14 @@ public class testGauntlets {
                 new ArrayList<String>(), "Weighty steel gauntlets that deal heavy blows. " +
                         "Wielder strikes twice when initiating combat." );
     }
+
+    @Test
+    public void testSilverGauntlets() {
+        createAndTestWeapon("Silver_Gauntlets", "Silver Gauntlets", "Brawl",
+                4, 85,5,1,1,
+                7,'B', 40,520,false,
+                true,false, false, new int[9],
+                new ArrayList<String>(), "Gauntlets crafted from shining silver. " +
+                        "Wielder strikes twice when initiating combat." );
+    }
 }
