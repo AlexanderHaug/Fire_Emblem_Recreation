@@ -64,6 +64,8 @@ public class WeaponCreationTestMethod {
                 return "Axes";
             case "Lance":
                 return "Lances";
+            case "Brawl":
+                return "Gauntlets";
             case "Staff":
                 return "Staves";
             case "Light Magic":
