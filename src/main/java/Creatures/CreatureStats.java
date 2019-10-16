@@ -1,7 +1,5 @@
 package Creatures;
 
-import Creatures.Classes.UnitClass;
-
 import java.util.HashMap;
 
 public class CreatureStats {
