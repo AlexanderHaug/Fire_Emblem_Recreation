@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -16,8 +17,11 @@ public class UnitClass {
     private ArrayList<String> equipable = new ArrayList<>();
 
     public UnitClass(String file) {
+        String filePath = Paths.get(Paths.get(System.getProperty("user.dir")).toString(),
+                "src").toString() + "/main/resources/Classes/";
+
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedReader reader = new BufferedReader(new FileReader(filePath+file));
             String row;
             row = reader.readLine();
             String[] data = row.split(",");
