@@ -18,4 +18,15 @@ public class testGauntlets {
                         "Wielder strikes twice when initiating combat." );
 
     }
+
+    @Test
+    public void testIronGauntlets() {
+        createAndTestWeapon("Iron_Gauntlets", "Iron Gauntlets", "Brawl",
+                1, 85,0,1,1,
+                3,'E', 50,520,false,
+                true,false, false, new int[9],
+                new ArrayList<String>(), "Standard iron gauntlets-simple but effective. " +
+                        "Wielder strikes twice when initiating combat." );
+
+    }
 }
