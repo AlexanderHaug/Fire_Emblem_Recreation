@@ -1,21 +1,18 @@
-import Battalions.Battalion;
 import org.junit.Test;
+
+import static testSetUpMethods.battalionTestMethod.createAndTestBattalion;
 
 public class testBattalions {
 
     @Test
     public void testChurchOfSeirosSoldiers() {
-        Battalion battalion = new Battalion("Church_of_Seiros_Soldiers");
-        assert battalion.getBattalionName().equals("Church of Seiros Soldiers");
-        assert battalion.getPhysicalBonus() == 0;
-        assert battalion.getMagicalBonus() == 0;
+        createAndTestBattalion("Church_of_Seiros_Soldiers", "Church of Seiros Soldiers",
+                0, 0);
     }
 
     @Test
     public void testBattalion() {
-        Battalion battalion = new Battalion("Seiros_Mercenaries");
-        assert battalion.getBattalionName().equals("Seiros Mercenaries");
-        assert battalion.getPhysicalBonus() == 1;
-        assert battalion.getMagicalBonus() == -2;
+        createAndTestBattalion("Seiros_Mercenaries", "Seiros Mercenaries",
+                1, -2);
     }
 }
