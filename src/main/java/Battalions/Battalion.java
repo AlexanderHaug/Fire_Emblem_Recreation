@@ -8,8 +8,11 @@ import java.nio.file.Paths;
 
 public class Battalion {
     private String battalionName = "";
-    private int battlionPhysicalBonus = 0;
-    private int battlionMagicalBonus = 0;
+    private int battalionPhysicalBonus = 0;
+    private int battalionMagicalBonus = 0;
+    private int battalionHitBonus = 0;
+    private int battalionCritBonus = 0;
+    private int battalionAvoBonus = 0;
 
     public Battalion(String file) {
         String filePath = Paths.get(Paths.get(System.getProperty("user.dir")).toString(),
@@ -20,8 +23,11 @@ public class Battalion {
             row = reader.readLine();
             String[] data = row.split(",");
             this.battalionName = data[0];
-            this.battlionPhysicalBonus = Integer.parseInt(data[1]);
-            this.battlionMagicalBonus = Integer.parseInt(data[2]);
+            this.battalionPhysicalBonus = Integer.parseInt(data[1]);
+            this.battalionMagicalBonus = Integer.parseInt(data[2]);
+            this.battalionHitBonus = Integer.parseInt(data[3]);
+            this.battalionCritBonus = Integer.parseInt(data[4]);
+            this.battalionAvoBonus = Integer.parseInt(data[5]);
             reader.close();
         }
         catch (FileNotFoundException e) {System.out.println("The file was not found.");}
@@ -33,10 +39,16 @@ public class Battalion {
     }
 
     public int getPhysicalBonus() {
-        return this.battlionPhysicalBonus;
+        return this.battalionPhysicalBonus;
     }
 
     public int getMagicalBonus() {
-        return this.battlionMagicalBonus;
+        return this.battalionMagicalBonus;
     }
+
+    public int getBattalionHitBonus() {return this.battalionHitBonus;}
+
+    public int getBattalionCritBonus() {return this.battalionCritBonus;}
+
+    public int getBattalionAvoBonus() {return this.battalionAvoBonus;}
 }
