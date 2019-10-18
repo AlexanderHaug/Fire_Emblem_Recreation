@@ -57,4 +57,14 @@ public class testGauntlets {
                 new ArrayList<String>(), "Gauntlets with a high critical-hit rate that allows " +
                         "the wielder to attack twice when initiating combat." );
     }
+
+    @Test
+    public void testAuraKnuckles() {
+        createAndTestWeapon("Aura_Knuckles", "Aura Knuckles", "Brawl",
+                2, 70,0,1,1,
+                4,'A', 30,520,true,
+                true,false, false, new int[9],
+                new ArrayList<String>(), "Magical gauntlets that allow wielder to attack twice " +
+                        "when initiating combat." );
+    }
 }
