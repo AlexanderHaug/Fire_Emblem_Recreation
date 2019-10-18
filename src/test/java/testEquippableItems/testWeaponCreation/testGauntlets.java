@@ -67,4 +67,16 @@ public class testGauntlets {
                 new ArrayList<String>(), "Magical gauntlets that allow wielder to attack twice " +
                         "when initiating combat." );
     }
+
+    @Test
+    public void testDragonClaws() {
+        ArrayList<String> effectiveAgainst = new ArrayList<>();
+        effectiveAgainst.add("Dragon");
+        createAndTestWeapon("Dragon_Claws", "Dragon Claws", "Brawl",
+                4, 75,0,1,1,
+                7,'A', 30,520,false,
+                true,false, false, new int[9],
+                effectiveAgainst, "Said to have slain a legendary beast. " +
+                        "Effective against dragons. Attack twice if initiating combat." );
+    }
 }

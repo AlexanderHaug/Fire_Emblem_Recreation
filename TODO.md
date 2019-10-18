@@ -9,7 +9,6 @@ List of things to be implemented.
 * Add:
     * Dark Magic
     * Staves
-    * Gauntlets
     * Monster/Claws
 * Determine Costs for everything
 ## Battle
