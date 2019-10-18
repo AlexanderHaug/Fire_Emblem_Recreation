@@ -47,4 +47,14 @@ public class testGauntlets {
                 new ArrayList<String>(), "Gauntlets crafted from shining silver. " +
                         "Wielder strikes twice when initiating combat." );
     }
+
+    @Test
+    public void testKillerKnuckles() {
+        createAndTestWeapon("Killer_Knuckles", "Killer Knuckles", "Brawl",
+                3, 80,20,1,1,
+                5,'B', 30,520,false,
+                true,false, false, new int[9],
+                new ArrayList<String>(), "Gauntlets with a high critical-hit rate that allows " +
+                        "the wielder to attack twice when initiating combat." );
+    }
 }
