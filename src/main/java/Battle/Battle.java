@@ -5,13 +5,14 @@ import Items.Equippable.MainHand.Staff;
 import Items.Equippable.MainHand.Weapon;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static Battle.WeaponTriangle.triangleCalculator;
 
 public class Battle {
     private static String winner = "No Winner";
     private static String message = "";
-    private static ArrayList<Boolean> targetsHits = new ArrayList<>();
+    private static HashMap<String, Boolean> targetsHits = new HashMap<>();
 
     public static void runBattle(Creature attacker, Creature defender, int distance) {
         doBattle(attacker, defender, distance);
@@ -20,41 +21,20 @@ public class Battle {
 
     public static void doBattle(Creature attacker, Creature defender, int distance) {
 
-        String fighter1Name = attacker.getCreatureName();
-        String fighter2Name = defender.getCreatureName();
-
-        int[] weaponTriangleBonus = new int[4];
-        if (attacker.getMainItem() != null && defender.getMainItem() != null) {
-            weaponTriangleBonus = triangleCalculator(attacker.getMainItem(), defender.getMainItem());
-        }
+        int[] weaponTriangleBonus = getTriangleBonuses(attacker, defender);
 
         boolean attackerDoubles = (attacker.getAttackSpeed() - defender.getAttackSpeed()) > 4;
 
-        if (attacker.getMainItem() == null ||
-                isTargetNotInRangeAttack(attacker.getMainItem().getItemRange(), distance)) {
-            System.out.println(fighter1Name + " cannot attack.");
-            targetsHits.add(false);
-        }
-
+        if (creatureCannotAttack(attacker, defender, distance)) {}
         else {unitAttacks(attacker, defender, weaponTriangleBonus[0], weaponTriangleBonus[1]);}
 
         if (!isDead(defender) || !isDead(attacker)) {
-            if (defender.getMainItem() == null||
-                    isTargetNotInRangeAttack(defender.getMainItem().getItemRange(), distance)) {
-                System.out.println(fighter2Name + " cannot attack.");
-                targetsHits.add(false);
-            }
+            if (creatureCannotAttack(defender, attacker, distance)) {}
             else {unitAttacks(defender, attacker, weaponTriangleBonus[2], weaponTriangleBonus[3]);}
         }
 
-        if ((!isDead(defender) || !isDead(attacker)) && attackerDoubles) {
-            if (attacker.getMainItem() == null ||
-                    isTargetNotInRangeAttack(attacker.getMainItem().getItemRange(), distance)) {
-                System.out.println(fighter1Name + " cannot attack.");
-                targetsHits.add(false);
-            }
-
-            else {unitAttacks(attacker, defender, weaponTriangleBonus[0], weaponTriangleBonus[1]);}
+        if ((!isDead(defender) || !isDead(attacker)) && attackerDoubles && attacker.getMainItem() != null) {
+            unitAttacks(attacker, defender, weaponTriangleBonus[0], weaponTriangleBonus[1]);
         }
     }
 
@@ -90,11 +70,11 @@ public class Battle {
         if (attackerHits) {
             int attackerDamageDealt = damageCalculator(attacker, defender, damageBonus);
             displayActionTaken(attacker.getCreatureName(), attackerDamageDealt, defender);
-            targetsHits.add(true);
+            targetsHits.put(defender.getCreatureName(),true);
         }
         else {
             System.out.println(attacker.getCreatureName() + " missed.");
-            targetsHits.add(false);
+            targetsHits.put(defender.getCreatureName(),false);
         }
     }
 
@@ -166,18 +146,36 @@ public class Battle {
     }
 
     private static void resolveConflict(Creature attacker, Creature defender) {
-        if (targetsHits.get(0)) {
-            if (attacker.getMainItem().isItemDebuff()) {
-                defender.getCreatureStats().decreaseStatBonuses(attacker.getMainItem().getTempDebuffOpponentStats());
-            }
-        }
 
-        if (targetsHits.get(1)) {
+        if (targetsHits.get(attacker.getCreatureName())) {
             if (defender.getMainItem().isItemDebuff()) {
                 attacker.getCreatureStats().decreaseStatBonuses(defender.getMainItem().getTempDebuffOpponentStats());
             }
         }
+
+        if (targetsHits.get(defender.getCreatureName())) {
+            if (attacker.getMainItem().isItemDebuff()) {
+                defender.getCreatureStats().decreaseStatBonuses(attacker.getMainItem().getTempDebuffOpponentStats());
+            }
+        }
         targetsHits.clear();
+    }
+
+    private static int[] getTriangleBonuses(Creature attacker, Creature defender) {
+        if (attacker.getMainItem() != null && defender.getMainItem() != null) {
+            return triangleCalculator(attacker.getMainItem(), defender.getMainItem());
+        }
+        return new int[]{0,0,0,0};
+    }
+
+    private static boolean creatureCannotAttack(Creature attacker, Creature defender, int distance) {
+        if (attacker.getMainItem() == null ||
+                isTargetNotInRangeAttack(attacker.getMainItem().getItemRange(), distance)) {
+            System.out.println(attacker.getCreatureName() + " cannot attack.");
+            targetsHits.put(defender.getCreatureName(), false);
+            return true;
+        }
+        return false;
     }
 
     private static boolean isDead(Creature creature) {return (creature.getCreatureStats().getHealth() == 0);}
