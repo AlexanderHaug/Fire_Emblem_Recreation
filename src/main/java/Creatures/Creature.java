@@ -29,13 +29,16 @@ public class Creature {
             int creatureRank = creatureStats.getSkillRanks().get(item.getItemType());
             int weaponRank = item.getItemRank();
 
-            if (creatureRank <= weaponRank) {this.mainItem = item;}
+            if (creatureRank <= weaponRank) {
+                this.mainItem = item;
+                this.creatureStats.setStatBonuses(item.getOtherStatIncreases());
+            }
         }
     }
 
     public void equipItem(Accessory item) {
         this.secondaryItem = item;
-        this.creatureStats.increaseStats(item.getOtherStatIncreases());
+        this.creatureStats.setStatBonuses(item.getOtherStatIncreases());
     }
 
     public void healHealth(int healing) {
@@ -104,8 +107,13 @@ public class Creature {
 
     public Accessory getSecondaryItem() {return secondaryItem;}
 
+    public void unequipMainItem() {
+        this.creatureStats.decreaseStatBonuses(this.mainItem.getOtherStatIncreases());
+        this.mainItem = null;
+    }
+
     public void unequipOffItem() {
-        this.creatureStats.decreaseStats(this.secondaryItem.getOtherStatIncreases());
+        this.creatureStats.decreaseStatBonuses(this.secondaryItem.getOtherStatIncreases());
         this.secondaryItem = null;
     }
 

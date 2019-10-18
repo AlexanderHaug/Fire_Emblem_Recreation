@@ -12,7 +12,7 @@ public class createCreatureSetUp {
 
     private static int[] generateMaxStatCaps() {return new int[]{99,80,80,80,80,80,80,80,80,80};}
 
-    private static Character[] generateSkillRanks() {return new Character[]{'E','E','E','E','E','E','E','E','E','E','E','E'};}
+    private static Character[] generateSkillRanks() {return new Character[]{'E','E','E','E','E','E','E','E','E','E','E','E','E'};}
 
     public static Creature setUpCreature(String  name, String unitClass, String army) {
         return new Creature(name, new CreatureStats(new UnitClass(unitClass),

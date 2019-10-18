@@ -72,6 +72,18 @@ public class testCreature {
     }
 
     @Test
+    public void testRaisingAndRevertStatsFromOffItem() {
+        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric.csv","Ylisee");
+        robin.setAllStats(new int[]{1,80,10,10,10,10,10,10,10,10}, new int[]{99,80,80,80,80,80,80,80,80,80});
+
+        assert robin.getCreatureStats().getResistance() == 10;
+        robin.equipItem(new Accessory("Shields/Hexlock_Shield.csv"));
+        assert robin.getCreatureStats().getResistance() == 14;
+        robin.unequipOffItem();
+        assert robin.getCreatureStats().getResistance() == 10;
+    }
+
+    @Test
     public void testMakingInventory() {
 
         ArrayList<Item> inventory = new ArrayList<>();

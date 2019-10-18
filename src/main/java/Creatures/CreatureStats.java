@@ -6,6 +6,7 @@ public class CreatureStats {
 
     private UnitClass unitclass;
     private int[] stats = new int[10];
+    private int[] statBonuses = new int[9];
     private int experience = 0;
     private int[] statGrowthRates;
     private int[] statCaps = new int[10];
@@ -38,7 +39,7 @@ public class CreatureStats {
     }
 
     private void setAllSkillRanks(Character[] ranks) {
-        String[] skillNames = new String[]{"Sword","Axe","Lance","Dagger","Bow","Anima Magic",
+        String[] skillNames = new String[]{"Sword","Axe","Lance","Dagger","Bow","Brawl","Anima Magic",
                                            "Dark Magic","Light Magic","Staff","Riding","Armor","Flying"};
         for (int x = 0; x < skillNames.length; x++) {this.skillRanks.put(skillNames[x], ranks[x]);}
     }
@@ -46,15 +47,15 @@ public class CreatureStats {
     public UnitClass getUnitclass() {return unitclass;}
 
     public int getLevel() {return this.stats[0];}
-    public int getHealth() {return this.stats[1];}
-    public int getStrength() {return this.stats[2];}
-    public int getMagic() {return this.stats[3];}
-    public int getSkill() {return this.stats[4];}
-    public int getLuck() {return this.stats[5];}
-    public int getSpeed() {return this.stats[6];}
-    public int getDefense() {return this.stats[7];}
-    public int getResistance() {return this.stats[8];}
-    public int getCharisma() {return this.stats[9];}
+    public int getHealth() {return this.stats[1] + this.statBonuses[0];}
+    public int getStrength() {return this.stats[2] + this.statBonuses[1];}
+    public int getMagic() {return this.stats[3] + this.statBonuses[2];}
+    public int getSkill() {return this.stats[4] + this.statBonuses[3];}
+    public int getLuck() {return this.stats[5] + this.statBonuses[4];}
+    public int getSpeed() {return this.stats[6] + this.statBonuses[5];}
+    public int getDefense() {return this.stats[7] + this.statBonuses[6];}
+    public int getResistance() {return this.stats[8] + this.statBonuses[7];}
+    public int getCharisma() {return this.stats[9] + this.statBonuses[8];}
     public String getStatus() {return this.status;}
 
     public HashMap<String, Character> getSkillRanks() {return skillRanks;}
@@ -102,4 +103,12 @@ public class CreatureStats {
     }
 
     public void setStatGrowthRates(int[] growthRates) {this.statGrowthRates = growthRates;}
+
+    public void setStatBonuses(int[] bonuses) {
+        for (int x = 0; x < statBonuses.length; x++) {this.statBonuses[x] += bonuses[x];}
+    }
+
+    public void decreaseStatBonuses(int[] bonuses) {
+        for (int x = 0; x < statBonuses.length; x++) {this.statBonuses[x] -= bonuses[x];}
+    }
 }
