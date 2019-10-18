@@ -64,14 +64,30 @@ public class Creature {
 
     public int getDamage() {
         if (mainItem != null) {
-            if (((Weapon)mainItem).isItemMagic()) {return ((Weapon)mainItem).getMight() + creatureStats.getMagic();}
-            else {return ((Weapon)mainItem).getMight() + creatureStats.getStrength();}
+            int weaponMight = ((Weapon)mainItem).getMight();
+
+            if (mainItem.isItemMagic()) {return weaponMight + creatureStats.getMagic();}
+
+            else {return weaponMight + creatureStats.getStrength();}
         }
 
         else {return 0;}
     }
 
-    public int getAvoidRate() {return (int)(creatureStats.getSpeed() * 1.5 * creatureStats.getLuck() * .5);}
+    public int getAttackSpeed() {
+        int weaponWeight = 0;
+        if (this.mainItem != null) {
+            weaponWeight = this.mainItem.getItemWeight() - (this.getCreatureStats().getStrength()/5);}
+        return Math.max(this.getCreatureStats().getSpeed() - weaponWeight, 0);
+    }
+
+    public int getPhysicalAvoidRate() {
+        return getAttackSpeed();
+    }
+
+    public int getMagicalAvoidRate() {
+        return (this.creatureStats.getSpeed() + this.creatureStats.getLuck())/2;
+    }
 
     public int getHitRate() {
 

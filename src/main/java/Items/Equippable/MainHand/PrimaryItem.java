@@ -10,7 +10,7 @@ public abstract class PrimaryItem extends EquippableItem {
     private ArrayList<Integer> itemRange = new ArrayList<>();
     private Character itemRank;
     private ArrayList<String> itemIs = new ArrayList<>();
-    private int[] tempDebuffOpponentStats = new int[8];
+    private int[] tempDebuffOpponentStats = new int[9];
 
     public void setAccuracy(int accuracy) {this.accuracy = accuracy;}
     public void setItemRank(Character rank) {this.itemRank = rank;}

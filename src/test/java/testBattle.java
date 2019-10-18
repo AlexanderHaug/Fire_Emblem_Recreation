@@ -7,6 +7,22 @@ import org.junit.Test;
 import testSetUpMethods.createCreatureSetUp;
 
 public class testBattle {
+
+    @Test
+    public void testAttackTwice() {
+        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Shaman.csv", "Ylisee");
+        Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord.csv", "Monster");
+        robin.getCreatureStats().increaseStats(new int[]{0,0,0,0,10,0,0,0});
+
+        Weapon flux = new Weapon("Dark_Magics/Flux.csv");
+
+        robin.equipItem(flux);
+
+        Battle.doBattle(robin,risen, 2);
+        assert robin.getCreatureStats().getHealth() == 50;
+        assert risen.getCreatureStats().getHealth() == 40;
+    }
+
     @Test
     public void testHealing() {
         Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric.csv","Ylisee");

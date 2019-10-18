@@ -34,10 +34,6 @@ public class CreatureStats {
         for (int x = 0; x < increases.length; x++) {this.stats[x+1] += increases[x];}
     }
 
-    public void decreaseStats(int[] decreases) {
-        for (int x = 0; x < decreases.length; x++) {this.stats[x+2] -= decreases[x];}
-    }
-
     private void setAllSkillRanks(Character[] ranks) {
         String[] skillNames = new String[]{"Sword","Axe","Lance","Dagger","Bow","Brawl","Anima Magic",
                                            "Dark Magic","Light Magic","Staff","Riding","Armor","Flying"};

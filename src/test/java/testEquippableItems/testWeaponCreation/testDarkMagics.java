@@ -27,6 +27,6 @@ public class testDarkMagics {
                 false,false, false, new int[9],
                 new ArrayList<String>(), "Basic dark magic. Inflicts Def -5 to foe for 1 turn.");
         assert Arrays.equals(new Weapon("Dark_Magics/Mire.csv").getTempDebuffOpponentStats(),
-                new int[]{0,0,0,0,0,5,0,0});
+                new int[]{0,0,0,0,0,0,5,0,0});
     }
 }

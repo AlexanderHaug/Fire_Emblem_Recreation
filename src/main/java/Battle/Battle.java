@@ -28,6 +28,8 @@ public class Battle {
             weaponTriangleBonus = triangleCalculator(attacker.getMainItem(), defender.getMainItem());
         }
 
+        boolean attackerDoubles = (attacker.getAttackSpeed() - defender.getAttackSpeed()) > 4;
+
         if (attacker.getMainItem() == null ||
                 isTargetNotInRangeAttack(attacker.getMainItem().getItemRange(), distance)) {
             System.out.println(fighter1Name + " cannot attack.");
@@ -43,6 +45,16 @@ public class Battle {
                 targetsHits.add(false);
             }
             else {unitAttacks(defender, attacker, weaponTriangleBonus[2], weaponTriangleBonus[3]);}
+        }
+
+        if ((!isDead(defender) || !isDead(attacker)) && attackerDoubles) {
+            if (attacker.getMainItem() == null ||
+                    isTargetNotInRangeAttack(attacker.getMainItem().getItemRange(), distance)) {
+                System.out.println(fighter1Name + " cannot attack.");
+                targetsHits.add(false);
+            }
+
+            else {unitAttacks(attacker, defender, weaponTriangleBonus[0], weaponTriangleBonus[1]);}
         }
     }
 
@@ -114,7 +126,7 @@ public class Battle {
     }
 
     private static boolean doesHit(Creature attacker, Creature defender, int hitBonus){
-        int hits = attacker.getHitRate() + hitBonus - defender.getAvoidRate();
+        int hits = attacker.getHitRate() + hitBonus - defender.getPhysicalAvoidRate();
         return hits >= ((int)(Math.random() * 100));
     }
 
@@ -156,13 +168,13 @@ public class Battle {
     private static void resolveConflict(Creature attacker, Creature defender) {
         if (targetsHits.get(0)) {
             if (attacker.getMainItem().isItemDebuff()) {
-                defender.getCreatureStats().decreaseStats(attacker.getMainItem().getTempDebuffOpponentStats());
+                defender.getCreatureStats().decreaseStatBonuses(attacker.getMainItem().getTempDebuffOpponentStats());
             }
         }
 
         if (targetsHits.get(1)) {
             if (defender.getMainItem().isItemDebuff()) {
-                attacker.getCreatureStats().decreaseStats(defender.getMainItem().getTempDebuffOpponentStats());
+                attacker.getCreatureStats().decreaseStatBonuses(defender.getMainItem().getTempDebuffOpponentStats());
             }
         }
         targetsHits.clear();
