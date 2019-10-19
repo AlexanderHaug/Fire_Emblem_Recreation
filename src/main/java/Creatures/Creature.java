@@ -24,20 +24,16 @@ public class Creature {
 
     public CreatureStats getCreatureStats() {return creatureStats;}
 
-    public void healHealth(int healing) {
-        creatureStats.setHealth(creatureStats.getHealth() + healing);
-        if (creatureStats.getHealth() > creatureStats.getHealthCap()) {
-            creatureStats.setHealth(creatureStats.getHealthCap());
-        }
-    }
-
-    public void damageToHealth(int damage) {
-        creatureStats.setHealth(creatureStats.getHealth() - damage);
-        if (creatureStats.getHealth() < 0) {creatureStats.setHealth(0);}
-    }
-
     public String getCreatureName() {return name;}
 
+    public String getArmyAffiliation() {
+        return armyAffiliation;
+    }
+
+    public void setAllStats(int[] stats, int[] statCaps) {this.creatureStats.setAllStats(stats, statCaps);}
+    public void setGrowthRates(int[] growthRates) {this.creatureStats.setStatGrowthRates(growthRates);}
+
+    // Battle Functions
     public int getDamage() {
         if (mainItem != null) {
             int weaponMight = ((Weapon)mainItem).getMight();
@@ -62,10 +58,7 @@ public class Creature {
         return getAttackSpeed();
     }
 
-    public int getMagicalAvoidRate() {
-        return (this.creatureStats.getSpeed()
-                + this.creatureStats.getLuck())/2;
-    }
+    public int getMagicalAvoidRate() {return (this.creatureStats.getSpeed() + this.creatureStats.getLuck())/2;}
 
     public int getHitRate() {
 
@@ -88,35 +81,16 @@ public class Creature {
         else {return criticalRate;}
     }
 
-    public String toString() {return name + " Class: " + creatureStats.getUnitclass().getName() + " Level: " +
-            creatureStats.getLevel() + "\n" + "HP " + creatureStats.getHealth() + ", Attack " +
-            creatureStats.getStrength() + ", Magic "+ creatureStats.getMagic() + "\n" + "Skill " +
-            creatureStats.getSkill() + ", Luck " + creatureStats.getLuck() + ", Speed " +
-            creatureStats.getSpeed() + "\n" + "Defense " + creatureStats.getDefense() + ", Resistance " +
-            creatureStats.getResistance() + ", Exp " + creatureStats.getExperience() + "\n" +
-            getMainItemName();}
-
-    public String getArmyAffiliation() {
-        return armyAffiliation;
+    public void healHealth(int healing) {
+        creatureStats.setHealth(creatureStats.getHealth() + healing);
+        if (creatureStats.getHealth() > creatureStats.getHealthCap()) {
+            creatureStats.setHealth(creatureStats.getHealthCap());
+        }
     }
 
-    public void setAllStats(int[] stats, int[] statCaps) {this.creatureStats.setAllStats(stats, statCaps);}
-    public void setGrowthRates(int[] growthRates) {this.creatureStats.setStatGrowthRates(growthRates);}
-
-    public void setBattalion(Battalion battalion) {this.battalion = battalion;}
-
-    public Battalion getBattalion() {return this.battalion;}
-
-    public int[] getBattalionBonuses() {
-        int[] battalionBonus = new int[2];
-        if (battalion != null) {
-            battalionBonus[0] = battalion.getBattalionPhysicalBonus();
-            battalionBonus[1] = battalion.getBattalionMagicalBonus();
-            return battalionBonus;
-        }
-        else {
-            return battalionBonus;
-        }
+    public void damageToHealth(int damage) {
+        creatureStats.setHealth(creatureStats.getHealth() - damage);
+        if (creatureStats.getHealth() < 0) {creatureStats.setHealth(0);}
     }
 
     // Item Functions
@@ -157,4 +131,29 @@ public class Creature {
         this.creatureStats.getStatBonuses().decreaseStatBonuses(this.secondaryItem.getOtherStatIncreases());
         this.secondaryItem = null;
     }
+
+    // Battalion Functions
+    public void setBattalion(Battalion battalion) {this.battalion = battalion;}
+
+    public Battalion getBattalion() {return this.battalion;}
+
+    public int[] getBattalionBonuses() {
+        int[] battalionBonus = new int[2];
+        if (battalion != null) {
+            battalionBonus[0] = battalion.getBattalionPhysicalBonus();
+            battalionBonus[1] = battalion.getBattalionMagicalBonus();
+            return battalionBonus;
+        }
+        else {
+            return battalionBonus;
+        }
+    }
+
+    public String toString() {return name + " Class: " + creatureStats.getUnitclass().getName() + " Level: " +
+            creatureStats.getLevel() + "\n" + "HP " + creatureStats.getHealth() + ", Attack " +
+            creatureStats.getStrength() + ", Magic "+ creatureStats.getMagic() + "\n" + "Skill " +
+            creatureStats.getSkill() + ", Luck " + creatureStats.getLuck() + ", Speed " +
+            creatureStats.getSpeed() + "\n" + "Defense " + creatureStats.getDefense() + ", Resistance " +
+            creatureStats.getResistance() + ", Exp " + creatureStats.getExperience() + "\n" +
+            getMainItemName();}
 }
