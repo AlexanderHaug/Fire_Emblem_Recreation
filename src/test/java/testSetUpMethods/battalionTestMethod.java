@@ -6,7 +6,7 @@ public class battalionTestMethod {
 
     public static void createAndTestBattalion(String battalionFile, String battalionName,
                                               int physicalBonus, int magicalBonus, int hitBonus,
-                                              int critBonus, int avoBonus) {
+                                              int critBonus, int avoBonus, int proBonus, int resBonus) {
         Battalion battalion = new Battalion(battalionFile);
         assert battalion.getBattalionName().equals(battalionName);
         assert battalion.getPhysicalBonus() == physicalBonus;
@@ -14,5 +14,7 @@ public class battalionTestMethod {
         assert battalion.getBattalionHitBonus() == hitBonus;
         assert battalion.getBattalionCritBonus() == critBonus;
         assert battalion.getBattalionAvoBonus() == avoBonus;
+        assert battalion.getBattalionProtectionBonus() == proBonus;
+        assert battalion.getBattalionResistanceBonus() == resBonus;
     }
 }
