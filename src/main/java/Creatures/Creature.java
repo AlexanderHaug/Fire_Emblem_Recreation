@@ -64,7 +64,7 @@ public class Creature {
 
         if (mainItem != null) {
             return (int)((creatureStats.getSkill() * 2) *
-                    (creatureStats.getLuck() * .5)) + mainItem.getAccuracy();
+                    (creatureStats.getLuck() * .5)) + mainItem.getAccuracy() + getBattalionBonuses()[2];
         }
 
         else {return 0;}
@@ -138,10 +138,11 @@ public class Creature {
     public Battalion getBattalion() {return this.battalion;}
 
     public int[] getBattalionBonuses() {
-        int[] battalionBonus = new int[2];
+        int[] battalionBonus = new int[3];
         if (battalion != null) {
             battalionBonus[0] = battalion.getBattalionPhysicalBonus();
             battalionBonus[1] = battalion.getBattalionMagicalBonus();
+            battalionBonus[2] = battalion.getBattalionHitBonus();
             return battalionBonus;
         }
         else {
