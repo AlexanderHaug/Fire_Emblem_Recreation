@@ -11,6 +11,14 @@ List of things to be implemented.
     * Staves
     * Monster/Claws
 * Determine Costs for everything
+## Battalions
+* Add Battalion Level (Max 5)
+* Add Battalion Exp
+* Add Battalion Growth
+* Add Battalion MaxStats
+## Maps
+* Add Battle Map
+    * Once done fully implement Gambits 
 ## Battle
 * Add more conditions to "assist"
     * Attacking (Silence, Sleep, Berserk)
