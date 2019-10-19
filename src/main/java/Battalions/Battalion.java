@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 
 public class Battalion {
-    private String battalionName = "";
+    private String battalionName = "No Battalion";
     private int battalionPhysicalBonus = 0;
     private int battalionMagicalBonus = 0;
     private int battalionHitBonus = 0;
@@ -19,6 +19,8 @@ public class Battalion {
     private Gambit battalionGambit;
     private Character battalionRank;
     private int battalionEndurance = 0;
+
+    public Battalion() {}
 
     public Battalion(String file) {
         String filePath = Paths.get(Paths.get(System.getProperty("user.dir")).toString(),
