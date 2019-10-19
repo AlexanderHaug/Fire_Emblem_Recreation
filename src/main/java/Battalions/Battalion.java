@@ -17,6 +17,8 @@ public class Battalion {
     private int battalionResistanceBonus = 0;
     private int battalionCharmBonus = 0;
     private Gambit battalionGambit;
+    private Character battalionRank;
+    private int battalionEndurance = 0;
 
     public Battalion(String file) {
         String filePath = Paths.get(Paths.get(System.getProperty("user.dir")).toString(),
@@ -36,6 +38,8 @@ public class Battalion {
             this.battalionResistanceBonus = Integer.parseInt(data[7]);
             this.battalionCharmBonus = Integer.parseInt(data[8]);
             this.battalionGambit = new Gambit(data[9]);
+            this.battalionRank = data[10].charAt(0);
+            this.battalionEndurance = Integer.parseInt(data[11]);
             reader.close();
         }
         catch (FileNotFoundException e) {System.out.println("The battalion file was not found.");}
@@ -61,4 +65,8 @@ public class Battalion {
     public int getBattalionCharmBonus() {return battalionCharmBonus;}
 
     public Gambit getBattalionGambit() {return battalionGambit;}
+
+    public Character getBattalionRank() {return battalionRank;}
+
+    public int getBattalionEndurance() {return battalionEndurance;}
 }

@@ -8,7 +8,7 @@ public class battalionTestMethod {
     public static void createAndTestBattalion(String battalionFile, String battalionName,
                                               int physicalBonus, int magicalBonus, int hitBonus,
                                               int critBonus, int avoBonus, int proBonus, int resBonus,
-                                              int chrmBonus, String gambit) {
+                                              int chrmBonus, String gambit, Character rank, int end) {
         Battalion battalion = new Battalion(battalionFile);
         assert battalion.getBattalionName().equals(battalionName);
         assert battalion.getBattalionPhysicalBonus() == physicalBonus;
@@ -20,5 +20,7 @@ public class battalionTestMethod {
         assert battalion.getBattalionResistanceBonus() == resBonus;
         assert battalion.getBattalionCharmBonus() == chrmBonus;
         assert battalion.getBattalionGambit().getGambitName().equals(new Gambit(gambit).getGambitName());
+        assert battalion.getBattalionRank().equals(rank);
+        assert battalion.getBattalionEndurance() == end;
     }
 }
