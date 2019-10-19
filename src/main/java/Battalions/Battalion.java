@@ -13,8 +13,10 @@ public class Battalion {
     private int battalionHitBonus = 0;
     private int battalionCritBonus = 0;
     private int battalionAvoBonus = 0;
-    private int battalionProtectionBonus;
-    private int battalionResistanceBonus;
+    private int battalionProtectionBonus = 0;
+    private int battalionResistanceBonus = 0;
+    private int battalionCharmBonus = 0;
+    private Gambit battalionGambit;
 
     public Battalion(String file) {
         String filePath = Paths.get(Paths.get(System.getProperty("user.dir")).toString(),
@@ -32,17 +34,19 @@ public class Battalion {
             this.battalionAvoBonus = Integer.parseInt(data[5]);
             this.battalionProtectionBonus = Integer.parseInt(data[6]);
             this.battalionResistanceBonus = Integer.parseInt(data[7]);
+            this.battalionCharmBonus = Integer.parseInt(data[8]);
+            this.battalionGambit = new Gambit(data[9]);
             reader.close();
         }
-        catch (FileNotFoundException e) {System.out.println("The file was not found.");}
+        catch (FileNotFoundException e) {System.out.println("The battalion file was not found.");}
         catch (IOException e) {e.printStackTrace();}
     }
 
     public String getBattalionName() {return this.battalionName;}
 
-    public int getPhysicalBonus() {return this.battalionPhysicalBonus;}
+    public int getBattalionPhysicalBonus() {return this.battalionPhysicalBonus;}
 
-    public int getMagicalBonus() {return this.battalionMagicalBonus;}
+    public int getBattalionMagicalBonus() {return this.battalionMagicalBonus;}
 
     public int getBattalionHitBonus() {return this.battalionHitBonus;}
 
@@ -53,4 +57,8 @@ public class Battalion {
     public int getBattalionProtectionBonus() {return battalionProtectionBonus;}
 
     public int getBattalionResistanceBonus() {return battalionResistanceBonus;}
+
+    public int getBattalionCharmBonus() {return battalionCharmBonus;}
+
+    public Gambit getBattalionGambit() {return battalionGambit;}
 }
