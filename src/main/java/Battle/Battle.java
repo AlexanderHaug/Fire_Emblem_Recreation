@@ -149,13 +149,13 @@ public class Battle {
 
         if (targetsHits.get(attacker.getCreatureName())) {
             if (defender.getMainItem().isItemDebuff()) {
-                attacker.getCreatureStats().decreaseStatBonuses(defender.getMainItem().getTempDebuffOpponentStats());
+                attacker.getCreatureStats().getStatBonuses().decreaseStatBonuses(defender.getMainItem().getTempDebuffOpponentStats());
             }
         }
 
         if (targetsHits.get(defender.getCreatureName())) {
             if (attacker.getMainItem().isItemDebuff()) {
-                defender.getCreatureStats().decreaseStatBonuses(attacker.getMainItem().getTempDebuffOpponentStats());
+                defender.getCreatureStats().getStatBonuses().decreaseStatBonuses(attacker.getMainItem().getTempDebuffOpponentStats());
             }
         }
         targetsHits.clear();
