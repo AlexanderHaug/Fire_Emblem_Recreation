@@ -10,8 +10,8 @@ public class testBattle {
 
     @Test
     public void testAttackTwice() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Shaman.csv", "Ylisee");
-        Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord.csv", "Monster");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Shaman", "Ylisee");
+        Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord", "Monster");
         robin.getCreatureStats().increaseStats(new int[]{0,0,0,0,10,0,0,0});
 
         Weapon flux = new Weapon("Dark_Magics/Flux.csv");
@@ -25,8 +25,8 @@ public class testBattle {
 
     @Test
     public void testHealing() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric.csv","Ylisee");
-        Creature chrom = createCreatureSetUp.setUpCreature("Chrom", "Lord.csv","Ylisee");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric","Ylisee");
+        Creature chrom = createCreatureSetUp.setUpCreature("Chrom", "Lord","Ylisee");
 
         robin.getCreatureStats().setMagic(9);
         chrom.damageToHealth(49);
@@ -40,8 +40,8 @@ public class testBattle {
 
     @Test
     public void testCleansing() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Cleric.csv", "Ylisee");
-        Creature chrom = createCreatureSetUp.setUpCreature("Chrom", "Lord.csv", "Ylisee");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Cleric", "Ylisee");
+        Creature chrom = createCreatureSetUp.setUpCreature("Chrom", "Lord", "Ylisee");
 
         robin.getCreatureStats().getSkillRanks().put("Staff", 'C');
 
@@ -55,8 +55,8 @@ public class testBattle {
 
     @Test
     public void testBattleWithRangeCannotCounterAttack() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Shaman.csv", "Ylisee");
-        Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord.csv", "Monster");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Shaman", "Ylisee");
+        Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord", "Monster");
 
         risen.getCreatureStats().getSkillRanks().put("Sword", 'C');
 
@@ -73,8 +73,8 @@ public class testBattle {
 
     @Test
     public void testDebuffOpponentsStats() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Shaman.csv", "Ylisee");
-        Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord.csv", "Monster");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Shaman", "Ylisee");
+        Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord", "Monster");
 
         robin.getCreatureStats().getSkillRanks().put("Dark Magic", 'C');
 
@@ -162,8 +162,8 @@ public class testBattle {
 
     @Test
     public void testNormalCollosseum() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Lord.csv","Ylisee");
-        Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord.csv", "Monster");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Lord","Ylisee");
+        Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord", "Monster");
 
         robin.getCreatureStats().getSkillRanks().put("Sword", 'C');
         risen.getCreatureStats().getSkillRanks().put("Sword", 'C');

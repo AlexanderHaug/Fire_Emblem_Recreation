@@ -21,7 +21,7 @@ public class UnitClass {
                 "src").toString() + "/main/resources/Classes/";
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(filePath+file));
+            BufferedReader reader = new BufferedReader(new FileReader(filePath+file+".csv"));
             String row;
             row = reader.readLine();
             String[] data = row.split(",");

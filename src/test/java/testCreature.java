@@ -11,7 +11,7 @@ public class testCreature {
 
     @Test
     public void testCreatureCreation() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric.csv","Ylisee");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric","Ylisee");
         robin.setAllStats(new int[]{1,21,80,9,45,40,40,40,40,40}, new int[]{99,80,80,80,80,80,80,80,80,80});
         robin.setGrowthRates(new int[]{100,60,50,70,80,20,30,10,5});
 
@@ -33,7 +33,7 @@ public class testCreature {
 
     @Test
     public void testLevelUp() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric.csv","Ylisee");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric","Ylisee");
         robin.setAllStats(new int[]{1,10,10,10,10,10,10,10,10,10}, new int[]{99,80,80,80,80,80,80,80,80,80});
         robin.setGrowthRates(new int[]{200,200,200,200,200,200,200,200,200});
 
@@ -53,7 +53,7 @@ public class testCreature {
 
     @Test
     public void testLevelUpMaxStats() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric.csv","Ylisee");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric","Ylisee");
         robin.setAllStats(new int[]{1,80,10,10,10,10,10,10,10,10}, new int[]{99,80,80,80,80,80,80,80,80,80});
         robin.setGrowthRates(new int[]{200,200,200,200,200,200,200,200,200});
 
@@ -73,7 +73,7 @@ public class testCreature {
 
     @Test
     public void testRaisingAndRevertStatsFromOffItem() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric.csv","Ylisee");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric","Ylisee");
         robin.setAllStats(new int[]{1,80,10,10,10,10,10,10,10,10}, new int[]{99,80,80,80,80,80,80,80,80,80});
 
         assert robin.getCreatureStats().getResistance() == 10;
