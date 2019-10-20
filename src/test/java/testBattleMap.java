@@ -10,7 +10,9 @@ public class testBattleMap {
 
     @Test
     public void testBattleMapWith2Teams() {
-        ArrayList<Creature> ylisseArmy = createArmy(2, new String[]{"Cleric"}, "Ylisse");
-        BattleMap battleMap = new BattleMap();
+        ArrayList<ArrayList<Creature>> armys = new ArrayList<>();
+        armys.add(createArmy(1, new String[]{"Cleric"}, "Red"));
+        armys.add(createArmy(1, new String[]{"Shaman"}, "Blue"));
+        BattleMap battleMap = new BattleMap(armys);
     }
 }
