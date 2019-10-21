@@ -40,4 +40,20 @@ public class testTileMap {
         assert battleMap.getArmys().equals(armys);
         assert Arrays.deepEquals(battleMap.getMap(), testMap);
     }
+
+    @Test
+    public void testTileMapWithCSV() {
+
+        ArrayList<ArrayList<Creature>> armys = new ArrayList<>();
+        armys.add(createArmy(2, new String[]{"Cleric"}, "Red"));
+        armys.add(createArmy(2, new String[]{"Shaman"}, "Blue"));
+        TileMap battleMap = new TileMap(armys, "3x3");
+
+        Creature[][] testMap = new Creature[3][3];
+        testMap[0][1] = armys.get(0).get(0);
+        testMap[2][1] = armys.get(1).get(0);
+
+        assert battleMap.getArmys().equals(armys);
+        assert Arrays.deepEquals(battleMap.getMap(), testMap);
+    }
 }
