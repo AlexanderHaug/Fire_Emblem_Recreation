@@ -65,6 +65,7 @@ public class CreatureStats {
     public void setStrength(int strength) {this.stats[2] = strength;}
     public void setMagic(int magic) {this.stats[3] = magic;}
     public void setSkill(int skill) {this.stats[4] = skill;}
+    public void setSpeed(int speed) {this.stats[6] = speed;}
 
     public void setStatus(String status) {
         if (status.equals("Poison") || status.equals("Beserk") || status.equals("Silence") || status.equals("Sleep")

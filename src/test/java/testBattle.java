@@ -12,11 +12,14 @@ public class testBattle {
     public void testAttackTwice() {
         Creature robin = createCreatureSetUp.setUpCreature("Robin", "Shaman", "Ylisee");
         Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord", "Monster");
-        robin.getCreatureStats().increaseStats(new int[]{0,0,0,0,10,0,0,0});
+        robin.getCreatureStats().setSpeed(60);
 
         Weapon flux = new Weapon("Dark_Magics/Flux.csv");
 
         robin.equipItem(flux);
+
+        int rbs = robin.getAttackSpeed();
+        int rs = risen.getAttackSpeed();
 
         Battle.doBattle(robin,risen, 2);
         assert robin.getCreatureStats().getHealth() == 50;

@@ -49,9 +49,12 @@ public class Creature {
 
     public int getAttackSpeed() {
         int weaponWeight = 0;
+
         if (this.mainItem != null) {
-            weaponWeight = this.mainItem.getItemWeight() - (this.getCreatureStats().getStrength()/5);}
-        return Math.max(this.getCreatureStats().getSpeed() - weaponWeight, 0);
+            weaponWeight = Math.max(this.mainItem.getItemWeight() - (this.getCreatureStats().getStrength()/5), 0);
+        }
+
+        return this.getCreatureStats().getSpeed() - weaponWeight;
     }
 
     public int getPhysicalAvoidRate() {
