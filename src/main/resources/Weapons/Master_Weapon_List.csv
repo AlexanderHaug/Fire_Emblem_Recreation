@@ -1,0 +1,7 @@
+Armorslayer,Sword,8,80,0,1:1,11,D,20,1450,,,Armored,Sharp enough to pierce even the thickest plate. This sword is effective against armored units.
+Brave Sword,Sword,9,75,0,1:1,12,B,30,2100,Brave,,,The wielder of this blade is emboldened and will attack twice when initiating combat.
+Iron Sword,Sword,5,90,0,1:1,5,E,40,520,,,,A standard sword made of iron simple but effective.
+Killing Edge,Sword,8,85,25,1:1,10,C,20,1470,,,,Deadly sharp this sword boasts a high critical-hit rate.
+Silver Sword,Sword,12,90,0,1:1,8,B,30,1410,,,,A sword crafted from shining silver.
+Steel Sword,Sword,8,85,0,1:1,10,D,50,910,,,,A weighty steel sword that deals significant blows.
+Training Sword,Sword,3,100,0,1:1,4,E,50,260,,,,This simple sword is perfect for training purposes. But cannot inflict critical hits.
