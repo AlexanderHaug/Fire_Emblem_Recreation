@@ -61,7 +61,7 @@ public class testAxes {
                 11, 70,25,1,1,
                 12,'C', 20,1530,false,
                 false,false, false, new int[9],
-                new ArrayList<String>(), "Deadly sharp. This axe boasts a " +
+                new ArrayList<String>(), "Deadly sharp, this axe boasts a " +
                         "high critical-hit rate.");
     }
 
