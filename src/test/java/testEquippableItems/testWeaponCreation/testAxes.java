@@ -10,7 +10,7 @@ public class testAxes {
 
     @Test
     public void testTrainingAxe() {
-        createAndTestWeapon("Training_Axe", "Training Axe", "Axe",
+        createAndTestWeapon("Training Axe", "Axe",
                 6, 80,0,1,1,
                 6,'E', 50,260,false,
                 false,false, false, new int[9],
@@ -20,7 +20,7 @@ public class testAxes {
 
     @Test
     public void testIronAxe() {
-        createAndTestWeapon("Iron_Axe", "Iron Axe", "Axe",
+        createAndTestWeapon("Iron Axe", "Axe",
                 8, 70,0,1,1,
                 7,'E', 45,270,false,
                 false,false, false, new int[9],
@@ -29,7 +29,7 @@ public class testAxes {
 
     @Test
     public void testSteelAxe() {
-        createAndTestWeapon("Steel_Axe", "Steel Axe", "Axe",
+        createAndTestWeapon("Steel Axe", "Axe",
                 11, 65,0,1,1,
                 12,'D', 55,920,false,
                 false,false, false, new int[9],
@@ -38,7 +38,7 @@ public class testAxes {
 
     @Test
     public void testSilverAxe() {
-        createAndTestWeapon("Silver_Axe", "Silver Axe", "Axe",
+        createAndTestWeapon("Silver Axe", "Axe",
                 16, 70,0,1,1,
                 10,'B', 30,1500,false,
                 false,false, false, new int[9],
@@ -47,7 +47,7 @@ public class testAxes {
 
     @Test
     public void testBraveAxe() {
-        createAndTestWeapon("Brave_Axe", "Brave Axe", "Axe",
+        createAndTestWeapon("Brave Axe", "Axe",
                 12, 60,0,1,1,
                 14,'B', 30,2300,false,
                 true,false, false, new int[9],
@@ -57,7 +57,7 @@ public class testAxes {
 
     @Test
     public void testKillerAxe() {
-        createAndTestWeapon("Killer_Axe", "Killer Axe", "Axe",
+        createAndTestWeapon("Killer Axe", "Axe",
                 11, 70,25,1,1,
                 12,'C', 20,1530,false,
                 false,false, false, new int[9],
@@ -68,7 +68,7 @@ public class testAxes {
     public void testHammer() {
         ArrayList<String> a = new ArrayList<>();
         a.add("Armored");
-        createAndTestWeapon("Hammer", "Hammer", "Axe",
+        createAndTestWeapon("Hammer", "Axe",
                 10, 60,0,1,1,
                 15,'D', 20,1550,false,
                 false,false, false, new int[9],

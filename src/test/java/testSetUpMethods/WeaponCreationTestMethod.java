@@ -1,13 +1,9 @@
 package testSetUpMethods;
 
-import Items.Equippable.MainHand.Anima_Magics.Fire;
-import Items.Equippable.MainHand.Anima_Magics.Wind;
-import Items.Equippable.MainHand.Dark_Magics.Flux;
-import Items.Equippable.MainHand.Dark_Magics.Mire;
-import Items.Equippable.MainHand.Light_Magics.Aura;
-import Items.Equippable.MainHand.Light_Magics.Divine;
-import Items.Equippable.MainHand.Light_Magics.Seraphim;
-import Items.Equippable.MainHand.Light_Magics.Shine;
+import Items.Equippable.MainHand.Anima_Magics.*;
+import Items.Equippable.MainHand.Axes.*;
+import Items.Equippable.MainHand.Dark_Magics.*;
+import Items.Equippable.MainHand.Light_Magics.*;
 import Items.Equippable.MainHand.Staff;
 import Items.Equippable.MainHand.Swords.*;
 import Items.Equippable.MainHand.Weapon;
@@ -102,6 +98,20 @@ public class WeaponCreationTestMethod {
                 return new KillingEdge();
             case "Armorslayer":
                 return new Armorslayer();
+            case "Training Axe":
+                return new TrainingAxe();
+            case "Iron Axe":
+                return new IronAxe();
+            case "Steel Axe":
+                return new SteelAxe();
+            case "Silver Axe":
+                return new SilverAxe();
+            case "Brave Axe":
+                return new BraveAxe();
+            case "Killer Axe":
+                return new KillerAxe();
+            case "Hammer":
+                return new Hammer();
             case "Fire":
                 return new Fire();
             case "Wind":
