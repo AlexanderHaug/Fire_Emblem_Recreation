@@ -1,6 +1,8 @@
 import Creatures.Creature;
 import Items.Equippable.MainHand.Staff;
+import Items.Equippable.MainHand.Staves.Heal;
 import Items.Equippable.OffHand.Accessory;
+import Items.Equippable.OffHand.Shields.HexlockShield;
 import Items.Item;
 import org.junit.Test;
 import testSetUpMethods.createCreatureSetUp;
@@ -15,7 +17,7 @@ public class testCreature {
         robin.setAllStats(new int[]{1,21,80,9,45,40,40,40,40,40}, new int[]{99,80,80,80,80,80,80,80,80,80});
         robin.setGrowthRates(new int[]{100,60,50,70,80,20,30,10,5});
 
-        robin.equipItem(new Staff("Staves/Heal.csv"));
+        robin.equipItem(new Heal());
 
         assert robin.getCreatureStats().getLevel() == 1;
         assert robin.getCreatureStats().getHealth() == 21;
@@ -77,7 +79,7 @@ public class testCreature {
         robin.setAllStats(new int[]{1,80,10,10,10,10,10,10,10,10}, new int[]{99,80,80,80,80,80,80,80,80,80});
 
         assert robin.getCreatureStats().getResistance() == 10;
-        robin.equipItem(new Accessory("Shields/Hexlock_Shield.csv"));
+        robin.equipItem(new HexlockShield());
         assert robin.getCreatureStats().getResistance() == 14;
         robin.unequipOffItem();
         assert robin.getCreatureStats().getResistance() == 10;
@@ -88,8 +90,8 @@ public class testCreature {
 
         ArrayList<Item> inventory = new ArrayList<>();
 
-        Staff heal = new Staff("Staves/Heal.csv");
-        Accessory hexlockShield = new Accessory("Shields/Hexlock_Shield.csv");
+        Staff heal = new Heal();
+        Accessory hexlockShield = new HexlockShield();
 
         inventory.add(heal);
         inventory.add(hexlockShield);

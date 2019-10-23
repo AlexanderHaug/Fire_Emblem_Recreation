@@ -1,16 +1,16 @@
 package testSetUpMethods;
 
 import Items.Equippable.OffHand.Accessory;
+import Items.Equippable.OffHand.Shields.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class AccessoryCreationTestMethod {
-    public static void createAndTestAccessory(String accessoryFile, String accessoryName, String accessoryType,
+    public static void createAndTestAccessory(String accessoryName, String accessoryType,
                                            int accessoryProtection, int accessoryWeight, int[] otherStat,
                                            int[] otherBattle, ArrayList<String> otherNull, String weaponDescription) {
-        Accessory accessory = new Accessory(determineAccessoryFileLocation(accessoryType) +
-                "/" + accessoryFile + ".csv");
+        Accessory accessory = createAccessory(accessoryName);
         assert accessory.getName().equals(accessoryName);
         assert accessory.getItemProtection() == accessoryProtection;
         assert accessory.getItemWeight() == accessoryWeight;
@@ -20,16 +20,20 @@ public class AccessoryCreationTestMethod {
         assert accessory.getItemDescription().equals(weaponDescription);
     }
 
-    private static String determineAccessoryFileLocation(String accessoryType) {
-        switch (accessoryType) {
-            case "Shield":
-                return "Shields";
-            case "Ring":
-                return "Rings";
-            case "Staff":
-                return "Staves";
+    private static Accessory createAccessory(String accessoryName) {
+        switch (accessoryName) {
+            case "Leather Shield":
+                return new LeatherShield();
+            case "Iron Shield":
+                return new IronShield();
+            case "Steel Shield":
+                return new SteelShield();
+            case "Silver Shield":
+                return new SilverShield();
+            case "Hexlock Shield":
+                return new HexlockShield();
             default:
-                return "Gems";
+                return null;
         }
     }
 }
