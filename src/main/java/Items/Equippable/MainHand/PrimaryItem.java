@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public abstract class PrimaryItem extends EquippableItem {
     private String itemType;
     private int accuracy = 0;
-    private ArrayList<Integer> itemRange = new ArrayList<>();
+    private int[] itemRange = new int[2];
     private Character itemRank;
     private ArrayList<String> itemIs = new ArrayList<>();
     private int[] tempDebuffOpponentStats = new int[9];
@@ -28,15 +28,12 @@ public abstract class PrimaryItem extends EquippableItem {
     public int getAccuracy() {return accuracy;}
     public Character getItemRank() {return itemRank;}
     public String getItemType() {return itemType;}
-    public ArrayList<Integer> getItemRange() {return itemRange;}
+    public int[] getItemRange() {return itemRange;}
+    public int getItemShortRange() {return itemRange[0];}
+    public int getItemLongRange() {return itemRange[1];}
     public int[] getTempDebuffOpponentStats() {return tempDebuffOpponentStats;}
 
-    public void setItemsRange(String data) {
-        String[] splt = data.split(":");
-        for (String s : splt) {
-            this.itemRange.add(Integer.parseInt(s));
-        }
-    }
+    public void setItemsRange(int[] data) {this.itemRange = data;}
 
     public void setItemIs(String data) {
         if (data.contains("Magic")) {this.itemIs.add("Magic");}
