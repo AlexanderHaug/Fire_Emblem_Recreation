@@ -61,7 +61,7 @@ public class testLances {
                 9, 80,25,1,1,
                 11,'C', 20,260,false,
                 false,false, false, new int[9],
-                new ArrayList<String>(), "Deadly sharp. This lance boasts a " +
+                new ArrayList<String>(), "Deadly sharp, this lance boasts a " +
                         "high critical-hit rate.");
     }
 
