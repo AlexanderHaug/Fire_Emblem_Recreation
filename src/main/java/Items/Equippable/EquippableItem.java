@@ -14,7 +14,6 @@ public abstract class EquippableItem extends Item {
     public int getItemWeight() {return itemWeight;}
     public int[] getOtherStatIncreases() {return this.otherStatIncreases;}
 
-    public void setOtherStatIncreases(String[] data) {
-        for (int x = 0; x < data.length; x++) {this.otherStatIncreases[x] = Integer.parseInt(data[x]);}
-    }
+    public void setStatModifiers(int[] data) {this.otherStatIncreases = data;}
 }
+

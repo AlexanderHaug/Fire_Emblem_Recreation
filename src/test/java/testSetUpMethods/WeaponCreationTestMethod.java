@@ -1,27 +1,36 @@
 package testSetUpMethods;
 
+import Items.Equippable.MainHand.Anima_Magics.Fire;
+import Items.Equippable.MainHand.Anima_Magics.Wind;
+import Items.Equippable.MainHand.Dark_Magics.Flux;
+import Items.Equippable.MainHand.Dark_Magics.Mire;
+import Items.Equippable.MainHand.Light_Magics.Aura;
+import Items.Equippable.MainHand.Light_Magics.Divine;
+import Items.Equippable.MainHand.Light_Magics.Seraphim;
+import Items.Equippable.MainHand.Light_Magics.Shine;
 import Items.Equippable.MainHand.Staff;
+import Items.Equippable.MainHand.Swords.*;
 import Items.Equippable.MainHand.Weapon;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class WeaponCreationTestMethod {
-    public static void createAndTestWeapon(String weaponFile, String weaponName, String weaponType, int weaponMight,
+    public static void createAndTestWeapon(String weaponName, String weaponType, int weaponMight,
                                            int weaponAccuracy, int weaponCritical, int weaponShortRange,
                                            int weaponLongRange, int weaponWeight, Character weaponRank, int weaponUses,
                                            int weaponCost, boolean weaponIsMagic,boolean weaponIsBrave,
                                            boolean weaponIsDevil, boolean weaponIsPoison,
                                            int[] otherStatIncreases, ArrayList<String> weaponEffectiveAgainst,
                                            String weaponDescription) {
-        Weapon weapon = new Weapon(determineWeaponFileLocation(weaponType) + "/" + weaponFile + ".csv");
+        Weapon weapon = createWeapon(weaponName);
         assert weapon.getName().equals(weaponName);
         assert weapon.getItemType().equals(weaponType);
         assert weapon.getMight() == weaponMight;
         assert weapon.getAccuracy() == weaponAccuracy;
         assert weapon.getCritical() == weaponCritical;
-        assert weapon.getItemRange().get(0) == weaponShortRange;
-        assert weapon.getItemRange().get(1) == weaponLongRange;
+        assert weapon.getItemShortRange() == weaponShortRange;
+        assert weapon.getItemLongRange() == weaponLongRange;
         assert weapon.getItemWeight() == weaponWeight;
         assert weapon.getItemRank().equals(weaponRank);
         assert weapon.getItemUses() == weaponUses;
@@ -46,8 +55,8 @@ public class WeaponCreationTestMethod {
         assert staff.getHealAmount() == healAmount;
         assert staff.getItemType().equals(weaponType);
         assert staff.getAccuracy() == weaponAccuracy;
-        assert staff.getItemRange().get(0) == weaponShortRange;
-        assert staff.getItemRange().get(1) == weaponLongRange;
+        assert staff.getItemShortRange() == weaponShortRange;
+        assert staff.getItemLongRange() == weaponLongRange;
         assert staff.getItemWeight() == weaponWeight;
         assert staff.getItemRank().equals(weaponRank);
         assert staff.getItemUses() == weaponUses;
@@ -74,6 +83,43 @@ public class WeaponCreationTestMethod {
                 return "Dark_Magics";
             default:
                 return "Anima_Magics";
+        }
+    }
+
+    private static Weapon createWeapon(String weaponName) {
+        switch (weaponName) {
+            case "Training Sword":
+                return new TrainingSword();
+            case "Iron Sword":
+                return new IronSword();
+            case "Steel Sword":
+                return new SteelSword();
+            case "Silver Sword":
+                return new SilverSword();
+            case "Brave Sword":
+                return new BraveSword();
+            case "Killing Edge":
+                return new KillingEdge();
+            case "Armorslayer":
+                return new Armorslayer();
+            case "Fire":
+                return new Fire();
+            case "Wind":
+                return new Wind();
+            case "Shine":
+                return new Shine();
+            case "Seraphim":
+                return new Seraphim();
+            case "Divine":
+                return new Divine();
+            case "Aura":
+                return new Aura();
+            case "Flux":
+                return new Flux();
+            case "Mire":
+                return new Mire();
+            default:
+                return null;
         }
     }
 }
