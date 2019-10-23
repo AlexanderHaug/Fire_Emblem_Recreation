@@ -92,6 +92,34 @@ public class WeaponCreationTestMethod {
                 return new KillerAxe();
             case "Hammer":
                 return new Hammer();
+            case "Training Lance":
+                return new TrainingLance();
+            case "Iron Lance":
+                return new IronLance();
+            case "Steel Lance":
+                return new SteelLance();
+            case "Silver Lance":
+                return new SilverLance();
+            case "Brave Lance":
+                return new BraveLance();
+            case "Killer Lance":
+                return new KillerLance();
+            case "Heavy Spear":
+                return new HeavySpear();
+            case "Training Gauntlets":
+                return new TrainingGauntlets();
+            case "Iron Gauntlets":
+                return new IronGauntlets();
+            case "Steel Gauntlets":
+                return new SteelGauntlets();
+            case "Silver Gauntlets":
+                return new SilverGauntlets();
+            case "Aura Knuckles":
+                return new AuraKnuckles();
+            case "Killer Knuckles":
+                return new KillerKnuckles();
+            case "Dragon Claws":
+                return new DragonClaws();
             case "Fire":
                 return new Fire();
             case "Elfire":
@@ -104,7 +132,7 @@ public class WeaponCreationTestMethod {
                 return new Wind();
             case "Elwind":
                 return new Elwind();
-            case "CuttingGale":
+            case "Cutting Gale":
                 return new CuttingGale();
             case "Excalibur":
                 return new Excalibur();
