@@ -1,7 +1,18 @@
 import Battle.Battle;
 import Battle.WeaponTriangle;
 import Creatures.Creature;
+import Items.Equippable.MainHand.Anima_Magics.Fire;
+import Items.Equippable.MainHand.Anima_Magics.Wind;
+import Items.Equippable.MainHand.Axes.TrainingAxe;
+import Items.Equippable.MainHand.Dark_Magics.Flux;
+import Items.Equippable.MainHand.Dark_Magics.Mire;
+import Items.Equippable.MainHand.Light_Magics.Shine;
 import Items.Equippable.MainHand.Staff;
+import Items.Equippable.MainHand.Staves.Heal;
+import Items.Equippable.MainHand.Staves.Restore;
+import Items.Equippable.MainHand.Swords.Armorslayer;
+import Items.Equippable.MainHand.Swords.KillingEdge;
+import Items.Equippable.MainHand.Swords.TrainingSword;
 import Items.Equippable.MainHand.Weapon;
 import org.junit.Test;
 import testSetUpMethods.createCreatureSetUp;
@@ -14,12 +25,9 @@ public class testBattle {
         Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord", "Monster");
         robin.getCreatureStats().setSpeed(60);
 
-        Weapon flux = new Weapon("Dark_Magics/Flux.csv");
+        Weapon flux = new Flux();
 
         robin.equipItem(flux);
-
-        int rbs = robin.getAttackSpeed();
-        int rs = risen.getAttackSpeed();
 
         Battle.doBattle(robin,risen, 2);
         assert robin.getCreatureStats().getHealth() == 50;
@@ -34,7 +42,7 @@ public class testBattle {
         robin.getCreatureStats().setMagic(9);
         chrom.damageToHealth(49);
 
-        Staff heal = new Staff("Staves/Heal.csv");
+        Staff heal = new Heal();
         robin.equipItem(heal);
 
         Battle.assist(robin, chrom, 1);
@@ -48,7 +56,7 @@ public class testBattle {
 
         robin.getCreatureStats().getSkillRanks().put("Staff", 'C');
 
-        Staff restore = new Staff("Staves/Restore.csv");
+        Staff restore = new Restore();
         robin.equipItem(restore);
 
         chrom.getCreatureStats().setStatus("Poisoned");
@@ -63,8 +71,8 @@ public class testBattle {
 
         risen.getCreatureStats().getSkillRanks().put("Sword", 'C');
 
-        Weapon flux = new Weapon("Dark_Magics/Flux.csv");
-        Weapon claws = new Weapon("Swords/Armorslayer.csv");
+        Weapon flux = new Flux();
+        Weapon claws = new Armorslayer();
 
         robin.equipItem(flux);
         risen.equipItem(claws);
@@ -81,7 +89,7 @@ public class testBattle {
 
         robin.getCreatureStats().getSkillRanks().put("Dark Magic", 'C');
 
-        Weapon mire = new Weapon("Dark_Magics/Mire.csv");
+        Weapon mire = new Mire();
 
         robin.equipItem(mire);
 
@@ -93,8 +101,8 @@ public class testBattle {
 
     @Test
     public void testWeaponTriangle() {
-        Weapon trainingSword = new Weapon("Swords/Training_Sword.csv");
-        Weapon trainingAxe = new Weapon("Axes/Training_Axe.csv");
+        Weapon trainingSword = new TrainingSword();
+        Weapon trainingAxe = new TrainingAxe();
 
         int[] results = WeaponTriangle.triangleCalculator(trainingSword, trainingAxe);
         assert results[0] == 1;
@@ -117,8 +125,8 @@ public class testBattle {
 
     @Test
     public void testTrinityOfMagic() {
-        Weapon fire = new Weapon("Anima_Magics/Fire.csv");
-        Weapon shine = new Weapon("Light_Magics/Shine.csv");
+        Weapon fire = new Fire();
+        Weapon shine = new Shine();
 
         int[] results = WeaponTriangle.triangleCalculator(fire, shine);
         assert results[0] == 1;
@@ -141,8 +149,8 @@ public class testBattle {
 
     @Test
     public void testAnimaTriangle() {
-        Weapon fire = new Weapon("Anima_Magics/Fire.csv");
-        Weapon wind = new Weapon("Anima_Magics/Wind.csv");
+        Weapon fire = new Fire();
+        Weapon wind = new Wind();
 
         int[] results = WeaponTriangle.triangleCalculator(fire, wind);
         assert results[0] == 1;
@@ -172,8 +180,8 @@ public class testBattle {
         risen.getCreatureStats().getSkillRanks().put("Sword", 'C');
         risen.getCreatureStats().setSkill(1);
 
-        Weapon killingEdge = new Weapon("Swords/Killing_Edge.csv");
-        Weapon claws = new Weapon("Swords/Armorslayer.csv");
+        Weapon killingEdge = new KillingEdge();
+        Weapon claws = new Armorslayer();
 
         robin.equipItem(killingEdge);
         risen.equipItem(claws);

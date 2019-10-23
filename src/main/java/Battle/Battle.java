@@ -4,7 +4,6 @@ import Creatures.Creature;
 import Items.Equippable.MainHand.Staff;
 import Items.Equippable.MainHand.Weapon;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import static Battle.WeaponTriangle.triangleCalculator;
@@ -78,16 +77,16 @@ public class Battle {
         }
     }
 
-    private static boolean isTargetNotInRangeAttack(ArrayList<Integer> weaponRange, int distance) {
-        int shortDistance = weaponRange.get(0);
-        int longDistance = weaponRange.get(1);
+    private static boolean isTargetNotInRangeAttack(int[] weaponRange, int distance) {
+        int shortDistance = weaponRange[0];
+        int longDistance = weaponRange[1];
 
         return (shortDistance > distance) || (distance > longDistance);
     }
 
-    private static boolean isTargetNotInRangeAssist(Creature creature, ArrayList<Integer> weaponRange, int distance) {
-        int shortDistance = weaponRange.get(0);
-        int longDistance = weaponRange.get(1);
+    private static boolean isTargetNotInRangeAssist(Creature creature, int[] weaponRange, int distance) {
+        int shortDistance = weaponRange[0];
+        int longDistance = weaponRange[1];
         if (longDistance > 1) {longDistance = creature.getCreatureStats().getMagic()/longDistance;}
 
         return (shortDistance > distance) || (distance > longDistance);

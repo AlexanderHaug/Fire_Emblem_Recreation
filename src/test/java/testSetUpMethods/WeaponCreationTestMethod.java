@@ -1,10 +1,16 @@
 package testSetUpMethods;
 
-import Items.Equippable.MainHand.Anima_Magics.*;
+import Items.Equippable.MainHand.Anima_Magics.Fire;
+import Items.Equippable.MainHand.Anima_Magics.Wind;
 import Items.Equippable.MainHand.Axes.*;
-import Items.Equippable.MainHand.Dark_Magics.*;
-import Items.Equippable.MainHand.Light_Magics.*;
+import Items.Equippable.MainHand.Dark_Magics.Flux;
+import Items.Equippable.MainHand.Dark_Magics.Mire;
+import Items.Equippable.MainHand.Light_Magics.Aura;
+import Items.Equippable.MainHand.Light_Magics.Divine;
+import Items.Equippable.MainHand.Light_Magics.Seraphim;
+import Items.Equippable.MainHand.Light_Magics.Shine;
 import Items.Equippable.MainHand.Staff;
+import Items.Equippable.MainHand.Staves.*;
 import Items.Equippable.MainHand.Swords.*;
 import Items.Equippable.MainHand.Weapon;
 
@@ -40,16 +46,16 @@ public class WeaponCreationTestMethod {
         assert weapon.getItemDescription().equals(weaponDescription);
     }
 
-    public static void createAndTestStaves(String weaponFile, String assistType, String weaponName, String weaponType,
+    public static void createAndTestStaves(String staffName, String assistType, String itemType,
                                            int healAmount, int weaponAccuracy, int weaponShortRange,
                                            int weaponLongRange, int weaponWeight, Character weaponRank, int weaponUses,
                                            boolean weaponIsMagic, String staffStatusEffect,
                                            String weaponDescription) {
-        Staff staff = new Staff(determineWeaponFileLocation(weaponType)+ "/" + weaponFile + ".csv");
-        assert staff.getName().equals(weaponName);
+        Staff staff = createStaff(staffName);
+        assert staff.getName().equals(staffName);
         assert staff.getAssistType().equals(assistType);
         assert staff.getHealAmount() == healAmount;
-        assert staff.getItemType().equals(weaponType);
+        assert staff.getItemType().equals(itemType);
         assert staff.getAccuracy() == weaponAccuracy;
         assert staff.getItemShortRange() == weaponShortRange;
         assert staff.getItemLongRange() == weaponLongRange;
@@ -59,27 +65,6 @@ public class WeaponCreationTestMethod {
         assert staff.getStaffIsMagic() == weaponIsMagic;
         assert staff.getStaffStatusEffect().equals(staffStatusEffect);
         assert staff.getItemDescription().equals(weaponDescription);
-    }
-
-    private static String determineWeaponFileLocation(String weaponType) {
-        switch (weaponType) {
-            case "Sword":
-                return "Swords";
-            case "Axe":
-                return "Axes";
-            case "Lance":
-                return "Lances";
-            case "Brawl":
-                return "Gauntlets";
-            case "Staff":
-                return "Staves";
-            case "Light Magic":
-                return "Light_Magics";
-            case "Dark Magic":
-                return "Dark_Magics";
-            default:
-                return "Anima_Magics";
-        }
     }
 
     private static Weapon createWeapon(String weaponName) {
@@ -128,6 +113,17 @@ public class WeaponCreationTestMethod {
                 return new Flux();
             case "Mire":
                 return new Mire();
+            default:
+                return null;
+        }
+    }
+
+    private static Staff createStaff(String staffName) {
+        switch (staffName) {
+            case "Heal":
+                return new Heal();
+            case "Restore":
+                return new Restore();
             default:
                 return null;
         }
