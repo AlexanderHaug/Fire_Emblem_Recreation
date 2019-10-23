@@ -74,6 +74,6 @@ public class testAxes {
                 15,'D', 20,1550,false,
                 false,false, false, new int[9],
                 a, "This hammer can pummel metal with astonishing force. " +
-                        "This axe is effective against armored units.");
+                        "This hammer is effective against armored units.");
     }
 }
