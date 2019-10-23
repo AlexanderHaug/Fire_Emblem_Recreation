@@ -15,7 +15,7 @@ public class testAxes {
                 6,'E', 50,260,false,
                 false,false, false, new int[9],
                 new ArrayList<String>(), "This simple axe is perfect for training purposes. " +
-                        "But cannot inflict critical hits." );
+                        "But cannot inflict critical hits.");
     }
 
     @Test
@@ -24,7 +24,7 @@ public class testAxes {
                 8, 70,0,1,1,
                 7,'E', 45,270,false,
                 false,false, false, new int[9],
-                new ArrayList<String>(), "A standard axe made of iron--simple but effective." );
+                new ArrayList<String>(), "A standard axe made of iron--simple but effective.");
     }
 
     @Test
@@ -33,7 +33,7 @@ public class testAxes {
                 11, 65,0,1,1,
                 12,'D', 55,920,false,
                 false,false, false, new int[9],
-                new ArrayList<String>(), "A weighty steel axe that deals significant blows." );
+                new ArrayList<String>(), "A weighty steel axe that deals significant blows.");
     }
 
     @Test
@@ -42,7 +42,7 @@ public class testAxes {
                 16, 70,0,1,1,
                 10,'B', 30,1500,false,
                 false,false, false, new int[9],
-                new ArrayList<String>(), "An axe crafted from shining silver." );
+                new ArrayList<String>(), "An axe crafted from shining silver.");
     }
 
     @Test
@@ -51,8 +51,8 @@ public class testAxes {
                 12, 60,0,1,1,
                 14,'B', 30,2300,false,
                 true,false, false, new int[9],
-                new ArrayList<String>(), "The wielder of this axe is emboldened and will attack " +
-                        "twice when initiating combat." );
+                new ArrayList<String>(), "The wielder of this axe is emboldened " +
+                        "and will attack twice when initiating combat.");
     }
 
     @Test
@@ -61,7 +61,8 @@ public class testAxes {
                 11, 70,25,1,1,
                 12,'C', 20,1530,false,
                 false,false, false, new int[9],
-                new ArrayList<String>(), "Deadly sharp. This axe boasts a high critical-hit rate.");
+                new ArrayList<String>(), "Deadly sharp. This axe boasts a " +
+                        "high critical-hit rate.");
     }
 
     @Test

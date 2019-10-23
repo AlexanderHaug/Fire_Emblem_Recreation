@@ -15,7 +15,7 @@ public class testSwords {
                 4,'E', 50,260,false,
                 false,false, false, new int[9],
                 new ArrayList<String>(), "This simple sword is perfect for training purposes. " +
-                        "But cannot inflict critical hits." );
+                        "But cannot inflict critical hits.");
     }
 
     @Test
@@ -24,7 +24,7 @@ public class testSwords {
                 5, 90,0,1,1,
                 5,'E', 40,520,false,
                 false,false, false, new int[9],
-                new ArrayList<String>(), "A standard sword made of iron, simple but effective." );
+                new ArrayList<String>(), "A standard sword made of iron, simple but effective.");
     }
 
     @Test
@@ -33,7 +33,7 @@ public class testSwords {
                 8, 85,0,1,1,
                 10,'D', 50,910,false,
                 false,false, false, new int[9],
-                new ArrayList<String>(), "A weighty steel sword that deals significant blows." );
+                new ArrayList<String>(), "A weighty steel sword that deals significant blows.");
     }
 
     @Test
@@ -42,7 +42,7 @@ public class testSwords {
                 12, 90,0,1,1,
                 8,'B', 30,1410,false,
                 false,false, false, new int[9],
-                new ArrayList<String>(), "A sword crafted from shining silver." );
+                new ArrayList<String>(), "A sword crafted from shining silver.");
     }
 
     @Test
@@ -52,7 +52,7 @@ public class testSwords {
                 12,'B', 30,2100,false,
                 true,false, false, new int[9],
                 new ArrayList<String>(), "The wielder of this blade is emboldened and " +
-                        "will attack twice when initiating combat." );
+                        "will attack twice when initiating combat.");
 
     }
 
@@ -62,7 +62,8 @@ public class testSwords {
                 8, 85,25,1,1,
                 10, 'C', 20,1470,false,
                 false, false, false, new int[9],
-                new ArrayList<String>(), "Deadly sharp, this sword boasts a high critical-hit rate.");
+                new ArrayList<String>(), "Deadly sharp, this sword " +
+                        "boasts a high critical-hit rate.");
     }
 
     @Test

@@ -25,7 +25,8 @@ public class testLightMagics {
                 5, 95,5,1,2,
                 2,'D', 12,540,true,
                 false,false, false, new int[9],
-                effectiveAgainst, "Intermediate light magic that is effective against Monster foes.");
+                effectiveAgainst, "Intermediate light magic that is " +
+                        "effective against Monster foes.");
     }
 
     @Test
@@ -39,7 +40,7 @@ public class testLightMagics {
 
     @Test
     public void testAura() {
-        createAndTestWeapon( "Aura", "Light Magic",
+        createAndTestWeapon("Aura", "Light Magic",
                 10, 85,20,1,2,
                 7,'B', 3,540,true,
                 false,false, false, new int[9],

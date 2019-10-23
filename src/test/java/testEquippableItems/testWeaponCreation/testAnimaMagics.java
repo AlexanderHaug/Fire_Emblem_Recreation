@@ -10,7 +10,7 @@ public class testAnimaMagics {
     // Fire Magic
     @Test
     public void testFire() {
-        createAndTestWeapon("Fire", "Fire", "Anima Magic: Fire",
+        createAndTestWeapon("Fire", "Anima Magic: Fire",
                 3, 90,0,1,2,
                 3,'E', 10,540,true,
                 false,false, false, new int[9],
@@ -19,7 +19,7 @@ public class testAnimaMagics {
 
     @Test
     public void testElfire() {
-        createAndTestWeapon("Elfire", "Elfire", "Anima Magic: Fire",
+        createAndTestWeapon("Elfire", "Anima Magic: Fire",
                 5, 85,0,1,2,
                 4,'D', 7,540,true,
                 false,false, false, new int[9],
@@ -28,7 +28,7 @@ public class testAnimaMagics {
 
     @Test
     public void testBolganone() {
-        createAndTestWeapon("Bolganone", "Bolganone", "Anima Magic: Fire",
+        createAndTestWeapon("Bolganone", "Anima Magic: Fire",
                 8, 80,0,1,2,
                 6,'C', 5,540,true,
                 false,false, false, new int[9],
@@ -37,7 +37,7 @@ public class testAnimaMagics {
 
     @Test
     public void testRagnarok() {
-        createAndTestWeapon("Ragnarok", "Ragnarok", "Anima Magic: Fire",
+        createAndTestWeapon("Ragnarok", "Anima Magic: Fire",
                 15, 75,5,1,2,
                 9,'B', 3,540,true,
                 false,false, false, new int[9],
@@ -47,7 +47,7 @@ public class testAnimaMagics {
     // Wind Magic
     @Test
     public void testWind() {
-        createAndTestWeapon("Wind", "Wind", "Anima Magic: Wind",
+        createAndTestWeapon("Wind", "Anima Magic: Wind",
                 2, 100,10,1,2,
                 2,'E', 6,540,true,
                 false,false, false, new int[9],
@@ -56,7 +56,7 @@ public class testAnimaMagics {
 
     @Test
     public void testElwind() {
-        createAndTestWeapon("Elwind", "Elwind", "Anima Magic: Wind",
+        createAndTestWeapon("Elwind", "Anima Magic: Wind",
                 4, 95,10,1,2,
                 3,'D', 6,540,true,
                 false,false, false, new int[9],
@@ -65,7 +65,7 @@ public class testAnimaMagics {
 
     @Test
     public void testCuttingGale() {
-        createAndTestWeapon("Cutting_Gale", "Cutting Gale", "Anima Magic: Wind",
+        createAndTestWeapon("Cutting Gale", "Anima Magic: Wind",
                 7, 90,10,1,2,
                 5,'C', 6,540,true,
                 false,false, false, new int[9],
@@ -76,7 +76,7 @@ public class testAnimaMagics {
     public void testExcalibur() {
         ArrayList<String> effectiveAgainst = new ArrayList<>();
         effectiveAgainst.add("Flying");
-        createAndTestWeapon("Excalibur", "Excalibur", "Anima Magic: Wind",
+        createAndTestWeapon("Excalibur", "Anima Magic: Wind",
                 11, 100,15,1,2,
                 8, 'B', 4,540,false,
                 false, false, false, new int[9],
@@ -86,7 +86,7 @@ public class testAnimaMagics {
     // Thunder Magic
     @Test
     public void testThunder() {
-        createAndTestWeapon("Thunder", "Thunder", "Anima Magic: Lightning",
+        createAndTestWeapon("Thunder", "Anima Magic: Lightning",
                 4, 80,5,1,2,
                 4,'E', 8,540,true,
                 false,false, false, new int[9],
@@ -95,7 +95,7 @@ public class testAnimaMagics {
 
     @Test
     public void testElthunder() {
-        createAndTestWeapon("Elthunder", "Elthunder", "Anima Magic: Lightning",
+        createAndTestWeapon("Elthunder", "Anima Magic: Lightning",
                 6, 75,5,1,2,
                 5,'D', 6,540,true,
                 false,false, false, new int[9],
@@ -104,7 +104,7 @@ public class testAnimaMagics {
 
     @Test
     public void testThoron() {
-        createAndTestWeapon("Thoron", "Thoron", "Anima Magic: Lightning",
+        createAndTestWeapon("Thoron", "Anima Magic: Lightning",
                 9, 70,10,1,3,
                 7,'C', 4,540,true,
                 false,false, false, new int[9],
@@ -113,7 +113,7 @@ public class testAnimaMagics {
 
     @Test
     public void testBolting() {
-        createAndTestWeapon("Bolting", "Bolting", "Anima Magic: Lightning",
+        createAndTestWeapon("Bolting", "Anima Magic: Lightning",
                 12, 65,15,3,10,
                 18,'B', 2,540,true,
                 false,false, false, new int[9],
