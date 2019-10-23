@@ -3,6 +3,8 @@ package testSetUpMethods;
 import Items.Equippable.MainHand.Anima_Magics.*;
 import Items.Equippable.MainHand.Axes.*;
 import Items.Equippable.MainHand.Dark_Magics.*;
+import Items.Equippable.MainHand.Gauntlets.*;
+import Items.Equippable.MainHand.Lances.*;
 import Items.Equippable.MainHand.Light_Magics.*;
 import Items.Equippable.MainHand.Staff;
 import Items.Equippable.MainHand.Staves.*;
