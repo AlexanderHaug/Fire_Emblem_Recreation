@@ -1,14 +1,9 @@
 package testSetUpMethods;
 
-import Items.Equippable.MainHand.Anima_Magics.Fire;
-import Items.Equippable.MainHand.Anima_Magics.Wind;
+import Items.Equippable.MainHand.Anima_Magics.*;
 import Items.Equippable.MainHand.Axes.*;
-import Items.Equippable.MainHand.Dark_Magics.Flux;
-import Items.Equippable.MainHand.Dark_Magics.Mire;
-import Items.Equippable.MainHand.Light_Magics.Aura;
-import Items.Equippable.MainHand.Light_Magics.Divine;
-import Items.Equippable.MainHand.Light_Magics.Seraphim;
-import Items.Equippable.MainHand.Light_Magics.Shine;
+import Items.Equippable.MainHand.Dark_Magics.*;
+import Items.Equippable.MainHand.Light_Magics.*;
 import Items.Equippable.MainHand.Staff;
 import Items.Equippable.MainHand.Staves.*;
 import Items.Equippable.MainHand.Swords.*;
@@ -99,8 +94,28 @@ public class WeaponCreationTestMethod {
                 return new Hammer();
             case "Fire":
                 return new Fire();
+            case "Elfire":
+                return new Elfire();
+            case "Bolganone":
+                return new Bolganone();
+            case "Ragnarok":
+                return new Ragnarok();
             case "Wind":
                 return new Wind();
+            case "Elwind":
+                return new Elwind();
+            case "CuttingGale":
+                return new CuttingGale();
+            case "Excalibur":
+                return new Excalibur();
+            case "Thunder":
+                return new Thunder();
+            case "Elthunder":
+                return new Elthunder();
+            case "Thoron":
+                return new Thoron();
+            case "Bolting":
+                return new Bolting();
             case "Shine":
                 return new Shine();
             case "Seraphim":
