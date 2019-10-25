@@ -2,7 +2,6 @@ package testAllCreatureClasses;
 
 import Creatures.Creature;
 import org.junit.Test;
-
 import java.util.Arrays;
 
 import static testSetUpMethods.createCreatureSetUp.setUpCreature;
