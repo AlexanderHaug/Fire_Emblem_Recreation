@@ -78,7 +78,7 @@ public class testAnimaMagics {
         effectiveAgainst.add("Flying");
         createAndTestWeapon("Excalibur", "Anima Magic: Wind",
                 11, 100,15,1,2,
-                8, 'B', 4,540,false,
+                8, 'B', 4,540,true,
                 false, false, false, new int[9],
                 effectiveAgainst, "Superior wind magic.");
     }
