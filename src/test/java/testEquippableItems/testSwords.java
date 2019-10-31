@@ -1,4 +1,4 @@
-package testEquippableItems.testWeaponCreation;
+package testEquippableItems;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package testEquippableItems.testWeaponCreation;
+package testEquippableItems;
 
 import Items.Equippable.MainHand.Dark_Magics.Mire;
 import org.junit.Test;
