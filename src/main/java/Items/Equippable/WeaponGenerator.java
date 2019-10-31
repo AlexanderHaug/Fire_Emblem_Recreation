@@ -2,6 +2,7 @@ package Items.Equippable;
 
 import Items.Equippable.MainHand.Anima_Magics.*;
 import Items.Equippable.MainHand.Axes.*;
+import Items.Equippable.MainHand.Bows.TrainingBow;
 import Items.Equippable.MainHand.Daggers.TrainingDagger;
 import Items.Equippable.MainHand.Dark_Magics.Flux;
 import Items.Equippable.MainHand.Dark_Magics.Mire;
@@ -76,6 +77,8 @@ public class WeaponGenerator {
                 return new DragonClaws();
             case "Training Dagger":
                 return new TrainingDagger();
+            case "Training Bow":
+                return new TrainingBow();
             case "Fire":
                 return new Fire();
             case "Elfire":

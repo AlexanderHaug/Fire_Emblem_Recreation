@@ -5,7 +5,7 @@ import Creatures.CreatureStats;
 
 import java.util.ArrayList;
 
-import static testSetUpMethods.unitClassCreationTestMethod.createUnitClass;
+import static Creatures.UnitClassGenerator.createUnitClass;
 
 public class createCreatureSetUp {
 

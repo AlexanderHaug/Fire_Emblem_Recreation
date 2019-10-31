@@ -3,12 +3,12 @@ package testSetUpMethods;
 import Battalions.Battalion;
 import Battalions.Gambit;
 
-public class battalionTestMethod {
+public class BattalionTestMethod {
 
-    public static void createAndTestBattalion(String battalionFile, String battalionName,
-                                              int physicalBonus, int magicalBonus, int hitBonus,
-                                              int critBonus, int avoBonus, int proBonus, int resBonus,
-                                              int chrmBonus, String gambit, Character rank, int end) {
+    public static void testBattalion(String battalionFile, String battalionName,
+                                     int physicalBonus, int magicalBonus, int hitBonus,
+                                     int critBonus, int avoBonus, int proBonus, int resBonus,
+                                     int chrmBonus, String gambit, Character rank, int end) {
         Battalion battalion = new Battalion(battalionFile);
         assert battalion.getBattalionName().equals(battalionName);
         assert battalion.getBattalionPhysicalBonus() == physicalBonus;
