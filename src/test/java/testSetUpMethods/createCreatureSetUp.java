@@ -2,9 +2,10 @@ package testSetUpMethods;
 
 import Creatures.Creature;
 import Creatures.CreatureStats;
-import Creatures.UnitClass;
 
 import java.util.ArrayList;
+
+import static testSetUpMethods.unitClassCreationTestMethod.createUnitClass;
 
 public class createCreatureSetUp {
 
@@ -26,16 +27,12 @@ public class createCreatureSetUp {
     private static Character[] generateSkillRanks() {return new Character[]{'E','E','E','E','E','E','E','E','E','E','E','E','E'};}
 
     public static Creature setUpCreature(String  name, String unitClass, String army) {
-        return new Creature(name, new CreatureStats(new UnitClass(unitClass),
+        return new Creature(name, new CreatureStats(createUnitClass(unitClass),
                 generateStats(), generateGrowthRates(), generateMaxStatCaps(), generateSkillRanks()), army);
     }
 
-    public static int[] getClassGrowthRates(Creature creature) {
-        return creature.getCreatureStats().getUnitclass().getUnitClassGrowth();
-    }
-
     public static Creature createBaseCreature(String file, String army) {
-        return new Creature("Risen", new CreatureStats(new UnitClass(file),
+        return new Creature("Risen", new CreatureStats(createUnitClass(file),
                 generateLowStats(), generateGrowthRates(),
                 generateMaxStatCaps(), generateSkillRanks()), army);
     }
