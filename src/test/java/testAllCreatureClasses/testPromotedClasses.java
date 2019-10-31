@@ -7,13 +7,7 @@ import java.util.Arrays;
 
 import static testSetUpMethods.unitClassCreationTestMethod.createAndTestClass;
 
-public class testArcherClasses {
-
-    @Test
-    public void testArcher() {
-        createAndTestClass("Archer", new String[]{"Infantry"}, new int[]{25,8,6,8,7,8,5,2,0,5},
-                new int[]{5,0,0,10,0,5,0,0,5}, 5, new ArrayList<>(Arrays.asList("Bow")));
-    }
+public class testPromotedClasses {
 
     @Test
     public void testSniper() {

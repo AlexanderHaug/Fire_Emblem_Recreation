@@ -1,4 +1,4 @@
-package Creatures.UnitClass.AllClasses;
+package Creatures.UnitClass.UnpromotedClasses;
 
 import Creatures.UnitClass.UnitClass;
 

@@ -4,13 +4,13 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static testSetUpMethods.WeaponCreationTestMethod.createAndTestWeapon;
+import static testSetUpMethods.EquippableItemTestMethod.testWeapon;
 
 public class testSwords {
 
     @Test
     public void testTrainingSword() {
-        createAndTestWeapon("Training Sword", "Sword",
+        testWeapon("Training Sword", "Sword",
                 3, 100,0,1,1,
                 4,'E', 50,260,false,
                 false,false, false, new int[9],
@@ -20,7 +20,7 @@ public class testSwords {
 
     @Test
     public void testIronSword() {
-        createAndTestWeapon("Iron Sword", "Sword",
+        testWeapon("Iron Sword", "Sword",
                 5, 90,0,1,1,
                 5,'E', 40,520,false,
                 false,false, false, new int[9],
@@ -29,7 +29,7 @@ public class testSwords {
 
     @Test
     public void testSteelSword() {
-        createAndTestWeapon("Steel Sword", "Sword",
+        testWeapon("Steel Sword", "Sword",
                 8, 85,0,1,1,
                 10,'D', 50,910,false,
                 false,false, false, new int[9],
@@ -38,7 +38,7 @@ public class testSwords {
 
     @Test
     public void testSilverSword() {
-        createAndTestWeapon("Silver Sword", "Sword",
+        testWeapon("Silver Sword", "Sword",
                 12, 90,0,1,1,
                 8,'B', 30,1410,false,
                 false,false, false, new int[9],
@@ -47,7 +47,7 @@ public class testSwords {
 
     @Test
     public void testBraveSword() {
-        createAndTestWeapon("Brave Sword", "Sword",
+        testWeapon("Brave Sword", "Sword",
                 9, 75,0,1,1,
                 12,'B', 30,2100,false,
                 true,false, false, new int[9],
@@ -58,7 +58,7 @@ public class testSwords {
 
     @Test
     public void testKillingEdge() {
-        createAndTestWeapon("Killing Edge", "Sword",
+        testWeapon("Killing Edge", "Sword",
                 8, 85,25,1,1,
                 10, 'C', 20,1470,false,
                 false, false, false, new int[9],
@@ -70,7 +70,7 @@ public class testSwords {
     public void testArmorSlayer() {
         ArrayList<String> a = new ArrayList<>();
         a.add("Armored");
-        createAndTestWeapon("Armorslayer", "Sword",
+        testWeapon("Armorslayer", "Sword",
                 8, 80,0,1,1,
                 11, 'D', 20,1450,false,
                 false, false, false, new int[9],

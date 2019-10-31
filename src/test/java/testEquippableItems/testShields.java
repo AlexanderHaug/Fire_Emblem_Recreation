@@ -4,41 +4,42 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static testSetUpMethods.AccessoryCreationTestMethod.createAndTestAccessory;
+import static testSetUpMethods.EquippableItemTestMethod.testAccessory;
 
 public class testShields {
+
     @Test
     public void testLeatherShield() {
-        createAndTestAccessory("Leather Shield", "Shield",
+        testAccessory("Leather Shield", "Shield",
                 1,1, new int[9], new int[5], new ArrayList<String>(),
                 "A shield made of leather. Simple but sturdy.");
     }
 
     @Test
     public void testIronShield() {
-        createAndTestAccessory("Iron Shield", "Shield",
+        testAccessory("Iron Shield", "Shield",
                 2,2, new int[9], new int[5], new ArrayList<String>(),
                 "A wrought-iron shield. The standard for defense.");
     }
 
     @Test
     public void testSteelShield() {
-        createAndTestAccessory("Steel Shield", "Shield",
+        testAccessory("Steel Shield", "Shield",
                 3,3, new int[9], new int[5], new ArrayList<String>(),
                 "A weighty shield offering strong protection.");
     }
 
     @Test
     public void testSilverShield() {
-        createAndTestAccessory("Silver Shield", "Shield",
+        testAccessory("Silver Shield", "Shield",
                 4,4, new int[9], new int[5], new ArrayList<String>(),
                 "A Shield made of shining silver.");
     }
 
     @Test
     public void testHexlockShield() {
-        createAndTestAccessory("Hexlock Shield", "Shield",
-                2,5, new int[]{0,0,0,0,0,0,0,4,0}, new int[5], new ArrayList<String>(),
-                "A Shield offering strong protection and resilience.");
+        testAccessory("Hexlock Shield", "Shield",
+                2,5, new int[]{0,0,0,0,0,0,0,4,0}, new int[5],
+                new ArrayList<String>(), "A Shield offering strong protection and resilience.");
     }
 }

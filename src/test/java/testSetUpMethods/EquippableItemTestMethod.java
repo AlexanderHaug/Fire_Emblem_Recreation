@@ -2,21 +2,23 @@ package testSetUpMethods;
 
 import Items.Equippable.MainHand.Staff;
 import Items.Equippable.MainHand.Weapon;
+import Items.Equippable.OffHand.Accessory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static Items.Equippable.AccessoryGenerator.createAccessory;
 import static Items.Equippable.StaffGenerator.createStaff;
 import static Items.Equippable.WeaponGenerator.createWeapon;
 
-public class WeaponCreationTestMethod {
-    public static void createAndTestWeapon(String weaponName, String weaponType, int weaponMight,
-                                           int weaponAccuracy, int weaponCritical, int weaponShortRange,
-                                           int weaponLongRange, int weaponWeight, Character weaponRank, int weaponUses,
-                                           int weaponCost, boolean weaponIsMagic,boolean weaponIsBrave,
-                                           boolean weaponIsDevil, boolean weaponIsPoison,
-                                           int[] otherStatIncreases, ArrayList<String> weaponEffectiveAgainst,
-                                           String weaponDescription) {
+public class EquippableItemTestMethod {
+    public static void testWeapon(String weaponName, String weaponType, int weaponMight,
+                                  int weaponAccuracy, int weaponCritical, int weaponShortRange,
+                                  int weaponLongRange, int weaponWeight, Character weaponRank,
+                                  int weaponUses, int weaponCost, boolean weaponIsMagic,
+                                  boolean weaponIsBrave, boolean weaponIsDevil, boolean weaponIsPoison,
+                                  int[] otherStatIncreases, ArrayList<String> weaponEffectiveAgainst,
+                                  String weaponDescription) {
         Weapon weapon = createWeapon(weaponName);
         assert weapon.getName().equals(weaponName);
         assert weapon.getItemType().equals(weaponType);
@@ -38,11 +40,11 @@ public class WeaponCreationTestMethod {
         assert weapon.getItemDescription().equals(weaponDescription);
     }
 
-    public static void createAndTestStaves(String staffName, String assistType, String itemType,
-                                           int healAmount, int weaponAccuracy, int weaponShortRange,
-                                           int weaponLongRange, int weaponWeight, Character weaponRank, int weaponUses,
-                                           boolean weaponIsMagic, String staffStatusEffect,
-                                           String weaponDescription) {
+    public static void testStaff(String staffName, String assistType, String itemType,
+                                 int healAmount, int weaponAccuracy, int weaponShortRange,
+                                 int weaponLongRange, int weaponWeight, Character weaponRank,
+                                 int weaponUses, boolean weaponIsMagic, String staffStatusEffect,
+                                 String weaponDescription) {
         Staff staff = createStaff(staffName);
         assert staff.getName().equals(staffName);
         assert staff.getAssistType().equals(assistType);
@@ -57,5 +59,18 @@ public class WeaponCreationTestMethod {
         assert staff.getStaffIsMagic() == weaponIsMagic;
         assert staff.getStaffStatusEffect().equals(staffStatusEffect);
         assert staff.getItemDescription().equals(weaponDescription);
+    }
+
+    public static void testAccessory(String accessoryName, String accessoryType,
+                                     int accessoryProtection, int accessoryWeight, int[] otherStat,
+                                     int[] otherBattle, ArrayList<String> otherNull, String weaponDescription) {
+        Accessory accessory = createAccessory(accessoryName);
+        assert accessory.getName().equals(accessoryName);
+        assert accessory.getItemProtection() == accessoryProtection;
+        assert accessory.getItemWeight() == accessoryWeight;
+        assert Arrays.equals(accessory.getOtherStatIncreases(), otherStat);
+        assert Arrays.equals(accessory.getOtherBattleIncreases(), otherBattle);
+        assert accessory.getOtherNullifyEffective().equals(otherNull);
+        assert accessory.getItemDescription().equals(weaponDescription);
     }
 }

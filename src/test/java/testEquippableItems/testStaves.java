@@ -2,13 +2,13 @@ package testEquippableItems;
 
 import org.junit.Test;
 
-import static testSetUpMethods.WeaponCreationTestMethod.createAndTestStaves;
+import static testSetUpMethods.EquippableItemTestMethod.testStaff;
 
 public class testStaves {
 
     @Test
     public void testHeal() {
-        createAndTestStaves("Heal", "Healing", "Staff",
+        testStaff("Heal", "Healing", "Staff",
                 10, 100,1,1,4,
                 'E',20,true,"",
                 "Heals an adjacent ally.");
@@ -16,7 +16,7 @@ public class testStaves {
 
     @Test
     public void testRestore() {
-        createAndTestStaves("Restore", "Cleansing", "Staff",
+        testStaff("Restore", "Cleansing", "Staff",
                 0, 100,1,1,4,
                 'C',5,true,"",
                 "Cures status effects.");

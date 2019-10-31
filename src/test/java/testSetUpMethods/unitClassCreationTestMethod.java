@@ -1,7 +1,11 @@
 package testSetUpMethods;
 
-import Creatures.UnitClass.AllClasses.*;
+import Creatures.UnitClass.PromotedClasses.*;
 import Creatures.UnitClass.UnitClass;
+import Creatures.UnitClass.UnpromotedClasses.Archer;
+import Creatures.UnitClass.UnpromotedClasses.Cleric;
+import Creatures.UnitClass.UnpromotedClasses.Lord;
+import Creatures.UnitClass.UnpromotedClasses.Shaman;
 
 import java.util.ArrayList;
 import java.util.Arrays;

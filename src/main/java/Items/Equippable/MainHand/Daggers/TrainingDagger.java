@@ -21,6 +21,7 @@ public class TrainingDagger extends Weapon {
 
         setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
         setEffectiveAgainst(new String[]{});
-        setItemDescription("This simple dagger is perfect for training purposes. But cannot inflict critical hits.");
+        setItemDescription("This simple dagger is perfect for training purposes. " +
+                "But cannot inflict critical hits.");
     }
 }

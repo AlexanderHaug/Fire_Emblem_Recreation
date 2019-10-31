@@ -4,13 +4,13 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static testSetUpMethods.WeaponCreationTestMethod.createAndTestWeapon;
+import static testSetUpMethods.EquippableItemTestMethod.testWeapon;
 
 public class testLances {
 
     @Test
     public void testTrainingLance() {
-        createAndTestWeapon("Training Lance", "Lance",
+        testWeapon("Training Lance", "Lance",
                 4, 90,0,1,1,
                 5,'E', 50,260,false,
                 false,false, false, new int[9],
@@ -20,7 +20,7 @@ public class testLances {
 
     @Test
     public void testIronLance() {
-        createAndTestWeapon("Iron Lance", "Lance",
+        testWeapon("Iron Lance", "Lance",
                 6, 80,0,1,1,
                 6,'E', 30,260,false,
                 false,false, false, new int[9],
@@ -29,7 +29,7 @@ public class testLances {
 
     @Test
     public void testSteelLance() {
-        createAndTestWeapon("Steel Lance", "Lance",
+        testWeapon("Steel Lance", "Lance",
                 9, 75,0,1,1,
                 11,'D', 40,260,false,
                 false,false, false, new int[9],
@@ -38,7 +38,7 @@ public class testLances {
 
     @Test
     public void testSilverLance() {
-        createAndTestWeapon("Silver Lance", "Lance",
+        testWeapon("Silver Lance", "Lance",
                 13, 80,0,1,1,
                 9,'B', 25,260,false,
                 false,false, false, new int[9],
@@ -47,7 +47,7 @@ public class testLances {
 
     @Test
     public void testBraveLance() {
-        createAndTestWeapon("Brave Lance", "Lance",
+        testWeapon("Brave Lance", "Lance",
                 10, 70,0,1,1,
                 13,'B', 25,260,false,
                 true,false, false, new int[9],
@@ -57,7 +57,7 @@ public class testLances {
 
     @Test
     public void testKillerLance() {
-        createAndTestWeapon("Killer Lance", "Lance",
+        testWeapon("Killer Lance", "Lance",
                 9, 80,25,1,1,
                 11,'C', 20,260,false,
                 false,false, false, new int[9],
@@ -69,7 +69,7 @@ public class testLances {
     public void testHeavySpear() {
         ArrayList<String> a = new ArrayList<>();
         a.add("Armored");
-        createAndTestWeapon("Heavy Spear", "Lance",
+        testWeapon("Heavy Spear", "Lance",
                 9, 75,0,1,1,
                 12,'C', 20,260,false,
                 false,false, false, new int[9],

@@ -4,13 +4,13 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static testSetUpMethods.WeaponCreationTestMethod.createAndTestWeapon;
+import static testSetUpMethods.EquippableItemTestMethod.testWeapon;
 
 public class testGauntlets {
 
     @Test
     public void testTrainingGauntlets() {
-        createAndTestWeapon("Training Gauntlets", "Brawl",
+        testWeapon("Training Gauntlets", "Brawl",
                 0, 90,0,1,1,
                 1,'E', 70,100,false,
                 true,false, false, new int[9],
@@ -20,7 +20,7 @@ public class testGauntlets {
 
     @Test
     public void testIronGauntlets() {
-        createAndTestWeapon("Iron Gauntlets", "Brawl",
+        testWeapon("Iron Gauntlets", "Brawl",
                 1, 85,0,1,1,
                 3,'E', 50,520,false,
                 true,false, false, new int[9],
@@ -30,7 +30,7 @@ public class testGauntlets {
 
     @Test
     public void testSteelGauntlets() {
-        createAndTestWeapon("Steel Gauntlets", "Brawl",
+        testWeapon("Steel Gauntlets", "Brawl",
                 3, 80,5,1,1,
                 5,'D', 60,520,false,
                 true,false, false, new int[9],
@@ -40,7 +40,7 @@ public class testGauntlets {
 
     @Test
     public void testSilverGauntlets() {
-        createAndTestWeapon("Silver Gauntlets", "Brawl",
+        testWeapon("Silver Gauntlets", "Brawl",
                 4, 85,5,1,1,
                 7,'B', 40,520,false,
                 true,false, false, new int[9],
@@ -50,7 +50,7 @@ public class testGauntlets {
 
     @Test
     public void testKillerKnuckles() {
-        createAndTestWeapon("Killer Knuckles", "Brawl",
+        testWeapon("Killer Knuckles", "Brawl",
                 3, 80,20,1,1,
                 5,'B', 30,520,false,
                 true,false, false, new int[9],
@@ -60,7 +60,7 @@ public class testGauntlets {
 
     @Test
     public void testAuraKnuckles() {
-        createAndTestWeapon("Aura Knuckles", "Brawl",
+        testWeapon("Aura Knuckles", "Brawl",
                 2, 70,0,1,1,
                 4,'A', 30,520,true,
                 true,false, false, new int[9],
@@ -72,7 +72,7 @@ public class testGauntlets {
     public void testDragonClaws() {
         ArrayList<String> effectiveAgainst = new ArrayList<>();
         effectiveAgainst.add("Dragon");
-        createAndTestWeapon("Dragon Claws", "Brawl",
+        testWeapon("Dragon Claws", "Brawl",
                 4, 75,0,1,1,
                 7,'A', 30,520,false,
                 true,false, false, new int[9],

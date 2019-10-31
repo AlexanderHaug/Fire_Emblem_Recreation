@@ -6,13 +6,13 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static testSetUpMethods.WeaponCreationTestMethod.createAndTestWeapon;
+import static testSetUpMethods.EquippableItemTestMethod.testWeapon;
 
 public class testDarkMagics {
 
     @Test
     public void testFlux() {
-        createAndTestWeapon("Flux", "Dark Magic",
+        testWeapon("Flux", "Dark Magic",
                 5, 75,0,1,2,
                 5,'E', 10,540,true,
                 false,false, false, new int[9],
@@ -21,7 +21,7 @@ public class testDarkMagics {
 
     @Test
     public void testMire() {
-        createAndTestWeapon("Mire", "Dark Magic",
+        testWeapon("Mire", "Dark Magic",
                 3, 70,0,1,3,
                 5,'D', 8,540,true,
                 false,false, false, new int[9],

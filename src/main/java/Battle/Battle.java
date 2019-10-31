@@ -27,12 +27,12 @@ public class Battle {
         if (creatureCannotAttack(attacker, defender, distance)) {}
         else {unitAttacks(attacker, defender, weaponTriangleBonus[0], weaponTriangleBonus[1]);}
 
-        if (!isDead(defender) || !isDead(attacker)) {
+        if (!isDead(defender) && !isDead(attacker)) {
             if (creatureCannotAttack(defender, attacker, distance)) {}
             else {unitAttacks(defender, attacker, weaponTriangleBonus[2], weaponTriangleBonus[3]);}
         }
 
-        if ((!isDead(defender) || !isDead(attacker)) && attackerDoubles && attacker.getMainItem() != null) {
+        if ((!isDead(defender) && !isDead(attacker)) && attackerDoubles && attacker.getMainItem() != null) {
             unitAttacks(attacker, defender, weaponTriangleBonus[0], weaponTriangleBonus[1]);
         }
     }
