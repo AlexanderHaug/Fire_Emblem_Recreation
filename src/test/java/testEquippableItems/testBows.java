@@ -17,4 +17,13 @@ public class testBows {
                 new ArrayList<String>(), "This simple bow is perfect for training purposes. " +
                         "But cannot inflict critical hits.");
     }
+
+    @Test
+    public void testIronBow() {
+        testWeapon("Iron Bow", "Bow",
+                6, 85,0,2,2,
+                6,'E', 40,260,false,
+                false,false, false, new int[9],
+                new ArrayList<String>(), "A standard bow made of iron--simple but effective.");
+    }
 }

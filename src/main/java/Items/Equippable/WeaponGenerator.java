@@ -2,16 +2,12 @@ package Items.Equippable;
 
 import Items.Equippable.MainHand.Anima_Magics.*;
 import Items.Equippable.MainHand.Axes.*;
-import Items.Equippable.MainHand.Bows.TrainingBow;
-import Items.Equippable.MainHand.Daggers.TrainingDagger;
-import Items.Equippable.MainHand.Dark_Magics.Flux;
-import Items.Equippable.MainHand.Dark_Magics.Mire;
+import Items.Equippable.MainHand.Bows.*;
+import Items.Equippable.MainHand.Daggers.*;
+import Items.Equippable.MainHand.Dark_Magics.*;
 import Items.Equippable.MainHand.Gauntlets.*;
 import Items.Equippable.MainHand.Lances.*;
-import Items.Equippable.MainHand.Light_Magics.Aura;
-import Items.Equippable.MainHand.Light_Magics.Divine;
-import Items.Equippable.MainHand.Light_Magics.Seraphim;
-import Items.Equippable.MainHand.Light_Magics.Shine;
+import Items.Equippable.MainHand.Light_Magics.*;
 import Items.Equippable.MainHand.Swords.*;
 import Items.Equippable.MainHand.Weapon;
 
@@ -79,6 +75,8 @@ public class WeaponGenerator {
                 return new TrainingDagger();
             case "Training Bow":
                 return new TrainingBow();
+            case "Iron Bow":
+                return new IronBow();
             case "Fire":
                 return new Fire();
             case "Elfire":
