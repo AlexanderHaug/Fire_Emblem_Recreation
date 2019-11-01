@@ -54,4 +54,13 @@ public class testBows {
                 new ArrayList<String>(), "The wielded of this bow is emboldened and will attack " +
                         "twice when initiating combat.");
     }
+
+    @Test
+    public void testKillerBow() {
+        testWeapon("Killer Bow", "Bow",
+                9, 80,25,2,2,
+                11,'C', 20,260,false,
+                false,false, false, new int[9],
+                new ArrayList<String>(), "A bow that boasts a high critical-hit rate.");
+    }
 }
