@@ -35,4 +35,13 @@ public class testBows {
                 false,false, false, new int[9],
                 new ArrayList<String>(), "A weighty steel bow that deals significant blows.");
     }
+
+    @Test
+    public void testSilverBow() {
+        testWeapon("Silver Bow", "Bow",
+                12, 75,0,2,2,
+                9,'B', 30,260,false,
+                false,false, false, new int[9],
+                new ArrayList<String>(), "A bow crafted from shining silver.");
+    }
 }
