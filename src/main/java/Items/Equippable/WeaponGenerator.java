@@ -77,6 +77,8 @@ public class WeaponGenerator {
                 return new TrainingBow();
             case "Iron Bow":
                 return new IronBow();
+            case "Steel Bow":
+                return new SteelBow();
             case "Fire":
                 return new Fire();
             case "Elfire":

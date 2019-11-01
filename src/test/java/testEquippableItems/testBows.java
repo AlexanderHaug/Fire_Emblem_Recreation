@@ -26,4 +26,13 @@ public class testBows {
                 false,false, false, new int[9],
                 new ArrayList<String>(), "A standard bow made of iron--simple but effective.");
     }
+
+    @Test
+    public void testSteelBow() {
+        testWeapon("Steel Bow", "Bow",
+                9, 80,0,2,2,
+                11,'D', 50,260,false,
+                false,false, false, new int[9],
+                new ArrayList<String>(), "A weighty steel bow that deals significant blows.");
+    }
 }
