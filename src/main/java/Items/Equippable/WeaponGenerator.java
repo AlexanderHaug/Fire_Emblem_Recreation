@@ -81,6 +81,8 @@ public class WeaponGenerator {
                 return new SteelBow();
             case "Silver Bow":
                 return new SilverBow();
+            case "Brave Bow":
+                return new BraveBow();
             case "Fire":
                 return new Fire();
             case "Elfire":

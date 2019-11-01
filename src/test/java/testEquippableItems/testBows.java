@@ -44,4 +44,14 @@ public class testBows {
                 false,false, false, new int[9],
                 new ArrayList<String>(), "A bow crafted from shining silver.");
     }
+
+    @Test
+    public void testBraveBow() {
+        testWeapon("Brave Bow", "Bow",
+                10, 70,0,2,2,
+                13,'B', 30,260,false,
+                true,false, false, new int[9],
+                new ArrayList<String>(), "The wielded of this bow is emboldened and will attack " +
+                        "twice when initiating combat.");
+    }
 }
