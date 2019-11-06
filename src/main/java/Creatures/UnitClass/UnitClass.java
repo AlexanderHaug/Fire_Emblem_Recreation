@@ -7,9 +7,9 @@ public abstract class UnitClass {
     private String name = "";
     private int[] unitClassMinStats = new int[10];
     private int[] unitClassGrowth = new int[9];
-    private int move = 0;
     private String[] unitClassType = new String[7];
     private ArrayList<String> equipable = new ArrayList<>();
+    private ArrayList<Skill> unitClassSkills = new ArrayList<>();
 
     public String getName() {return name;}
 
