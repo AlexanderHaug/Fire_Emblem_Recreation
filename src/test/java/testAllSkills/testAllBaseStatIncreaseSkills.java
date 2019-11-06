@@ -15,4 +15,9 @@ public class testAllBaseStatIncreaseSkills {
     public void testStrengthPlus2() {
         testBaseStatIncreaseSkill("Strength +2", new int[]{0,2,0,0,0,0,0,0,0,0});
     }
+
+    @Test
+    public void testMagicPlus2() {
+        testBaseStatIncreaseSkill("Magic +2", new int[]{0,0,2,0,0,0,0,0,0,0});
+    }
 }
