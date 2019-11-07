@@ -7,33 +7,43 @@ import java.util.HashMap;
 public class CreatureStats {
 
     private UnitClass unitclass;
-    private int[] stats = new int[10];
+    private HashMap<String, Integer> allStats = new HashMap<>();
     private CreatureStatBonuses statBonuses = new CreatureStatBonuses();
-    private int experience = 0;
-    private int[] statGrowthRates;
-    private int[] statCaps = new int[10];
     private String status = "Normal";
 
     private HashMap<String, Character> skillRanks = new HashMap<>();
 
     public CreatureStats(UnitClass unit, int[] stats, int[] statGrowthRates, int[] statCaps, Character[] ranks) {
         this.unitclass = unit;
-        setAllStats(stats, statCaps);
-        this.statGrowthRates = statGrowthRates;
+        setAllStats(stats, statCaps, statGrowthRates);
         setAllSkillRanks(ranks);
     }
 
-    public void setAllStats(int[] stats, int[] statCaps) {
+    public void setAllStats(int[] initialStats, int[] caps, int[] growths) {
+        String[] statNames = new String[]{"Level", "Health", "Strength", "Magic", "Skill", "Luck",
+                                           "Speed", "Defense", "Resistance", "Charisma"};
+        for (int x = 0; x < initialStats.length; x++) {
+            if (initialStats[x] > caps[x]) {
+                initialStats[x] = caps[x];
+            }
 
-        for (int x = 0; x < stats.length; x++) {
-            if (stats[x] > statCaps[x]) {stats[x] = statCaps[x];}}
+            this.allStats.put(statNames[x], initialStats[x]);
+            this.allStats.put("Max " + statNames[x], caps[x]);
 
-        this.stats = stats;
-        this.statCaps = statCaps;
+            if (x == 1) {
+                this.allStats.put("Current Health", initialStats[x]);
+            }
+        }
+        this.allStats.put("Experience", 0);
+        setStatGrowths(growths);
     }
 
-    public void increaseStats(int[] increases) {
-        for (int x = 0; x < increases.length; x++) {this.stats[x+1] += increases[x];}
+    private void setStatGrowths(int[] growths) {
+        String[] statNames = new String[]{"Health", "Strength", "Magic", "Skill", "Luck",
+                "Speed", "Defense", "Resistance", "Charisma"};
+        for (int x = 0; x < growths.length; x++) {
+            this.allStats.put(statNames[x] + " Growth", growths[x]);
+        }
     }
 
     private void setAllSkillRanks(Character[] ranks) {
@@ -44,30 +54,31 @@ public class CreatureStats {
 
     public UnitClass getUnitclass() {return unitclass;}
 
-    public int getLevel() {return this.stats[0];}
-    public int getHealth() {return this.stats[1] + this.statBonuses.getCreatureStatBonuses()[0];}
-    public int getStrength() {return this.stats[2] + this.statBonuses.getCreatureStatBonuses()[1];}
-    public int getMagic() {return this.stats[3] + this.statBonuses.getCreatureStatBonuses()[2];}
-    public int getSkill() {return this.stats[4] + this.statBonuses.getCreatureStatBonuses()[3];}
-    public int getLuck() {return this.stats[5] + this.statBonuses.getCreatureStatBonuses()[4];}
-    public int getSpeed() {return this.stats[6] + this.statBonuses.getCreatureStatBonuses()[5];}
-    public int getDefense() {return this.stats[7] + this.statBonuses.getCreatureStatBonuses()[6];}
-    public int getResistance() {return this.stats[8] + this.statBonuses.getCreatureStatBonuses()[7];}
-    public int getCharisma() {return this.stats[9] + this.statBonuses.getCreatureStatBonuses()[8];}
+    public int getLevel() {return this.allStats.get("Level");}
+    public int getHealth() {return this.allStats.get("Health");}
+    public int getCurrentHealth() {return this.allStats.get("Current Health") + this.statBonuses.getCreatureStatBonuses()[0];}
+    public int getStrength() {return this.allStats.get("Strength") + this.statBonuses.getCreatureStatBonuses()[1];}
+    public int getMagic() {return this.allStats.get("Magic") + this.statBonuses.getCreatureStatBonuses()[2];}
+    public int getSkill() {return this.allStats.get("Skill") + this.statBonuses.getCreatureStatBonuses()[3];}
+    public int getLuck() {return this.allStats.get("Luck") + this.statBonuses.getCreatureStatBonuses()[4];}
+    public int getSpeed() {return this.allStats.get("Speed") + this.statBonuses.getCreatureStatBonuses()[5];}
+    public int getDefense() {return this.allStats.get("Defense") + this.statBonuses.getCreatureStatBonuses()[6];}
+    public int getResistance() {return this.allStats.get("Resistance") + this.statBonuses.getCreatureStatBonuses()[7];}
+    public int getCharisma() {return this.allStats.get("Charisma") + this.statBonuses.getCreatureStatBonuses()[8];}
     public String getStatus() {return this.status;}
 
     public HashMap<String, Character> getSkillRanks() {return skillRanks;}
 
-    public int getExperience() {return experience;}
+    public int getExperience() {return this.allStats.get("Experience");}
 
-    public int getHealthCap() {return this.statCaps[1];}
+    public int getHealthCap() {return this.allStats.get("Max Health");}
 
-    public void setLevel(int level) {this.stats[0] = level;}
-    public void setHealth(int health) {this.stats[1] = health;}
-    public void setStrength(int strength) {this.stats[2] = strength;}
-    public void setMagic(int magic) {this.stats[3] = magic;}
-    public void setSkill(int skill) {this.stats[4] = skill;}
-    public void setSpeed(int speed) {this.stats[6] = speed;}
+    public void setLevel(int level) {this.allStats.put("Level",level);}
+    public void setCurrentHealth(int health) {this.allStats.put("Current Health",health);}
+    public void setStrength(int strength) {this.allStats.put("Strength",strength);}
+    public void setMagic(int magic) {this.allStats.put("Magic",magic);}
+    public void setSkill(int skill) {this.allStats.put("Skill",skill);}
+    public void setSpeed(int speed) {this.allStats.put("Speed",speed);}
 
     public void setStatus(String status) {
         if (status.equals("Poison") || status.equals("Beserk") || status.equals("Silence") || status.equals("Sleep")
@@ -77,31 +88,39 @@ public class CreatureStats {
     }
 
     public void gainExperience(int exp) {
-        this.experience += exp;
-        if (this.experience >= 100) {
-            this.experience -= 100;
+        int current_experience = this.allStats.get("Experience");
+        current_experience += exp;
+        if (current_experience >= 100) {
+            current_experience -= 100;
+            this.allStats.put("Experience", current_experience);
             levelUp();
         }
     }
 
     private void levelUp() {
         int[] levelUps = new int[10];
-        levelUps[0] = 1;
-        for (int x = 1; x < levelUps.length; x++) {
+        String[] statNames = new String[]{"Health", "Strength", "Magic", "Skill", "Luck", "Speed", "Defense",
+                                          "Resistance", "Charisma"};
+        for (int x = 0; x < statNames.length; x++) {
             int statUpChance = (int)(Math.random() * 100);
             boolean statDoesIncrease =
-                    (this.statGrowthRates[x-1] + this.unitclass.getUnitClassGrowth()[x-1]) >= statUpChance;
+                    (this.allStats.get(statNames[x] + " Growth") + this.unitclass.getUnitClassGrowth()[x]) >= statUpChance;
             if (statDoesIncrease) {levelUps[x] = 1;}
         }
+        levelUps[9] = 1;
         LevelUpStats(levelUps);
     }
 
     private void LevelUpStats(int[] statsThatIncrease) {
-        for (int x = 0; x < statsThatIncrease.length; x++) {this.stats[x] += statsThatIncrease[x];}
-        setAllStats(this.stats, this.statCaps);
-    }
+        String[] statNames = new String[]{"Health", "Strength", "Magic", "Skill", "Luck",
+                "Speed", "Defense", "Resistance", "Charisma", "Level"};
 
-    public void setStatGrowthRates(int[] growthRates) {this.statGrowthRates = growthRates;}
+        for (int x = 0; x < statsThatIncrease.length; x++) {
+            int a = Math.min(this.allStats.get(statNames[x]) + statsThatIncrease[x],
+                    this.allStats.get("Max "+statNames[x]));
+            this.allStats.put(statNames[x], a);
+        }
+    }
 
     public CreatureStatBonuses getStatBonuses() {return this.statBonuses;}
 }

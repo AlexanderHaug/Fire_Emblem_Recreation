@@ -30,9 +30,6 @@ public class Creature {
         return armyAffiliation;
     }
 
-    public void setAllStats(int[] stats, int[] statCaps) {this.creatureStats.setAllStats(stats, statCaps);}
-    public void setGrowthRates(int[] growthRates) {this.creatureStats.setStatGrowthRates(growthRates);}
-
     // Battle Functions
     public int getDamage() {
         if (mainItem != null) {
@@ -86,15 +83,15 @@ public class Creature {
     }
 
     public void healHealth(int healing) {
-        creatureStats.setHealth(creatureStats.getHealth() + healing);
-        if (creatureStats.getHealth() > creatureStats.getHealthCap()) {
-            creatureStats.setHealth(creatureStats.getHealthCap());
+        creatureStats.setCurrentHealth(creatureStats.getCurrentHealth() + healing);
+        if (creatureStats.getCurrentHealth() > creatureStats.getHealthCap()) {
+            creatureStats.setCurrentHealth(creatureStats.getHealthCap());
         }
     }
 
     public void damageToHealth(int damage) {
-        creatureStats.setHealth(creatureStats.getHealth() - damage);
-        if (creatureStats.getHealth() < 0) {creatureStats.setHealth(0);}
+        creatureStats.setCurrentHealth(creatureStats.getCurrentHealth() - damage);
+        if (creatureStats.getCurrentHealth() < 0) {creatureStats.setCurrentHealth(0);}
     }
 
     // Item Functions
@@ -142,7 +139,7 @@ public class Creature {
     public Battalion getBattalion() {return this.battalion;}
 
     public String toString() {return name + " Class: " + creatureStats.getUnitclass().getName() + " Level: " +
-            creatureStats.getLevel() + "\n" + "HP " + creatureStats.getHealth() + ", Attack " +
+            creatureStats.getLevel() + "\n" + "HP " + creatureStats.getCurrentHealth() + ", Attack " +
             creatureStats.getStrength() + ", Magic "+ creatureStats.getMagic() + "\n" + "Skill " +
             creatureStats.getSkill() + ", Luck " + creatureStats.getLuck() + ", Speed " +
             creatureStats.getSpeed() + "\n" + "Defense " + creatureStats.getDefense() + ", Resistance " +

@@ -30,8 +30,8 @@ public class testBattle {
         robin.equipItem(flux);
 
         Battle.doBattle(robin,risen, 2);
-        assert robin.getCreatureStats().getHealth() == 50;
-        assert risen.getCreatureStats().getHealth() == 40;
+        assert robin.getCreatureStats().getCurrentHealth() == 50;
+        assert risen.getCreatureStats().getCurrentHealth() == 40;
     }
 
     @Test
@@ -46,7 +46,7 @@ public class testBattle {
         robin.equipItem(heal);
 
         Battle.assist(robin, chrom, 1);
-        assert chrom.getCreatureStats().getHealth() == 20;
+        assert chrom.getCreatureStats().getCurrentHealth() == 20;
     }
 
     @Test
@@ -78,8 +78,8 @@ public class testBattle {
         risen.equipItem(claws);
 
         Battle.doBattle(robin,risen, 2);
-        assert robin.getCreatureStats().getHealth() == 50;
-        assert risen.getCreatureStats().getHealth() >= 0;
+        assert robin.getCreatureStats().getCurrentHealth() == 50;
+        assert risen.getCreatureStats().getCurrentHealth() >= 0;
     }
 
     @Test
@@ -94,8 +94,8 @@ public class testBattle {
         robin.equipItem(mire);
 
         Battle.runBattle(robin,risen, 2);
-        assert robin.getCreatureStats().getHealth() == 50;
-        assert risen.getCreatureStats().getHealth() >= 0;
+        assert robin.getCreatureStats().getCurrentHealth() == 50;
+        assert risen.getCreatureStats().getCurrentHealth() >= 0;
         assert risen.getCreatureStats().getDefense() == 45;
     }
 
@@ -187,7 +187,7 @@ public class testBattle {
         risen.equipItem(claws);
 
         Battle.fightInColosseum(robin,risen, 1);
-        assert robin.getCreatureStats().getHealth() >= 0;
-        assert risen.getCreatureStats().getHealth() == 0;
+        assert robin.getCreatureStats().getCurrentHealth() >= 0;
+        assert risen.getCreatureStats().getCurrentHealth() == 0;
     }
 }

@@ -40,8 +40,8 @@ public class Battle {
     public static void fightInColosseum(Creature combatant1, Creature combatant2, int distance) {
         int turnCount = 1;
 
-        while (((combatant1.getCreatureStats().getHealth() != 0) || (combatant2.getCreatureStats().getHealth() != 0))
-                || turnCount <= 20) {
+        while (((combatant1.getCreatureStats().getCurrentHealth() != 0) ||
+                (combatant2.getCreatureStats().getCurrentHealth() != 0)) || turnCount <= 20) {
 
             System.out.println("Round: " + turnCount);
             doBattle(combatant1, combatant2, distance);
@@ -96,7 +96,7 @@ public class Battle {
 
         System.out.println(attackerName + message + attackerDamageDealt + " damage.");
         defender.damageToHealth(attackerDamageDealt);
-        System.out.println(defender.getCreatureName() + " Health: " + defender.getCreatureStats().getHealth());
+        System.out.println(defender.getCreatureName() + " Health: " + defender.getCreatureStats().getCurrentHealth());
 
         if (isDead(defender)) {
             System.out.println(defender.getCreatureName() + " died!");
@@ -177,5 +177,5 @@ public class Battle {
         return false;
     }
 
-    private static boolean isDead(Creature creature) {return (creature.getCreatureStats().getHealth() == 0);}
+    private static boolean isDead(Creature creature) {return (creature.getCreatureStats().getCurrentHealth() == 0);}
 }
