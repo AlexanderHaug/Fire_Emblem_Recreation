@@ -96,7 +96,7 @@ public class Creature {
 
     // Item Functions
     public void equipItem(PrimaryItem item) {
-        ArrayList<String> list = creatureStats.getUnitclass().getEquipable();
+        ArrayList<String> list = creatureStats.getUnitclass().getEquippable();
         if (list.contains(item.getItemType())) {
 
             int creatureRank = creatureStats.getSkillRanks().get(item.getItemType());

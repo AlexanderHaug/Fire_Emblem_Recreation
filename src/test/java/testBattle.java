@@ -21,7 +21,7 @@ public class testBattle {
 
     @Test
     public void testAttackTwice() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Shaman", "Ylisee");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Lord", "Ylisee");
         Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord", "Monster");
         robin.getCreatureStats().setSpeed(60);
 
@@ -36,7 +36,7 @@ public class testBattle {
 
     @Test
     public void testHealing() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric","Ylisee");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin","Lord","Ylisee");
         Creature chrom = createCreatureSetUp.setUpCreature("Chrom", "Lord","Ylisee");
 
         robin.getCreatureStats().setMagic(9);
@@ -51,7 +51,7 @@ public class testBattle {
 
     @Test
     public void testCleansing() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Cleric", "Ylisee");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Lord", "Ylisee");
         Creature chrom = createCreatureSetUp.setUpCreature("Chrom", "Lord", "Ylisee");
 
         robin.getCreatureStats().getSkillRanks().put("Staff", 'C');
@@ -66,7 +66,7 @@ public class testBattle {
 
     @Test
     public void testBattleWithRangeCannotCounterAttack() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Shaman", "Ylisee");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Lord", "Ylisee");
         Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord", "Monster");
 
         risen.getCreatureStats().getSkillRanks().put("Sword", 'C');
@@ -84,7 +84,7 @@ public class testBattle {
 
     @Test
     public void testDebuffOpponentsStats() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Shaman", "Ylisee");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Lord", "Ylisee");
         Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord", "Monster");
 
         robin.getCreatureStats().getSkillRanks().put("Dark Magic", 'C');

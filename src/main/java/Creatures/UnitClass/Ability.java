@@ -1,6 +1,6 @@
 package Creatures.UnitClass;
 
-public abstract class Skill {
+public abstract class Ability {
 
     public abstract int getMaxHPIncrease();
 

@@ -1,6 +1,6 @@
 package Creatures.UnitClass;
 
-public class BaseStatSkill extends Skill{
+public class BaseStatAbility extends Ability {
     private int[] baseStatIncreases = new int[10];
 
     public void setBaseStatIncreases(int[] stats) {baseStatIncreases = stats;}

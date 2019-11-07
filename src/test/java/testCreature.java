@@ -13,7 +13,7 @@ public class testCreature {
 
     @Test
     public void testCreatureCreation() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric","Ylisee");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin","Lord","Ylisee");
         robin.getCreatureStats().setAllStats(new int[]{1,21,80,9,45,40,40,40,40,40},
                 new int[]{99,80,80,80,80,80,80,80,80,80}, new int[]{100,60,50,70,80,20,30,10,5});
 
@@ -28,14 +28,14 @@ public class testCreature {
         assert robin.getCreatureStats().getSpeed() == 40;
         assert robin.getCreatureStats().getDefense() == 40;
         assert robin.getCreatureStats().getResistance() == 40;
-        assert robin.getCreatureStats().getCharisma() == 40;
+        assert robin.getCreatureStats().getCharm() == 40;
         assert robin.getMainItem().getName().equals("Heal");
 
     }
 
     @Test
     public void testLevelUp() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric","Ylisee");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin","Lord","Ylisee");
         robin.getCreatureStats().setAllStats(new int[]{1,10,10,10,10,10,10,10,10,10},
                 new int[]{99,80,80,80,80,80,80,80,80,80}, new int[]{200,200,200,200,200,200,200,200,200});
 
@@ -51,12 +51,12 @@ public class testCreature {
         assert robin.getCreatureStats().getSpeed() == 11;
         assert robin.getCreatureStats().getDefense() == 11;
         assert robin.getCreatureStats().getResistance() == 11;
-        assert robin.getCreatureStats().getCharisma() == 11;
+        assert robin.getCreatureStats().getCharm() == 11;
     }
 
     @Test
     public void testLevelUpMaxStats() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric","Ylisee");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin","Lord","Ylisee");
         robin.getCreatureStats().setAllStats(new int[]{1,80,10,10,10,10,10,10,10,10},
                 new int[]{99,80,80,80,80,80,80,80,80,80}, new int[]{200,200,200,200,200,200,200,200,200});
 
@@ -72,12 +72,12 @@ public class testCreature {
         assert robin.getCreatureStats().getSpeed() == 11;
         assert robin.getCreatureStats().getDefense() == 11;
         assert robin.getCreatureStats().getResistance() == 11;
-        assert robin.getCreatureStats().getCharisma() == 11;
+        assert robin.getCreatureStats().getCharm() == 11;
     }
 
     @Test
     public void testRaisingAndRevertStatsFromOffItem() {
-        Creature robin = createCreatureSetUp.setUpCreature("Robin","Cleric","Ylisee");
+        Creature robin = createCreatureSetUp.setUpCreature("Robin","Lord","Ylisee");
         robin.getCreatureStats().setAllStats(new int[]{1,80,10,10,10,10,10,10,10,10},
                 new int[]{99,80,80,80,80,80,80,80,80,80}, new int[]{200,200,200,200,200,200,200,200,200});
 

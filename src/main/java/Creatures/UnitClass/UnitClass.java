@@ -1,35 +1,42 @@
 package Creatures.UnitClass;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public abstract class UnitClass {
 
-    private String name = "";
-    private int[] unitClassMinStats = new int[10];
-    private int[] unitClassGrowth = new int[9];
-    private String[] unitClassType = new String[7];
-    private ArrayList<String> equipable = new ArrayList<>();
-    private ArrayList<Skill> unitClassSkills = new ArrayList<>();
+    protected String name = "";
+    protected HashMap<String, Integer> allStats;
+    protected String[] unitClassType;
+    protected ArrayList<String> equippable;
+    protected ArrayList<Ability> unitClassSkills;
 
     public String getName() {return name;}
-
-    public void setName(String name) {this.name = name;}
-
-    public int[] getUnitClassMinStats() {return unitClassMinStats;}
-
-    public void setUnitClassMinStats(int[] unitClassMinStats) {this.unitClassMinStats = unitClassMinStats;}
-
-    public int[] getUnitClassGrowth() {return unitClassGrowth;}
-
-    public void setUnitClassGrowth(int[] unitClassGrowth) {this.unitClassGrowth = unitClassGrowth;}
-
-    public int getMove() {return unitClassMinStats[9];}
-
     public String[] getUnitClassType() {return unitClassType;}
 
-    public void setUnitClassType(String[] unitClassType) {this.unitClassType = unitClassType;}
+    public int getMinHealth() {return allStats.get("Health");}
+    public int getMinStrength() {return allStats.get("Strength");}
+    public int getMinMagic() {return allStats.get("Magic");}
+    public int getMinSkill() {return allStats.get("Skill");}
+    public int getMinSpeed() {return allStats.get("Speed");}
+    public int getMinLuck() {return allStats.get("Luck");}
+    public int getMinDefense() {return allStats.get("Defense");}
+    public int getMinResistance() {return allStats.get("Resistance");}
+    public int getMinCharm() {return allStats.get("Charm");}
 
-    public ArrayList<String> getEquipable() {return equipable;}
+    public int getMove() {return allStats.get("Move");}
 
-    public void setEquipable(ArrayList<String> equipable) {this.equipable = equipable;}
+    public int getHealthGrowth() {return allStats.get("Health Growth");}
+    public int getStrengthGrowth() {return allStats.get("Strength Growth");}
+    public int getMagicGrowth() {return allStats.get("Magic Growth");}
+    public int getSkillGrowth() {return allStats.get("Skill Growth");}
+    public int getSpeedGrowth() {return allStats.get("Speed Growth");}
+    public int getLuckGrowth() {return allStats.get("Luck Growth");}
+    public int getDefenseGrowth() {return allStats.get("Defense Growth");}
+    public int getResistanceGrowth() {return allStats.get("Resistance Growth");}
+    public int getCharmGrowth() {return allStats.get("Charm Growth");}
+
+    public HashMap<String, Integer> getClassStats() {return allStats;}
+
+    public ArrayList<String> getEquippable() {return equippable;}
 }
