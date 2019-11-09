@@ -1,7 +1,7 @@
 package testSetUpMethods;
 
-import Creatures.Creature;
-import Creatures.CreatureStats;
+import Creatures.Creature.Creature;
+import Creatures.Creature.CreatureStats;
 
 import java.util.ArrayList;
 

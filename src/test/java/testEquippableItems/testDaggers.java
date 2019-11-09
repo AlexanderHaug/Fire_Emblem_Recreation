@@ -2,19 +2,16 @@ package testEquippableItems;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
-import static testSetUpMethods.EquippableItemTestMethod.testWeapon;
+import static testSetUpMethods.EquippableItemTestMethods.testWeapon;
 
 public class testDaggers {
 
     @Test
     public void testTrainingDagger() {
-        testWeapon("Training Dagger", "Dagger",
-                2, 95,0,1,1,
-                2,'E', 50,260,false,
-                false,false, false, new int[9],
-                new ArrayList<String>(), "This simple dagger is perfect for training purposes. " +
-                        "But cannot inflict critical hits.");
+        testWeapon("Training Dagger", "Dagger", 2, 95,0,1,1,
+                2,'E', 50,260, new HashMap<String, Integer>(),
+                "This simple dagger is perfect for training purposes. But cannot inflict critical hits.");
     }
 }

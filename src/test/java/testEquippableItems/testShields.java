@@ -3,43 +3,41 @@ package testEquippableItems;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-import static testSetUpMethods.EquippableItemTestMethod.testAccessory;
+import static testSetUpMethods.EquippableItemTestMethods.testAccessory;
 
 public class testShields {
 
     @Test
     public void testLeatherShield() {
-        testAccessory("Leather Shield", "Shield",
-                1,1, new int[9], new int[5], new ArrayList<String>(),
-                "A shield made of leather. Simple but sturdy.");
+        testAccessory("Leather Shield", 1,1, new HashMap<String, Integer>(),
+                new ArrayList<String>(), "A shield made of leather. Simple but sturdy.");
     }
 
     @Test
     public void testIronShield() {
-        testAccessory("Iron Shield", "Shield",
-                2,2, new int[9], new int[5], new ArrayList<String>(),
-                "A wrought-iron shield. The standard for defense.");
+        testAccessory("Iron Shield", 2,2, new HashMap<String, Integer>(),
+                new ArrayList<String>(), "A wrought-iron shield. The standard for defense.");
     }
 
     @Test
     public void testSteelShield() {
-        testAccessory("Steel Shield", "Shield",
-                3,3, new int[9], new int[5], new ArrayList<String>(),
-                "A weighty shield offering strong protection.");
+        testAccessory("Steel Shield", 3,3, new HashMap<String, Integer>(),
+                new ArrayList<String>(), "A weighty shield offering strong protection.");
     }
 
     @Test
     public void testSilverShield() {
-        testAccessory("Silver Shield", "Shield",
-                4,4, new int[9], new int[5], new ArrayList<String>(),
-                "A Shield made of shining silver.");
+        testAccessory("Silver Shield", 4,4, new HashMap<String, Integer>(),
+                new ArrayList<String>(), "A Shield made of shining silver.");
     }
 
     @Test
     public void testHexlockShield() {
-        testAccessory("Hexlock Shield", "Shield",
-                2,5, new int[]{0,0,0,0,0,0,0,4,0}, new int[5],
-                new ArrayList<String>(), "A Shield offering strong protection and resilience.");
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("Accessory: Resilience", 4);
+        testAccessory("Hexlock Shield",2,5, map, new ArrayList<String>(),
+                "A Shield offering strong protection and resilience.");
     }
 }

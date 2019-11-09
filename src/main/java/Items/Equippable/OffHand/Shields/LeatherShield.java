@@ -1,18 +1,16 @@
-package Items.Equippable.OffHand.Shields;
+package Items.Equippable.OffHand.All_Accessories;
 
 import Items.Equippable.OffHand.Accessory;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LeatherShield extends Accessory {
 
     public LeatherShield() {
-        setName("Leather Shield");
-        setItemProtection(1);
-        setItemWeight(1);
-        setStatModifiers(new int[9]);
-        setOtherNullifyEffective(new ArrayList<String>());
-        setOtherBattleIncreases(new int[5]);
-        setItemDescription("A shield made of leather. Simple but sturdy.");
+        this.name = "Leather Shield";
+        this.protection = 1;
+        this.weight = 1;
+        this.additionalAbilities = new HashMap<>();
+        this.description = "A shield made of leather. Simple but sturdy.";
     }
 }

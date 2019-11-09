@@ -1,4 +1,4 @@
-import Creatures.Creature;
+import Creatures.Creature.Creature;
 import TileMap.TileMap;
 import org.junit.Test;
 

@@ -1,6 +1,6 @@
 import Battle.Battle;
 import Battle.WeaponTriangle;
-import Creatures.Creature;
+import Creatures.Creature.Creature;
 import Items.Equippable.MainHand.Anima_Magics.Fire;
 import Items.Equippable.MainHand.Anima_Magics.Wind;
 import Items.Equippable.MainHand.Axes.TrainingAxe;

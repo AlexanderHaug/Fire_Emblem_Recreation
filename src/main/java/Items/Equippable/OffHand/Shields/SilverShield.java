@@ -2,17 +2,15 @@ package Items.Equippable.OffHand.Shields;
 
 import Items.Equippable.OffHand.Accessory;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SilverShield extends Accessory {
 
     public SilverShield() {
-        setName("Silver Shield");
-        setItemProtection(4);
-        setItemWeight(4);
-        setStatModifiers(new int[9]);
-        setOtherNullifyEffective(new ArrayList<String>());
-        setOtherBattleIncreases(new int[5]);
-        setItemDescription("A Shield made of shining silver.");
+        this.name = "Silver Shield";
+        this.protection = 4;
+        this.weight = 4;
+        this.additionalAbilities = new HashMap<>();
+        this.description = "A shield made of shining silver.";
     }
 }

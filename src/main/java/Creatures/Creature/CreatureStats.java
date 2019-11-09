@@ -47,15 +47,14 @@ public class CreatureStats {
     public void setSpeed(int speed) {this.allStats.put("Speed",speed);}
 
     public void setStatus(String status) {
-        if (status.equals("Poison") || status.equals("Beserk") ||
-                status.equals("Silence") || status.equals("Sleep") || status.equals("Normal")) {
+        if (status.equals("Poison") || status.equals("Beserk") || status.equals("Silence") || status.equals("Sleep") ||
+                status.equals("Normal")) {
             this.status = status;
         }
     }
 
     public void gainExperience(int exp) {
-        int current_experience = this.allStats.get("Experience");
-        current_experience += exp;
+        int current_experience = this.allStats.get("Experience") + exp;
         if (current_experience >= 100) {
             current_experience -= 100;
             this.allStats.put("Experience", current_experience);
@@ -72,18 +71,14 @@ public class CreatureStats {
             this.allStats.put(statNames[x], initialStats[x]);
             this.allStats.put("Max " + statNames[x], caps[x]);
 
-            if (x == 1) {
-                this.allStats.put("Current Health", initialStats[x]);
-            }
+            if (x == 1) {this.allStats.put("Current Health", initialStats[x]);}
         }
         this.allStats.put("Experience", 0);
         setStatGrowths(growths);
     }
 
     private void setStatGrowths(int[] growths) {
-        for (int x = 0; x < growths.length; x++) {
-            this.allStats.put(statNames[x+1] + " Growth", growths[x]);
-        }
+        for (int x = 0; x < growths.length; x++) {this.allStats.put(statNames[x+1] + " Growth", growths[x]);}
     }
 
     private void setAllSkillRanks(Character[] ranks) {
@@ -100,18 +95,17 @@ public class CreatureStats {
             if (statDoesIncrease) {levelUps[x] = 1;}
         }
         levelUps[0] = 1;
-        LevelUpStats(levelUps);
+        increaseStats(levelUps);
     }
 
-    private int getGrowth(String value) {
-        return this.allStats.get(value + " Growth") + this.unitclass.getClassStats().get(value + " Growth");
+    private int getGrowth(String stat) {
+        return this.allStats.get(stat + " Growth") + this.unitclass.getClassStats().get(stat + " Growth");
     }
 
-    private void LevelUpStats(int[] statsThatIncrease) {
+    private void increaseStats(int[] increases) {
 
-        for (int x = 0; x < statsThatIncrease.length; x++) {
-            int a = Math.min(this.allStats.get(statNames[x]) + statsThatIncrease[x],
-                    this.allStats.get("Max " + statNames[x]));
+        for (int x = 0; x < increases.length; x++) {
+            int a = Math.min(this.allStats.get(statNames[x]) + increases[x], this.allStats.get("Max " + statNames[x]));
             this.allStats.put(statNames[x], a);
         }
     }

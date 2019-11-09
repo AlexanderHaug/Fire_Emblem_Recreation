@@ -1,4 +1,4 @@
-import Creatures.Creature;
+import Creatures.Creature.Creature;
 import Items.Equippable.MainHand.Staff;
 import Items.Equippable.MainHand.Staves.Heal;
 import Items.Equippable.OffHand.Accessory;
