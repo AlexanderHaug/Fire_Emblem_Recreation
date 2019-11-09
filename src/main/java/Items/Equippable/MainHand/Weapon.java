@@ -1,22 +1,23 @@
 package Items.Equippable.MainHand;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public abstract class Weapon extends PrimaryItem {
-    private int might = 0;
-    private int critical = 0;
-    private ArrayList<String> effectiveAgainst = new ArrayList<>();
+    protected int might = 0;
+    protected int critical = 0;
 
     public int getMight() {return this.might;}
 
     public int getCritical() {return this.critical;}
 
-    public void setMight(int might) {this.might = might;}
-
-    public void setCritical(int crit) {this.critical = crit;}
-
-    public void setEffectiveAgainst(String[] data) {Collections.addAll(this.effectiveAgainst, data);}
-
-    public ArrayList<String> getEffectiveAgainst() {return effectiveAgainst;}
+    public ArrayList<String> getEffectiveAgainst() {
+        ArrayList<String> effectiveAgainst = new ArrayList<>();
+        if (this.additionalAbilities.get("Effective: Infantry") != null) {effectiveAgainst.add("Infantry");}
+        if (this.additionalAbilities.get("Effective: Armored") != null) {effectiveAgainst.add("Armored");}
+        if (this.additionalAbilities.get("Effective: Flying") != null) {effectiveAgainst.add("Flying");}
+        if (this.additionalAbilities.get("Effective: Calvary") != null) {effectiveAgainst.add("Calvary");}
+        if (this.additionalAbilities.get("Effective: Dragon") != null) {effectiveAgainst.add("Dragon");}
+        if (this.additionalAbilities.get("Effective: Monster") != null) {effectiveAgainst.add("Monster");}
+        return effectiveAgainst;
+    }
 }
