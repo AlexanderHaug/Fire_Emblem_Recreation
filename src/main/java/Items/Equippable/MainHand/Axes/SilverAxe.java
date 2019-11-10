@@ -2,25 +2,22 @@ package Items.Equippable.MainHand.Axes;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class SilverAxe extends Weapon {
 
     public SilverAxe() {
-        setName("Silver Axe");
-        setItemType("Axe");
-
-        setMight(16);
-        setAccuracy(70);
-        setCritical(0);
-        setItemsRange(new int[]{1,1});
-        setItemWeight(10);
-        setItemRank('B');
-
-        setItemUses(30);
-        setItemCost(1500);
-        setItemIs("");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("An axe crafted from shining silver.");
+        this.name = "Silver Axe";
+        this.type = "Axe";
+        this.might = 16;
+        this.accuracy = 70;
+        this.critical = 0;
+        this.range = new int[]{1,1};
+        this.weight = 10;
+        this.rank = 'B';
+        this.uses = 30;
+        this.cost = 1500;
+        this.additionalAbilities = new HashMap<>();
+        this.description = "An axe crafted from shining silver.";
     }
 }

@@ -2,25 +2,22 @@ package Items.Equippable.MainHand.Axes;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class SteelAxe extends Weapon {
 
     public SteelAxe() {
-        setName("Steel Axe");
-        setItemType("Axe");
-
-        setMight(11);
-        setAccuracy(65);
-        setCritical(0);
-        setItemsRange(new int[]{1,1});
-        setItemWeight(12);
-        setItemRank('D');
-
-        setItemUses(55);
-        setItemCost(920);
-        setItemIs("");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("A weighty steel axe that deals significant blows.");
+        this.name = "Steel Axe";
+        this.type = "Axe";
+        this.might = 11;
+        this.accuracy = 65;
+        this.critical = 0;
+        this.range = new int[]{1,1};
+        this.weight = 12;
+        this.rank = 'D';
+        this.uses = 55;
+        this.cost = 920;
+        this.additionalAbilities = new HashMap<>();
+        this.description = "A weighty steel axe that deals significant blows.";
     }
 }
