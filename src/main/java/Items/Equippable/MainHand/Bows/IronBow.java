@@ -2,25 +2,22 @@ package Items.Equippable.MainHand.Bows;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class IronBow extends Weapon {
 
     public IronBow() {
-        setName("Iron Bow");
-        setItemType("Bow");
-
-        setMight(6);
-        setAccuracy(85);
-        setCritical(0);
-        setItemsRange(new int[]{2,2});
-        setItemWeight(6);
-        setItemRank('E');
-
-        setItemUses(40);
-        setItemCost(260);
-        setItemIs("");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("A standard bow made of iron--simple but effective.");
+        this.name = "Iron Bow";
+        this.type = "Bow";
+        this.might = 6;
+        this.accuracy = 85;
+        this.critical = 0;
+        this.range = new int[]{2,2};
+        this.weight = 6;
+        this.rank = 'E';
+        this.uses = 40;
+        this.cost = 260;
+        this.additionalAbilities = new HashMap<>();
+        this.description = "A standard bow made of iron--simple but effective.";
     }
 }

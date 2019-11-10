@@ -2,26 +2,22 @@ package Items.Equippable.MainHand.Bows;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class TrainingBow extends Weapon {
 
     public TrainingBow() {
-        setName("Training Bow");
-        setItemType("Bow");
-
-        setMight(3);
-        setAccuracy(90);
-        setCritical(0);
-        setItemsRange(new int[]{2,2});
-        setItemWeight(5);
-        setItemRank('E');
-
-        setItemUses(50);
-        setItemCost(260);
-        setItemIs("");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("This simple bow is perfect for training purposes. " +
-                "But cannot inflict critical hits.");
+        this.name = "Training Bow";
+        this.type = "Bow";
+        this.might = 3;
+        this.accuracy = 90;
+        this.critical = 0;
+        this.range = new int[]{2,2};
+        this.weight = 5;
+        this.rank = 'E';
+        this.uses = 50;
+        this.cost = 260;
+        this.additionalAbilities = new HashMap<>();
+        this.description = "This simple bow is perfect for training purposes. But cannot inflict critical hits.";
     }
 }
