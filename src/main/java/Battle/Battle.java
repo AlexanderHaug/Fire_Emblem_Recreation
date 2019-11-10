@@ -2,7 +2,6 @@ package Battle;
 
 import Creatures.Creature.Creature;
 import Items.Equippable.MainHand.Staff;
-import Items.Equippable.MainHand.Weapon;
 
 import java.util.HashMap;
 
@@ -110,14 +109,14 @@ public class Battle {
     }
 
     public static int damageCalculator(Creature attacker, Creature defender, int damageBonus) {
-        boolean weaponIsMagic = ((Weapon) attacker.getMainItem()).isMagic();
+        boolean weaponIsMagic = attacker.getMainItem().isMagic();
         int damage = attacker.getDamage() + damageBonus;
 
         if (weaponIsMagic) {
-            damage =  damage - defender.getCreatureStats().getResistance();
+            damage =  damage - defender.getResilience();
         }
         else {
-            damage = damage - defender.getCreatureStats().getDefense();
+            damage = damage - defender.getProtection();
         }
 
         damage = criticalCalculator(attacker, defender, damage);

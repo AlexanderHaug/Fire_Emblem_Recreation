@@ -41,6 +41,12 @@ public class Creature {
         return def;
     }
 
+    public int getProtection() {
+        int res = getDefense();
+        res += getEquipmentBonusProtection();
+        return res;
+    }
+
     public int getResistance() {
         int res = this.creatureStats.getResistance();
         res += getEquipmentBonusResistance();
