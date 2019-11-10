@@ -2,25 +2,23 @@ package Items.Equippable.MainHand.Gauntlets;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class SilverGauntlets extends Weapon {
 
     public SilverGauntlets() {
-        setName("Silver Gauntlets");
-        setItemType("Brawl");
-
-        setMight(4);
-        setAccuracy(85);
-        setCritical(5);
-        setItemsRange(new int[]{1,1});
-        setItemWeight(7);
-        setItemRank('B');
-
-        setItemUses(40);
-        setItemCost(520);
-        setItemIs("Brave");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("Gauntlets crafted from shining silver. Wielder strikes twice when initiating combat.");
+        this.name = "Silver Gauntlets";
+        this.type = "Brawl";
+        this.might = 4;
+        this.accuracy = 85;
+        this.critical = 5;
+        this.range = new int[]{1,1};
+        this.weight = 7;
+        this.rank = 'B';
+        this.uses = 40;
+        this.cost = 520;
+        this.additionalAbilities = new HashMap<>();
+        this.additionalAbilities.put("Brave", 1);
+        this.description = "Gauntlets crafted from shining silver. Wielder strikes twice when initiating combat.";
     }
 }

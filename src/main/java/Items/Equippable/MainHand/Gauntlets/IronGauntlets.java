@@ -2,25 +2,24 @@ package Items.Equippable.MainHand.Gauntlets;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class IronGauntlets extends Weapon {
 
     public IronGauntlets() {
-        setName("Iron Gauntlets");
-        setItemType("Brawl");
-
-        setMight(1);
-        setAccuracy(85);
-        setCritical(0);
-        setItemsRange(new int[]{1,1});
-        setItemWeight(3);
-        setItemRank('E');
-
-        setItemUses(50);
-        setItemCost(520);
-        setItemIs("Brave");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("Standard iron gauntlets-simple but effective. Wielder strikes twice when initiating combat.");
+        this.name = "Iron Gauntlets";
+        this.type = "Brawl";
+        this.might = 1;
+        this.accuracy = 85;
+        this.critical = 0;
+        this.range = new int[]{1,1};
+        this.weight = 3;
+        this.rank = 'E';
+        this.uses = 50;
+        this.cost = 520;
+        this.additionalAbilities = new HashMap<>();
+        this.additionalAbilities.put("Brave", 1);
+        this.description = "Standard iron gauntlets-simple but effective. " +
+                "Wielder strikes twice when initiating combat.";
     }
 }

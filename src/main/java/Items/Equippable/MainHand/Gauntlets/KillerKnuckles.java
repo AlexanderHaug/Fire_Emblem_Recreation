@@ -2,25 +2,24 @@ package Items.Equippable.MainHand.Gauntlets;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class KillerKnuckles extends Weapon {
 
     public KillerKnuckles() {
-        setName("Killer Knuckles");
-        setItemType("Brawl");
-
-        setMight(3);
-        setAccuracy(80);
-        setCritical(20);
-        setItemsRange(new int[]{1,1});
-        setItemWeight(5);
-        setItemRank('B');
-
-        setItemUses(30);
-        setItemCost(520);
-        setItemIs("Brave");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("Gauntlets with a high critical-hit rate that allows the wielder to attack twice when initiating combat.");
+        this.name = "Killer Knuckles";
+        this.type = "Brawl";
+        this.might = 3;
+        this.accuracy = 80;
+        this.critical = 20;
+        this.range = new int[]{1,1};
+        this.weight = 5;
+        this.rank = 'B';
+        this.uses = 30;
+        this.cost = 520;
+        this.additionalAbilities = new HashMap<>();
+        this.additionalAbilities.put("Brave", 1);
+        this.description = "Gauntlets with a high critical-hit rate that allows the wielder " +
+                "to attack twice when initiating combat.";
     }
 }
