@@ -2,25 +2,23 @@ package Items.Equippable.MainHand.Light_Magics;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class Divine extends Weapon {
 
     public Divine() {
-        setName("Divine");
-        setItemType("Light Magic");
-
-        setMight(7);
-        setAccuracy(90);
-        setCritical(10);
-        setItemsRange(new int[]{1,2});
-        setItemWeight(4);
-        setItemRank('C');
-
-        setItemUses(6);
-        setItemCost(540);
-        setItemIs("Magic");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("Advanced light magic.");
+        this.name = "Divine";
+        this.type = "Light Magic";
+        this.might = 7;
+        this.accuracy = 90;
+        this.critical = 10;
+        this.range = new int[]{1,2};
+        this.weight = 4;
+        this.rank = 'C';
+        this.uses = 6;
+        this.cost = 540;
+        this.additionalAbilities = new HashMap<>();
+        this.additionalAbilities.put("Magic", 1);
+        this.description = "Advanced light magic.";
     }
 }
