@@ -2,25 +2,23 @@ package Items.Equippable.MainHand.Anima_Magics;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class Fire extends Weapon {
 
     public Fire() {
-        setName("Fire");
-        setItemType("Anima Magic: Fire");
-
-        setMight(3);
-        setAccuracy(90);
-        setCritical(0);
-        setItemsRange(new int[]{1,2});
-        setItemWeight(3);
-        setItemRank('E');
-
-        setItemUses(10);
-        setItemCost(540);
-        setItemIs("Magic");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("Basic fire magic.");
+        this.name = "Fire";
+        this.type = "Anima Magic: Fire";
+        this.might = 3;
+        this.accuracy = 90;
+        this.critical = 0;
+        this.range = new int[]{1,2};
+        this.weight = 3;
+        this.rank = 'E';
+        this.uses = 10;
+        this.cost = 540;
+        this.additionalAbilities = new HashMap<>();
+        this.additionalAbilities.put("Magic", 1);
+        this.description = "Basic fire magic.";
     }
 }

@@ -2,25 +2,23 @@ package Items.Equippable.MainHand.Anima_Magics;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class Bolting extends Weapon {
 
     public Bolting() {
-        setName("Bolting");
-        setItemType("Anima Magic: Lightning");
-
-        setMight(12);
-        setAccuracy(65);
-        setCritical(15);
-        setItemsRange(new int[]{3,10});
-        setItemWeight(18);
-        setItemRank('B');
-
-        setItemUses(2);
-        setItemCost(540);
-        setItemIs("Magic");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("Superior lightning magic. Cannot trigger follow-up attacks.");
+        this.name = "Bolting";
+        this.type = "Anima Magic: Lightning";
+        this.might = 12;
+        this.accuracy = 65;
+        this.critical = 15;
+        this.range = new int[]{3,10};
+        this.weight = 18;
+        this.rank = 'B';
+        this.uses = 2;
+        this.cost = 540;
+        this.additionalAbilities = new HashMap<>();
+        this.additionalAbilities.put("Magic", 1);
+        this.description = "Superior lightning magic. Cannot trigger follow-up attacks.";
     }
 }

@@ -2,25 +2,23 @@ package Items.Equippable.MainHand.Anima_Magics;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class Bolganone extends Weapon {
 
     public Bolganone() {
-        setName("Bolganone");
-        setItemType("Anima Magic: Fire");
-
-        setMight(8);
-        setAccuracy(80);
-        setCritical(0);
-        setItemsRange(new int[]{1,2});
-        setItemWeight(6);
-        setItemRank('C');
-
-        setItemUses(5);
-        setItemCost(540);
-        setItemIs("Magic");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("Advanced fire magic.");
+        this.name = "Bolganone";
+        this.type = "Anima Magic: Fire";
+        this.might = 8;
+        this.accuracy = 80;
+        this.critical = 0;
+        this.range = new int[]{1,2};
+        this.weight = 6;
+        this.rank = 'C';
+        this.uses = 5;
+        this.cost = 540;
+        this.additionalAbilities = new HashMap<>();
+        this.additionalAbilities.put("Magic", 1);
+        this.description = "Advanced fire magic.";
     }
 }

@@ -2,25 +2,23 @@ package Items.Equippable.MainHand.Anima_Magics;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class Elthunder extends Weapon {
 
     public Elthunder() {
-        setName("Elthunder");
-        setItemType("Anima Magic: Lightning");
-
-        setMight(6);
-        setAccuracy(75);
-        setCritical(5);
-        setItemsRange(new int[]{1,2});
-        setItemWeight(5);
-        setItemRank('D');
-
-        setItemUses(6);
-        setItemCost(540);
-        setItemIs("Magic");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("Intermediate lightning magic.");
+        this.name = "Elthunder";
+        this.type = "Anima Magic: Lightning";
+        this.might = 6;
+        this.accuracy = 75;
+        this.critical = 5;
+        this.range = new int[]{1,2};
+        this.weight = 5;
+        this.rank = 'D';
+        this.uses = 6;
+        this.cost = 540;
+        this.additionalAbilities = new HashMap<>();
+        this.additionalAbilities.put("Magic", 1);
+        this.description = "Intermediate lightning magic.";
     }
 }

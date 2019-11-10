@@ -2,25 +2,23 @@ package Items.Equippable.MainHand.Anima_Magics;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class Ragnarok extends Weapon {
 
     public Ragnarok() {
-        setName("Ragnarok");
-        setItemType("Anima Magic: Fire");
-
-        setMight(15);
-        setAccuracy(75);
-        setCritical(5);
-        setItemsRange(new int[]{1,2});
-        setItemWeight(9);
-        setItemRank('B');
-
-        setItemUses(3);
-        setItemCost(540);
-        setItemIs("Magic");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("Superior fire magic.");
+        this.name = "Ragnarok";
+        this.type = "Anima Magic: Fire";
+        this.might = 15;
+        this.accuracy = 75;
+        this.critical = 5;
+        this.range = new int[]{1,2};
+        this.weight = 9;
+        this.rank = 'B';
+        this.uses = 3;
+        this.cost = 540;
+        this.additionalAbilities = new HashMap<>();
+        this.additionalAbilities.put("Magic", 1);
+        this.description = "Superior fire magic.";
     }
 }
