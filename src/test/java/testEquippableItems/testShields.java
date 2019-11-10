@@ -30,7 +30,7 @@ public class testShields {
     @Test
     public void testSilverShield() {
         testAccessory("Silver Shield", 4,4, new HashMap<String, Integer>(),
-                new ArrayList<String>(), "A Shield made of shining silver.");
+                new ArrayList<String>(), "A shield made of shining silver.");
     }
 
     @Test
@@ -38,6 +38,6 @@ public class testShields {
         HashMap<String, Integer> map = new HashMap<>();
         map.put("Accessory: Resilience", 4);
         testAccessory("Hexlock Shield",2,5, map, new ArrayList<String>(),
-                "A Shield offering strong protection and resilience.");
+                "A shield offering strong protection and resilience.");
     }
 }

@@ -11,7 +11,7 @@ public class HexlockShield extends Accessory {
         this.protection = 2;
         this.weight = 5;
         this.additionalAbilities = new HashMap<>();
-        this.additionalAbilities.put("Accessory Resilience", 4);
-        this.description = "A Shield offering strong protection and resilience.";
+        this.additionalAbilities.put("Accessory: Resilience", 4);
+        this.description = "A shield offering strong protection and resilience.";
     }
 }

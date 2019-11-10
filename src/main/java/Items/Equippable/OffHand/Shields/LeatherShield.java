@@ -1,4 +1,4 @@
-package Items.Equippable.OffHand.All_Accessories;
+package Items.Equippable.OffHand.Shields;
 
 import Items.Equippable.OffHand.Accessory;
 
