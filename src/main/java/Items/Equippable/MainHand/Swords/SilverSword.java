@@ -2,25 +2,22 @@ package Items.Equippable.MainHand.Swords;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class SilverSword extends Weapon {
 
     public SilverSword() {
-        setName("Silver Sword");
-        setItemType("Sword");
-
-        setMight(12);
-        setAccuracy(90);
-        setCritical(0);
-        setItemsRange(new int[]{1,1});
-        setItemWeight(8);
-        setItemRank('B');
-
-        setItemUses(30);
-        setItemCost(1410);
-        setItemIs("");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("A sword crafted from shining silver.");
+        this.name = "Silver Sword";
+        this.type = "Sword";
+        this.might = 12;
+        this.accuracy = 90;
+        this.critical = 0;
+        this.range = new int[]{1,1};
+        this.weight = 8;
+        this.rank = 'B';
+        this.uses = 30;
+        this.cost = 1410;
+        this.additionalAbilities = new HashMap<>();
+        this.description = "A sword crafted from shining silver.";
     }
 }

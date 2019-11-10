@@ -2,25 +2,23 @@ package Items.Equippable.MainHand.Swords;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class BraveSword extends Weapon {
 
     public BraveSword() {
-        setName("Brave Sword");
-        setItemType("Sword");
-
-        setMight(9);
-        setAccuracy(75);
-        setCritical(0);
-        setItemsRange(new int[]{1,1});
-        setItemWeight(12);
-        setItemRank('B');
-
-        setItemUses(30);
-        setItemCost(2100);
-        setItemIs("Brave");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("The wielder of this blade is emboldened and will attack twice when initiating combat.");
+        this.name = "Brave Sword";
+        this.type = "Sword";
+        this.might = 9;
+        this.accuracy = 75;
+        this.critical = 0;
+        this.range = new int[]{1,1};
+        this.weight = 12;
+        this.rank = 'B';
+        this.uses = 30;
+        this.cost = 2100;
+        this.additionalAbilities = new HashMap<>();
+        this.additionalAbilities.put("Brave", 1);
+        this.description = "The wielder of this blade is emboldened and will attack twice when initiating combat.";
     }
 }

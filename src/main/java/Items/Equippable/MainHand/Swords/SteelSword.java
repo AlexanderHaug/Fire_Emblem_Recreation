@@ -2,25 +2,22 @@ package Items.Equippable.MainHand.Swords;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class SteelSword extends Weapon {
 
     public SteelSword() {
-        setName("Steel Sword");
-        setItemType("Sword");
-
-        setMight(8);
-        setAccuracy(85);
-        setCritical(0);
-        setItemsRange(new int[]{1,1});
-        setItemWeight(10);
-        setItemRank('D');
-
-        setItemUses(50);
-        setItemCost(910);
-        setItemIs("");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("A weighty steel sword that deals significant blows.");
+        this.name = "Steel Sword";
+        this.type = "Sword";
+        this.might = 8;
+        this.accuracy = 85;
+        this.critical = 0;
+        this.range = new int[]{1,1};
+        this.weight = 10;
+        this.rank = 'D';
+        this.uses = 50;
+        this.cost = 910;
+        this.additionalAbilities = new HashMap<>();
+        this.description = "A weighty steel sword that deals significant blows.";
     }
 }
