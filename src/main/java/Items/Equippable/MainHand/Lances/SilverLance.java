@@ -2,25 +2,22 @@ package Items.Equippable.MainHand.Lances;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class SilverLance extends Weapon {
 
     public SilverLance() {
-        setName("Silver Lance");
-        setItemType("Lance");
-
-        setMight(13);
-        setAccuracy(80);
-        setCritical(0);
-        setItemsRange(new int[]{1,1});
-        setItemWeight(9);
-        setItemRank('B');
-
-        setItemUses(25);
-        setItemCost(260);
-        setItemIs("");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("A lance crafted from shining silver.");
+        this.name = "Silver Lance";
+        this.type = "Lance";
+        this.might = 13;
+        this.accuracy = 80;
+        this.critical = 0;
+        this.range = new int[]{1,1};
+        this.weight = 9;
+        this.rank = 'B';
+        this.uses = 25;
+        this.cost = 260;
+        this.additionalAbilities = new HashMap<>();
+        this.description = "A lance crafted from shining silver.";
     }
 }

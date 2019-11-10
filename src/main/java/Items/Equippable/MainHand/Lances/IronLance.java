@@ -2,25 +2,22 @@ package Items.Equippable.MainHand.Lances;
 
 import Items.Equippable.MainHand.Weapon;
 
+import java.util.HashMap;
+
 public class IronLance extends Weapon {
 
     public IronLance() {
-        setName("Iron Lance");
-        setItemType("Lance");
-
-        setMight(6);
-        setAccuracy(80);
-        setCritical(0);
-        setItemsRange(new int[]{1,1});
-        setItemWeight(6);
-        setItemRank('E');
-
-        setItemUses(30);
-        setItemCost(260);
-        setItemIs("");
-
-        setStatModifiers(new int[]{0,0,0,0,0,0,0,0,0});
-        setEffectiveAgainst(new String[]{});
-        setItemDescription("A standard lance made of iron--simple but effective.");
+        this.name = "Iron Lance";
+        this.type = "Lance";
+        this.might = 6;
+        this.accuracy = 80;
+        this.critical = 0;
+        this.range = new int[]{1,1};
+        this.weight = 6;
+        this.rank = 'E';
+        this.uses = 30;
+        this.cost = 260;
+        this.additionalAbilities = new HashMap<>();
+        this.description = "A standard lance made of iron--simple but effective.";
     }
 }
