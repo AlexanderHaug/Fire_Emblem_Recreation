@@ -2,22 +2,22 @@ package Items.Equippable.MainHand.Staves;
 
 import Items.Equippable.MainHand.Staff;
 
+import java.util.HashMap;
+
 public class Restore extends Staff {
 
     public Restore() {
-        setName("Restore");
-        setItemType("Staff");
-        setAssistType("Cleansing");
-
-        setHealAmount(0);
-        setAccuracy(100);
-        setItemsRange(new int[]{1,1});
-
-        setItemWeight(4);
-        setItemRank('C');
-        setItemUses(5);
-
-        setStaffStatusEffect("");
-        setItemDescription("Cures status effects.");
+        this.name = "Restore";
+        this.type = "Staff";
+        this.assistType = "Cleansing";
+        this.additionalAbilities = new HashMap<>();
+        this.additionalAbilities.put("Magic", 1);
+        this.accuracy = 100;
+        this.range = new int[]{1,1};
+        this.weight = 4;
+        this.rank = 'C';
+        this.uses = 5;
+        this.cost = 260;
+        this.description = "Cures status effects.";
     }
 }
