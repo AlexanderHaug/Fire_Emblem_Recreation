@@ -81,11 +81,11 @@ public class testCreature {
         robin.getCreatureStats().setAllStats(new int[]{1,80,10,10,10,10,10,10,10,10},
                 new int[]{99,80,80,80,80,80,80,80,80,80}, new int[]{200,200,200,200,200,200,200,200,200});
 
-        assert robin.getCreatureStats().getResistance() == 10;
+        assert robin.getResilience() == 10;
         robin.equipItem(new HexlockShield());
-        assert robin.getCreatureStats().getResistance() == 14;
+        assert robin.getResilience() == 14;
         robin.unequipOffItem();
-        assert robin.getCreatureStats().getResistance() == 10;
+        assert robin.getResilience() == 10;
     }
 
     @Test

@@ -1,4 +1,4 @@
-package Creatures;
+package Creatures.Creature;
 
 import Creatures.UnitClass.UnitClass;
 
@@ -23,16 +23,16 @@ public class CreatureStats {
     public UnitClass getUnitclass() {return unitclass;}
 
     public int getLevel() {return this.allStats.get("Level");}
-    public int getHealth() {return this.allStats.get("Health") + this.statBonuses.getCreatureStatBonuses()[0];}
+    public int getHealth() {return this.allStats.get("Health");}
     public int getCurrentHealth() {return this.allStats.get("Current Health");}
-    public int getStrength() {return this.allStats.get("Strength") + this.statBonuses.getCreatureStatBonuses()[1];}
-    public int getMagic() {return this.allStats.get("Magic") + this.statBonuses.getCreatureStatBonuses()[2];}
-    public int getSkill() {return this.allStats.get("Skill") + this.statBonuses.getCreatureStatBonuses()[3];}
-    public int getLuck() {return this.allStats.get("Luck") + this.statBonuses.getCreatureStatBonuses()[4];}
-    public int getSpeed() {return this.allStats.get("Speed") + this.statBonuses.getCreatureStatBonuses()[5];}
-    public int getDefense() {return this.allStats.get("Defense") + this.statBonuses.getCreatureStatBonuses()[6];}
-    public int getResistance() {return this.allStats.get("Resistance") + this.statBonuses.getCreatureStatBonuses()[7];}
-    public int getCharm() {return this.allStats.get("Charm") + this.statBonuses.getCreatureStatBonuses()[8];}
+    public int getStrength() {return this.allStats.get("Strength");}
+    public int getMagic() {return this.allStats.get("Magic");}
+    public int getSkill() {return this.allStats.get("Skill");}
+    public int getLuck() {return this.allStats.get("Luck");}
+    public int getSpeed() {return this.allStats.get("Speed");}
+    public int getDefense() {return this.allStats.get("Defense");}
+    public int getResistance() {return this.allStats.get("Resistance");}
+    public int getCharm() {return this.allStats.get("Charm");}
 
     public String getStatus() {return this.status;}
     public HashMap<String, Character> getSkillRanks() {return skillRanks;}

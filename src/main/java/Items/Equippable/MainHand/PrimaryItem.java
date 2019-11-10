@@ -2,6 +2,8 @@ package Items.Equippable.MainHand;
 
 import Items.Equippable.EquippableItem;
 
+import java.util.HashMap;
+
 public abstract class PrimaryItem extends EquippableItem {
     protected String type;
     protected int accuracy = 0;
@@ -20,4 +22,22 @@ public abstract class PrimaryItem extends EquippableItem {
     public int[] getRange() {return range;}
     public int shortRange() {return range[0];}
     public int longRange() {return range[1];}
+
+    public int getDefense() {
+        return this.additionalAbilities.get("PrimaryItem: Defense") != null ?
+                this.additionalAbilities.get("PrimaryItem: Defense") : 0;
+    }
+
+    public int getResistance() {
+        return this.additionalAbilities.get("PrimaryItem: Resistance") != null ?
+                this.additionalAbilities.get("PrimaryItem: Resistance") : 0;
+    }
+
+    public HashMap<String, Integer> getDebuffs() {
+        HashMap<String, Integer> debuffs = new HashMap<>();
+        if (this.additionalAbilities.get("Temp Debuff: Def") != null) {
+            debuffs.put("Temp Debuff: Def", this.additionalAbilities.get("Temp Debuff: Def"));
+        }
+        return debuffs;
+    }
 }

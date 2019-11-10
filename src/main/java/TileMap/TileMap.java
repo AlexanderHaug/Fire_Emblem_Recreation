@@ -1,6 +1,6 @@
 package TileMap;
 
-import Creatures.Creature;
+import Creatures.Creature.Creature;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -87,7 +87,7 @@ public class TileMap {
                 if (this.map[x][y] == null) {System.out.print(" - ");}
 
                 else {
-                    System.out.print(this.map[x][y].getCreatureName().charAt(0) + ":" +
+                    System.out.print(this.map[x][y].getName().charAt(0) + ":" +
                             this.map[x][y].getArmyAffiliation().charAt(0));
                 }
             }

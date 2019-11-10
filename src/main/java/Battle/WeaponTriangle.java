@@ -14,23 +14,23 @@ public class WeaponTriangle {
     }
 
     private static boolean attackingAtAdvantage(PrimaryItem attacker, PrimaryItem defender) {
-        if (attacker.isItemMagic() && defender.isItemMagic())
-            if (attacker.getItemType().contains("Anima Magic") && defender.getItemType().contains("Anima Magic"))
-                return  advantageAnimaTriangle(attacker.getItemType(), defender.getItemType());
+        if (attacker.isMagic() && defender.isMagic())
+            if (attacker.getType().contains("Anima Magic") && defender.getType().contains("Anima Magic"))
+                return  advantageAnimaTriangle(attacker.getType(), defender.getType());
             else
-                return advantageTrinityOfMagic(attacker.getItemType(), defender.getItemType());
+                return advantageTrinityOfMagic(attacker.getType(), defender.getType());
 
-        return  advantageWeaponTriangle(attacker.getItemType(), defender.getItemType());
+        return  advantageWeaponTriangle(attacker.getType(), defender.getType());
     }
 
     private static boolean attackingAtDisadvantage(PrimaryItem attacker, PrimaryItem defender) {
-        if (attacker.isItemMagic() && defender.isItemMagic())
-            if (attacker.getItemType().contains("Anima Magic") && defender.getItemType().contains("Anima Magic"))
-                return  disadvantageAnimaTriangle(attacker.getItemType(), defender.getItemType());
+        if (attacker.isMagic() && defender.isMagic())
+            if (attacker.getType().contains("Anima Magic") && defender.getType().contains("Anima Magic"))
+                return  disadvantageAnimaTriangle(attacker.getType(), defender.getType());
             else
-                return disadvantageTrinityOfMagic(attacker.getItemType(), defender.getItemType());
+                return disadvantageTrinityOfMagic(attacker.getType(), defender.getType());
 
-        return  disadvantageWeaponTriangle(attacker.getItemType(), defender.getItemType());
+        return  disadvantageWeaponTriangle(attacker.getType(), defender.getType());
     }
 
     private static boolean advantageWeaponTriangle(String attacker, String defender) {

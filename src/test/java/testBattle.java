@@ -96,7 +96,7 @@ public class testBattle {
         Battle.runBattle(robin,risen, 2);
         assert robin.getCreatureStats().getCurrentHealth() == 50;
         assert risen.getCreatureStats().getCurrentHealth() >= 0;
-        assert risen.getCreatureStats().getDefense() == 45;
+        assert risen.getDefense() == 45;
     }
 
     @Test

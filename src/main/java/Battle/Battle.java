@@ -1,6 +1,6 @@
 package Battle;
 
-import Creatures.Creature;
+import Creatures.Creature.Creature;
 import Items.Equippable.MainHand.Staff;
 import Items.Equippable.MainHand.Weapon;
 
@@ -53,7 +53,7 @@ public class Battle {
     }
 
     public static void assist(Creature supporter, Creature target, int distance) {
-        if (!isTargetNotInRangeAssist(supporter, supporter.getMainItem().getItemRange(), distance)) {
+        if (!isTargetNotInRangeAssist(supporter, supporter.getMainItem().getRange(), distance)) {
             if (((Staff)supporter.getMainItem()).getAssistType().equals("Healing")) {
                 target.healHealth(supporter.getCreatureStats().getMagic() +
                         ((Staff)supporter.getMainItem()).getHealAmount());
@@ -68,12 +68,12 @@ public class Battle {
         boolean attackerHits = doesHit(attacker, defender, hitBonus);
         if (attackerHits) {
             int attackerDamageDealt = damageCalculator(attacker, defender, damageBonus);
-            displayActionTaken(attacker.getCreatureName(), attackerDamageDealt, defender);
-            targetsHits.put(defender.getCreatureName(),true);
+            displayActionTaken(attacker.getName(), attackerDamageDealt, defender);
+            targetsHits.put(defender.getName(),true);
         }
         else {
-            System.out.println(attacker.getCreatureName() + " missed.");
-            targetsHits.put(defender.getCreatureName(),false);
+            System.out.println(attacker.getName() + " missed.");
+            targetsHits.put(defender.getName(),false);
         }
     }
 
@@ -96,10 +96,10 @@ public class Battle {
 
         System.out.println(attackerName + message + attackerDamageDealt + " damage.");
         defender.damageToHealth(attackerDamageDealt);
-        System.out.println(defender.getCreatureName() + " Health: " + defender.getCreatureStats().getCurrentHealth());
+        System.out.println(defender.getName() + " Health: " + defender.getCreatureStats().getCurrentHealth());
 
         if (isDead(defender)) {
-            System.out.println(defender.getCreatureName() + " died!");
+            System.out.println(defender.getName() + " died!");
             winner = attackerName;
         }
     }
@@ -110,7 +110,7 @@ public class Battle {
     }
 
     public static int damageCalculator(Creature attacker, Creature defender, int damageBonus) {
-        boolean weaponIsMagic = ((Weapon) attacker.getMainItem()).isItemMagic();
+        boolean weaponIsMagic = ((Weapon) attacker.getMainItem()).isMagic();
         int damage = attacker.getDamage() + damageBonus;
 
         if (weaponIsMagic) {
@@ -139,22 +139,22 @@ public class Battle {
         }
 
         else {
-            message = " hits " + defender.getCreatureName() + " for ";
+            message = " hits " + defender.getName() + " for ";
             return damageDone;
         }
     }
 
     private static void resolveConflict(Creature attacker, Creature defender) {
 
-        if (targetsHits.get(attacker.getCreatureName())) {
-            if (defender.getMainItem().isItemDebuff()) {
-                attacker.getCreatureStats().getStatBonuses().decreaseStatBonuses(defender.getMainItem().getTempDebuffOpponentStats());
+        if (targetsHits.get(attacker.getName())) {
+            if (defender.getMainItem().isDebuff()) {
+                attacker.applyDebuffs(defender.getMainItem().getDebuffs());
             }
         }
 
-        if (targetsHits.get(defender.getCreatureName())) {
-            if (attacker.getMainItem().isItemDebuff()) {
-                defender.getCreatureStats().getStatBonuses().decreaseStatBonuses(attacker.getMainItem().getTempDebuffOpponentStats());
+        if (targetsHits.get(defender.getName())) {
+            if (attacker.getMainItem().isDebuff()) {
+                defender.applyDebuffs(attacker.getMainItem().getDebuffs());
             }
         }
         targetsHits.clear();
@@ -169,9 +169,9 @@ public class Battle {
 
     private static boolean creatureCannotAttack(Creature attacker, Creature defender, int distance) {
         if (attacker.getMainItem() == null ||
-                isTargetNotInRangeAttack(attacker.getMainItem().getItemRange(), distance)) {
-            System.out.println(attacker.getCreatureName() + " cannot attack.");
-            targetsHits.put(defender.getCreatureName(), false);
+                isTargetNotInRangeAttack(attacker.getMainItem().getRange(), distance)) {
+            System.out.println(attacker.getName() + " cannot attack.");
+            targetsHits.put(defender.getName(), false);
             return true;
         }
         return false;

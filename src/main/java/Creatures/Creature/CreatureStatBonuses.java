@@ -1,34 +1,33 @@
-package Creatures;
+package Creatures.Creature;
+
+import java.util.HashMap;
+import java.util.Set;
 
 public class CreatureStatBonuses {
-    private int[] statBuffs;
-    private int[] statDebuffs;
-    private int[] statBonuses;
+    private HashMap<String, Integer> statBonuses;
 
     public CreatureStatBonuses() {
-        statBuffs = new int[9];
-        statDebuffs = new int[9];
-        statBonuses = new int[9];
+        this.statBonuses = new HashMap<>();
+        this.statBonuses.put("Temp Buff: Def", 0);
+        this.statBonuses.put("Temp Debuff: Def", 0);
+        this.statBonuses.put("Temp Buff: Res", 0);
+        this.statBonuses.put("Temp Debuff: Res", 0);
     }
 
-    public void setStatBonuses(int[] bonuses) {
-        for (int x = 0; x < statBuffs.length; x++) {
-            if (bonuses[x] < 0) {this.statDebuffs[x] = bonuses[x];}
+    public int getBonusDefense() {
+        return statBonuses.get("Temp Buff: Def") - statBonuses.get("Temp Debuff: Def");
+    }
 
-            else {this.statBuffs[x] = bonuses[x];}
+    public int getBonusResistance() {
+        return statBonuses.get("Temp Buff: Res") - statBonuses.get("Temp Debuff: Res");
+    }
+
+    public void addDebuffs(HashMap<String, Integer> debuffs) {
+        Set keys = debuffs.keySet();
+        if (keys.contains("Temp Debuff: Def")) {
+            if (this.statBonuses.get("Temp Debuff: Def") < debuffs.get("Temp Debuff: Def")) {
+                this.statBonuses.put("Temp Debuff: Def", debuffs.get("Temp Debuff: Def"));
+            }
         }
-    }
-
-    public void decreaseStatBonuses(int[] bonuses) {
-        for (int x = 0; x < statBuffs.length; x++) {
-            if (bonuses[x] < 0) {this.statDebuffs[x] += Math.abs(bonuses[x]);}
-
-            else {this.statBuffs[x] -= bonuses[x];}
-        }
-    }
-
-    public int[] getCreatureStatBonuses() {
-        for (int x = 0; x < statBonuses.length; x++) {statBonuses[x] = statBuffs[x] - statDebuffs[x];}
-        return statBonuses;
     }
 }

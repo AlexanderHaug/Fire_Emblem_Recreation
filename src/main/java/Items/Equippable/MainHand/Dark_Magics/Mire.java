@@ -20,7 +20,7 @@ public class Mire extends Weapon {
         this.additionalAbilities = new HashMap<>();
         this.additionalAbilities.put("Magic", 1);
         this.additionalAbilities.put("Debuff", 1);
-        this.additionalAbilities.put("Temp Debuff: Def", -5);
+        this.additionalAbilities.put("Temp Debuff: Def", 5);
         this.description = "Intermediate dark magic. Inflicts Def -5 to foe for 1 turn.";
     }
 }

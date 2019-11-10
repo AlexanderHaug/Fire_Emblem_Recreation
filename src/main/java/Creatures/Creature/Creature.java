@@ -1,4 +1,4 @@
-package Creatures;
+package Creatures.Creature;
 
 import Battalions.Battalion;
 import Items.Equippable.MainHand.PrimaryItem;
@@ -6,15 +6,18 @@ import Items.Equippable.MainHand.Weapon;
 import Items.Equippable.OffHand.Accessory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Creature {
 
-    private String name;
-    private CreatureStats creatureStats;
-    private PrimaryItem mainItem = null;
-    private Accessory secondaryItem = null;
-    private Battalion battalion = new Battalion();
-    private String armyAffiliation;
+    protected String name;
+    protected CreatureStats creatureStats;
+    protected PrimaryItem mainItem = null;
+    protected Accessory secondaryItem = null;
+    protected Battalion battalion = new Battalion();
+    protected String armyAffiliation;
+
+    public Creature() {};
 
     public Creature(String Name, CreatureStats creatureStats, String army_affiliation) {
         this.name = Name;
@@ -24,18 +27,38 @@ public class Creature {
 
     public CreatureStats getCreatureStats() {return creatureStats;}
 
-    public String getCreatureName() {return name;}
+    public String getName() {return name;}
 
     public String getArmyAffiliation() {
         return armyAffiliation;
     }
 
     // Battle Functions
+    public int getDefense() {
+        int def = this.creatureStats.getDefense();
+        def += getEquipmentBonusDefense();
+        def += this.creatureStats.getStatBonuses().getBonusDefense();
+        return def;
+    }
+
+    public int getResistance() {
+        int res = this.creatureStats.getResistance();
+        res += getEquipmentBonusResistance();
+        res += this.creatureStats.getStatBonuses().getBonusResistance();
+        return res;
+    }
+
+    public int getResilience() {
+        int res = getResistance();
+        res += getEquipmentBonusResilience();
+        return res;
+    }
+
     public int getDamage() {
         if (mainItem != null) {
             int weaponMight = ((Weapon)mainItem).getMight();
 
-            if (mainItem.isItemMagic()) {return weaponMight +
+            if (mainItem.isMagic()) {return weaponMight +
                     creatureStats.getMagic() + battalion.getBattalionMagicalBonus();}
 
             else {return weaponMight + creatureStats.getStrength() +  battalion.getBattalionPhysicalBonus();}
@@ -48,7 +71,7 @@ public class Creature {
         int weaponWeight = 0;
 
         if (this.mainItem != null) {
-            weaponWeight = Math.max(this.mainItem.getItemWeight() - (this.getCreatureStats().getStrength()/5), 0);
+            weaponWeight = Math.max(this.mainItem.getWeight() - (this.getCreatureStats().getStrength()/5), 0);
         }
 
         return this.getCreatureStats().getSpeed() - weaponWeight;
@@ -94,24 +117,27 @@ public class Creature {
         if (creatureStats.getCurrentHealth() < 0) {creatureStats.setCurrentHealth(0);}
     }
 
+    public void applyDebuffs(HashMap<String, Integer> debuffs) {
+        this.creatureStats.getStatBonuses().addDebuffs(debuffs);
+
+    }
+
     // Item Functions
     public void equipItem(PrimaryItem item) {
         ArrayList<String> list = creatureStats.getUnitclass().getEquippable();
-        if (list.contains(item.getItemType())) {
+        if (list.contains(item.getType())) {
 
-            int creatureRank = creatureStats.getSkillRanks().get(item.getItemType());
-            int weaponRank = item.getItemRank();
+            int creatureRank = creatureStats.getSkillRanks().get(item.getType());
+            int weaponRank = item.getRank();
 
             if (creatureRank <= weaponRank) {
                 this.mainItem = item;
-                this.creatureStats.getStatBonuses().setStatBonuses(item.getOtherStatIncreases());
             }
         }
     }
 
     public void equipItem(Accessory item) {
         this.secondaryItem = item;
-        this.creatureStats.getStatBonuses().setStatBonuses(item.getOtherStatIncreases());
     }
 
     public PrimaryItem getMainItem() {return mainItem;}
@@ -122,14 +148,12 @@ public class Creature {
     }
 
     public void unequipMainItem() {
-        this.creatureStats.getStatBonuses().decreaseStatBonuses(this.mainItem.getOtherStatIncreases());
         this.mainItem = null;
     }
 
     public Accessory getSecondaryItem() {return secondaryItem;}
 
     public void unequipOffItem() {
-        this.creatureStats.getStatBonuses().decreaseStatBonuses(this.secondaryItem.getOtherStatIncreases());
         this.secondaryItem = null;
     }
 
@@ -137,6 +161,30 @@ public class Creature {
     public void setBattalion(Battalion battalion) {this.battalion = battalion;}
 
     public Battalion getBattalion() {return this.battalion;}
+
+    private int getEquipmentBonusDefense() {
+        int bonus = 0;
+        if (mainItem != null) {bonus += mainItem.getDefense();}
+        return bonus;
+    }
+
+    private int getEquipmentBonusProtection() {
+        int bonus = 0;
+        if (secondaryItem != null) {bonus += secondaryItem.getProtection();}
+        return bonus;
+    }
+
+    private int getEquipmentBonusResistance() {
+        int bonus = 0;
+        if (mainItem != null) {bonus += mainItem.getResistance();}
+        return bonus;
+    }
+
+    private int getEquipmentBonusResilience() {
+        int bonus = 0;
+        if (secondaryItem != null) {bonus += secondaryItem.getAccessoryResilience();}
+        return bonus;
+    }
 
     public String toString() {return name + " Class: " + creatureStats.getUnitclass().getName() + " Level: " +
             creatureStats.getLevel() + "\n" + "HP " + creatureStats.getCurrentHealth() + ", Attack " +
