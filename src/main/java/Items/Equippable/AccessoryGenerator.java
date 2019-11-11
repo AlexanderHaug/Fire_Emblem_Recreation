@@ -7,8 +7,6 @@ public class AccessoryGenerator {
 
     public static Accessory createAccessory(String accessoryName) {
         switch (accessoryName) {
-            case "Leather Shield":
-                return new LeatherShield();
             case "Iron Shield":
                 return new IronShield();
             case "Steel Shield":
@@ -17,8 +15,10 @@ public class AccessoryGenerator {
                 return new SilverShield();
             case "Hexlock Shield":
                 return new HexlockShield();
+            case "Kadmos Shield":
+                return new KadmosShield();
             default:
-                return null;
+                return new LeatherShield();
         }
     }
 }

@@ -40,4 +40,15 @@ public class testShields {
         testAccessory("Hexlock Shield",2,5, map, new ArrayList<String>(),
                 "A shield offering strong protection and resilience.");
     }
+
+    @Test
+    public void testKadmosShield() {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("Nullify: Armored", 1);
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Armored");
+        testAccessory("Kadmos Shield",3,0, map, list,
+                "A shield that can stop armor-piercing attacks. " +
+                        "Nullifies effectiveness against armored units.");
+    }
 }

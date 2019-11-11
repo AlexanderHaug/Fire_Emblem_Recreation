@@ -14,6 +14,7 @@ import Items.Equippable.MainHand.Swords.Armorslayer;
 import Items.Equippable.MainHand.Swords.KillingEdge;
 import Items.Equippable.MainHand.Swords.TrainingSword;
 import Items.Equippable.MainHand.Weapon;
+import Items.Equippable.OffHand.Shields.KadmosShield;
 import org.junit.Test;
 import testSetUpMethods.createCreatureSetUp;
 
@@ -40,13 +41,25 @@ public class testBattle {
         Creature risen = createCreatureSetUp.setUpCreature("Risen", "Knight", "Monster");
         robin.getCreatureStats().getSkillRanks().put("Sword", 'A');
 
-        Weapon armorslayer = new Armorslayer();
-
-        robin.equipItem(armorslayer);
+        robin.equipItem(new Armorslayer());
 
         Battle.doBattle(robin, risen, 1);
         assert robin.getCreatureStats().getCurrentHealth() == 50;
         assert risen.getCreatureStats().getCurrentHealth() == 26;
+    }
+
+    @Test
+    public void testNullifyEffectiveAgainst() {
+        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Lord", "Ylisee");
+        Creature risen = createCreatureSetUp.setUpCreature("Risen", "Knight", "Monster");
+        robin.getCreatureStats().getSkillRanks().put("Sword", 'A');
+
+        robin.equipItem(new Armorslayer());
+        risen.equipItem(new KadmosShield());
+
+        Battle.doBattle(robin, risen, 1);
+        assert robin.getCreatureStats().getCurrentHealth() == 50;
+        assert risen.getCreatureStats().getCurrentHealth() == 45;
     }
 
     @Test
