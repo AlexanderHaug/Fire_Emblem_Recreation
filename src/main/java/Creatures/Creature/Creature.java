@@ -34,6 +34,23 @@ public class Creature {
     }
 
     // Battle Functions
+    public boolean getEffective(String[] types) {
+        for (String type : types) {
+            if (((Weapon) mainItem).getEffectiveAgainst().contains(type)) {return true;}
+        }
+        return false;
+    }
+
+    public boolean getEffectiveNulls(String[] types) {
+        if (secondaryItem != null) {
+            for (String type : types) {
+                if (secondaryItem.getNullifies().contains(type)) {return true;}
+            }
+            return false;
+        }
+        else {return false;}
+    }
+
     public int getDefense() {
         int def = this.creatureStats.getDefense();
         def += getEquipmentBonusDefense();
@@ -60,18 +77,9 @@ public class Creature {
         return res;
     }
 
-    public int getDamage() {
-        if (mainItem != null) {
-            int weaponMight = ((Weapon)mainItem).getMight();
+    public int getPhysicalBonus() {return creatureStats.getStrength() +  battalion.getBattalionPhysicalBonus();}
 
-            if (mainItem.isMagic()) {return weaponMight +
-                    creatureStats.getMagic() + battalion.getBattalionMagicalBonus();}
-
-            else {return weaponMight + creatureStats.getStrength() +  battalion.getBattalionPhysicalBonus();}
-        }
-
-        else {return 0;}
-    }
+    public int getMagicalBonus() {return creatureStats.getMagic() + battalion.getBattalionMagicalBonus();}
 
     public int getAttackSpeed() {
         int weaponWeight = 0;

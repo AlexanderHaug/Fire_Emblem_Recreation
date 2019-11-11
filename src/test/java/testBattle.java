@@ -35,6 +35,21 @@ public class testBattle {
     }
 
     @Test
+    public void testEffectiveAgainst() {
+        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Lord", "Ylisee");
+        Creature risen = createCreatureSetUp.setUpCreature("Risen", "Knight", "Monster");
+        robin.getCreatureStats().getSkillRanks().put("Sword", 'A');
+
+        Weapon armorslayer = new Armorslayer();
+
+        robin.equipItem(armorslayer);
+
+        Battle.doBattle(robin, risen, 1);
+        assert robin.getCreatureStats().getCurrentHealth() == 50;
+        assert risen.getCreatureStats().getCurrentHealth() == 26;
+    }
+
+    @Test
     public void testHealing() {
         Creature robin = createCreatureSetUp.setUpCreature("Robin","Lord","Ylisee");
         Creature chrom = createCreatureSetUp.setUpCreature("Chrom", "Lord","Ylisee");

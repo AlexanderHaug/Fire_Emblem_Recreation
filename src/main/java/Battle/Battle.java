@@ -2,6 +2,7 @@ package Battle;
 
 import Creatures.Creature.Creature;
 import Items.Equippable.MainHand.Staff;
+import Items.Equippable.MainHand.Weapon;
 
 import java.util.HashMap;
 
@@ -63,10 +64,10 @@ public class Battle {
         }
     }
 
-    private static void unitAttacks(Creature attacker, Creature defender, int hitBonus, int damageBonus) {
-        boolean attackerHits = doesHit(attacker, defender, hitBonus);
+    private static void unitAttacks(Creature attacker, Creature defender, int triangleHitBonus, int triangleDamageBonus) {
+        boolean attackerHits = doesHit(attacker, defender, triangleHitBonus);
         if (attackerHits) {
-            int attackerDamageDealt = damageCalculator(attacker, defender, damageBonus);
+            int attackerDamageDealt = damageCalculator(attacker, defender, triangleDamageBonus);
             displayActionTaken(attacker.getName(), attackerDamageDealt, defender);
             targetsHits.put(defender.getName(),true);
         }
@@ -108,14 +109,17 @@ public class Battle {
         return hits >= ((int)(Math.random() * 100));
     }
 
-    public static int damageCalculator(Creature attacker, Creature defender, int damageBonus) {
+    public static int damageCalculator(Creature attacker, Creature defender, int triangleDamageBonus) {
         boolean weaponIsMagic = attacker.getMainItem().isMagic();
-        int damage = attacker.getDamage() + damageBonus;
+        int damage = effectiveAgainstDamageCalculator(attacker, defender);
+        damage += triangleDamageBonus;
 
         if (weaponIsMagic) {
+            damage += attacker.getMagicalBonus();
             damage =  damage - defender.getResilience();
         }
         else {
+            damage += attacker.getPhysicalBonus();
             damage = damage - defender.getProtection();
         }
 
@@ -174,6 +178,15 @@ public class Battle {
             return true;
         }
         return false;
+    }
+
+    private static int effectiveAgainstDamageCalculator(Creature attacker, Creature defender) {
+        boolean effective = false;
+        String[] defenderTypes = defender.getCreatureStats().getUnitclass().getUnitClassType();
+        if (attacker.getEffective(defenderTypes) && !defender.getEffectiveNulls(defenderTypes)) {effective = true;}
+
+        if (effective) {return 3* ((Weapon)attacker.getMainItem()).getMight();}
+        else {return ((Weapon)attacker.getMainItem()).getMight();}
     }
 
     private static boolean isDead(Creature creature) {return (creature.getCreatureStats().getCurrentHealth() == 0);}
