@@ -14,7 +14,7 @@ public class Creature {
     protected CreatureStats creatureStats;
     protected PrimaryItem mainItem = null;
     protected Accessory secondaryItem = null;
-    protected Battalion battalion = new Battalion();
+    protected Battalion battalion = null;
     protected String armyAffiliation;
 
     public Creature() {};
@@ -77,9 +77,21 @@ public class Creature {
         return res;
     }
 
-    public int getPhysicalBonus() {return creatureStats.getStrength() +  battalion.getBattalionPhysicalBonus();}
+    public int getPhysicalBonus() {
+        int batBonus = 0;
+        if (battalion != null) {
+            batBonus = battalion.getBattalionPhysicalBonus();
+        }
+        return creatureStats.getStrength() + batBonus;
+    }
 
-    public int getMagicalBonus() {return creatureStats.getMagic() + battalion.getBattalionMagicalBonus();}
+    public int getMagicalBonus() {
+        int batBonus = 0;
+        if (battalion != null) {
+            batBonus = battalion.getBattalionMagicalBonus();
+        }
+        return creatureStats.getMagic() + batBonus;
+    }
 
     public int getAttackSpeed() {
         int weaponWeight = 0;
@@ -92,17 +104,29 @@ public class Creature {
     }
 
     public int getPhysicalAvoidRate() {
-        return getAttackSpeed() + this.battalion.getBattalionAvoBonus();
+        int batBonus = 0;
+        if (battalion != null) {
+            batBonus = battalion.getBattalionAvoBonus();
+        }
+        return getAttackSpeed() + batBonus;
     }
 
-    public int getMagicalAvoidRate() {return (this.creatureStats.getSpeed() + this.creatureStats.getLuck())/2 +
-            this.battalion.getBattalionAvoBonus();}
+    public int getMagicalAvoidRate() {
+        int batBonus = 0;
+        if (battalion != null) {
+            batBonus = battalion.getBattalionAvoBonus();
+        }
+        return (this.creatureStats.getSpeed() + this.creatureStats.getLuck())/2 + batBonus;}
 
     public int getHitRate() {
 
+        int batBonus = 0;
+        if (battalion != null) {
+            batBonus = battalion.getBattalionHitBonus();
+        }
         if (mainItem != null) {
             return (int)((creatureStats.getSkill() * 2) *
-                    (creatureStats.getLuck() * .5)) + mainItem.getAccuracy() + battalion.getBattalionHitBonus();
+                    (creatureStats.getLuck() * .5)) + mainItem.getAccuracy() + batBonus;
         }
 
         else {return 0;}
@@ -110,7 +134,12 @@ public class Creature {
 
     public int getCritRate() {
 
-        int criticalRate = creatureStats.getSkill()/3 + battalion.getBattalionCritBonus();
+        int batBonus = 0;
+        if (battalion != null) {
+            batBonus = battalion.getBattalionCritBonus();
+        }
+
+        int criticalRate = creatureStats.getSkill()/3 + batBonus;
 
         if (mainItem != null) {
             return criticalRate + ((Weapon)mainItem).getCritical();
