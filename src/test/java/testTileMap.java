@@ -1,4 +1,6 @@
 import Creatures.Creature.Creature;
+import TileMap.Maps.Map3x3;
+import TileMap.Maps.Map5x3;
 import TileMap.TileMap;
 import org.junit.Test;
 
@@ -15,7 +17,7 @@ public class testTileMap {
         ArrayList<ArrayList<Creature>> armys = new ArrayList<>();
         armys.add(createArmy(2, new String[]{"Cleric"}, "Red"));
         armys.add(createArmy(2, new String[]{"Shaman"}, "Blue"));
-        TileMap battleMap = new TileMap(armys, "3x3");
+        TileMap battleMap = new Map3x3(armys);
 
         Creature[][] testMap = new Creature[3][3];
         testMap[0][1] = armys.get(0).get(0);
@@ -31,7 +33,7 @@ public class testTileMap {
         ArrayList<ArrayList<Creature>> armys = new ArrayList<>();
         armys.add(createArmy(3, new String[]{"Cleric"}, "Red"));
         armys.add(createArmy(3, new String[]{"Shaman"}, "Blue"));
-        TileMap battleMap = new TileMap(armys, "5x3");
+        TileMap battleMap = new Map5x3(armys);
 
         Creature[][] testMap = new Creature[5][3];
 
@@ -53,7 +55,7 @@ public class testTileMap {
         ArrayList<ArrayList<Creature>> armys = new ArrayList<>();
         armys.add(createArmy(1, new String[]{"Cleric"}, "Red"));
         armys.add(createArmy(1, new String[]{"Shaman"}, "Blue"));
-        TileMap battleMap = new TileMap(armys, "3x3");
+        TileMap battleMap = new Map3x3(armys);
         battleMap.placeCreatureOnMap(0,1, armys.get(1).get(0));
 
         assert battleMap.getMap()[0][1].equals(armys.get(0).get(0));
