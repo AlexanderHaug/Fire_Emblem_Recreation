@@ -35,5 +35,8 @@ public class testAssist {
         chrom.getCreatureStats().setStatus("Poisoned");
         Assist.assist(robin, chrom, 1);
         assert chrom.getCreatureStats().getStatus().equals("Normal");
+        chrom.getCreatureStats().setStatus("Berserk");
+        Assist.assist(robin, chrom, 1);
+        assert chrom.getCreatureStats().getStatus().equals("Normal");
     }
 }
