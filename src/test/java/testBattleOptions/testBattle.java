@@ -21,10 +21,26 @@ public class testBattle {
         Weapon flux = new Flux();
 
         robin.equipItem(flux);
+        risen.equipItem(flux);
+
+        Battle.doBattle(robin,risen, 2);
+        assert robin.getCreatureStats().getCurrentHealth() == 45;
+        assert risen.getCreatureStats().getCurrentHealth() == 45;
+    }
+
+    @Test
+    public void testBattleAgainstSameArmies() {
+        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Lord", "Ylisee");
+        Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord", "Ylisee");
+
+        Weapon flux = new Flux();
+
+        robin.equipItem(flux);
+        risen.equipItem(flux);
 
         Battle.doBattle(robin,risen, 2);
         assert robin.getCreatureStats().getCurrentHealth() == 50;
-        assert risen.getCreatureStats().getCurrentHealth() == 45;
+        assert risen.getCreatureStats().getCurrentHealth() == 50;
     }
 
     @Test

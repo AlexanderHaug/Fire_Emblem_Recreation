@@ -1,7 +1,6 @@
 package Battle;
 
 import Creatures.Creature.Creature;
-import Items.Equippable.MainHand.Staff;
 import Items.Equippable.MainHand.Weapon;
 
 import java.util.HashMap;
@@ -20,20 +19,22 @@ public class Battle {
 
     public static void doBattle(Creature attacker, Creature defender, int distance) {
 
-        int[] weaponTriangleBonus = getTriangleBonuses(attacker, defender);
+        if (!attacker.getArmyAffiliation().equals(defender.getArmyAffiliation())) {
+            int[] weaponTriangleBonus = getTriangleBonuses(attacker, defender);
 
-        boolean attackerDoubles = (attacker.getAttackSpeed() - defender.getAttackSpeed()) > 4;
+            boolean attackerDoubles = (attacker.getAttackSpeed() - defender.getAttackSpeed()) > 4;
 
-        if (creatureCannotAttack(attacker, defender, distance)) {}
-        else {unitAttacks(attacker, defender, weaponTriangleBonus[0], weaponTriangleBonus[1]);}
+            if (creatureCannotAttack(attacker, defender, distance)) {}
+            else {unitAttacks(attacker, defender, weaponTriangleBonus[0], weaponTriangleBonus[1]);}
 
-        if (!isDead(defender) && !isDead(attacker)) {
-            if (creatureCannotAttack(defender, attacker, distance)) {}
-            else {unitAttacks(defender, attacker, weaponTriangleBonus[2], weaponTriangleBonus[3]);}
-        }
+            if (!isDead(defender) && !isDead(attacker)) {
+                if (creatureCannotAttack(defender, attacker, distance)) {}
+                else {unitAttacks(defender, attacker, weaponTriangleBonus[2], weaponTriangleBonus[3]);}
+            }
 
-        if ((!isDead(defender) && !isDead(attacker)) && attackerDoubles && attacker.getMainItem() != null) {
-            unitAttacks(attacker, defender, weaponTriangleBonus[0], weaponTriangleBonus[1]);
+            if ((!isDead(defender) && !isDead(attacker)) && attackerDoubles && attacker.getMainItem() != null) {
+                unitAttacks(attacker, defender, weaponTriangleBonus[0], weaponTriangleBonus[1]);
+            }
         }
     }
 
@@ -52,18 +53,6 @@ public class Battle {
         System.out.println("The winner is " + winner);
     }
 
-    public static void assist(Creature supporter, Creature target, int distance) {
-        if (!isTargetNotInRangeAssist(supporter, supporter.getMainItem().getRange(), distance)) {
-            if (((Staff)supporter.getMainItem()).getAssistType().equals("Healing")) {
-                target.healHealth(supporter.getCreatureStats().getMagic() +
-                        ((Staff)supporter.getMainItem()).getHealAmount());
-            }
-            else if (((Staff)supporter.getMainItem()).getAssistType().equals("Cleansing")) {
-                target.getCreatureStats().setStatus("Normal");
-            }
-        }
-    }
-
     private static void unitAttacks(Creature attacker, Creature defender, int triangleHitBonus, int triangleDamageBonus) {
         boolean attackerHits = doesHit(attacker, defender, triangleHitBonus);
         if (attackerHits) {
@@ -80,14 +69,6 @@ public class Battle {
     private static boolean isTargetNotInRangeAttack(int[] weaponRange, int distance) {
         int shortDistance = weaponRange[0];
         int longDistance = weaponRange[1];
-
-        return (shortDistance > distance) || (distance > longDistance);
-    }
-
-    private static boolean isTargetNotInRangeAssist(Creature creature, int[] weaponRange, int distance) {
-        int shortDistance = weaponRange[0];
-        int longDistance = weaponRange[1];
-        if (longDistance > 1) {longDistance = creature.getCreatureStats().getMagic()/longDistance;}
 
         return (shortDistance > distance) || (distance > longDistance);
     }

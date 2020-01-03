@@ -1,6 +1,6 @@
 package testBattleOptions;
 
-import Battle.Battle;
+import Battle.Assist;
 import Creatures.Creature.Creature;
 import Items.Equippable.MainHand.Staff;
 import Items.Equippable.MainHand.Staves.Heal;
@@ -21,7 +21,7 @@ public class testAssist {
         Staff heal = new Heal();
         robin.equipItem(heal);
 
-        Battle.assist(robin, chrom, 1);
+        Assist.assist(robin, chrom, 1);
         assert chrom.getCreatureStats().getCurrentHealth() == 20;
     }
 
@@ -36,7 +36,7 @@ public class testAssist {
         robin.equipItem(restore);
 
         chrom.getCreatureStats().setStatus("Poisoned");
-        Battle.assist(robin, chrom, 1);
+        Assist.assist(robin, chrom, 1);
         assert chrom.getCreatureStats().getStatus().equals("Normal");
     }
 }
