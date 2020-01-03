@@ -228,12 +228,12 @@ public class Creature {
         if (secondaryItem != null) {bonus += secondaryItem.getAccessoryResilience();}
         return bonus;
     }
-
-    public String toString() {return name + " Class: " + creatureStats.getUnitclass().getName() + " Level: " +
-            creatureStats.getLevel() + "\n" + "HP " + creatureStats.getCurrentHealth() + ", Attack " +
-            creatureStats.getStrength() + ", Magic "+ creatureStats.getMagic() + "\n" + "Skill " +
-            creatureStats.getSkill() + ", Luck " + creatureStats.getLuck() + ", Speed " +
-            creatureStats.getSpeed() + "\n" + "Defense " + creatureStats.getDefense() + ", Resistance " +
-            creatureStats.getResistance() + ", Exp " + creatureStats.getExperience() + "\n" +
-            getMainItemName();}
+    public String toString() {return this.name;}
+//    public String toString() {return name + " Class: " + creatureStats.getUnitclass().getName() + " Level: " +
+//            creatureStats.getLevel() + "\n" + "HP " + creatureStats.getCurrentHealth() + ", Attack " +
+//            creatureStats.getStrength() + ", Magic "+ creatureStats.getMagic() + "\n" + "Skill " +
+//            creatureStats.getSkill() + ", Luck " + creatureStats.getLuck() + ", Speed " +
+//            creatureStats.getSpeed() + "\n" + "Defense " + creatureStats.getDefense() + ", Resistance " +
+//            creatureStats.getResistance() + ", Exp " + creatureStats.getExperience() + "\n" +
+//            getMainItemName();}
 }

@@ -1,16 +1,27 @@
-package TileMap;
+package BattleMap;
 
 import Creatures.Creature.Creature;
 
 import java.util.ArrayList;
 
-public abstract class TileMap {
+public abstract class BattleMap {
     protected ArrayList<ArrayList<Creature>> armys;
     protected Creature[][] map;
 
     public Creature[][] getMap() {return this.map;}
 
     public ArrayList<ArrayList<Creature>> getArmys() {return this.armys;}
+
+    public void placeArmy(int armyNumber, ArrayList<String> placements) {
+        int counter = 0;
+        while (counter < armys.get(armyNumber).size() && counter < placements.size()) {
+            String[] coordinates = placements.get(counter).split(",");
+            int row = Integer.parseInt(coordinates[0]);
+            int column = Integer.parseInt(coordinates[1]);
+            map[row][column] = armys.get(armyNumber).get(counter);
+            counter++;
+        }
+    }
 
     public void placeCreatureOnMap(int row, int column, Creature creature) {
 

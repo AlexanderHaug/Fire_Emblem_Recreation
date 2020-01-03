@@ -27,13 +27,13 @@ public class createCreatureSetUp {
     private static Character[] generateSkillRanks() {return new Character[]{'E','E','E','E','E','E','E','E','E','E','E','E','E'};}
 
     public static Creature setUpCreature(String  name, String unitClass, String army) {
-        return new Creature(name, new CreatureStats(createUnitClass(unitClass),
-                generateStats(), generateGrowthRates(), generateMaxStatCaps(), generateSkillRanks()), army);
+        return new Creature(name, new CreatureStats(createUnitClass(unitClass), generateStats(),
+                generateGrowthRates(), generateMaxStatCaps(), generateSkillRanks()), army);
     }
 
-    public static Creature createBaseCreature(String file, String army) {
-        return new Creature("Risen", new CreatureStats(createUnitClass(file),
-                generateLowStats(), generateGrowthRates(),
+    public static Creature createBaseCreature(String className, String army) {
+        return new Creature("Risen", new CreatureStats(createUnitClass(className),
+                generateStats(), generateGrowthRates(),
                 generateMaxStatCaps(), generateSkillRanks()), army);
     }
 
