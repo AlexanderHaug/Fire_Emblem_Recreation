@@ -16,9 +16,9 @@ List of things to be implemented.
 * Add Battalion Exp
 * Add Battalion Growth
 * Add Battalion MaxStats
-## Maps
-* Add Battle Map
-    * Once done fully implement Gambits 
+## Gambits
+* Add affected spaces
+* Add whether the gambit affects allys or enemies.
 ## Battle
 * Add more conditions to "assist"
     * Attacking (Silence, Sleep, Berserk)
