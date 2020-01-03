@@ -47,7 +47,7 @@ public class CreatureStats {
     public void setSpeed(int speed) {this.allStats.put("Speed",speed);}
 
     public void setStatus(String status) {
-        if (status.equals("Poison") || status.equals("Beserk") || status.equals("Silence") || status.equals("Sleep") ||
+        if (status.equals("Poison") || status.equals("Berserk") || status.equals("Silence") || status.equals("Sleep") ||
                 status.equals("Normal")) {
             this.status = status;
         }

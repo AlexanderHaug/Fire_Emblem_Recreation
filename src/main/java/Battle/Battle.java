@@ -19,17 +19,22 @@ public class Battle {
 
     public static void doBattle(Creature attacker, Creature defender, int distance) {
 
-        if (!attacker.getArmyAffiliation().equals(defender.getArmyAffiliation())) {
+        if (!attacker.getArmyAffiliation().equals(defender.getArmyAffiliation()) ||
+                attacker.getCreatureStats().getStatus().equals("Berserk")) {
+
             int[] weaponTriangleBonus = getTriangleBonuses(attacker, defender);
 
             boolean attackerDoubles = (attacker.getAttackSpeed() - defender.getAttackSpeed()) > 4;
 
-            if (creatureCannotAttack(attacker, defender, distance)) {}
-            else {unitAttacks(attacker, defender, weaponTriangleBonus[0], weaponTriangleBonus[1]);}
+            if (creatureCannotAttack(attacker, defender, distance)) {
+                unitAttacks(attacker, defender, weaponTriangleBonus[0], weaponTriangleBonus[1]);
+            }
 
             if (!isDead(defender) && !isDead(attacker)) {
-                if (creatureCannotAttack(defender, attacker, distance)) {}
-                else {unitAttacks(defender, attacker, weaponTriangleBonus[2], weaponTriangleBonus[3]);}
+                if (creatureCannotAttack(defender, attacker, distance) &&
+                        !attacker.getArmyAffiliation().equals(defender.getArmyAffiliation())) {
+                    unitAttacks(defender, attacker, weaponTriangleBonus[2], weaponTriangleBonus[3]);
+                }
             }
 
             if ((!isDead(defender) && !isDead(attacker)) && attackerDoubles && attacker.getMainItem() != null) {
@@ -156,9 +161,9 @@ public class Battle {
                 isTargetNotInRangeAttack(attacker.getMainItem().getRange(), distance)) {
             System.out.println(attacker.getName() + " cannot attack.");
             targetsHits.put(defender.getName(), false);
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     private static int effectiveAgainstDamageCalculator(Creature attacker, Creature defender) {

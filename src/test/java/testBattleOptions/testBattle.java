@@ -37,6 +37,20 @@ public class testBattle {
     }
 
     @Test
+    public void testBattleAgainstSameArmiesButAttackerIsBerserk() {
+        Creature robin = createCreatureSetUp.setUpCreature("Robin", "Lord", "Ylisee");
+        Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord", "Ylisee");
+
+        robin.equipItem(createWeapon("Flux"));
+        risen.equipItem(createWeapon("Flux"));
+        robin.getCreatureStats().setStatus("Berserk");
+
+        Battle.doBattle(robin,risen, 2);
+        assert robin.getCreatureStats().getCurrentHealth() == 50;
+        assert risen.getCreatureStats().getCurrentHealth() == 45;
+    }
+
+    @Test
     public void testAttackTwice() {
         Creature robin = createCreatureSetUp.setUpCreature("Robin", "Lord", "Ylisee");
         Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord", "Monster");
