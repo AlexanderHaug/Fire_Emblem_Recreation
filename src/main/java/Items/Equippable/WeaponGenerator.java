@@ -15,8 +15,6 @@ public class WeaponGenerator {
 
     public static Weapon createWeapon(String weaponName) {
         switch (weaponName) {
-            case "Training Sword":
-                return new TrainingSword();
             case "Iron Sword":
                 return new IronSword();
             case "Steel Sword":
@@ -122,7 +120,7 @@ public class WeaponGenerator {
             case "Mire":
                 return new Mire();
             default:
-                return null;
+                return new TrainingSword();
         }
     }
 }

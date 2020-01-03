@@ -8,12 +8,10 @@ public class StaffGenerator {
 
     public static Staff createStaff(String staffName) {
         switch (staffName) {
-            case "Heal":
-                return new Heal();
             case "Restore":
                 return new Restore();
             default:
-                return null;
+                return new Heal();
         }
     }
 }

@@ -2,14 +2,11 @@ package testBattleOptions;
 
 import Battle.Battle;
 import Creatures.Creature.Creature;
-import Items.Equippable.MainHand.Dark_Magics.Flux;
-import Items.Equippable.MainHand.Dark_Magics.Mire;
-import Items.Equippable.MainHand.Swords.Armorslayer;
-import Items.Equippable.MainHand.Swords.KillingEdge;
-import Items.Equippable.MainHand.Weapon;
-import Items.Equippable.OffHand.Shields.KadmosShield;
 import org.junit.Test;
 import testSetUpMethods.createCreatureSetUp;
+
+import static Items.Equippable.AccessoryGenerator.createAccessory;
+import static Items.Equippable.WeaponGenerator.createWeapon;
 
 public class testBattle {
 
@@ -18,10 +15,8 @@ public class testBattle {
         Creature robin = createCreatureSetUp.setUpCreature("Robin", "Lord", "Ylisee");
         Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord", "Monster");
 
-        Weapon flux = new Flux();
-
-        robin.equipItem(flux);
-        risen.equipItem(flux);
+        robin.equipItem(createWeapon("Flux"));
+        risen.equipItem(createWeapon("Flux"));
 
         Battle.doBattle(robin,risen, 2);
         assert robin.getCreatureStats().getCurrentHealth() == 45;
@@ -33,10 +28,8 @@ public class testBattle {
         Creature robin = createCreatureSetUp.setUpCreature("Robin", "Lord", "Ylisee");
         Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord", "Ylisee");
 
-        Weapon flux = new Flux();
-
-        robin.equipItem(flux);
-        risen.equipItem(flux);
+        robin.equipItem(createWeapon("Flux"));
+        risen.equipItem(createWeapon("Flux"));
 
         Battle.doBattle(robin,risen, 2);
         assert robin.getCreatureStats().getCurrentHealth() == 50;
@@ -49,9 +42,7 @@ public class testBattle {
         Creature risen = createCreatureSetUp.setUpCreature("Risen", "Lord", "Monster");
         robin.getCreatureStats().setSpeed(60);
 
-        Weapon flux = new Flux();
-
-        robin.equipItem(flux);
+        robin.equipItem(createWeapon("Flux"));
 
         Battle.doBattle(robin,risen, 2);
         assert robin.getCreatureStats().getCurrentHealth() == 50;
@@ -64,7 +55,7 @@ public class testBattle {
         Creature risen = createCreatureSetUp.setUpCreature("Risen", "Knight", "Monster");
         robin.getCreatureStats().getSkillRanks().put("Sword", 'A');
 
-        robin.equipItem(new Armorslayer());
+        robin.equipItem(createWeapon("Armorslayer"));
 
         Battle.doBattle(robin, risen, 1);
         assert robin.getCreatureStats().getCurrentHealth() == 50;
@@ -77,15 +68,13 @@ public class testBattle {
         Creature risen = createCreatureSetUp.setUpCreature("Risen", "Knight", "Monster");
         robin.getCreatureStats().getSkillRanks().put("Sword", 'A');
 
-        robin.equipItem(new Armorslayer());
-        risen.equipItem(new KadmosShield());
+        robin.equipItem(createWeapon("Armorslayer"));
+        risen.equipItem(createAccessory("Kadmos Shield"));
 
         Battle.doBattle(robin, risen, 1);
         assert robin.getCreatureStats().getCurrentHealth() == 50;
         assert risen.getCreatureStats().getCurrentHealth() == 45;
     }
-
-
 
     @Test
     public void testBattleWithRangeCannotCounterAttack() {
@@ -94,11 +83,8 @@ public class testBattle {
 
         risen.getCreatureStats().getSkillRanks().put("Sword", 'C');
 
-        Weapon flux = new Flux();
-        Weapon claws = new Armorslayer();
-
-        robin.equipItem(flux);
-        risen.equipItem(claws);
+        robin.equipItem(createWeapon("Flux"));
+        risen.equipItem(createWeapon("Armorslayer"));
 
         Battle.doBattle(robin,risen, 2);
         assert robin.getCreatureStats().getCurrentHealth() == 50;
@@ -112,9 +98,7 @@ public class testBattle {
 
         robin.getCreatureStats().getSkillRanks().put("Dark Magic", 'C');
 
-        Weapon mire = new Mire();
-
-        robin.equipItem(mire);
+        robin.equipItem(createWeapon("Mire"));
 
         Battle.runBattle(robin,risen, 2);
         assert robin.getCreatureStats().getCurrentHealth() == 50;
@@ -131,11 +115,8 @@ public class testBattle {
         risen.getCreatureStats().getSkillRanks().put("Sword", 'C');
         risen.getCreatureStats().setSkill(1);
 
-        Weapon killingEdge = new KillingEdge();
-        Weapon claws = new Armorslayer();
-
-        robin.equipItem(killingEdge);
-        risen.equipItem(claws);
+        robin.equipItem(createWeapon("Killing Edge"));
+        risen.equipItem(createWeapon("Armorslayer"));
 
         Battle.fightInColosseum(robin,risen, 1);
         assert robin.getCreatureStats().getCurrentHealth() >= 0;

@@ -2,11 +2,10 @@ package testBattleOptions;
 
 import Battle.Assist;
 import Creatures.Creature.Creature;
-import Items.Equippable.MainHand.Staff;
-import Items.Equippable.MainHand.Staves.Heal;
-import Items.Equippable.MainHand.Staves.Restore;
 import org.junit.Test;
 import testSetUpMethods.createCreatureSetUp;
+
+import static Items.Equippable.StaffGenerator.createStaff;
 
 public class testAssist {
 
@@ -17,9 +16,8 @@ public class testAssist {
 
         robin.getCreatureStats().setMagic(9);
         chrom.damageToHealth(49);
-
-        Staff heal = new Heal();
-        robin.equipItem(heal);
+        
+        robin.equipItem(createStaff("Heal"));
 
         Assist.assist(robin, chrom, 1);
         assert chrom.getCreatureStats().getCurrentHealth() == 20;
@@ -32,8 +30,7 @@ public class testAssist {
 
         robin.getCreatureStats().getSkillRanks().put("Staff", 'C');
 
-        Staff restore = new Restore();
-        robin.equipItem(restore);
+        robin.equipItem(createStaff("Restore"));
 
         chrom.getCreatureStats().setStatus("Poisoned");
         Assist.assist(robin, chrom, 1);
